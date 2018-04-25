@@ -396,7 +396,7 @@
             app:borderWidth="1px"
             app:borderDashGap="5dp"
             app:borderDashWidth="8dp"
-            app:borderColor="@color/colorAccent"
+            app:borderColor="@color/colorPrimary"
             >
        </com.github.fastshape.MyLinearLayout>
 
@@ -404,6 +404,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
             >
 
             <com.github.fastshape.MyEditText
@@ -432,9 +434,10 @@
                 android:textSize="14sp"
                 app:borderColor="@color/colorPrimary"
                 app:borderWidth="1px"
-                app:my_et_clearIcon="@drawable/text_clear2"
+                app:clearIconDrawable="@drawable/text_clear2"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                app:hiddenClearIcon="true"
                 />
         </com.github.fastshape.MyLinearLayout>
 
@@ -458,6 +461,16 @@
             android:layout_marginTop="10dp"
             >
             <com.github.fastshape.MyTextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:shapeType="oval"
+                app:gradientStartColor="@color/colorAccentAlpha"
+                app:gradientEndColor="@color/colorPrimary"
+                app:gradientType="radial"
+                app:gradientRadius="20dp"
+                android:layout_marginRight="10dp"
+                />
+            <com.github.fastshape.MyTextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="40dp"
@@ -465,18 +478,9 @@
                 app:gradientStartColor="@color/colorPrimary"
                 app:gradientEndColor="@color/colorAccentAlpha"
                 app:gradientType="linear"
-                />
-            <com.github.fastshape.MyTextView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:shapeType="oval"
-                app:gradientStartColor="@color/colorAccentAlpha"
-                app:gradientEndColor="@color/colorPrimary"
-                app:gradientType="radial"
-                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                app:gradientRadius="20dp"
                 />
+
             <com.github.fastshape.MyTextView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -486,6 +490,18 @@
                 app:gradientType="sweep"
                 />
         </LinearLayout>
+        <com.github.fastshape.MyTextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Android"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            app:top_line="true"
+            app:bottom_line="true"
+            app:borderColor="@color/colorPrimary"
+            app:borderDashGap="2dp"
+            app:borderDashWidth="8dp"
+            />
     </LinearLayout>
 
 </ScrollView>

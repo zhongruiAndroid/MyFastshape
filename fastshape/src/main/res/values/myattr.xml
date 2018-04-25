@@ -257,8 +257,8 @@
 
     <!--******************************MyEditText*************************************-->
     <declare-styleable name="MyEditText">
-        <attr name="my_et_hiddenClear" format="boolean"/>
-        <attr name="my_et_clearIcon" format="reference"/>
+        <attr name="hiddenClearIcon" format="boolean"/>
+        <attr name="clearIconDrawable" format="reference"/>
 
         <attr name="clearIcon_width" format="dimension"/>
         <attr name="clearIcon_height" format="dimension"/>

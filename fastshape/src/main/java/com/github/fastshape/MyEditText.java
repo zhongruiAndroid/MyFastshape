@@ -79,8 +79,8 @@ public class MyEditText extends AppCompatEditText implements View.OnFocusChangeL
         clearIcon_width =  (int) viewNormal.getDimension(R.styleable.MyEditText_clearIcon_width, -1);
         clearIcon_height = (int) viewNormal.getDimension(R.styleable.MyEditText_clearIcon_height,-1);
 
-        isHiddenClear= viewNormal.getBoolean(R.styleable.MyEditText_my_et_hiddenClear, false);
-        Drawable clearIcon = viewNormal.getDrawable(R.styleable.MyEditText_my_et_clearIcon);
+        isHiddenClear= viewNormal.getBoolean(R.styleable.MyEditText_hiddenClearIcon, false);
+        Drawable clearIcon = viewNormal.getDrawable(R.styleable.MyEditText_clearIconDrawable);
         setRightDrawble(clearIcon);
 
         if(drawable_normal!=null||drawable_press!=null){

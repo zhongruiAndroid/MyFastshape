@@ -586,6 +586,10 @@ public class BaseViewHelper extends Helper{
             isPartBorder=true;
         }
 
+        //设置虚线需要设置layertype
+        if(shapeType==shapeType_line&&myView.getLayerType()== View.LAYER_TYPE_NONE){
+            myView.setLayerType(View.LAYER_TYPE_SOFTWARE,null);
+        }
         //是否是全边框
         if (!isPartBorder) {
             //是否设置pressColor
