@@ -8,7 +8,7 @@
 | right_line                     | 显示右边框                         |                      boolean                     |                  |
 | bottom_line                    | 显示底边框                         |                      boolean                     |                  |
 | all_line                       | 显示所有边框                       |                      boolean                     | 覆盖上面4个属性  |
-| shapeType                      | 设置shape类型,默认rectangle        |      rectangle(默认):矩形,oval:椭圆,line:线      |                  |
+| shapeType                      | 设置shape类型,默认rectangle        |      rectangle(默认):矩形<br/>oval:椭圆<br/>line:线      |                  |
 | borderWidth                    | 边框宽度                           |                     dimension                    |                  |
 | borderColor                    | 边框颜色                           |                       color                      |                  |
 | borderDashWidth                | 边框虚线长度                       |                     dimension                    |                  |
@@ -19,14 +19,14 @@
 | bottomLeftRadius               | 左下方圆角                         |                     dimension                    |                  |
 | bottomRightRadius              | 右下方圆角                         |                     dimension                    |                  |
 | radius                         | view圆角                           |                     dimension                    | 覆盖上面4个属性  |
-| gradientType                   | 渐变类型                           | linear:线性渐变,radial:放射渐变,sweep:扫描性渐变 |                  |
-| gradientAngle                  | 渐变角度                           |        a0,a45,a90,a135,a180,a225,a270,a315       |                  |
+| gradientType                   | 渐变类型                           | linear:线性渐变<br/>radial:放射渐变<br/>sweep:扫描性渐变 |                  |
+| gradientAngle                  | 渐变角度                           |        a0,a45,a90,a135<br/>a180,a225,a270,a315       |                  |
 | gradientCenterX                | 渐变的X轴起始位置                  |                  范围0~1,默认0.5                 |                  |
 | gradientCenterY                | 渐变的Y轴起始位置                  |                  范围0~1,默认0.5                 |                  |
 | gradientStartColor             | 渐变起始颜色                       |                       color                      |                  |
 | gradientCenterColor            | 渐变中间颜色                       |                       color                      |                  |
 | gradientEndColor               | 渐变结束颜色                       |                       color                      |                  |
-| gradientRadius                 | 渐变半径                           |         gradientType="radial"适用,默认40         |                  |
+| gradientRadius                 | 渐变半径                           |         gradientType="radial"适用<br/>默认40         |                  |
 
 
 | MyTextView,MyButton<br/>MyCheckBox,MyRadioButton        | 说明                                                          | 属性类型  |
@@ -42,7 +42,7 @@
 |------------------------------------|-------------------------------------------------------------------------------|----------|
 | normal_drawable checked_drawable   | 设置normal和check状态的drawable                                               | drawable |
 | normal_textColor checked_textColor | 设置normal和check状态的文字颜色                                               | color    |
-| drawable_direction                 | 设置button所在方向left,top,right,bottom,设置此属性需要:android:button="@null" |          |
+| drawable_direction                 | 设置button所在方向left,top,right,bottom<br/>设置此属性需要:android:button="@null" |          |
 
 
 
