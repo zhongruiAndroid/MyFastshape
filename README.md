@@ -1,4 +1,5 @@
 **MyButton需要手动设置android:background="@null",否则以下属性设置无效**
+
 |MyRelativeLayout<br/>MyLinearLayout<br/>MyFrameLayout<br/>MyTextView<br/>MyEditText<br/>MyButton                         | 说明                               |                     属性类型                     |                  |
 |--------------------------------|------------------------------------|:------------------------------------------------:|------------------|
 | drawable_normal<br/>drawable_press | 设置正常状态背景和press状态背景    |                     drawable                     | 覆盖以下所有属性 |
