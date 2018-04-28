@@ -30,6 +30,9 @@
 | gradientRadius                 | 渐变半径                           |         gradientType="radial"适用<br/>默认40         |                  |
 
 
+<br/>
+<br/>
+
 | MyTextView,MyButton<br/>MyCheckBox,MyRadioButton        | 说明                                                          | 属性类型  |
 |----------------------------|---------------------------------------------------------------|---|
 | left_width<br/>left_height     | 设置drawableLeft宽高,只设置其中一个属性自动适配另外一个属性   | dimension  |
@@ -39,19 +42,29 @@
 
 
 
+<br/>
+<br/>
+
 | MyCheckBox,MyRadioButton           | 说明                                                                          | 属性类型 |
 |------------------------------------|-------------------------------------------------------------------------------|----------|
 | normal_drawable checked_drawable   | 设置normal和check状态的drawable                                               | drawable |
 | normal_textColor checked_textColor | 设置normal和check状态的文字颜色                                               | color    |
 | drawable_direction                 | 设置button所在方向left,top,right,bottom<br/>设置此属性需要:android:button="@null" |          |
 
-
+<br/>
+<br/>
 
 | MyEditText                       | 说明                                                    | 属性类型  |
 |----------------------------------|---------------------------------------------------------|-----------|
 | clearIconDrawable                | 设置清除按钮drawable(点击清除内容)                                    | drawable  |
 | hiddenClearIcon                  | 设置清除按钮是否隐藏,默认false                          | boolean   |
 | clearIcon_width<br/>clearIcon_height | 设置清除按钮宽度,只设置其中一个属性自动适配另外一个属性 | dimension |
+
+
+
+
+<br/>
+<br/>
   
   [ ![Download](https://api.bintray.com/packages/zhongrui/mylibrary/fastshape/images/download.svg) ](https://bintray.com/zhongrui/mylibrary/fastshape/_latestVersion)  <--版本号
 ```xml
