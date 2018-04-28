@@ -52,3 +52,8 @@
 | clearIconDrawable                | 设置清除按钮drawable(点击清除内容)                                    | drawable  |
 | hiddenClearIcon                  | 设置清除按钮是否隐藏,默认false                          | boolean   |
 | clearIcon_width<br/>clearIcon_height | 设置清除按钮宽度,只设置其中一个属性自动适配另外一个属性 | dimension |
+  
+  [ ![Download](https://api.bintray.com/packages/zhongrui/mylibrary/fastshape/images/download.svg) ](https://bintray.com/zhongrui/mylibrary/fastshape/_latestVersion)  <--版本号
+```xml
+compile 'com.github:fastshape:版本号看上面'
+```
