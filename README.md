@@ -35,7 +35,8 @@
 | gradientRadius                 | 渐变半径                           |         gradientType="radial"适用<br/>默认40         |                  |
 
 
-
+<br/>
+<br/>
   
   
 **MyTextView，MyButton，MyCheckBox，MyRadioButton公共属性**  
