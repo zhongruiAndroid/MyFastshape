@@ -82,6 +82,7 @@ BaseViewHelper viewHelper = textView.getViewHelper();
 viewHelper.setAllLine(true);
 viewHelper.setSolidColor(ContextCompat.getColor(this,R.color.white));
 viewHelper.setRadius(20);
+viewHelper.setShapeType(BaseViewHelper.shapeType_rectangle);
 viewHelper.complete();//或者textView.complete();
 
 
@@ -90,6 +91,7 @@ MyLinearLayout linearLayout=new MyLinearLayout(this);
 linearLayout.getViewHelper()
 //.clearAttribute()
 .setAllLine(true)
+.setGradientType(BaseViewHelper.gradientType_linear)
 .setSolidColor(ContextCompat.getColor(this,R.color.white))
 .setRadius(20)
 .complete();//或者linearLayout.complete();
