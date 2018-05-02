@@ -406,6 +406,7 @@
             android:orientation="horizontal"
             android:focusableInTouchMode="true"
             android:focusable="true"
+            android:background="@color/white"
             >
 
             <com.github.fastshape.MyEditText
@@ -452,6 +453,7 @@
             app:borderDashWidth="8dp"
             app:borderWidth="1px"
             app:pressColor="@color/c_press"
+
             />
         <LinearLayout
             android:layout_width="match_parent"
