@@ -1,3 +1,5 @@
+### 主要功能：通过自定义属性或者代码实现shape效果  
+
 >![github](https://github.com/zhongruiAndroid/MyFastshape/blob/master/app/src/main/res/drawable/demo.png "github")
 <br/>  
 
