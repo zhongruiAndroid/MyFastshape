@@ -1,6 +1,11 @@
-**MyButton需要手动设置android:background="@null",否则以下属性设置无效**
+>![github](https://github.com/zhongruiAndroid/MyFastshape/blob/master/app/src/main/res/drawable/demo.png "github")
+<br/>  
 
-|MyRelativeLayout<br/>MyLinearLayout<br/>MyFrameLayout<br/>MyTextView<br/>MyEditText<br/>MyButton                         | 说明                               |                     属性类型                     |                  |
+**MyButton需要手动设置android:background="@null",否则以下属性设置无效**  
+
+**MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性**  
+
+|属性名                         | 说明                               |                     属性类型                     |                  |
 |--------------------------------|------------------------------------|:------------------------------------------------:|------------------|
 | drawable_normal<br/>drawable_press | 设置正常状态背景和press状态背景    |                     drawable                     | 覆盖以下所有属性 |
 | pressColor                     | 设置press颜色,设置了点击事件才生效 |                       color                      |                  |
@@ -30,10 +35,12 @@
 | gradientRadius                 | 渐变半径                           |         gradientType="radial"适用<br/>默认40         |                  |
 
 
-<br/>
-<br/>
 
-| MyTextView,MyButton<br/>MyCheckBox,MyRadioButton        | 说明                                                          | 属性类型  |
+  
+  
+**MyTextView，MyButton，MyCheckBox，MyRadioButton公共属性**  
+
+|    属性名    | 说明                                                          | 属性类型  |
 |----------------------------|---------------------------------------------------------------|---|
 | left_width<br/>left_height     | 设置drawableLeft宽高,只设置其中一个属性自动适配另外一个属性   | dimension  |
 | top_width<br/>top_height       | 设置drawableTop宽高,只设置其中一个属性自动适配另外一个属性    | dimension  |
@@ -66,7 +73,7 @@
 <br/>
 <br/>
   
-  [ ![Download](https://api.bintray.com/packages/zhongrui/mylibrary/fastshape/images/download.svg) ](https://bintray.com/zhongrui/mylibrary/fastshape/_latestVersion)  <--版本号
+  [ ![Download](https://api.bintray.com/packages/zhongrui/mylibrary/fastshape/images/download.svg) ](https://bintray.com/zhongrui/mylibrary/fastshape/_latestVersion)  <--版本号
 ```xml
 compile 'com.github:fastshape:版本号看上面'
 ```
