@@ -88,7 +88,7 @@ viewHelper.complete();//或者textView.complete();
 //链式结构
 MyLinearLayout linearLayout=new MyLinearLayout(this);
 linearLayout.getViewHelper()
-.clearAttribute()
+//.clearAttribute()
 .setAllLine(true)
 .setSolidColor(ContextCompat.getColor(this,R.color.white))
 .setRadius(20)
