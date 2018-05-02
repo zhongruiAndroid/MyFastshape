@@ -70,9 +70,33 @@
 
 
 
+<br/>
+<br/>  
 
+#### 代码设置  
+
+```java
+MyTextView textView=new MyTextView(this);
+BaseViewHelper viewHelper = textView.getViewHelper();
+//viewHelper.clearAttribute();清除所有属性,按照实际情况使用
+viewHelper.setAllLine(true);
+viewHelper.setSolidColor(ContextCompat.getColor(this,R.color.white));
+viewHelper.setRadius(20);
+viewHelper.complete();//或者textView.complete();
+
+
+//链式结构
+MyLinearLayout linearLayout=new MyLinearLayout(this);
+linearLayout.getViewHelper()
+.clearAttribute()
+.setAllLine(true)
+.setSolidColor(ContextCompat.getColor(this,R.color.white))
+.setRadius(20)
+.complete();//或者linearLayout.complete();
+```
 <br/>
-<br/>
+<br/>  
+
   
   [ ![Download](https://api.bintray.com/packages/zhongrui/mylibrary/fastshape/images/download.svg) ](https://bintray.com/zhongrui/mylibrary/fastshape/_latestVersion)  <--版本号
 ```xml
