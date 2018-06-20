@@ -10,14 +10,14 @@ import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
+import android.widget.ImageView;
 
 /**
  * Created by Administrator on 2017/7/24.
  */
 
-public class MyImageView extends AppCompatImageView {
+public class MyImageView extends ImageView {
     private Paint paint;
     private Paint paintView;
     /***圆角半径*/

@@ -2,15 +2,15 @@ package com.github.fastshape;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v7.widget.AppCompatCheckBox;
 import android.util.AttributeSet;
+import android.widget.CheckBox;
 
 import com.github.fastshape.inter.ViewHelperInter;
 
 /**
  * Created by Administrator on 2016/8/29.
  */
-public class MyCheckBox extends AppCompatCheckBox {
+public class MyCheckBox extends CheckBox {
 
    private CheckViewHelper viewHelper;
 

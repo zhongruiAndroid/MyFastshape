@@ -3,8 +3,8 @@ package com.github.fastshape;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
+import android.widget.Button;
 
 import com.github.fastshape.inter.ViewHelperInter;
 
@@ -12,7 +12,7 @@ import com.github.fastshape.inter.ViewHelperInter;
 /**
  * Created by Administrator on 2016/8/29.
  */
-public class MyButton extends AppCompatButton {
+public class MyButton extends Button {
 
     private BaseViewHelper viewHelper;
 

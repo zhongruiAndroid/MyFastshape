@@ -6,7 +6,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -14,13 +13,14 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 
 import com.github.fastshape.inter.ViewHelperInter;
 
 /**
  * Created by Administrator on 2016/9/6.
  */
-public class MyEditText extends AppCompatEditText implements View.OnFocusChangeListener {
+public class MyEditText extends EditText implements View.OnFocusChangeListener {
 
 
     private BaseViewHelper viewHelper;

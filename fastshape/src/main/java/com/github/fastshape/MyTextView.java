@@ -3,15 +3,15 @@ package com.github.fastshape;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
+import android.widget.TextView;
 
 import com.github.fastshape.inter.ViewHelperInter;
 
 /**
  * Created by Administrator on 2016/9/6.
  */
-public class MyTextView extends AppCompatTextView {
+public class MyTextView extends TextView {
 
     private BaseViewHelper viewHelper;
 

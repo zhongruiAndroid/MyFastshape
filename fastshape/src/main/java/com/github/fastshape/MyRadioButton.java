@@ -2,15 +2,15 @@ package com.github.fastshape;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v7.widget.AppCompatRadioButton;
 import android.util.AttributeSet;
+import android.widget.RadioButton;
 
 import com.github.fastshape.inter.ViewHelperInter;
 
 /**
  * Created by Administrator on 2016/8/29.
  */
-public class MyRadioButton extends AppCompatRadioButton {
+public class MyRadioButton extends RadioButton {
 
     private CheckViewHelper viewHelper;
 
