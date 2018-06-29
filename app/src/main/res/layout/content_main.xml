@@ -402,19 +402,17 @@
 
         <com.github.fastshape.MyLinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:orientation="horizontal"
             android:focusableInTouchMode="true"
             android:focusable="true"
-            android:background="@color/white"
             >
 
             <com.github.fastshape.MyEditText
                 android:id="@+id/et"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:text="android"
                 android:textColor="@color/colorText"
@@ -427,8 +425,7 @@
 
             <com.github.fastshape.MyEditText
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="android"
                 android:textColor="@color/colorText"

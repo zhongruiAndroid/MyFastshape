@@ -213,6 +213,20 @@
         <!--<attr name="innerRadius" format="dimension"/>-->
         <!--<attr name="thickness" format="dimension"/>-->
 
+        <!--裁剪-->
+        <attr name="clipIsCircle"            />
+        <attr name="clipIsAreaClick"            />
+
+        <attr name="clipRadius"         />
+        <attr name="clipTopLeftRadius"      />
+        <attr name="clipTopRightRadius"     />
+        <attr name="clipBottomLeftRadius"  />
+        <attr name="clipBottomRightRadius" />
+
+        <attr name="clipBorderWidth"        />
+        <attr name="clipBorderColor"        />
+        <attr name="clipBorderDashWidth"  />
+        <attr name="clipBorderDashGap"    />
     </declare-styleable>
 
     <!--******************************MyFrameLayout*************************************-->
@@ -353,6 +367,22 @@
         <attr name="bottom_height"  />
     </declare-styleable>
     <!--******************************公共属性*************************************-->
+    <attr name="clipIsCircle" format="boolean"/>
+    <attr name="clipIsAreaClick" format="boolean"/>
+
+    <attr name="clipRadius" format="dimension"/>
+    <attr name="clipTopLeftRadius" format="dimension"/>
+    <attr name="clipTopRightRadius" format="dimension"/>
+    <attr name="clipBottomLeftRadius" format="dimension"/>
+    <attr name="clipBottomRightRadius" format="dimension"/>
+
+    <attr name="clipBorderWidth" format="dimension"/>
+    <attr name="clipBorderColor" format="color"/>
+    <attr name="clipBorderDashWidth" format="dimension"/>
+    <attr name="clipBorderDashGap" format="dimension"/>
+
+
+
     <attr name="drawable_normal" format="reference"/>
     <attr name="drawable_press" format="reference"/>
 

@@ -1,22 +1,33 @@
 package com.github.fastshape;
 
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.RectF;
+import android.graphics.Region;
+import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.github.fastshape.inter.OnDrawInter;
 import com.github.fastshape.inter.ViewHelperInter;
 
 /**
  * Created by windows10 on 2018/3/28.
  */
 
-public class BaseViewHelper extends Helper{
+public class BaseViewHelper extends Helper implements OnDrawInter {
     /**[1]无press效果,全边框,gradientDrawableNormal*/
     /**[2]无press效果,部分边框,layerDrawableNormal*/
     /**
@@ -41,6 +52,7 @@ public class BaseViewHelper extends Helper{
 //    protected GradientDrawable layerGradientDrawablePress;//最上层
 
     private ViewHelperInter viewHelperInter;
+
     public BaseViewHelper() {
         this(null);
     }
@@ -814,5 +826,153 @@ public class BaseViewHelper extends Helper{
                 borderColor=getDefBorderColor();
             }
         }
+    }
+
+    /**********DrawHelper 裁剪**********/
+    protected Paint clipPaint;
+    protected Paint clipBorderPaint;
+
+    protected Path clipPath;
+    protected Path clipBorderPath;
+    protected Region viewRegion;
+    protected Region clickRegion;
+
+    protected boolean clipIsCircle =false;
+    protected boolean clipIsAreaClick =true;
+    protected float clipRadius;
+    protected float clipTopLeftRadius;
+    protected float clipTopRightRadius;
+    protected float clipBottomLeftRadius;
+    protected float clipBottomRightRadius;
+    protected float clipBorderWidth;
+    protected int clipBorderColor;
+    protected float clipBorderDashWidth;
+    protected float clipBorderDashGap;
+
+    protected Shader shader;
+    /**********DrawHelper 裁剪**********/
+    @Override
+    public void onSizeChanged(int paddingLeft,int paddingTop,int paddingRight,int paddingBottom,int w, int h, int oldw, int oldh) {
+        if(paddingLeft<clipBorderWidth/2){
+            paddingLeft= (int) (clipBorderWidth/2);
+        }
+        if(paddingTop<clipBorderWidth/2){
+            paddingTop= (int) (clipBorderWidth/2);
+        }
+        if(paddingRight<clipBorderWidth/2){
+            paddingRight= (int) (clipBorderWidth/2);
+        }
+        if(paddingBottom<clipBorderWidth/2){
+            paddingBottom= (int) (clipBorderWidth/2);
+        }
+        clickRegion=new Region();
+        viewRegion=new Region(0,0,w,h);
+
+        clipPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
+        clipPaint.setStyle(Paint.Style.FILL);
+        clipPaint.setColor(Color.WHITE);
+        clipPaint.setFilterBitmap(false);
+        clipPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+
+        clipBorderPaint =new Paint(Paint.ANTI_ALIAS_FLAG);
+        clipBorderPaint.setColor(clipBorderColor);
+        clipBorderPaint.setStyle(Paint.Style.STROKE);
+        clipBorderPaint.setStrokeWidth(clipBorderWidth);
+       /* float gradientLeft=paddingLeft-borderWidth/2;
+        float gradientTop=paddingTop-borderWidth/2;
+        float gradientRigth=w-paddingRight+borderWidth/2;
+        float gradientBottom=h-paddingBottom+borderWidth/2;*/
+        /*LinearGradient linearGradient = new LinearGradient(gradientLeft,
+                gradientTop,
+                gradientRigth,
+                gradientTop,
+                new int[]{Color.BLUE,Color.GREEN},
+                new float[]{0f,1f}, Shader.TileMode.CLAMP);
+*/
+//        int  X=(w-paddingLeft-paddingRight)/2+paddingLeft;
+//        int  Y=(h-paddingTop-paddingBottom)/2+paddingTop;
+//        SweepGradient sweepGradient=new SweepGradient(X,Y,new int[]{Color.BLUE,Color.GREEN},new float[]{0.7f,1f});
+//        SweepGradient sweepGradient=new SweepGradient(X,Y,Color.BLUE,Color.GREEN);
+//        RadialGradient radialGradient=new RadialGradient(X,Y,(w-paddingLeft-paddingRight)/2,Color.BLUE,Color.GREEN, Shader.TileMode.CLAMP);
+        if(shader!=null){
+            clipBorderPaint.setShader(shader);
+        }
+        if(clipBorderDashWidth>0&&clipBorderDashGap>0){
+            clipBorderPaint.setPathEffect(new DashPathEffect(new float[]{clipBorderDashWidth,clipBorderDashGap},1));
+        }
+
+        clipPath=new Path();
+        clipBorderPath =new Path();
+        float[]radius=new float[8];
+        if(clipRadius>0){
+            radius[0]=clipRadius;
+            radius[1]=clipRadius;
+
+            radius[2]=clipRadius;
+            radius[3]=clipRadius;
+
+            radius[4]=clipRadius;
+            radius[5]=clipRadius;
+
+            radius[6]=clipRadius;
+            radius[7]=clipRadius;
+        }else{
+            radius[0]=clipTopLeftRadius;
+            radius[1]=clipTopLeftRadius;
+
+            radius[2]=clipTopRightRadius;
+            radius[3]=clipTopRightRadius;
+
+            radius[4]=clipBottomRightRadius;
+            radius[5]=clipBottomRightRadius;
+
+            radius[6]=clipBottomLeftRadius;
+            radius[7]=clipBottomLeftRadius;
+        }
+        RectF rectF=new RectF(paddingLeft,paddingTop,w-paddingRight,h-paddingBottom);
+        if(clipIsCircle){//裁剪是以padding外部为界限还是padding内部
+            int  centerX=(w-paddingLeft-paddingRight)/2+paddingLeft;
+            int  centerY=(h-paddingTop-paddingBottom)/2+paddingTop;
+
+            int  circleRadius=(w-paddingLeft-paddingRight)>(h-paddingTop-paddingBottom)?(h-paddingTop-paddingBottom)/2:(w-paddingLeft-paddingRight)/2;
+            clipPath.addCircle(centerX,centerY,circleRadius, Path.Direction.CW);
+            clipBorderPath.addCircle(centerX,centerY,circleRadius, Path.Direction.CW);
+        }else{
+            clipPath.addRoundRect(rectF,radius, Path.Direction.CW);
+            clipBorderPath.addRoundRect(rectF,radius, Path.Direction.CW);
+        }
+
+        clickRegion.setPath(clipPath,viewRegion);
+        clipPath.moveTo(0,0);
+        clipPath.moveTo(w,h);
+    }
+
+    protected int errorLayerCount=-100;
+    @Override
+    public int dispatchDrawStart(Canvas canvas) {
+        int saveLayer = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
+        return saveLayer;
+    }
+    @Override
+    public void dispatchDrawEnd(int saveLayer,Canvas canvas) {
+        canvas.drawPath(clipPath,clipPaint);
+        if(clipBorderWidth>0){
+            canvas.drawPath(clipBorderPath, clipBorderPaint);
+        }
+        if(saveLayer!=errorLayerCount){
+            canvas.restoreToCount(saveLayer);
+        }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if(clipIsAreaClick){
+            if(clickRegion.contains((int)event.getX(),(int)event.getY())){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        return true;
     }
 }

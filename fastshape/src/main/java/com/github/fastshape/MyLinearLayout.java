@@ -3,9 +3,12 @@ package com.github.fastshape;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.LinearLayout;
 
 import com.github.fastshape.inter.ViewHelperInter;
@@ -49,20 +52,26 @@ public class MyLinearLayout extends LinearLayout {
     }
 
     private void init(AttributeSet attrs) {
-        if (attrs == null) {
-            return;
-        }
         viewHelper = new BaseViewHelper(new ViewHelperInter() {
             @Override
             public void onComplete() {
                 complete();
             }
         });
-        Drawable background = getBackground();
-        if (background != null) {
+        initData();
+        if (attrs == null) {
             return;
         }
         TypedArray viewNormal = this.getContext().obtainStyledAttributes(attrs, R.styleable.MyLinearLayout);
+
+        setAttrForDraw(viewNormal);
+
+
+        Drawable background = getBackground();
+        if (background != null) {
+            viewNormal.recycle();
+            return;
+        }
         Drawable drawable_normal = viewNormal.getDrawable(R.styleable.MyLinearLayout_drawable_normal);
         Drawable drawable_press  = viewNormal.getDrawable(R.styleable.MyLinearLayout_drawable_press);
 
@@ -134,6 +143,26 @@ public class MyLinearLayout extends LinearLayout {
         complete();
     }
 
+    private void initData() {
+        viewHelper.clipBorderColor=Color.parseColor("#34e8a6");
+    }
+
+    private void setAttrForDraw(TypedArray viewNormal) {
+        viewHelper.clipRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipRadius, 0);
+        viewHelper.clipTopLeftRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipTopLeftRadius, 0);
+        viewHelper.clipTopRightRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipTopRightRadius, 0);
+        viewHelper.clipBottomLeftRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBottomLeftRadius, 0);
+        viewHelper.clipBottomRightRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBottomRightRadius, 0);
+
+        viewHelper.clipIsCircle = viewNormal.getBoolean(R.styleable.MyLinearLayout_clipIsCircle,false);
+        viewHelper.clipIsAreaClick = viewNormal.getBoolean(R.styleable.MyLinearLayout_clipIsAreaClick, true);
+        viewHelper.clipBorderWidth = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBorderWidth, 0);
+        viewHelper.clipBorderColor = viewNormal.getColor(R.styleable.MyLinearLayout_clipBorderColor, Color.parseColor("#34e8a6"));
+        viewHelper.clipBorderDashWidth = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBorderDashWidth, 0);
+        viewHelper.clipBorderDashGap = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBorderDashGap, 0);
+
+    }
+
     /**
      * 设置各个自定义属性之后调用此方法设置background
      * 这里有必要说明一下,为什么设置属性了还需要调用这个方法才能生效?
@@ -141,5 +170,35 @@ public class MyLinearLayout extends LinearLayout {
      */
     public void complete() {
          viewHelper.viewComplete(this);
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        if(viewHelper!=null){
+            viewHelper.onSizeChanged(getPaddingLeft(),
+                    getPaddingTop(),
+                    getPaddingRight(),
+                    getPaddingBottom(),w, h, oldw, oldh);
+        }
+    }
+
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        int saveLayer=viewHelper.errorLayerCount;
+        if(viewHelper!=null){
+            saveLayer = viewHelper.dispatchDrawStart(canvas);
+        }
+        super.dispatchDraw(canvas);
+        if(viewHelper!=null){
+            viewHelper.dispatchDrawEnd(saveLayer,canvas);
+        }
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if(event.getAction()==MotionEvent.ACTION_UP){
+            return viewHelper.onTouchEvent(event);
+        }
+        return super.onTouchEvent(event);
     }
 }
