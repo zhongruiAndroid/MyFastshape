@@ -52,7 +52,7 @@ public class MyRelativeLayout extends RelativeLayout {
         if (attrs == null) {
             return;
         }
-        viewHelper = new BaseViewHelper(new ViewHelperInter() {
+        viewHelper = new BaseViewHelper(this,new ViewHelperInter() {
             @Override
             public void onComplete() {
                 complete();

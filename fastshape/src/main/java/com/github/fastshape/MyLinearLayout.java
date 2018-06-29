@@ -52,7 +52,7 @@ public class MyLinearLayout extends LinearLayout {
     }
 
     private void init(AttributeSet attrs) {
-        viewHelper = new BaseViewHelper(new ViewHelperInter() {
+        viewHelper = new BaseViewHelper(this,new ViewHelperInter() {
             @Override
             public void onComplete() {
                 complete();

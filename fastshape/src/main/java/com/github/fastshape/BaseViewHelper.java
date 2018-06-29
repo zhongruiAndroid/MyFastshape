@@ -15,6 +15,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
+import android.support.annotation.ColorInt;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -52,18 +53,27 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
 //    protected GradientDrawable layerGradientDrawablePress;//最上层
 
     private ViewHelperInter viewHelperInter;
-
+    private View view;
     public BaseViewHelper() {
         this(null);
     }
     public BaseViewHelper(ViewHelperInter inter) {
         viewHelperInter=inter;
     }
+    public BaseViewHelper(View view,ViewHelperInter inter) {
+        viewHelperInter=inter;
+        this.view=view;
+    }
     public void complete(){
         if(viewHelperInter!=null){
             viewHelperInter.onComplete();
+            if(needInvalidate&&view!=null){
+                view.invalidate();
+                needInvalidate=false;
+            }
         }
     }
+
     public static final int shapeType_rectangle=GradientDrawable.RECTANGLE;
     public static final int shapeType_oval=GradientDrawable.OVAL;
     public static final int shapeType_line=GradientDrawable.LINE;
@@ -850,7 +860,123 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
     protected float clipBorderDashGap;
 
     protected Shader shader;
+    private boolean needInvalidate;
+    public boolean isClipIsCircle() {
+        return clipIsCircle;
+    }
+
+    public void setClipIsCircle(boolean clipIsCircle) {
+        this.clipIsCircle = clipIsCircle;
+        needInvalidate();
+    }
+
+    private void needInvalidate() {
+        if(needInvalidate==false){
+            needInvalidate=true;
+        }
+    }
+
+    public boolean isClipIsAreaClick() {
+        return clipIsAreaClick;
+    }
+
+    public void setClipIsAreaClick(boolean clipIsAreaClick) {
+        this.clipIsAreaClick = clipIsAreaClick;
+        needInvalidate();
+    }
+
+    public float getClipRadius() {
+        return clipRadius;
+    }
+
+    public void setClipRadius(float clipRadius) {
+        this.clipRadius = clipRadius;
+        needInvalidate();
+    }
+
+    public float getClipTopLeftRadius() {
+        return clipTopLeftRadius;
+    }
+
+    public void setClipTopLeftRadius(float clipTopLeftRadius) {
+        this.clipTopLeftRadius = clipTopLeftRadius;
+        needInvalidate();
+    }
+
+    public float getClipTopRightRadius() {
+        return clipTopRightRadius;
+    }
+
+    public void setClipTopRightRadius(float clipTopRightRadius) {
+        this.clipTopRightRadius = clipTopRightRadius;
+        needInvalidate();
+    }
+
+    public float getClipBottomLeftRadius() {
+        return clipBottomLeftRadius;
+    }
+
+    public void setClipBottomLeftRadius(float clipBottomLeftRadius) {
+        this.clipBottomLeftRadius = clipBottomLeftRadius;
+        needInvalidate();
+    }
+
+    public float getClipBottomRightRadius() {
+        return clipBottomRightRadius;
+    }
+
+    public void setClipBottomRightRadius(float clipBottomRightRadius) {
+        this.clipBottomRightRadius = clipBottomRightRadius;
+        needInvalidate();
+    }
+
+    public float getClipBorderWidth() {
+        return clipBorderWidth;
+    }
+
+    public void setClipBorderWidth(float clipBorderWidth) {
+        this.clipBorderWidth = clipBorderWidth;
+        needInvalidate();
+    }
+
+    public int getClipBorderColor() {
+        return clipBorderColor;
+    }
+
+    public void setClipBorderColor(@ColorInt int clipBorderColor) {
+        this.clipBorderColor = clipBorderColor;
+        needInvalidate();
+    }
+
+    public float getClipBorderDashWidth() {
+        return clipBorderDashWidth;
+    }
+
+    public void setClipBorderDashWidth(float clipBorderDashWidth) {
+        this.clipBorderDashWidth = clipBorderDashWidth;
+        needInvalidate();
+    }
+
+    public float getClipBorderDashGap() {
+        return clipBorderDashGap;
+    }
+
+    public void setClipBorderDashGap(float clipBorderDashGap) {
+        this.clipBorderDashGap = clipBorderDashGap;
+        needInvalidate();
+    }
+
+    public Shader getShader() {
+        return shader;
+    }
+
+    public void setShader(Shader shader) {
+        this.shader = shader;
+        needInvalidate();
+    }
+
     /**********DrawHelper 裁剪**********/
+
     @Override
     public void onSizeChanged(int paddingLeft,int paddingTop,int paddingRight,int paddingBottom,int w, int h, int oldw, int oldh) {
         if(paddingLeft<clipBorderWidth/2){
