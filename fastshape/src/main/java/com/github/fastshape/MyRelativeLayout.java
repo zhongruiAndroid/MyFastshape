@@ -49,15 +49,16 @@ public class MyRelativeLayout extends RelativeLayout {
     }
 
     private void init(AttributeSet attrs) {
-        if (attrs == null) {
-            return;
-        }
         viewHelper = new BaseViewHelper(this,new ViewHelperInter() {
             @Override
             public void onComplete() {
                 complete();
             }
         });
+        if (attrs == null) {
+            return;
+        }
+
         Drawable background = getBackground();
         if (background != null) {
             return;
