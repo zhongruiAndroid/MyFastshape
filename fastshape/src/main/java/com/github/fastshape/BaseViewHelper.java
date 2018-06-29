@@ -930,7 +930,7 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
             radius[7]=clipBottomLeftRadius;
         }
         RectF rectF=new RectF(paddingLeft,paddingTop,w-paddingRight,h-paddingBottom);
-        if(clipIsCircle){//裁剪是以padding外部为界限还是padding内部
+        if(clipIsCircle){
             int  centerX=(w-paddingLeft-paddingRight)/2+paddingLeft;
             int  centerY=(h-paddingTop-paddingBottom)/2+paddingTop;
 
