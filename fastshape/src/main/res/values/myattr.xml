@@ -380,6 +380,7 @@
     <attr name="clipBorderColor" format="color"/>
     <attr name="clipBorderDashWidth" format="dimension"/>
     <attr name="clipBorderDashGap" format="dimension"/>
+    <attr name="clipBorderPhase" format="integer"/>
 
 
 

@@ -858,6 +858,7 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
     protected int clipBorderColor;
     protected float clipBorderDashWidth;
     protected float clipBorderDashGap;
+    protected float clipBorderPhase=1;
 
     protected Shader shader;
     private boolean needInvalidate;
@@ -975,6 +976,15 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         needInvalidate();
     }
 
+    public float getClipBorderPhase() {
+        return clipBorderPhase;
+    }
+
+    public void setClipBorderPhase(float clipBorderPhase) {
+        this.clipBorderPhase = clipBorderPhase;
+        needInvalidate();
+    }
+
     /**********DrawHelper 裁剪**********/
 
     @Override
@@ -1024,7 +1034,7 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
             clipBorderPaint.setShader(shader);
         }
         if(clipBorderDashWidth>0&&clipBorderDashGap>0){
-            clipBorderPaint.setPathEffect(new DashPathEffect(new float[]{clipBorderDashWidth,clipBorderDashGap},1));
+            clipBorderPaint.setPathEffect(new DashPathEffect(new float[]{clipBorderDashWidth,clipBorderDashGap},clipBorderPhase));
         }
 
         clipPath=new Path();
@@ -1086,7 +1096,8 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
             canvas.drawPath(clipBorderPath, clipBorderPaint);
         }
         if(saveLayer!=errorLayerCount){
-            canvas.restoreToCount(saveLayer);
+            canvas.restore();
+//            canvas.restoreToCount(saveLayer);
         }
     }
 
