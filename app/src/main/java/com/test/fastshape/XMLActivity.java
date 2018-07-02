@@ -58,6 +58,7 @@ public class XMLActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 viewHelper.setClipIsCircle(isChecked);
+                viewHelper.setRadius(100).complete();
             }
         });
 
