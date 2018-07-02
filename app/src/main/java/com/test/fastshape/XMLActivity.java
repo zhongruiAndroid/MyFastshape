@@ -11,11 +11,11 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.github.fastshape.BaseViewHelper;
-import com.github.fastshape.MyLinearLayout;
+import com.github.fastshape.MyFrameLayout;
+import com.github.fastshape.MyTextView;
 
 public class XMLActivity extends AppCompatActivity {
 
-    private MyLinearLayout ll_view;
 
     CheckBox cb_regin_click;
     CheckBox cb_isCircle;
@@ -30,13 +30,16 @@ public class XMLActivity extends AppCompatActivity {
     private BaseViewHelper viewHelper;
     private Toast toast;
 
+    private MyFrameLayout ll_view;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xmlactivity_xml);
+        MyTextView t=new MyTextView(this);
+        t.getViewHelper().setClipRadius(1);
 
 
-        ll_view = (MyLinearLayout) findViewById(R.id.ll_view);
+        ll_view = (MyFrameLayout) findViewById(R.id.ll_view);
         ll_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
