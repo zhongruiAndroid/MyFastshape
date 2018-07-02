@@ -111,8 +111,7 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
     protected float borderDashWidth;
     /***虚线间隔*/
     protected float borderDashGap;
-    /***圆角半径*/
-    protected float radius;
+
     /***左上圆角半径*/
     protected float topLeftRadius;
     /***右上圆角半径*/
@@ -130,7 +129,7 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
 
 
     /***整型。渐变的角度（度）。0 为从左到右，90 为从上到上。必须是 45 的倍数。默认值为 0。*/
-    protected Integer angle;
+    protected Integer angle=0;
     /***浮点型。渐变中心的相对 X 轴位置 (0 - 1.0)。*/
     protected float centerX;
     /*浮点型。渐变中心的相对 Y 轴位置 (0 - 1.0)。*/
@@ -197,17 +196,17 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         return this;
     }
 
-    public BaseViewHelper setSolidColor(int solidColor) {
+    public BaseViewHelper setSolidColor(@ColorInt int solidColor) {
         this.solidColor = solidColor;
         return this;
     }
 
-    public BaseViewHelper setPressColor(int pressColor) {
+    public BaseViewHelper setPressColor(@ColorInt int pressColor) {
         this.pressColor = pressColor;
         return this;
     }
 
-    public BaseViewHelper setBorderColor(int borderColor) {
+    public BaseViewHelper setBorderColor(@ColorInt int borderColor) {
         this.borderColor = borderColor;
         return this;
     }
@@ -223,7 +222,10 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
     }
 
     public BaseViewHelper setRadius(float radius) {
-        this.radius = radius;
+        setTopLeftRadius(radius);
+        setTopRightRadius(radius);
+        setBottomRightRadius(radius);
+        setBottomLeftRadius(radius);
         return this;
     }
 
@@ -277,12 +279,12 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         return this;
     }
 
-    public BaseViewHelper setCenterColor(int centerColor) {
+    public BaseViewHelper setCenterColor(@ColorInt int centerColor) {
         this.centerColor = centerColor;
         return this;
     }
 
-    public BaseViewHelper setEndColor(int endColor) {
+    public BaseViewHelper setEndColor(@ColorInt int endColor) {
         this.endColor = endColor;
         return this;
     }
@@ -313,7 +315,6 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         this.borderDashWidth=0;
         this.borderDashGap=0;
         this.solidColor=getTransparentColor();
-        this.radius=0;
         this.topLeftRadius=0;
         this.topRightRadius=0;
         this.bottomLeftRadius=0;
@@ -382,9 +383,7 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         return borderDashGap;
     }
 
-    public float getRadius() {
-        return radius;
-    }
+
 
     public float getTopLeftRadius() {
         return topLeftRadius;
@@ -489,16 +488,13 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
 
         gradientDrawableNormal.setColor(solidColor);
 
-        if (radius > 0) {
-            gradientDrawableNormal.setCornerRadius(radius);
-        } else {
+
             float[] fourRadius = new float[]{
                     topLeftRadius, topLeftRadius,
                     topRightRadius, topRightRadius,
                     bottomRightRadius, bottomRightRadius,
                     bottomLeftRadius, bottomLeftRadius};
             gradientDrawableNormal.setCornerRadii(fourRadius);
-        }
         if(isSetGradientType){
             setGradientType(gradientDrawableNormal);
         }
@@ -539,12 +535,10 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         layerDrawable.setStroke((int) borderWidth, borderColor, borderDashWidth, borderDashGap);
         layerDrawable.setColor(solidColor);
 
-        if(radius>0){
-            layerDrawable.setCornerRadius(radius);
-        }else{
+
             float[] fourRadius= new float[]{topLeftRadius, topLeftRadius, topRightRadius, topRightRadius, bottomRightRadius, bottomRightRadius, bottomLeftRadius, bottomLeftRadius};
             layerDrawable.setCornerRadii(fourRadius);
-        }
+
         return layerDrawable;
     }
     public GradientDrawable getHasPartBorderNoPressColorGradientDrawableNormal(){
@@ -557,12 +551,11 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         }else{
             layerGradientDrawableNormal.setColor(solidColor);
         }
-        if(radius>0){
-            layerGradientDrawableNormal.setCornerRadius(radius);
-        }else{
+
+
             float[] fourRadius= new float[]{topLeftRadius, topLeftRadius, topRightRadius, topRightRadius, bottomRightRadius, bottomRightRadius, bottomLeftRadius,bottomLeftRadius};
             layerGradientDrawableNormal.setCornerRadii(fourRadius);
-        }
+
         return layerGradientDrawableNormal;
     }
 
@@ -839,8 +832,11 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
     }
 
     /**********DrawHelper 裁剪**********/
+    protected int errorLayerCount=-100;
+
     protected Paint clipPaint;
     protected Paint clipBorderPaint;
+    protected Paint clipBorderDashBgPaint;
 
     protected Path clipPath;
     protected Path clipBorderPath;
@@ -849,7 +845,6 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
 
     protected boolean clipIsCircle =false;
     protected boolean clipIsAreaClick =true;
-    protected float clipRadius;
     protected float clipTopLeftRadius;
     protected float clipTopRightRadius;
     protected float clipBottomLeftRadius;
@@ -858,6 +853,7 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
     protected int clipBorderColor;
     protected float clipBorderDashWidth;
     protected float clipBorderDashGap;
+    protected int clipBorderDashBgColor;
     protected float clipBorderPhase=1;
 
     protected Shader shader;
@@ -866,9 +862,10 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         return clipIsCircle;
     }
 
-    public void setClipIsCircle(boolean clipIsCircle) {
+    public BaseViewHelper setClipIsCircle(boolean clipIsCircle) {
         this.clipIsCircle = clipIsCircle;
         needInvalidate();
+        return this;
     }
 
     private void needInvalidate() {
@@ -881,114 +878,152 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         return clipIsAreaClick;
     }
 
-    public void setClipIsAreaClick(boolean clipIsAreaClick) {
+    public BaseViewHelper setClipIsAreaClick(boolean clipIsAreaClick) {
         this.clipIsAreaClick = clipIsAreaClick;
         needInvalidate();
+        return this;
     }
 
-    public float getClipRadius() {
-        return clipRadius;
-    }
-
-    public void setClipRadius(float clipRadius) {
-        this.clipRadius = clipRadius;
+    public BaseViewHelper setClipRadius(float clipRadius) {
+        setClipTopLeftRadius(clipRadius);
+        setClipTopRightRadius(clipRadius);
+        setClipBottomRightRadius(clipRadius);
+        setClipBottomLeftRadius(clipRadius);
         needInvalidate();
+        return this;
     }
 
     public float getClipTopLeftRadius() {
         return clipTopLeftRadius;
     }
 
-    public void setClipTopLeftRadius(float clipTopLeftRadius) {
+    public BaseViewHelper setClipTopLeftRadius(float clipTopLeftRadius) {
         this.clipTopLeftRadius = clipTopLeftRadius;
         needInvalidate();
+        return this;
     }
 
     public float getClipTopRightRadius() {
         return clipTopRightRadius;
     }
 
-    public void setClipTopRightRadius(float clipTopRightRadius) {
+    public BaseViewHelper setClipTopRightRadius(float clipTopRightRadius) {
         this.clipTopRightRadius = clipTopRightRadius;
         needInvalidate();
+        return this;
     }
 
     public float getClipBottomLeftRadius() {
         return clipBottomLeftRadius;
     }
 
-    public void setClipBottomLeftRadius(float clipBottomLeftRadius) {
+    public BaseViewHelper setClipBottomLeftRadius(float clipBottomLeftRadius) {
         this.clipBottomLeftRadius = clipBottomLeftRadius;
         needInvalidate();
+        return this;
     }
 
     public float getClipBottomRightRadius() {
         return clipBottomRightRadius;
     }
 
-    public void setClipBottomRightRadius(float clipBottomRightRadius) {
+    public BaseViewHelper setClipBottomRightRadius(float clipBottomRightRadius) {
         this.clipBottomRightRadius = clipBottomRightRadius;
         needInvalidate();
+        return this;
     }
 
     public float getClipBorderWidth() {
         return clipBorderWidth;
     }
 
-    public void setClipBorderWidth(float clipBorderWidth) {
+    public BaseViewHelper setClipBorderWidth(float clipBorderWidth) {
         this.clipBorderWidth = clipBorderWidth;
         needInvalidate();
+        return this;
     }
 
     public int getClipBorderColor() {
         return clipBorderColor;
     }
 
-    public void setClipBorderColor(@ColorInt int clipBorderColor) {
+    public BaseViewHelper setClipBorderColor(@ColorInt int clipBorderColor) {
         this.clipBorderColor = clipBorderColor;
         needInvalidate();
+        return this;
+    }
+
+    public int getClipBorderDashBgColor() {
+        return clipBorderDashBgColor;
+    }
+
+    public BaseViewHelper setClipBorderDashBgColor(@ColorInt int clipBorderDashBgColor) {
+        this.clipBorderDashBgColor = clipBorderDashBgColor;
+        needInvalidate();
+        return this;
     }
 
     public float getClipBorderDashWidth() {
         return clipBorderDashWidth;
     }
 
-    public void setClipBorderDashWidth(float clipBorderDashWidth) {
+    public BaseViewHelper setClipBorderDashWidth(float clipBorderDashWidth) {
         this.clipBorderDashWidth = clipBorderDashWidth;
         needInvalidate();
+        return this;
     }
 
     public float getClipBorderDashGap() {
         return clipBorderDashGap;
     }
 
-    public void setClipBorderDashGap(float clipBorderDashGap) {
+    public BaseViewHelper setClipBorderDashGap(float clipBorderDashGap) {
         this.clipBorderDashGap = clipBorderDashGap;
         needInvalidate();
+        return this;
     }
 
     public Shader getShader() {
         return shader;
     }
 
-    public void setShader(Shader shader) {
+    public BaseViewHelper setShader(Shader shader) {
         this.shader = shader;
         needInvalidate();
+        return this;
     }
 
     public float getClipBorderPhase() {
         return clipBorderPhase;
     }
 
-    public void setClipBorderPhase(float clipBorderPhase) {
+    public BaseViewHelper setClipBorderPhase(float clipBorderPhase) {
         this.clipBorderPhase = clipBorderPhase;
         needInvalidate();
+        return this;
     }
 
     /**********DrawHelper 裁剪**********/
 
     @Override
     public void onSizeChanged(int paddingLeft,int paddingTop,int paddingRight,int paddingBottom,int w, int h, int oldw, int oldh) {
+
+        clickRegion=new Region();
+
+        clipPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
+        clipPaint.setStyle(Paint.Style.FILL);
+
+        clipBorderPaint =new Paint(Paint.ANTI_ALIAS_FLAG);
+        clipBorderPaint.setStyle(Paint.Style.STROKE);
+
+
+        clipBorderDashBgPaint =new Paint(Paint.ANTI_ALIAS_FLAG);
+        clipBorderDashBgPaint.setStyle(Paint.Style.STROKE);
+
+    }
+
+    @Override
+    public void onRefreshPaint(Canvas canvas,int paddingLeft,int paddingTop,int paddingRight,int paddingBottom,int w, int h) {
         if(paddingLeft<clipBorderWidth/2){
             paddingLeft= (int) (clipBorderWidth/2);
         }
@@ -1001,19 +1036,17 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         if(paddingBottom<clipBorderWidth/2){
             paddingBottom= (int) (clipBorderWidth/2);
         }
-        clickRegion=new Region();
         viewRegion=new Region(0,0,w,h);
 
-        clipPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
-        clipPaint.setStyle(Paint.Style.FILL);
         clipPaint.setColor(Color.WHITE);
         clipPaint.setFilterBitmap(false);
         clipPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
 
-        clipBorderPaint =new Paint(Paint.ANTI_ALIAS_FLAG);
         clipBorderPaint.setColor(clipBorderColor);
-        clipBorderPaint.setStyle(Paint.Style.STROKE);
         clipBorderPaint.setStrokeWidth(clipBorderWidth);
+
+        clipBorderDashBgPaint.setColor(clipBorderDashBgColor);
+        clipBorderDashBgPaint.setStrokeWidth(clipBorderWidth);
        /* float gradientLeft=paddingLeft-borderWidth/2;
         float gradientTop=paddingTop-borderWidth/2;
         float gradientRigth=w-paddingRight+borderWidth/2;
@@ -1035,36 +1068,26 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         }
         if(clipBorderDashWidth>0&&clipBorderDashGap>0){
             clipBorderPaint.setPathEffect(new DashPathEffect(new float[]{clipBorderDashWidth,clipBorderDashGap},clipBorderPhase));
+        }else{
+            clipBorderPaint.setPathEffect(null);
         }
 
         clipPath=new Path();
         clipBorderPath =new Path();
         float[]radius=new float[8];
-        if(clipRadius>0){
-            radius[0]=clipRadius;
-            radius[1]=clipRadius;
 
-            radius[2]=clipRadius;
-            radius[3]=clipRadius;
+        radius[0]=clipTopLeftRadius;
+        radius[1]=clipTopLeftRadius;
 
-            radius[4]=clipRadius;
-            radius[5]=clipRadius;
+        radius[2]=clipTopRightRadius;
+        radius[3]=clipTopRightRadius;
 
-            radius[6]=clipRadius;
-            radius[7]=clipRadius;
-        }else{
-            radius[0]=clipTopLeftRadius;
-            radius[1]=clipTopLeftRadius;
+        radius[4]=clipBottomRightRadius;
+        radius[5]=clipBottomRightRadius;
 
-            radius[2]=clipTopRightRadius;
-            radius[3]=clipTopRightRadius;
+        radius[6]=clipBottomLeftRadius;
+        radius[7]=clipBottomLeftRadius;
 
-            radius[4]=clipBottomRightRadius;
-            radius[5]=clipBottomRightRadius;
-
-            radius[6]=clipBottomLeftRadius;
-            radius[7]=clipBottomLeftRadius;
-        }
         RectF rectF=new RectF(paddingLeft,paddingTop,w-paddingRight,h-paddingBottom);
         if(clipIsCircle){
             int  centerX=(w-paddingLeft-paddingRight)/2+paddingLeft;
@@ -1083,7 +1106,6 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         clipPath.moveTo(w,h);
     }
 
-    protected int errorLayerCount=-100;
     @Override
     public int dispatchDrawStart(Canvas canvas) {
         int saveLayer = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
@@ -1093,6 +1115,9 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
     public void dispatchDrawEnd(int saveLayer,Canvas canvas) {
         canvas.drawPath(clipPath,clipPaint);
         if(clipBorderWidth>0){
+            if(clipBorderDashBgColor!=Color.TRANSPARENT){
+                canvas.drawPath(clipBorderPath, clipBorderDashBgPaint);
+            }
             canvas.drawPath(clipBorderPath, clipBorderPaint);
         }
         if(saveLayer!=errorLayerCount){
@@ -1101,12 +1126,11 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         }
     }
 
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if(clipIsAreaClick){
-            if(clickRegion.contains((int)event.getX(),(int)event.getY())){
-                return true;
-            }else{
+            if(!clickRegion.contains((int)event.getX(),(int)event.getY())){
                 return false;
             }
         }

@@ -103,8 +103,13 @@ public class MyFrameLayout extends FrameLayout {
 
         viewHelper.solidColor = viewNormal.getColor(R.styleable.MyFrameLayout_solidColor, viewHelper.getTransparentColor());
 
-        viewHelper.radius = viewNormal.getDimension(R.styleable.MyFrameLayout_radius, 0);
-        if (viewHelper.radius <= 0) {
+        float radius = viewNormal.getDimension(R.styleable.MyFrameLayout_radius, 0);
+        if (radius > 0) {
+            viewHelper.topLeftRadius = radius;
+            viewHelper.topRightRadius = radius;
+            viewHelper.bottomLeftRadius = radius;
+            viewHelper.bottomRightRadius = radius;
+        } else {
             viewHelper.topLeftRadius = viewNormal.getDimension(R.styleable.MyFrameLayout_topLeftRadius, 0);
             viewHelper.topRightRadius = viewNormal.getDimension(R.styleable.MyFrameLayout_topRightRadius, 0);
             viewHelper.bottomLeftRadius = viewNormal.getDimension(R.styleable.MyFrameLayout_bottomLeftRadius, 0);

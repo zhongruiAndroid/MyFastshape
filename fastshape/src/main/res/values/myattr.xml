@@ -227,6 +227,8 @@
         <attr name="clipBorderColor"        />
         <attr name="clipBorderDashWidth"  />
         <attr name="clipBorderDashGap"    />
+        <attr name="clipBorderDashBgColor"    />
+        <attr name="clipBorderPhase" />
     </declare-styleable>
 
     <!--******************************MyFrameLayout*************************************-->
@@ -380,6 +382,7 @@
     <attr name="clipBorderColor" format="color"/>
     <attr name="clipBorderDashWidth" format="dimension"/>
     <attr name="clipBorderDashGap" format="dimension"/>
+    <attr name="clipBorderDashBgColor" format="color"/>
     <attr name="clipBorderPhase" format="integer"/>
 
 

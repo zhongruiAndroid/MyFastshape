@@ -49,7 +49,7 @@ public class MyRelativeLayout extends RelativeLayout {
     }
 
     private void init(AttributeSet attrs) {
-        viewHelper = new BaseViewHelper(this,new ViewHelperInter() {
+        viewHelper = new BaseViewHelper(this, new ViewHelperInter() {
             @Override
             public void onComplete() {
                 complete();
@@ -65,16 +65,16 @@ public class MyRelativeLayout extends RelativeLayout {
         }
         TypedArray viewNormal = this.getContext().obtainStyledAttributes(attrs, R.styleable.MyRelativeLayout);
         Drawable drawable_normal = viewNormal.getDrawable(R.styleable.MyRelativeLayout_drawable_normal);
-        Drawable drawable_press  = viewNormal.getDrawable(R.styleable.MyRelativeLayout_drawable_press);
+        Drawable drawable_press = viewNormal.getDrawable(R.styleable.MyRelativeLayout_drawable_press);
 
-        if(drawable_normal!=null||drawable_press!=null){
-            viewHelper.drawable_normal=drawable_normal;
-            viewHelper.drawable_press=drawable_press;
-            if(drawable_normal==null){
-                viewHelper.drawable_normal=drawable_press;
+        if (drawable_normal != null || drawable_press != null) {
+            viewHelper.drawable_normal = drawable_normal;
+            viewHelper.drawable_press = drawable_press;
+            if (drawable_normal == null) {
+                viewHelper.drawable_normal = drawable_press;
             }
-            if(drawable_press==null){
-                viewHelper.drawable_press=drawable_normal;
+            if (drawable_press == null) {
+                viewHelper.drawable_press = drawable_normal;
             }
             viewNormal.recycle();
             complete();
@@ -87,11 +87,11 @@ public class MyRelativeLayout extends RelativeLayout {
         viewHelper.topLine = viewNormal.getBoolean(R.styleable.MyRelativeLayout_top_line, false);
         viewHelper.rightLine = viewNormal.getBoolean(R.styleable.MyRelativeLayout_right_line, false);
         viewHelper.bottomLine = viewNormal.getBoolean(R.styleable.MyRelativeLayout_bottom_line, false);
-        if(viewHelper.leftLine&&viewHelper.topLine&&viewHelper.rightLine&&viewHelper.bottomLine){
-            viewHelper.allLine=true;
+        if (viewHelper.leftLine && viewHelper.topLine && viewHelper.rightLine && viewHelper.bottomLine) {
+            viewHelper.allLine = true;
         }
-        if(!viewHelper.allLine&&(viewHelper.leftLine||viewHelper.topLine||viewHelper.rightLine||viewHelper.bottomLine)){
-            viewHelper.isPartBorder=true;
+        if (!viewHelper.allLine && (viewHelper.leftLine || viewHelper.topLine || viewHelper.rightLine || viewHelper.bottomLine)) {
+            viewHelper.isPartBorder = true;
         }
 
         viewHelper.shapeType = viewNormal.getInteger(R.styleable.MyRelativeLayout_shapeType, viewHelper.shapeType_rectangle);
@@ -103,8 +103,13 @@ public class MyRelativeLayout extends RelativeLayout {
 
         viewHelper.solidColor = viewNormal.getColor(R.styleable.MyRelativeLayout_solidColor, viewHelper.getTransparentColor());
 
-        viewHelper.radius = viewNormal.getDimension(R.styleable.MyRelativeLayout_radius, 0);
-        if (viewHelper.radius <= 0) {
+        float radius = viewNormal.getDimension(R.styleable.MyRelativeLayout_radius, 0);
+        if (radius > 0) {
+            viewHelper.topLeftRadius = radius;
+            viewHelper.topRightRadius = radius;
+            viewHelper.bottomLeftRadius = radius;
+            viewHelper.bottomRightRadius = radius;
+        } else {
             viewHelper.topLeftRadius = viewNormal.getDimension(R.styleable.MyRelativeLayout_topLeftRadius, 0);
             viewHelper.topRightRadius = viewNormal.getDimension(R.styleable.MyRelativeLayout_topRightRadius, 0);
             viewHelper.bottomLeftRadius = viewNormal.getDimension(R.styleable.MyRelativeLayout_bottomLeftRadius, 0);
@@ -112,7 +117,7 @@ public class MyRelativeLayout extends RelativeLayout {
         }
 
         viewHelper.gradientType = viewNormal.getInteger(R.styleable.MyRelativeLayout_gradientType, -1);
-        if(viewHelper.gradientType!=-1){
+        if (viewHelper.gradientType != -1) {
             viewHelper.angle = viewNormal.getInteger(R.styleable.MyRelativeLayout_gradientAngle, 0);
             viewHelper.centerX = viewNormal.getFloat(R.styleable.MyRelativeLayout_gradientCenterX, 0.5f);
             viewHelper.centerY = viewNormal.getFloat(R.styleable.MyRelativeLayout_gradientCenterY, 0.5f);

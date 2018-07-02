@@ -107,8 +107,13 @@ public class MyButton extends Button {
 
         viewHelper.solidColor = viewNormal.getColor(R.styleable.MyButton_solidColor, viewHelper.getTransparentColor());
 
-        viewHelper.radius = viewNormal.getDimension(R.styleable.MyButton_radius, 0);
-        if (viewHelper.radius <= 0) {
+        float radius = viewNormal.getDimension(R.styleable.MyButton_radius, 0);
+        if (radius > 0) {
+            viewHelper.topLeftRadius = radius;
+            viewHelper.topRightRadius = radius;
+            viewHelper.bottomLeftRadius = radius;
+            viewHelper.bottomRightRadius = radius;
+        } else {
             viewHelper.topLeftRadius = viewNormal.getDimension(R.styleable.MyButton_topLeftRadius, 0);
             viewHelper.topRightRadius = viewNormal.getDimension(R.styleable.MyButton_topRightRadius, 0);
             viewHelper.bottomLeftRadius = viewNormal.getDimension(R.styleable.MyButton_bottomLeftRadius, 0);

@@ -3,11 +3,13 @@
     <color name="colorPrimary">#18B4ED</color>
     <color name="colorPrimaryDark2">#18B4ED</color>
     <color name="colorPrimaryDark">#87ceeb</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#18B4ED</color>
+    <color name="fenhong">#FF4081</color>
     <color name="colorAccentAlpha">#FFFC4C88</color>
     <color name="colorText">#848484</color>
     <color name="c_icon_normal">#848484</color>
     <color name="c_icon">#56abe4</color>
+    <color name="blue">#18B4ED</color>
     <color name="colorPrimaryAlpha">#70000000</color>
     <color name="colorPrimaryAlpha1">#BF58C2F7</color>
     <color name="white">#ffffff</color>

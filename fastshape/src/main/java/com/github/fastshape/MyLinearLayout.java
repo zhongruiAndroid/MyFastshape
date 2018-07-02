@@ -52,7 +52,7 @@ public class MyLinearLayout extends LinearLayout {
     }
 
     private void init(AttributeSet attrs) {
-        viewHelper = new BaseViewHelper(this,new ViewHelperInter() {
+        viewHelper = new BaseViewHelper(this, new ViewHelperInter() {
             @Override
             public void onComplete() {
                 complete();
@@ -73,16 +73,16 @@ public class MyLinearLayout extends LinearLayout {
             return;
         }
         Drawable drawable_normal = viewNormal.getDrawable(R.styleable.MyLinearLayout_drawable_normal);
-        Drawable drawable_press  = viewNormal.getDrawable(R.styleable.MyLinearLayout_drawable_press);
+        Drawable drawable_press = viewNormal.getDrawable(R.styleable.MyLinearLayout_drawable_press);
 
-        if(drawable_normal!=null||drawable_press!=null){
-            viewHelper.drawable_normal=drawable_normal;
-            viewHelper.drawable_press=drawable_press;
-            if(drawable_normal==null){
-                viewHelper.drawable_normal=drawable_press;
+        if (drawable_normal != null || drawable_press != null) {
+            viewHelper.drawable_normal = drawable_normal;
+            viewHelper.drawable_press = drawable_press;
+            if (drawable_normal == null) {
+                viewHelper.drawable_normal = drawable_press;
             }
-            if(drawable_press==null){
-                viewHelper.drawable_press=drawable_normal;
+            if (drawable_press == null) {
+                viewHelper.drawable_press = drawable_normal;
             }
             viewNormal.recycle();
             complete();
@@ -95,11 +95,11 @@ public class MyLinearLayout extends LinearLayout {
         viewHelper.topLine = viewNormal.getBoolean(R.styleable.MyLinearLayout_top_line, false);
         viewHelper.rightLine = viewNormal.getBoolean(R.styleable.MyLinearLayout_right_line, false);
         viewHelper.bottomLine = viewNormal.getBoolean(R.styleable.MyLinearLayout_bottom_line, false);
-        if(viewHelper.leftLine&&viewHelper.topLine&&viewHelper.rightLine&&viewHelper.bottomLine){
-            viewHelper.allLine=true;
+        if (viewHelper.leftLine && viewHelper.topLine && viewHelper.rightLine && viewHelper.bottomLine) {
+            viewHelper.allLine = true;
         }
-        if(!viewHelper.allLine&&(viewHelper.leftLine||viewHelper.topLine||viewHelper.rightLine||viewHelper.bottomLine)){
-            viewHelper.isPartBorder=true;
+        if (!viewHelper.allLine && (viewHelper.leftLine || viewHelper.topLine || viewHelper.rightLine || viewHelper.bottomLine)) {
+            viewHelper.isPartBorder = true;
         }
 
         viewHelper.shapeType = viewNormal.getInteger(R.styleable.MyLinearLayout_shapeType, viewHelper.shapeType_rectangle);
@@ -111,8 +111,13 @@ public class MyLinearLayout extends LinearLayout {
 
         viewHelper.solidColor = viewNormal.getColor(R.styleable.MyLinearLayout_solidColor, viewHelper.getTransparentColor());
 
-        viewHelper.radius = viewNormal.getDimension(R.styleable.MyLinearLayout_radius, 0);
-        if (viewHelper.radius <= 0) {
+        float radius = viewNormal.getDimension(R.styleable.MyLinearLayout_radius, 0);
+        if (radius > 0) {
+            viewHelper.topLeftRadius = radius;
+            viewHelper.topRightRadius = radius;
+            viewHelper.bottomLeftRadius = radius;
+            viewHelper.bottomRightRadius = radius;
+        } else {
             viewHelper.topLeftRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_topLeftRadius, 0);
             viewHelper.topRightRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_topRightRadius, 0);
             viewHelper.bottomLeftRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_bottomLeftRadius, 0);
@@ -120,7 +125,7 @@ public class MyLinearLayout extends LinearLayout {
         }
 
         viewHelper.gradientType = viewNormal.getInteger(R.styleable.MyLinearLayout_gradientType, -1);
-        if(viewHelper.gradientType!=-1){
+        if (viewHelper.gradientType != -1) {
             viewHelper.angle = viewNormal.getInteger(R.styleable.MyLinearLayout_gradientAngle, 0);
             viewHelper.centerX = viewNormal.getFloat(R.styleable.MyLinearLayout_gradientCenterX, 0.5f);
             viewHelper.centerY = viewNormal.getFloat(R.styleable.MyLinearLayout_gradientCenterY, 0.5f);
@@ -144,20 +149,29 @@ public class MyLinearLayout extends LinearLayout {
     }
 
     private void initData() {
-        viewHelper.clipBorderColor=Color.parseColor("#34e8a6");
+        viewHelper.clipBorderColor = Color.parseColor("#34e8a6");
+        viewHelper.clipBorderDashBgColor = Color.WHITE;
     }
 
     private void setAttrForDraw(TypedArray viewNormal) {
-        viewHelper.clipRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipRadius, 0);
-        viewHelper.clipTopLeftRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipTopLeftRadius, 0);
-        viewHelper.clipTopRightRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipTopRightRadius, 0);
-        viewHelper.clipBottomLeftRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBottomLeftRadius, 0);
-        viewHelper.clipBottomRightRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBottomRightRadius, 0);
+        float clipRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipRadius, 0);
+        if (clipRadius > 0) {
+            viewHelper.clipTopLeftRadius = clipRadius;
+            viewHelper.clipTopRightRadius = clipRadius;
+            viewHelper.clipBottomLeftRadius = clipRadius;
+            viewHelper.clipBottomRightRadius = clipRadius;
+        } else {
+            viewHelper.clipTopLeftRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipTopLeftRadius, 0);
+            viewHelper.clipTopRightRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipTopRightRadius, 0);
+            viewHelper.clipBottomLeftRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBottomLeftRadius, 0);
+            viewHelper.clipBottomRightRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBottomRightRadius, 0);
+        }
 
-        viewHelper.clipIsCircle = viewNormal.getBoolean(R.styleable.MyLinearLayout_clipIsCircle,false);
+        viewHelper.clipIsCircle = viewNormal.getBoolean(R.styleable.MyLinearLayout_clipIsCircle, false);
         viewHelper.clipIsAreaClick = viewNormal.getBoolean(R.styleable.MyLinearLayout_clipIsAreaClick, true);
         viewHelper.clipBorderWidth = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBorderWidth, 0);
         viewHelper.clipBorderColor = viewNormal.getColor(R.styleable.MyLinearLayout_clipBorderColor, Color.parseColor("#34e8a6"));
+        viewHelper.clipBorderDashBgColor = viewNormal.getColor(R.styleable.MyLinearLayout_clipBorderDashBgColor, Color.WHITE);
         viewHelper.clipBorderDashWidth = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBorderDashWidth, 0);
         viewHelper.clipBorderDashGap = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBorderDashGap, 0);
 
@@ -169,36 +183,67 @@ public class MyLinearLayout extends LinearLayout {
      * 这个方法是将代码设置的各个属性收集生成一个Drawable,然后将它设置为background,简单点这个方法就是用来设置背景的,等价于setBackground方法
      */
     public void complete() {
-         viewHelper.viewComplete(this);
+        viewHelper.viewComplete(this);
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        if(viewHelper!=null){
+        if (viewHelper != null) {
             viewHelper.onSizeChanged(getPaddingLeft(),
                     getPaddingTop(),
                     getPaddingRight(),
-                    getPaddingBottom(),w, h, oldw, oldh);
+                    getPaddingBottom(), w, h, oldw, oldh);
+        }
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        if (viewHelper != null) {
+            viewHelper.onRefreshPaint(canvas, getPaddingLeft(),
+                    getPaddingTop(),
+                    getPaddingRight(),
+                    getPaddingBottom(), getWidth(), getHeight());
         }
     }
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        int saveLayer=viewHelper.errorLayerCount;
-        if(viewHelper!=null){
+        int saveLayer = viewHelper.errorLayerCount;
+        if (viewHelper != null) {
             saveLayer = viewHelper.dispatchDrawStart(canvas);
         }
         super.dispatchDraw(canvas);
-        if(viewHelper!=null){
-            viewHelper.dispatchDrawEnd(saveLayer,canvas);
+        if (viewHelper != null) {
+            viewHelper.dispatchDrawEnd(saveLayer, canvas);
         }
     }
+
     @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_UP) {
+            if (viewHelper != null && viewHelper.clipIsAreaClick) {
+                if (viewHelper.onTouchEvent(ev) == false) {//如果这个地方返回true会导致点击事件失效
+                    return false;
+                }
+            }
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+  /*  @Override
     public boolean onTouchEvent(MotionEvent event) {
         if(event.getAction()==MotionEvent.ACTION_UP){
             return viewHelper.onTouchEvent(event);
         }
         return super.onTouchEvent(event);
-    }
+    }*/
+
+    /*@Override
+    public boolean onTouchEvent(MotionEvent event) {
+        boolean b = super.onTouchEvent(event);
+        Log.i("==","==="+b);
+        return b;
+    }*/
 }
