@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -210,14 +211,9 @@ public class MyLinearLayout extends LinearLayout {
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        int saveLayer = viewHelper.errorLayerCount;
-        if (viewHelper != null) {
-            saveLayer = viewHelper.dispatchDrawStart(canvas);
-        }
+        int saveLayer = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
         super.dispatchDraw(canvas);
-        if (viewHelper != null) {
-            viewHelper.dispatchDrawEnd(saveLayer, canvas);
-        }
+        viewHelper.dispatchDrawEnd(saveLayer, canvas);
     }
 
     @Override
