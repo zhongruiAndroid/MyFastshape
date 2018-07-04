@@ -52,7 +52,7 @@ public class XMLActivity extends AppCompatActivity {
         cb_regin_click.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                viewHelper.setClipIsAreaClick(isChecked).complete();
+                viewHelper.setClipIsAreaClick(isChecked);
             }
         });
 
@@ -61,7 +61,7 @@ public class XMLActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 viewHelper.setClipIsCircle(isChecked);
-                viewHelper.setRadius(100).complete();
+                viewHelper.setRadius(100);
             }
         });
 
@@ -70,9 +70,9 @@ public class XMLActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    viewHelper.setClipBorderColor(ContextCompat.getColor(XMLActivity.this, R.color.blue)).complete();
+                    viewHelper.setClipBorderColor(ContextCompat.getColor(XMLActivity.this, R.color.blue));
                 } else {
-                    viewHelper.setClipBorderColor(Color.BLACK).complete();
+                    viewHelper.setClipBorderColor(Color.BLACK);
                 }
             }
         });
@@ -82,9 +82,9 @@ public class XMLActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    viewHelper.setClipBorderDashBgColor(Color.WHITE).complete();
+                    viewHelper.setClipBorderDashBgColor(Color.WHITE);
                 }else{
-                    viewHelper.setClipBorderDashBgColor(Color.TRANSPARENT).complete();
+                    viewHelper.setClipBorderDashBgColor(Color.TRANSPARENT);
                 }
             }
         });
@@ -99,11 +99,11 @@ public class XMLActivity extends AppCompatActivity {
         sb_radius.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                  viewHelper.setClipRadius(progress).complete();
-//                viewHelper.setClipTopLeftRadius(progress).complete();
-//                viewHelper.setClipTopRightRadius(progress).complete();
-//                viewHelper.setClipBottomRightRadius(progress).complete();
-//                viewHelper.setClipBottomLeftRadius(progress).complete();
+                  viewHelper.setClipRadius(progress);
+//                viewHelper.setClipTopLeftRadius(progress);
+//                viewHelper.setClipTopRightRadius(progress);
+//                viewHelper.setClipBottomRightRadius(progress);
+//                viewHelper.setClipBottomLeftRadius(progress);
             }
 
             @Override
@@ -120,7 +120,7 @@ public class XMLActivity extends AppCompatActivity {
         sb_border_width.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                viewHelper.setClipBorderWidth(progress).complete();
+                viewHelper.setClipBorderWidth(progress);
             }
 
             @Override
@@ -137,9 +137,9 @@ public class XMLActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(progress>=0&progress<sb_dash_width.getMax()){
-                    viewHelper.setClipBorderDashWidth(progress==0?1:progress).complete();
+                    viewHelper.setClipBorderDashWidth(progress==0?1:progress);
                 }else{
-                    viewHelper.setClipBorderDashWidth(0).complete();
+                    viewHelper.setClipBorderDashWidth(0);
                 }
             }
 
@@ -156,7 +156,7 @@ public class XMLActivity extends AppCompatActivity {
         sb_dash_gap.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                viewHelper.setClipBorderDashGap(progress).complete();
+                viewHelper.setClipBorderDashGap(progress);
             }
 
             @Override
@@ -172,7 +172,7 @@ public class XMLActivity extends AppCompatActivity {
         sb_dash_phase.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                viewHelper.setClipBorderPhase(progress).complete();
+                viewHelper.setClipBorderPhase(progress);
             }
 
             @Override

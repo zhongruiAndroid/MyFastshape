@@ -10,8 +10,7 @@
     android:orientation="vertical"
     android:padding="10dp"
     >
-
-    <com.github.fastshape.MyFrameLayout
+    <com.github.fastshape.MyLinearLayout
         android:id="@+id/ll_view"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -34,7 +33,7 @@
             android:adjustViewBounds="true"
             android:src="@drawable/bird"
             />
-    </com.github.fastshape.MyFrameLayout>
+    </com.github.fastshape.MyLinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

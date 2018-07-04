@@ -2,35 +2,22 @@ package com.github.fastshape;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.ImageView;
+
+import com.github.fastshape.inter.ViewHelperInter;
 
 /**
  * Created by Administrator on 2017/7/24.
  */
 
 public class MyImageView extends ImageView {
-    private Paint paint;
-    private Paint paintView;
-    /***圆角半径*/
-    private float radius;
-    /***左上圆角半径*/
-    private float topLeftRadius;
-    /***右上圆角半径*/
-    private float topRightRadius;
-    /***左下圆角半径*/
-    private float bottomLeftRadius;
-    /***右下圆角半径*/
-    private float bottomRightRadius;
-
+    private BaseViewHelper viewHelper;
     public MyImageView(Context context) {
         super(context);
         init(context,null);
@@ -45,14 +32,25 @@ public class MyImageView extends ImageView {
         super(context, attrs, defStyleAttr);
         init(context,attrs);
     }
-
+    public BaseViewHelper getViewHelper() {
+        return viewHelper;
+    }
     private void init(Context context, AttributeSet attrs) {
-
+        viewHelper = new BaseViewHelper(this, new ViewHelperInter() {
+            @Override
+            public void onComplete() {
+                complete();
+            }
+        });
+        initData();
         if (attrs == null) {
             return;
         }
         TypedArray viewNormal = context.obtainStyledAttributes(attrs, R.styleable.MyImageView);
-        radius = viewNormal.getDimension(R.styleable.MyImageView_radius, 0);
+
+        setAttrForDraw(viewNormal);
+
+/*        radius = viewNormal.getDimension(R.styleable.MyImageView_radius, 0);
         bottomRightRadius = viewNormal.getDimension(R.styleable.MyImageView_bottomRightRadius, 0);
         bottomLeftRadius = viewNormal.getDimension(R.styleable.MyImageView_bottomLeftRadius, 0);
         topRightRadius = viewNormal.getDimension(R.styleable.MyImageView_topRightRadius, 0);
@@ -64,93 +62,72 @@ public class MyImageView extends ImageView {
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
 
         paintView = new Paint();
-        paintView.setXfermode(null);
-    }
-
-    public MyImageView setRadius(float radius) {
-        this.radius = radius;
-        return this;
-    }
-
-    public MyImageView setTopLeftRadius(float topLeftRadius) {
-        this.topLeftRadius = topLeftRadius;
-        return this;
-    }
-
-    public MyImageView setTopRightRadius(float topRightRadius) {
-        this.topRightRadius = topRightRadius;
-        return this;
-    }
-
-    public MyImageView setBottomLeftRadius(float bottomLeftRadius) {
-        this.bottomLeftRadius = bottomLeftRadius;
-        return this;
-    }
-
-    public MyImageView setBottomRightRadius(float bottomRightRadius) {
-        this.bottomRightRadius = bottomRightRadius;
-        return this;
+        paintView.setXfermode(null);*/
     }
     public void complete(){
-        invalidate();
+        viewHelper.viewComplete(this);
+    }
+    private void initData() {
+        viewHelper.clipBorderColor = Color.parseColor("#34e8a6");
+        viewHelper.clipBorderDashBgColor = Color.WHITE;
+    }
+    private void setAttrForDraw(TypedArray viewNormal) {
+        float clipRadius = viewNormal.getDimension(R.styleable.MyImageView_clipRadius, 0);
+        if (clipRadius > 0) {
+            viewHelper.clipTopLeftRadius = clipRadius;
+            viewHelper.clipTopRightRadius = clipRadius;
+            viewHelper.clipBottomLeftRadius = clipRadius;
+            viewHelper.clipBottomRightRadius = clipRadius;
+        } else {
+            viewHelper.clipTopLeftRadius = viewNormal.getDimension(R.styleable.MyImageView_clipTopLeftRadius, 0);
+            viewHelper.clipTopRightRadius = viewNormal.getDimension(R.styleable.MyImageView_clipTopRightRadius, 0);
+            viewHelper.clipBottomLeftRadius = viewNormal.getDimension(R.styleable.MyImageView_clipBottomLeftRadius, 0);
+            viewHelper.clipBottomRightRadius = viewNormal.getDimension(R.styleable.MyImageView_clipBottomRightRadius, 0);
+        }
+
+        viewHelper.clipIgnorePadding = viewNormal.getBoolean(R.styleable.MyImageView_clipIgnorePadding, false);
+        viewHelper.clipIsCircle = viewNormal.getBoolean(R.styleable.MyImageView_clipIsCircle, false);
+        viewHelper.clipIsAreaClick = viewNormal.getBoolean(R.styleable.MyImageView_clipIsAreaClick, true);
+        viewHelper.clipBorderWidth = viewNormal.getDimension(R.styleable.MyImageView_clipBorderWidth, 0);
+        viewHelper.clipBorderColor = viewNormal.getColor(R.styleable.MyImageView_clipBorderColor, Color.parseColor("#34e8a6"));
+        viewHelper.clipBorderDashBgColor = viewNormal.getColor(R.styleable.MyImageView_clipBorderDashBgColor, Color.WHITE);
+        viewHelper.clipBorderDashWidth = viewNormal.getDimension(R.styleable.MyImageView_clipBorderDashWidth, 0);
+        viewHelper.clipBorderDashGap = viewNormal.getDimension(R.styleable.MyImageView_clipBorderDashGap, 0);
+
     }
     @Override
-    public void draw(Canvas canvas) {
-        Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvasRadius = new Canvas(bitmap);
-        super.draw(canvasRadius);
-        if(radius>0){
-            drawLiftUp(canvasRadius,radius);
-            drawLiftDown(canvasRadius,radius);
-            drawRightUp(canvasRadius,radius);
-            drawRightDown(canvasRadius,radius);
-        }else{
-            drawLiftUp(canvasRadius,topLeftRadius);
-            drawLiftDown(canvasRadius,bottomLeftRadius);
-            drawRightUp(canvasRadius,topRightRadius);
-            drawRightDown(canvasRadius,bottomRightRadius);
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        if (viewHelper != null) {
+            viewHelper.onSizeChanged(getPaddingLeft(),
+                    getPaddingTop(),
+                    getPaddingRight(),
+                    getPaddingBottom(), w, h, oldw, oldh);
         }
-        canvas.drawBitmap(bitmap, 0, 0, paintView);
-        bitmap.recycle();
     }
 
-    private void drawLiftUp(Canvas canvas,float radius) {
-        Path path = new Path();
-        path.moveTo(0, radius);
-        path.lineTo(0, 0);
-        path.lineTo(radius, 0);
-        path.arcTo(new RectF(0, 0, radius * 2, radius * 2), -90, -90);
-        path.close();
-        canvas.drawPath(path, paint);
-    }
+    @Override
+    protected void onDraw(Canvas canvas) {
+        if (viewHelper != null) {
+            viewHelper.onRefreshPaint(canvas, getPaddingLeft(),
+                    getPaddingTop(),
+                    getPaddingRight(),
+                    getPaddingBottom(), getWidth(), getHeight());
+        }
+        int saveLayer = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
+        super.onDraw(canvas);
+        viewHelper.dispatchDrawEnd(saveLayer, canvas);
 
-    private void drawLiftDown(Canvas canvas,float radius) {
-        Path path = new Path();
-        path.moveTo(0, getHeight() - radius);
-        path.lineTo(0, getHeight());
-        path.lineTo(radius, getHeight());
-        path.arcTo(new RectF(0, getHeight() - radius * 2, radius * 2, getHeight()), 90, 90);
-        path.close();
-        canvas.drawPath(path, paint);
     }
-
-    private void drawRightDown(Canvas canvas,float radius) {
-        Path path = new Path();
-        path.moveTo(getWidth() - radius, getHeight());
-        path.lineTo(getWidth(), getHeight());
-        path.lineTo(getWidth(), getHeight() - radius);
-        path.arcTo(new RectF(getWidth() - radius * 2, getHeight() - radius * 2, getWidth(), getHeight()), -0, 90);
-        path.close();
-        canvas.drawPath(path, paint);
-    }
-
-    private void drawRightUp(Canvas canvas,float radius) {
-        Path path = new Path();
-        path.moveTo(getWidth(), radius);
-        path.lineTo(getWidth(), 0);
-        path.lineTo(getWidth() - radius, 0);
-        path.arcTo(new RectF(getWidth() - radius * 2, 0, getWidth(), 0 + radius * 2), -90, 90);
-        path.close();
-        canvas.drawPath(path, paint);
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_UP) {
+            if (viewHelper != null && viewHelper.clipIsAreaClick) {
+                if (viewHelper.onTouchEvent(ev) == false) {//如果这个地方返回true会导致点击事件失效
+                    return false;
+                }
+            }
+        }
+        return super.dispatchTouchEvent(ev);
     }
 }
