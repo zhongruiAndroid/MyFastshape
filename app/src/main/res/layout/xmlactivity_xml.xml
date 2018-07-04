@@ -26,6 +26,7 @@
         app:clipBorderDashBgColor="@color/white"
         app:solidColor="@color/aliceblue"
         android:padding="20dp"
+        app:clipIgnorePadding="false"
         >
         <ImageView
             android:layout_width="200dp"

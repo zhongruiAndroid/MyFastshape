@@ -168,7 +168,7 @@ public class MyFrameLayout extends FrameLayout {
             viewHelper.clipBottomRightRadius = viewNormal.getDimension(R.styleable.MyFrameLayout_clipBottomRightRadius, 0);
         }
 
-        viewHelper.clipIgnorePadding = viewNormal.getBoolean(R.styleable.MyFrameLayout_clipIsCircle, false);
+        viewHelper.clipIgnorePadding = viewNormal.getBoolean(R.styleable.MyFrameLayout_clipIgnorePadding, false);
         viewHelper.clipIsCircle = viewNormal.getBoolean(R.styleable.MyFrameLayout_clipIsCircle, false);
         viewHelper.clipIsAreaClick = viewNormal.getBoolean(R.styleable.MyFrameLayout_clipIsAreaClick, true);
         viewHelper.clipBorderWidth = viewNormal.getDimension(R.styleable.MyFrameLayout_clipBorderWidth, 0);

@@ -168,7 +168,7 @@ public class MyRelativeLayout extends RelativeLayout {
             viewHelper.clipBottomRightRadius = viewNormal.getDimension(R.styleable.MyRelativeLayout_clipBottomRightRadius, 0);
         }
 
-        viewHelper.clipIgnorePadding = viewNormal.getBoolean(R.styleable.MyRelativeLayout_clipIsCircle, false);
+        viewHelper.clipIgnorePadding = viewNormal.getBoolean(R.styleable.MyRelativeLayout_clipIgnorePadding, false);
         viewHelper.clipIsCircle = viewNormal.getBoolean(R.styleable.MyRelativeLayout_clipIsCircle, false);
         viewHelper.clipIsAreaClick = viewNormal.getBoolean(R.styleable.MyRelativeLayout_clipIsAreaClick, true);
         viewHelper.clipBorderWidth = viewNormal.getDimension(R.styleable.MyRelativeLayout_clipBorderWidth, 0);
