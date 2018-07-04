@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -167,6 +168,7 @@ public class MyFrameLayout extends FrameLayout {
             viewHelper.clipBottomRightRadius = viewNormal.getDimension(R.styleable.MyFrameLayout_clipBottomRightRadius, 0);
         }
 
+        viewHelper.clipIgnorePadding = viewNormal.getBoolean(R.styleable.MyFrameLayout_clipIsCircle, false);
         viewHelper.clipIsCircle = viewNormal.getBoolean(R.styleable.MyFrameLayout_clipIsCircle, false);
         viewHelper.clipIsAreaClick = viewNormal.getBoolean(R.styleable.MyFrameLayout_clipIsAreaClick, true);
         viewHelper.clipBorderWidth = viewNormal.getDimension(R.styleable.MyFrameLayout_clipBorderWidth, 0);
@@ -210,14 +212,9 @@ public class MyFrameLayout extends FrameLayout {
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        int saveLayer = viewHelper.errorLayerCount;
-        if (viewHelper != null) {
-            saveLayer = viewHelper.dispatchDrawStart(canvas);
-        }
+        int saveLayer = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
         super.dispatchDraw(canvas);
-        if (viewHelper != null) {
-            viewHelper.dispatchDrawEnd(saveLayer, canvas);
-        }
+        viewHelper.dispatchDrawEnd(saveLayer, canvas);
     }
 
     @Override

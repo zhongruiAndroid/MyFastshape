@@ -38,7 +38,13 @@
         <attr name="civ_circle_background_color" format="color"/>
     </declare-styleable>
     <declare-styleable name="MyImageView">
+        <attr name="radius"/>
+        <attr name="topLeftRadius"/>
+        <attr name="topRightRadius"/>
+        <attr name="bottomLeftRadius"/>
+        <attr name="bottomRightRadius"/>
         <!--裁剪-->
+        <attr name="clipIgnorePadding" />
         <attr name="clipIsCircle"            />
         <attr name="clipIsAreaClick"            />
 
@@ -187,6 +193,7 @@
         <attr name="gradientType"/>
 
         <!--裁剪-->
+        <attr name="clipIgnorePadding" />
         <attr name="clipIsCircle"            />
         <attr name="clipIsAreaClick"            />
 
@@ -243,6 +250,7 @@
         <!--<attr name="thickness" format="dimension"/>-->
 
         <!--裁剪-->
+        <attr name="clipIgnorePadding" />
         <attr name="clipIsCircle"            />
         <attr name="clipIsAreaClick"            />
 
@@ -300,6 +308,7 @@
 
 
         <!--裁剪-->
+        <attr name="clipIgnorePadding" />
         <attr name="clipIsCircle"            />
         <attr name="clipIsAreaClick"            />
 
@@ -418,6 +427,7 @@
     <!--******************************公共属性*************************************-->
     <attr name="clipIsCircle" format="boolean"/>
     <attr name="clipIsAreaClick" format="boolean"/>
+    <attr name="clipIgnorePadding" format="boolean"/>
 
     <attr name="clipRadius" format="dimension"/>
     <attr name="clipTopLeftRadius" format="dimension"/>

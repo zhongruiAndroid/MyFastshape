@@ -22,7 +22,6 @@ public class MyLinearLayout extends LinearLayout {
 
     private BaseViewHelper viewHelper;
 
-
     public MyLinearLayout(Context context) {
         super(context);
         init(null);
@@ -168,6 +167,7 @@ public class MyLinearLayout extends LinearLayout {
             viewHelper.clipBottomRightRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBottomRightRadius, 0);
         }
 
+        viewHelper.clipIgnorePadding = viewNormal.getBoolean(R.styleable.MyLinearLayout_clipIgnorePadding, false);
         viewHelper.clipIsCircle = viewNormal.getBoolean(R.styleable.MyLinearLayout_clipIsCircle, false);
         viewHelper.clipIsAreaClick = viewNormal.getBoolean(R.styleable.MyLinearLayout_clipIsAreaClick, true);
         viewHelper.clipBorderWidth = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBorderWidth, 0);

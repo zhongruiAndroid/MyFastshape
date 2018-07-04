@@ -54,37 +54,41 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
 
     private ViewHelperInter viewHelperInter;
     private View view;
+
     public BaseViewHelper() {
         this(null);
     }
+
     public BaseViewHelper(ViewHelperInter inter) {
-        viewHelperInter=inter;
+        viewHelperInter = inter;
     }
-    public BaseViewHelper(View view,ViewHelperInter inter) {
-        viewHelperInter=inter;
-        this.view=view;
+
+    public BaseViewHelper(View view, ViewHelperInter inter) {
+        viewHelperInter = inter;
+        this.view = view;
     }
-    public void complete(){
-        if(viewHelperInter!=null){
+
+    public void complete() {
+        if (viewHelperInter != null) {
             viewHelperInter.onComplete();
-            if(needInvalidate&&view!=null){
+            if (needInvalidate && view != null) {
                 view.invalidate();
-                needInvalidate=false;
+                needInvalidate = false;
             }
         }
     }
 
-    public static final int shapeType_rectangle=GradientDrawable.RECTANGLE;
-    public static final int shapeType_oval=GradientDrawable.OVAL;
-    public static final int shapeType_line=GradientDrawable.LINE;
-    public static final int shapeType_ring=GradientDrawable.RING;
+    public static final int shapeType_rectangle = GradientDrawable.RECTANGLE;
+    public static final int shapeType_oval = GradientDrawable.OVAL;
+    public static final int shapeType_line = GradientDrawable.LINE;
+    public static final int shapeType_ring = GradientDrawable.RING;
     /***
      *"rectangle"	填充包含视图的矩形。这是默认形状。
      *"oval"	适应包含视图尺寸的椭圆形状。
      *"line"	跨越包含视图宽度的水平线。此形状需要 <stroke> 元素定义线宽。
      *"ring"	环形。
      */
-    protected Integer shapeType=GradientDrawable.RECTANGLE;
+    protected Integer shapeType = GradientDrawable.RECTANGLE;
     protected boolean useLevel;
     /*** 是否显示部分边框*/
     protected boolean isPartBorder;
@@ -129,7 +133,7 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
 
 
     /***整型。渐变的角度（度）。0 为从左到右，90 为从上到上。必须是 45 的倍数。默认值为 0。*/
-    protected Integer angle=0;
+    protected Integer angle = 0;
     /***浮点型。渐变中心的相对 X 轴位置 (0 - 1.0)。*/
     protected float centerX;
     /*浮点型。渐变中心的相对 Y 轴位置 (0 - 1.0)。*/
@@ -144,16 +148,16 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
     protected float gradientRadius;
 
 
-    public static final int gradientType_linear=GradientDrawable.LINEAR_GRADIENT;
-    public static final int gradientType_radial=GradientDrawable.RADIAL_GRADIENT;
-    public static final int gradientType_sweep=GradientDrawable.SWEEP_GRADIENT;
-    /**关键字。要应用的渐变图案的类型。有效值为：
+    public static final int gradientType_linear = GradientDrawable.LINEAR_GRADIENT;
+    public static final int gradientType_radial = GradientDrawable.RADIAL_GRADIENT;
+    public static final int gradientType_sweep = GradientDrawable.SWEEP_GRADIENT;
+    /**
+     * 关键字。要应用的渐变图案的类型。有效值为：
      * "linear"	线性渐变。这是默认值。
-     *" radial"	径向渐变。起始颜色为中心颜色。
+     * " radial"	径向渐变。起始颜色为中心颜色。
      * "sweep"	流线型渐变。
      */
-    protected Integer gradientType=GradientDrawable.LINEAR_GRADIENT;
-
+    protected Integer gradientType = GradientDrawable.LINEAR_GRADIENT;
 
 
     public BaseViewHelper setShapeType(Integer shapeType) {
@@ -299,34 +303,34 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         return this;
     }
 
-    public BaseViewHelper clearAttribute(){
-        this.drawable_normal=null;
-        this.drawable_press=null;
+    public BaseViewHelper clearAttribute() {
+        this.drawable_normal = null;
+        this.drawable_press = null;
 
-        this.pressColor=getTransparentColor();
-        this.allLine=false;
-        this.leftLine=false;
-        this.topLine=false;
-        this.rightLine=false;
-        this.bottomLine=false;
-        this.shapeType=shapeType_rectangle;
-        this.borderWidth=0;
-        this.borderColor=getTransparentColor();
-        this.borderDashWidth=0;
-        this.borderDashGap=0;
-        this.solidColor=getTransparentColor();
-        this.topLeftRadius=0;
-        this.topRightRadius=0;
-        this.bottomLeftRadius=0;
-        this.bottomRightRadius=0;
-        this.gradientType=-1;
-        this.angle=0;
-        this.centerX=0.5f;
-        this.centerY=0.5f;
-        this.startColor=0;
-        this.centerColor=0;
-        this.endColor=0;
-        this.gradientRadius=40;
+        this.pressColor = getTransparentColor();
+        this.allLine = false;
+        this.leftLine = false;
+        this.topLine = false;
+        this.rightLine = false;
+        this.bottomLine = false;
+        this.shapeType = shapeType_rectangle;
+        this.borderWidth = 0;
+        this.borderColor = getTransparentColor();
+        this.borderDashWidth = 0;
+        this.borderDashGap = 0;
+        this.solidColor = getTransparentColor();
+        this.topLeftRadius = 0;
+        this.topRightRadius = 0;
+        this.bottomLeftRadius = 0;
+        this.bottomRightRadius = 0;
+        this.gradientType = -1;
+        this.angle = 0;
+        this.centerX = 0.5f;
+        this.centerY = 0.5f;
+        this.startColor = 0;
+        this.centerColor = 0;
+        this.endColor = 0;
+        this.gradientRadius = 40;
 
         return this;
     }
@@ -382,7 +386,6 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
     public float getBorderDashGap() {
         return borderDashGap;
     }
-
 
 
     public float getTopLeftRadius() {
@@ -441,8 +444,8 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         return gradientType;
     }
 
-    public GradientDrawable.Orientation getViewOrientation (int angle){
-        GradientDrawable.Orientation orientation= GradientDrawable.Orientation.LEFT_RIGHT;
+    public GradientDrawable.Orientation getViewOrientation(int angle) {
+        GradientDrawable.Orientation orientation = GradientDrawable.Orientation.LEFT_RIGHT;
         switch (angle) {
             case 0:
                 orientation = GradientDrawable.Orientation.LEFT_RIGHT;
@@ -471,7 +474,8 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         }
         return orientation;
     }
-    public GradientDrawable getNoPartBorderNoPressColorGradientDrawable(boolean isSetGradientType){
+
+    public GradientDrawable getNoPartBorderNoPressColorGradientDrawable(boolean isSetGradientType) {
         GradientDrawable gradientDrawableNormal = new GradientDrawable();
 
         gradientDrawableNormal.setShape(shapeType);
@@ -489,19 +493,20 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         gradientDrawableNormal.setColor(solidColor);
 
 
-            float[] fourRadius = new float[]{
-                    topLeftRadius, topLeftRadius,
-                    topRightRadius, topRightRadius,
-                    bottomRightRadius, bottomRightRadius,
-                    bottomLeftRadius, bottomLeftRadius};
-            gradientDrawableNormal.setCornerRadii(fourRadius);
-        if(isSetGradientType){
+        float[] fourRadius = new float[]{
+                topLeftRadius, topLeftRadius,
+                topRightRadius, topRightRadius,
+                bottomRightRadius, bottomRightRadius,
+                bottomLeftRadius, bottomLeftRadius};
+        gradientDrawableNormal.setCornerRadii(fourRadius);
+        if (isSetGradientType) {
             setGradientType(gradientDrawableNormal);
         }
 
         return gradientDrawableNormal;
     }
-    private void setGradientType(GradientDrawable gradientDrawableNormal){
+
+    private void setGradientType(GradientDrawable gradientDrawableNormal) {
         if (gradientType != -1) {
             /*gradient属性*/
             gradientDrawableNormal.setGradientCenter(centerX, centerY);
@@ -527,47 +532,48 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
 
     }
 
-    public GradientDrawable getHasPartBorderNoPressColorGradientDrawable(){
+    public GradientDrawable getHasPartBorderNoPressColorGradientDrawable() {
         //底层
-        GradientDrawable layerDrawable=new GradientDrawable();
+        GradientDrawable layerDrawable = new GradientDrawable();
         layerDrawable.setShape(shapeType);
 
         layerDrawable.setStroke((int) borderWidth, borderColor, borderDashWidth, borderDashGap);
         layerDrawable.setColor(solidColor);
 
 
-            float[] fourRadius= new float[]{topLeftRadius, topLeftRadius, topRightRadius, topRightRadius, bottomRightRadius, bottomRightRadius, bottomLeftRadius, bottomLeftRadius};
-            layerDrawable.setCornerRadii(fourRadius);
+        float[] fourRadius = new float[]{topLeftRadius, topLeftRadius, topRightRadius, topRightRadius, bottomRightRadius, bottomRightRadius, bottomLeftRadius, bottomLeftRadius};
+        layerDrawable.setCornerRadii(fourRadius);
 
         return layerDrawable;
     }
-    public GradientDrawable getHasPartBorderNoPressColorGradientDrawableNormal(){
+
+    public GradientDrawable getHasPartBorderNoPressColorGradientDrawableNormal() {
         //顶层
-        GradientDrawable layerGradientDrawableNormal=new GradientDrawable();
+        GradientDrawable layerGradientDrawableNormal = new GradientDrawable();
         layerGradientDrawableNormal.setShape(shapeType);
 
-        if(solidColor==getTransparentColor()){//透明
+        if (solidColor == getTransparentColor()) {//透明
             layerGradientDrawableNormal.setColor(Color.parseColor("#ffffffff"));//白色
-        }else{
+        } else {
             layerGradientDrawableNormal.setColor(solidColor);
         }
 
 
-            float[] fourRadius= new float[]{topLeftRadius, topLeftRadius, topRightRadius, topRightRadius, bottomRightRadius, bottomRightRadius, bottomLeftRadius,bottomLeftRadius};
-            layerGradientDrawableNormal.setCornerRadii(fourRadius);
+        float[] fourRadius = new float[]{topLeftRadius, topLeftRadius, topRightRadius, topRightRadius, bottomRightRadius, bottomRightRadius, bottomLeftRadius, bottomLeftRadius};
+        layerGradientDrawableNormal.setCornerRadii(fourRadius);
 
         return layerGradientDrawableNormal;
     }
 
-    public LayerDrawable getHasPartBorderNoPressColorLayerDrawableNormal(){
-        GradientDrawable layerDrawable=getHasPartBorderNoPressColorGradientDrawable();
-        GradientDrawable layerGradientDrawableNormal=getHasPartBorderNoPressColorGradientDrawableNormal();
+    public LayerDrawable getHasPartBorderNoPressColorLayerDrawableNormal() {
+        GradientDrawable layerDrawable = getHasPartBorderNoPressColorGradientDrawable();
+        GradientDrawable layerGradientDrawableNormal = getHasPartBorderNoPressColorGradientDrawableNormal();
 
         Drawable[] layers = new Drawable[2];
         layers[0] = layerDrawable;
         layers[1] = layerGradientDrawableNormal;
 
-        LayerDrawable layerDrawableNormal=new LayerDrawable(layers);
+        LayerDrawable layerDrawableNormal = new LayerDrawable(layers);
 
         layerDrawableNormal.setLayerInset(1, partBorderWidth[0], partBorderWidth[1], partBorderWidth[2], partBorderWidth[3]);//第一层的偏移量
         return layerDrawableNormal;
@@ -580,7 +586,7 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
      * 这个方法是将代码设置的各个属性收集生成一个Drawable,然后将它设置为background,简单点这个方法就是用来设置背景的,等价于setBackground方法
      */
     protected void viewComplete(View myView) {
-        if(drawable_normal!=null){
+        if (drawable_normal != null) {
             StateListDrawable stateListDrawableForLayer = new StateListDrawable();
             stateListDrawableForLayer.addState(new int[]{-android.R.attr.state_pressed}, drawable_normal);
             stateListDrawableForLayer.addState(new int[]{android.R.attr.state_pressed}, drawable_press);
@@ -588,22 +594,22 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 myView.setBackground(stateListDrawableForLayer);
-            }else{
+            } else {
                 myView.setBackgroundDrawable(stateListDrawableForLayer);
             }
             return;
         }
 
-        if(allLine||(!leftLine&&!topLine&&!rightLine&&!bottomLine)){
-            isPartBorder=false;
+        if (allLine || (!leftLine && !topLine && !rightLine && !bottomLine)) {
+            isPartBorder = false;
         }
-        if(!allLine&&(leftLine||topLine||rightLine||bottomLine)){
-            isPartBorder=true;
+        if (!allLine && (leftLine || topLine || rightLine || bottomLine)) {
+            isPartBorder = true;
         }
 
         //设置虚线需要设置layertype
-        if(shapeType==shapeType_line&&myView.getLayerType()== View.LAYER_TYPE_NONE){
-            myView.setLayerType(View.LAYER_TYPE_SOFTWARE,null);
+        if (shapeType == shapeType_line && myView.getLayerType() == View.LAYER_TYPE_NONE) {
+            myView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         }
         //是否是全边框
         if (!isPartBorder) {
@@ -625,9 +631,9 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
                 hasPartBorderHasPressColor(myView);
             }
         }
-        if(myView instanceof MyButton){
-            setCompoundDrawables((Button)myView);
-        }else{
+        if (myView instanceof MyButton) {
+            setCompoundDrawables((Button) myView);
+        } else {
             setCompoundDrawables(myView);
         }
     }
@@ -638,61 +644,62 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         Drawable drawable2 = myView.getCompoundDrawables()[2];
         Drawable drawable3 = myView.getCompoundDrawables()[3];
 
-        if(drawable0!=null){
-            int width=drawable0.getIntrinsicWidth();
-            int height=drawable0.getIntrinsicHeight();
-            drawable0.setBounds(0,0,getLeftWH(width,height)[0],getLeftWH(width,height)[1]);
+        if (drawable0 != null) {
+            int width = drawable0.getIntrinsicWidth();
+            int height = drawable0.getIntrinsicHeight();
+            drawable0.setBounds(0, 0, getLeftWH(width, height)[0], getLeftWH(width, height)[1]);
         }
-        if(drawable1!=null){
-            int width=drawable1.getIntrinsicWidth();
-            int height=drawable1.getIntrinsicHeight();
-            drawable1.setBounds(0,0,getTopWH(width,height)[0],getTopWH(width,height)[1]);
+        if (drawable1 != null) {
+            int width = drawable1.getIntrinsicWidth();
+            int height = drawable1.getIntrinsicHeight();
+            drawable1.setBounds(0, 0, getTopWH(width, height)[0], getTopWH(width, height)[1]);
         }
-        if(drawable2!=null){
-            int width=drawable2.getIntrinsicWidth();
-            int height=drawable2.getIntrinsicHeight();
-            drawable2.setBounds(0,0,getRightWH(width,height)[0],getRightWH(width,height)[1]);
+        if (drawable2 != null) {
+            int width = drawable2.getIntrinsicWidth();
+            int height = drawable2.getIntrinsicHeight();
+            drawable2.setBounds(0, 0, getRightWH(width, height)[0], getRightWH(width, height)[1]);
         }
-        if(drawable3!=null){
-            int width=drawable3.getIntrinsicWidth();
-            int height=drawable3.getIntrinsicHeight();
-            drawable3.setBounds(0,0,getBottomWH(width,height)[0],getBottomWH(width,height)[1]);
+        if (drawable3 != null) {
+            int width = drawable3.getIntrinsicWidth();
+            int height = drawable3.getIntrinsicHeight();
+            drawable3.setBounds(0, 0, getBottomWH(width, height)[0], getBottomWH(width, height)[1]);
         }
 
 
-        myView.setCompoundDrawables(drawable0,drawable1,drawable2,drawable3);
+        myView.setCompoundDrawables(drawable0, drawable1, drawable2, drawable3);
     }
+
     private void setCompoundDrawables(View view) {
-        if(view instanceof TextView){
-            TextView myView= (TextView) view;
+        if (view instanceof TextView) {
+            TextView myView = (TextView) view;
             Drawable drawable0 = myView.getCompoundDrawables()[0];
             Drawable drawable1 = myView.getCompoundDrawables()[1];
             Drawable drawable2 = myView.getCompoundDrawables()[2];
             Drawable drawable3 = myView.getCompoundDrawables()[3];
 
-            if(drawable0!=null){
-                int width=drawable0.getIntrinsicWidth();
-                int height=drawable0.getIntrinsicHeight();
-                drawable0.setBounds(0,0,getLeftWH(width,height)[0],getLeftWH(width,height)[1]);
+            if (drawable0 != null) {
+                int width = drawable0.getIntrinsicWidth();
+                int height = drawable0.getIntrinsicHeight();
+                drawable0.setBounds(0, 0, getLeftWH(width, height)[0], getLeftWH(width, height)[1]);
             }
-            if(drawable1!=null){
-                int width=drawable1.getIntrinsicWidth();
-                int height=drawable1.getIntrinsicHeight();
-                drawable1.setBounds(0,0,getTopWH(width,height)[0],getTopWH(width,height)[1]);
+            if (drawable1 != null) {
+                int width = drawable1.getIntrinsicWidth();
+                int height = drawable1.getIntrinsicHeight();
+                drawable1.setBounds(0, 0, getTopWH(width, height)[0], getTopWH(width, height)[1]);
             }
-            if(drawable2!=null){
-                int width=drawable2.getIntrinsicWidth();
-                int height=drawable2.getIntrinsicHeight();
-                drawable2.setBounds(0,0,getRightWH(width,height)[0],getRightWH(width,height)[1]);
+            if (drawable2 != null) {
+                int width = drawable2.getIntrinsicWidth();
+                int height = drawable2.getIntrinsicHeight();
+                drawable2.setBounds(0, 0, getRightWH(width, height)[0], getRightWH(width, height)[1]);
             }
-            if(drawable3!=null){
-                int width=drawable3.getIntrinsicWidth();
-                int height=drawable3.getIntrinsicHeight();
-                drawable3.setBounds(0,0,getBottomWH(width,height)[0],getBottomWH(width,height)[1]);
+            if (drawable3 != null) {
+                int width = drawable3.getIntrinsicWidth();
+                int height = drawable3.getIntrinsicHeight();
+                drawable3.setBounds(0, 0, getBottomWH(width, height)[0], getBottomWH(width, height)[1]);
             }
 
 
-            myView.setCompoundDrawables(drawable0,drawable1,drawable2,drawable3);
+            myView.setCompoundDrawables(drawable0, drawable1, drawable2, drawable3);
         }
     }
 
@@ -713,7 +720,7 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         gradientDrawablePress.setColor(pressColor);
 
 
-        StateListDrawable  stateListDrawableForShape = new StateListDrawable();
+        StateListDrawable stateListDrawableForShape = new StateListDrawable();
         stateListDrawableForShape.addState(new int[]{-android.R.attr.state_pressed}, gradientDrawableNormal);
         stateListDrawableForShape.addState(new int[]{android.R.attr.state_pressed}, gradientDrawablePress);
         stateListDrawableForShape.addState(new int[]{}, gradientDrawableNormal);
@@ -730,7 +737,7 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             myView.setBackground(getHasPartBorderNoPressColorLayerDrawableNormal());
-        }else{
+        } else {
             myView.setBackgroundDrawable(getHasPartBorderNoPressColorLayerDrawableNormal());
         }
 
@@ -748,10 +755,10 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         GradientDrawable gradientDrawableNormalPress = getHasPartBorderNoPressColorGradientDrawableNormal();
         gradientDrawableNormalPress.setColor(pressColor);
 
-        LayerDrawable layerDrawableNormal=new LayerDrawable(new Drawable[]{gradientDrawable,gradientDrawableNormal});
+        LayerDrawable layerDrawableNormal = new LayerDrawable(new Drawable[]{gradientDrawable, gradientDrawableNormal});
         layerDrawableNormal.setLayerInset(1, partBorderWidth[0], partBorderWidth[1], partBorderWidth[2], partBorderWidth[3]);//第一层的偏移量
 
-        LayerDrawable layerDrawablePress=new LayerDrawable(new Drawable[]{gradientDrawablePress,gradientDrawableNormalPress});
+        LayerDrawable layerDrawablePress = new LayerDrawable(new Drawable[]{gradientDrawablePress, gradientDrawableNormalPress});
         layerDrawablePress.setLayerInset(1, partBorderWidth[0], partBorderWidth[1], partBorderWidth[2], partBorderWidth[3]);//第一层的偏移量
 
 
@@ -763,7 +770,7 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             myView.setBackground(stateListDrawableForLayer);
-        }else{
+        } else {
             myView.setBackgroundDrawable(stateListDrawableForLayer);
         }
     }
@@ -787,52 +794,52 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         return Color.parseColor("#00000000");
     }
 
-    protected int getTransparentColor(){
+    protected int getTransparentColor() {
         return Color.parseColor("#00000000");
     }
 
     protected void setBorderWidthForPartBorder() {
-        partBorderWidth=new int[]{0,0,0,0};
-        if(leftLine){
-            if(borderWidth ==0){
-                borderWidth =1;
+        partBorderWidth = new int[]{0, 0, 0, 0};
+        if (leftLine) {
+            if (borderWidth == 0) {
+                borderWidth = 1;
             }
-            partBorderWidth[0]=(int)borderWidth;
-            if(borderColor==getTransparentColor()){
-                borderColor=getDefBorderColor();
-            }
-        }
-        if(topLine){
-            if(borderWidth ==0){
-                borderWidth =1;
-            }
-            partBorderWidth[1]=(int)borderWidth;
-            if(borderColor==getTransparentColor()){
-                borderColor=getDefBorderColor();
+            partBorderWidth[0] = (int) borderWidth;
+            if (borderColor == getTransparentColor()) {
+                borderColor = getDefBorderColor();
             }
         }
-        if(rightLine){
-            if(borderWidth ==0){
-                borderWidth =1;
+        if (topLine) {
+            if (borderWidth == 0) {
+                borderWidth = 1;
             }
-            partBorderWidth[2]=(int)borderWidth;
-            if(borderColor==getTransparentColor()){
-                borderColor=getDefBorderColor();
+            partBorderWidth[1] = (int) borderWidth;
+            if (borderColor == getTransparentColor()) {
+                borderColor = getDefBorderColor();
             }
         }
-        if(bottomLine){
-            if(borderWidth ==0){
-                borderWidth =1;
+        if (rightLine) {
+            if (borderWidth == 0) {
+                borderWidth = 1;
             }
-            partBorderWidth[3]=(int)borderWidth;
-            if(borderColor==getTransparentColor()){
-                borderColor=getDefBorderColor();
+            partBorderWidth[2] = (int) borderWidth;
+            if (borderColor == getTransparentColor()) {
+                borderColor = getDefBorderColor();
+            }
+        }
+        if (bottomLine) {
+            if (borderWidth == 0) {
+                borderWidth = 1;
+            }
+            partBorderWidth[3] = (int) borderWidth;
+            if (borderColor == getTransparentColor()) {
+                borderColor = getDefBorderColor();
             }
         }
     }
 
     /**********DrawHelper 裁剪**********/
-    protected int errorLayerCount=-100;
+    protected int errorLayerCount = -100;
 
     protected Paint clipPaint;
     protected Paint clipBorderPaint;
@@ -843,8 +850,9 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
     protected Region viewRegion;
     protected Region clickRegion;
 
-    protected boolean clipIsCircle =false;
-    protected boolean clipIsAreaClick =true;
+    protected boolean clipIsCircle = false;
+    protected boolean clipIsAreaClick = true;
+    protected boolean clipIgnorePadding = false;
     protected float clipTopLeftRadius;
     protected float clipTopRightRadius;
     protected float clipBottomLeftRadius;
@@ -854,10 +862,11 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
     protected float clipBorderDashWidth;
     protected float clipBorderDashGap;
     protected int clipBorderDashBgColor;
-    protected float clipBorderPhase=1;
+    protected float clipBorderPhase = 1;
 
     protected Shader shader;
     private boolean needInvalidate;
+
     public boolean isClipIsCircle() {
         return clipIsCircle;
     }
@@ -869,8 +878,8 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
     }
 
     private void needInvalidate() {
-        if(needInvalidate==false){
-            needInvalidate=true;
+        if (needInvalidate == false) {
+            needInvalidate = true;
         }
     }
 
@@ -880,6 +889,16 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
 
     public BaseViewHelper setClipIsAreaClick(boolean clipIsAreaClick) {
         this.clipIsAreaClick = clipIsAreaClick;
+        needInvalidate();
+        return this;
+    }
+
+    public boolean isClipIgnorePadding() {
+        return clipIgnorePadding;
+    }
+
+    public BaseViewHelper setClipIgnorePadding(boolean clipIgnorePadding) {
+        this.clipIgnorePadding = clipIgnorePadding;
         needInvalidate();
         return this;
     }
@@ -1006,25 +1025,35 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
     /**********DrawHelper 裁剪**********/
 
     @Override
-    public void onSizeChanged(int paddingLeft,int paddingTop,int paddingRight,int paddingBottom,int w, int h, int oldw, int oldh) {
+    public void onSizeChanged(int paddingLeft, int paddingTop, int paddingRight, int paddingBottom, int w, int h, int oldw, int oldh) {
 
-        clickRegion=new Region();
+        clickRegion = new Region();
 
-        clipPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
+        clipPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         clipPaint.setStyle(Paint.Style.FILL);
 
-        clipBorderPaint =new Paint(Paint.ANTI_ALIAS_FLAG);
+        clipBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         clipBorderPaint.setStyle(Paint.Style.STROKE);
 
 
-        clipBorderDashBgPaint =new Paint(Paint.ANTI_ALIAS_FLAG);
+        clipBorderDashBgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         clipBorderDashBgPaint.setStyle(Paint.Style.STROKE);
 
     }
 
     @Override
-    public void onRefreshPaint(Canvas canvas,int paddingLeft,int paddingTop,int paddingRight,int paddingBottom,int w, int h) {
-        if(paddingLeft<clipBorderWidth/2){
+    public void onRefreshPaint(Canvas canvas, int paddingLeft, int paddingTop, int paddingRight, int paddingBottom, int w, int h) {
+        int left = paddingLeft;
+        int top = paddingTop;
+        int right = paddingRight;
+        int bottom = paddingBottom;
+        if (clipIgnorePadding) {
+            left = 0;
+            top = 0;
+            right = 0;
+            bottom = 0;
+        }
+        /*if(paddingLeft<clipBorderWidth/2){
             paddingLeft= (int) (clipBorderWidth/2);
         }
         if(paddingTop<clipBorderWidth/2){
@@ -1035,18 +1064,18 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         }
         if(paddingBottom<clipBorderWidth/2){
             paddingBottom= (int) (clipBorderWidth/2);
-        }
-        viewRegion=new Region(0,0,w,h);
+        }*/
+        viewRegion = new Region(0, 0, w, h);
 
         clipPaint.setColor(Color.WHITE);
         clipPaint.setFilterBitmap(false);
         clipPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
 
         clipBorderPaint.setColor(clipBorderColor);
-        clipBorderPaint.setStrokeWidth(clipBorderWidth);
+        clipBorderPaint.setStrokeWidth(clipBorderWidth * 2);
 
         clipBorderDashBgPaint.setColor(clipBorderDashBgColor);
-        clipBorderDashBgPaint.setStrokeWidth(clipBorderWidth);
+        clipBorderDashBgPaint.setStrokeWidth(clipBorderWidth * 2);
        /* float gradientLeft=paddingLeft-borderWidth/2;
         float gradientTop=paddingTop-borderWidth/2;
         float gradientRigth=w-paddingRight+borderWidth/2;
@@ -1063,74 +1092,68 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
 //        SweepGradient sweepGradient=new SweepGradient(X,Y,new int[]{Color.BLUE,Color.GREEN},new float[]{0.7f,1f});
 //        SweepGradient sweepGradient=new SweepGradient(X,Y,Color.BLUE,Color.GREEN);
 //        RadialGradient radialGradient=new RadialGradient(X,Y,(w-paddingLeft-paddingRight)/2,Color.BLUE,Color.GREEN, Shader.TileMode.CLAMP);
-        if(shader!=null){
+        if (shader != null) {
             clipBorderPaint.setShader(shader);
         }
-        if(clipBorderDashWidth>0&&clipBorderDashGap>0){
-            clipBorderPaint.setPathEffect(new DashPathEffect(new float[]{clipBorderDashWidth,clipBorderDashGap},clipBorderPhase));
-        }else{
+        if (clipBorderDashWidth > 0 && clipBorderDashGap > 0) {
+            clipBorderPaint.setPathEffect(new DashPathEffect(new float[]{clipBorderDashWidth, clipBorderDashGap}, clipBorderPhase));
+        } else {
             clipBorderPaint.setPathEffect(null);
         }
 
-        clipPath=new Path();
-        clipBorderPath =new Path();
-        float[]radius=new float[8];
+        clipPath = new Path();
+        clipBorderPath = new Path();
+        float[] radius = new float[8];
 
-        radius[0]=clipTopLeftRadius;
-        radius[1]=clipTopLeftRadius;
+        radius[0] = clipTopLeftRadius;
+        radius[1] = clipTopLeftRadius;
 
-        radius[2]=clipTopRightRadius;
-        radius[3]=clipTopRightRadius;
+        radius[2] = clipTopRightRadius;
+        radius[3] = clipTopRightRadius;
 
-        radius[4]=clipBottomRightRadius;
-        radius[5]=clipBottomRightRadius;
+        radius[4] = clipBottomRightRadius;
+        radius[5] = clipBottomRightRadius;
 
-        radius[6]=clipBottomLeftRadius;
-        radius[7]=clipBottomLeftRadius;
+        radius[6] = clipBottomLeftRadius;
+        radius[7] = clipBottomLeftRadius;
 
-        RectF rectF=new RectF(paddingLeft,paddingTop,w-paddingRight,h-paddingBottom);
-        if(clipIsCircle){
-            int  centerX=(w-paddingLeft-paddingRight)/2+paddingLeft;
-            int  centerY=(h-paddingTop-paddingBottom)/2+paddingTop;
+        RectF rectF = new RectF(left, top, w - right, h - bottom);
+        if (clipIsCircle) {
+            int centerX = (w - left - right) / 2 + left;
+            int centerY = (h - top - bottom) / 2 + top;
 
-            int  circleRadius=(w-paddingLeft-paddingRight)>(h-paddingTop-paddingBottom)?(h-paddingTop-paddingBottom)/2:(w-paddingLeft-paddingRight)/2;
-            clipPath.addCircle(centerX,centerY,circleRadius, Path.Direction.CW);
-            clipBorderPath.addCircle(centerX,centerY,circleRadius, Path.Direction.CW);
-        }else{
-            clipPath.addRoundRect(rectF,radius, Path.Direction.CW);
-            clipBorderPath.addRoundRect(rectF,radius, Path.Direction.CW);
+            int circleRadius = (w - left - right) > (h - top - bottom) ? (h - top - bottom) / 2 : (w - left - right) / 2;
+            clipPath.addCircle(centerX, centerY, circleRadius, Path.Direction.CW);
+            clipBorderPath.addCircle(centerX, centerY, circleRadius, Path.Direction.CW);
+        } else {
+            clipPath.addRoundRect(rectF, radius, Path.Direction.CW);
+            clipBorderPath.addRoundRect(rectF, radius, Path.Direction.CW);
         }
 
-        clickRegion.setPath(clipPath,viewRegion);
-        clipPath.moveTo(0,0);
-        clipPath.moveTo(w,h);
+        clickRegion.setPath(clipPath, viewRegion);
+        clipPath.moveTo(0, 0);
+        clipPath.moveTo(w, h);
     }
 
     @Override
-    public int dispatchDrawStart(Canvas canvas) {
-        int saveLayer = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
-        return saveLayer;
-    }
-    @Override
-    public void dispatchDrawEnd(int saveLayer,Canvas canvas) {
-        canvas.drawPath(clipPath,clipPaint);
-        if(clipBorderWidth>0){
-            if(clipBorderDashBgColor!=Color.TRANSPARENT){
+    public void dispatchDrawEnd(int saveLayer, Canvas canvas) {
+        if (clipBorderWidth > 0) {
+            if (clipBorderDashBgColor != Color.TRANSPARENT) {
                 canvas.drawPath(clipBorderPath, clipBorderDashBgPaint);
             }
             canvas.drawPath(clipBorderPath, clipBorderPaint);
         }
-        if(saveLayer!=errorLayerCount){
-            canvas.restore();
-//            canvas.restoreToCount(saveLayer);
-        }
+        //显示部分区域
+        canvas.drawPath(clipPath, clipPaint);
+
+        canvas.restore();
     }
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if(clipIsAreaClick){
-            if(!clickRegion.contains((int)event.getX(),(int)event.getY())){
+        if (clipIsAreaClick) {
+            if (!clickRegion.contains((int) event.getX(), (int) event.getY())) {
                 return false;
             }
         }

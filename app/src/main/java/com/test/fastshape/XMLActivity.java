@@ -36,7 +36,7 @@ public class XMLActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xmlactivity_xml);
         MyTextView t=new MyTextView(this);
-        t.getViewHelper().setClipRadius(1);
+//        t.getViewHelper().setClipRadius(1);
 
 
         ll_view = (MyFrameLayout) findViewById(R.id.ll_view);
