@@ -5,10 +5,9 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.RectF;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
-import android.widget.ImageView;
 
 import com.github.fastshape.inter.ViewHelperInter;
 
@@ -16,7 +15,7 @@ import com.github.fastshape.inter.ViewHelperInter;
  * Created by Administrator on 2017/7/24.
  */
 
-public class MyImageView extends ImageView {
+public class MyImageView extends AppCompatImageView {
     private BaseViewHelper viewHelper;
     public MyImageView(Context context) {
         super(context);

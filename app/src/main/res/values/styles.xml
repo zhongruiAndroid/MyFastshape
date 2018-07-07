@@ -6,7 +6,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:editTextStyle">@style/editTextStyle</item>
     </style>
     <style name="addDataEditStyle" parent="@style/editTextStyle">
         <item name="android:textSize">16sp</item>
@@ -17,6 +16,23 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:fontFamily">@font/nicai</item>
+        <item name="android:editTextStyle">@style/testEditStyle</item>
+        <item name="editTextStyle">@style/testEditStyle</item>
+        <item name="android:checkboxStyle">@style/customfontstyle</item>
+    </style>
+    <style name="customfontstyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:fontFamily">@font/nicai</item>
+        <item name="fontFamily">@font/nicai</item>
+    </style>
+    <style name="testBoxStyle"   >
+        <item name="android:fontFamily">@font/nicai</item>
+    </style>
+    <style name="testEditStyle"  parent="@style/Base.Widget.AppCompat.EditText">
+        <item name="android:textSize">26sp</item>
+        <item name="android:background">@color/c_press_bt</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:textColor">@color/red_point1</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>

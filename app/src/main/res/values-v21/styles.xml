@@ -5,5 +5,33 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:fontFamily">@font/nicai</item>
+        <item name="android:editTextStyle">@style/testEditStyle</item>
+        <item name="editTextStyle">@style/testEditStyle</item>
+        <item name="android:checkboxStyle">@style/customfontstyle</item>
+    </style>
+    <style name="AppTheme.NoActionBar2">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:fontFamily">@font/pingfang_regular</item>
+        <item name="android:editTextStyle">@style/testEditStyle</item>
+        <item name="editTextStyle">@style/testEditStyle</item>
+        <item name="android:checkboxStyle">@style/customfontstyle</item>
+    </style>
+
+    <style name="customfontstyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:fontFamily">@font/nicai</item>
+        <item name="fontFamily">@font/nicai</item>
+    </style>
+    <style name="testBoxStyle"  >
+        <item name="android:fontFamily">@font/nicai</item>
+    </style>
+    <style name="testEditStyle" parent="@style/Base.Widget.AppCompat.EditText">
+        <item name="android:textSize">26sp</item>
+        <item name="android:background">@color/c_press_bt</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:textColor">@color/red_point1</item>
     </style>
 </resources>

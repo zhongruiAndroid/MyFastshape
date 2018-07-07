@@ -34,6 +34,7 @@ public class XMLActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        setTheme(R.style.AppTheme_NoActionBar2);
         setContentView(R.layout.xmlactivity_xml);
         MyTextView t=new MyTextView(this);
 //        t.getViewHelper().setClipRadius(1);

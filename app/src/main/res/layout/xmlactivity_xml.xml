@@ -10,6 +10,16 @@
     android:orientation="vertical"
     android:padding="10dp"
     >
+    <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
     <com.github.fastshape.MyLinearLayout
         android:id="@+id/ll_view"
         android:layout_width="200dp"
@@ -37,6 +47,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        >
+        <com.github.fastshape.MyCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="是否设置虚线背景(白色)"
+            android:textColor="@color/blue"
+            />
+        <com.github.fastshape.MyEditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="123中国"
+            />
+        <com.github.fastshape.MyTextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="123中国Android"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123中国Android"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_marginTop="10dp"
@@ -48,39 +88,70 @@
             android:text="设置裁剪区域内点击有效"
             android:textColor="@color/blue"
             android:checked="true"
+            android:typeface="sans"
             />
-        <CheckBox
-            android:id="@+id/cb_isCircle"
+        <com.github.fastshape.MyButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="是否为圆形"
             android:textColor="@color/blue"
             android:checked="true"
             />
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="是否为圆2形"/>
+
     </LinearLayout>
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/cb_isCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="是否为圆形"
+        android:textColor="@color/blue"
+        android:checked="true"
+        android:fontFamily="@font/nicai"
+        />
+    <com.github.fastshape.MyCheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
         >
+
         <CheckBox
             android:id="@+id/cb_border_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="边框颜色(黑蓝)"
             android:textColor="@color/blue"
-            android:checked="true"
-            />
+            android:textSize="20sp" />
+<com.github.fastshape.MyRadioButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="边框颜色(黑蓝)22"
+    android:fontFamily="@font/nicai"
+    />
         <CheckBox
             android:id="@+id/cb_dash_bg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="是否设置虚线背景(白色)"
             android:textColor="@color/blue"
-            android:checked="true"
             />
     </LinearLayout>
+    <android.support.v7.widget.AppCompatCheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="边框颜色(黑蓝)3"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -183,4 +254,6 @@
             android:layout_height="wrap_content"
             />
     </LinearLayout>
+</LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
