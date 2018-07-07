@@ -106,8 +106,13 @@ public class MyTextView extends TextView {
 
         viewHelper.solidColor = viewNormal.getColor(R.styleable.MyTextView_solidColor, viewHelper.getTransparentColor());
 
-        viewHelper.radius = viewNormal.getDimension(R.styleable.MyTextView_radius, 0);
-        if (viewHelper.radius <= 0) {
+        float radius = viewNormal.getDimension(R.styleable.MyTextView_radius, 0);
+        if (radius > 0) {
+            viewHelper.topLeftRadius = radius;
+            viewHelper.topRightRadius = radius;
+            viewHelper.bottomLeftRadius = radius;
+            viewHelper.bottomRightRadius = radius;
+        } else {
             viewHelper.topLeftRadius = viewNormal.getDimension(R.styleable.MyTextView_topLeftRadius, 0);
             viewHelper.topRightRadius = viewNormal.getDimension(R.styleable.MyTextView_topRightRadius, 0);
             viewHelper.bottomLeftRadius = viewNormal.getDimension(R.styleable.MyTextView_bottomLeftRadius, 0);

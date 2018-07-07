@@ -8,8 +8,8 @@ import android.view.MotionEvent;
  */
 
 public interface OnDrawInter {
+    void onRefreshPaint(Canvas canvas,int paddingLeft,int paddingTop,int paddingRight,int paddingBottom,int w, int h);
     void onSizeChanged(int paddingLeft,int paddingTop,int paddingRight,int paddingBottom,int w, int h, int oldw, int oldh);
-    int dispatchDrawStart(Canvas canvas);
     void dispatchDrawEnd(int saveLayer,Canvas canvas);
     boolean onTouchEvent(MotionEvent event);
 }

@@ -43,6 +43,24 @@
         <attr name="topRightRadius"/>
         <attr name="bottomLeftRadius"/>
         <attr name="bottomRightRadius"/>
+        <!--裁剪-->
+        <attr name="clipIgnorePadding" />
+        <attr name="clipIsCircle"            />
+        <attr name="clipIsAreaClick"            />
+
+        <attr name="clipRadius"         />
+        <attr name="clipTopLeftRadius"      />
+        <attr name="clipTopRightRadius"     />
+        <attr name="clipBottomLeftRadius"  />
+        <attr name="clipBottomRightRadius" />
+
+        <attr name="clipBorderWidth"        />
+        <attr name="clipBorderColor"        />
+        <attr name="clipBorderDashWidth"  />
+        <attr name="clipBorderDashGap"    />
+        <attr name="clipBorderDashBgColor"    />
+        <attr name="clipBorderPhase" />
+
     </declare-styleable>
     <declare-styleable name="MyCheckBox">
         <attr name="normal_drawable"/>
@@ -173,6 +191,24 @@
         <attr name="gradientEndColor"/>
         <attr name="gradientRadius"/><!--渐变的半径。仅在 android:type="radial" 时适用。-->
         <attr name="gradientType"/>
+
+        <!--裁剪-->
+        <attr name="clipIgnorePadding" />
+        <attr name="clipIsCircle"            />
+        <attr name="clipIsAreaClick"            />
+
+        <attr name="clipRadius"         />
+        <attr name="clipTopLeftRadius"      />
+        <attr name="clipTopRightRadius"     />
+        <attr name="clipBottomLeftRadius"  />
+        <attr name="clipBottomRightRadius" />
+
+        <attr name="clipBorderWidth"        />
+        <attr name="clipBorderColor"        />
+        <attr name="clipBorderDashWidth"  />
+        <attr name="clipBorderDashGap"    />
+        <attr name="clipBorderDashBgColor"    />
+        <attr name="clipBorderPhase" />
     </declare-styleable>
     <!--******************************MyLinearLayout*************************************-->
     <declare-styleable name="MyLinearLayout">
@@ -214,6 +250,7 @@
         <!--<attr name="thickness" format="dimension"/>-->
 
         <!--裁剪-->
+        <attr name="clipIgnorePadding" />
         <attr name="clipIsCircle"            />
         <attr name="clipIsAreaClick"            />
 
@@ -227,6 +264,8 @@
         <attr name="clipBorderColor"        />
         <attr name="clipBorderDashWidth"  />
         <attr name="clipBorderDashGap"    />
+        <attr name="clipBorderDashBgColor"    />
+        <attr name="clipBorderPhase" />
     </declare-styleable>
 
     <!--******************************MyFrameLayout*************************************-->
@@ -266,6 +305,25 @@
         <attr name="gradientEndColor"/>
         <attr name="gradientRadius"/><!--渐变的半径。仅在 android:type="radial" 时适用。-->
         <attr name="gradientType"/>
+
+
+        <!--裁剪-->
+        <attr name="clipIgnorePadding" />
+        <attr name="clipIsCircle"            />
+        <attr name="clipIsAreaClick"            />
+
+        <attr name="clipRadius"         />
+        <attr name="clipTopLeftRadius"      />
+        <attr name="clipTopRightRadius"     />
+        <attr name="clipBottomLeftRadius"  />
+        <attr name="clipBottomRightRadius" />
+
+        <attr name="clipBorderWidth"        />
+        <attr name="clipBorderColor"        />
+        <attr name="clipBorderDashWidth"  />
+        <attr name="clipBorderDashGap"    />
+        <attr name="clipBorderDashBgColor"    />
+        <attr name="clipBorderPhase" />
     </declare-styleable>
 
 
@@ -369,6 +427,7 @@
     <!--******************************公共属性*************************************-->
     <attr name="clipIsCircle" format="boolean"/>
     <attr name="clipIsAreaClick" format="boolean"/>
+    <attr name="clipIgnorePadding" format="boolean"/>
 
     <attr name="clipRadius" format="dimension"/>
     <attr name="clipTopLeftRadius" format="dimension"/>
@@ -380,6 +439,8 @@
     <attr name="clipBorderColor" format="color"/>
     <attr name="clipBorderDashWidth" format="dimension"/>
     <attr name="clipBorderDashGap" format="dimension"/>
+    <attr name="clipBorderDashBgColor" format="color"/>
+    <attr name="clipBorderPhase" format="integer"/>
 
 
 

@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.3'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.test.fastshape"
         minSdkVersion 18
@@ -21,16 +21,16 @@ android {
 
 dependencies {
 //    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 //    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support:design:26.+'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:27.+'
+    implementation 'com.android.support:design:27.+'
 //    compile 'com.github:customview:1.0.2'
     //    compile 'com.github:retrofitutil:1.0.1'
     //    compile project(':customview')
     //    compile 'com.github:customview:1.0.4'
-    compile project(':fastshape')
+    implementation project(':fastshape')
 }

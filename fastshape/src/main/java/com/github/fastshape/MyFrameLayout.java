@@ -3,9 +3,13 @@ package com.github.fastshape;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.FrameLayout;
 
 import com.github.fastshape.inter.ViewHelperInter;
@@ -55,15 +59,20 @@ public class MyFrameLayout extends FrameLayout {
                 complete();
             }
         });
+        initData();
         if (attrs == null) {
             return;
         }
+        TypedArray viewNormal = this.getContext().obtainStyledAttributes(attrs, R.styleable.MyFrameLayout);
+
+        setAttrForDraw(viewNormal);
+
 
         Drawable background = getBackground();
         if (background != null) {
+            viewNormal.recycle();
             return;
         }
-        TypedArray viewNormal = this.getContext().obtainStyledAttributes(attrs, R.styleable.MyFrameLayout);
         Drawable drawable_normal = viewNormal.getDrawable(R.styleable.MyFrameLayout_drawable_normal);
         Drawable drawable_press  = viewNormal.getDrawable(R.styleable.MyFrameLayout_drawable_press);
 
@@ -103,8 +112,13 @@ public class MyFrameLayout extends FrameLayout {
 
         viewHelper.solidColor = viewNormal.getColor(R.styleable.MyFrameLayout_solidColor, viewHelper.getTransparentColor());
 
-        viewHelper.radius = viewNormal.getDimension(R.styleable.MyFrameLayout_radius, 0);
-        if (viewHelper.radius <= 0) {
+        float radius = viewNormal.getDimension(R.styleable.MyFrameLayout_radius, 0);
+        if (radius > 0) {
+            viewHelper.topLeftRadius = radius;
+            viewHelper.topRightRadius = radius;
+            viewHelper.bottomLeftRadius = radius;
+            viewHelper.bottomRightRadius = radius;
+        } else {
             viewHelper.topLeftRadius = viewNormal.getDimension(R.styleable.MyFrameLayout_topLeftRadius, 0);
             viewHelper.topRightRadius = viewNormal.getDimension(R.styleable.MyFrameLayout_topRightRadius, 0);
             viewHelper.bottomLeftRadius = viewNormal.getDimension(R.styleable.MyFrameLayout_bottomLeftRadius, 0);
@@ -135,6 +149,36 @@ public class MyFrameLayout extends FrameLayout {
         complete();
     }
 
+    private void initData() {
+        viewHelper.clipBorderColor = Color.parseColor("#34e8a6");
+        viewHelper.clipBorderDashBgColor = Color.WHITE;
+    }
+
+    private void setAttrForDraw(TypedArray viewNormal) {
+        float clipRadius = viewNormal.getDimension(R.styleable.MyFrameLayout_clipRadius, 0);
+        if (clipRadius > 0) {
+            viewHelper.clipTopLeftRadius = clipRadius;
+            viewHelper.clipTopRightRadius = clipRadius;
+            viewHelper.clipBottomLeftRadius = clipRadius;
+            viewHelper.clipBottomRightRadius = clipRadius;
+        } else {
+            viewHelper.clipTopLeftRadius = viewNormal.getDimension(R.styleable.MyFrameLayout_clipTopLeftRadius, 0);
+            viewHelper.clipTopRightRadius = viewNormal.getDimension(R.styleable.MyFrameLayout_clipTopRightRadius, 0);
+            viewHelper.clipBottomLeftRadius = viewNormal.getDimension(R.styleable.MyFrameLayout_clipBottomLeftRadius, 0);
+            viewHelper.clipBottomRightRadius = viewNormal.getDimension(R.styleable.MyFrameLayout_clipBottomRightRadius, 0);
+        }
+
+        viewHelper.clipIgnorePadding = viewNormal.getBoolean(R.styleable.MyFrameLayout_clipIgnorePadding, false);
+        viewHelper.clipIsCircle = viewNormal.getBoolean(R.styleable.MyFrameLayout_clipIsCircle, false);
+        viewHelper.clipIsAreaClick = viewNormal.getBoolean(R.styleable.MyFrameLayout_clipIsAreaClick, true);
+        viewHelper.clipBorderWidth = viewNormal.getDimension(R.styleable.MyFrameLayout_clipBorderWidth, 0);
+        viewHelper.clipBorderColor = viewNormal.getColor(R.styleable.MyFrameLayout_clipBorderColor, Color.parseColor("#34e8a6"));
+        viewHelper.clipBorderDashBgColor = viewNormal.getColor(R.styleable.MyFrameLayout_clipBorderDashBgColor, Color.WHITE);
+        viewHelper.clipBorderDashWidth = viewNormal.getDimension(R.styleable.MyFrameLayout_clipBorderDashWidth, 0);
+        viewHelper.clipBorderDashGap = viewNormal.getDimension(R.styleable.MyFrameLayout_clipBorderDashGap, 0);
+
+    }
+
     /**
      * 设置各个自定义属性之后调用此方法设置background
      * 这里有必要说明一下,为什么设置属性了还需要调用这个方法才能生效?
@@ -143,4 +187,60 @@ public class MyFrameLayout extends FrameLayout {
     public void complete() {
         viewHelper.viewComplete(this);
     }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        if (viewHelper != null) {
+            viewHelper.onSizeChanged(getPaddingLeft(),
+                    getPaddingTop(),
+                    getPaddingRight(),
+                    getPaddingBottom(), w, h, oldw, oldh);
+        }
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        if (viewHelper != null) {
+            viewHelper.onRefreshPaint(canvas, getPaddingLeft(),
+                    getPaddingTop(),
+                    getPaddingRight(),
+                    getPaddingBottom(), getWidth(), getHeight());
+        }
+    }
+
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        int saveLayer = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
+        super.dispatchDraw(canvas);
+        viewHelper.dispatchDrawEnd(saveLayer, canvas);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_UP) {
+            if (viewHelper != null && viewHelper.clipIsAreaClick) {
+                if (viewHelper.onTouchEvent(ev) == false) {//如果这个地方返回true会导致点击事件失效
+                    return false;
+                }
+            }
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+  /*  @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if(event.getAction()==MotionEvent.ACTION_UP){
+            return viewHelper.onTouchEvent(event);
+        }
+        return super.onTouchEvent(event);
+    }*/
+
+    /*@Override
+    public boolean onTouchEvent(MotionEvent event) {
+        boolean b = super.onTouchEvent(event);
+        Log.i("==","==="+b);
+        return b;
+    }*/
 }
