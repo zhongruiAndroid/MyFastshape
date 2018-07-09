@@ -2,8 +2,8 @@
 
 buildscript {
     repositories {
-        jcenter()
         google()
+        jcenter()
     }
     dependencies {
         /***************发布aar包的配置**********************/
@@ -22,9 +22,8 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
-
         google()
+        jcenter()
     }
 }
 
