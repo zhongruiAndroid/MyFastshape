@@ -26,6 +26,15 @@ public class MyRadioButton extends AppCompatRadioButton {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
+
+    public CheckViewHelper getViewHelper() {
+        return viewHelper;
+    }
+
+    public void setViewHelper(CheckViewHelper viewHelper) {
+        this.viewHelper = viewHelper;
+    }
+
     private void init(AttributeSet attrs){
         viewHelper=new CheckViewHelper(new ViewHelperInter() {
             @Override

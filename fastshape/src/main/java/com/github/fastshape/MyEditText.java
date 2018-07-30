@@ -58,15 +58,15 @@ public class MyEditText extends AppCompatEditText implements View.OnFocusChangeL
     }
 
     private void init(AttributeSet attrs) {
-        if (attrs == null) {
-            return;
-        }
         viewHelper = new BaseViewHelper(new ViewHelperInter() {
             @Override
             public void onComplete() {
                 complete();
             }
         });
+        if (attrs == null) {
+            return;
+        }
         Drawable background = getBackground();
         if (background instanceof ColorDrawable &&background!=null) {
             return;
