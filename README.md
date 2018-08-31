@@ -1,9 +1,11 @@
 ### 主要功能：通过自定义属性或者代码实现shape效果  
 
 >![github](https://github.com/zhongruiAndroid/MyFastshape/blob/master/app/src/main/res/drawable/demo.png "github")
-<br/>  
+  
+  
+**不能有android:background属性,否则自定义属性不生效**  
 
-**MyButton需要手动设置android:background="@null",否则以下属性设置无效**  
+**MyButton需要手动设置android:background="@null",否则自定义属性设置无效**  
 
 **MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性**  
 
