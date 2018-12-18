@@ -229,18 +229,5 @@ public class MyRelativeLayout extends RelativeLayout {
         return super.dispatchTouchEvent(ev);
     }
 
-  /*  @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if(event.getAction()==MotionEvent.ACTION_UP){
-            return viewHelper.onTouchEvent(event);
-        }
-        return super.onTouchEvent(event);
-    }*/
 
-    /*@Override
-    public boolean onTouchEvent(MotionEvent event) {
-        boolean b = super.onTouchEvent(event);
-        Log.i("==","==="+b);
-        return b;
-    }*/
 }

@@ -12,133 +12,50 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
 
-import com.github.fastshape.inter.ViewHelperInter;
+import com.github.fastshape.bean.BaseBean;
+import com.github.fastshape.inter.BaseInter;
 
 
 /**
  * Created by Administrator on 2016/9/6.
  */
-public class MyLinearLayout extends LinearLayout {
-
-    private BaseViewHelper viewHelper;
+public class MyLinearLayout extends LinearLayout implements BaseInter<MyLinearLayout> {
+    private BaseBean baseBean;
+//    private BaseViewHelper viewHelper;
 
     public MyLinearLayout(Context context) {
-        super(context);
-        init(null);
+        this(context,null);
     }
 
     public MyLinearLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(attrs);
+        this(context, attrs,BaseBean.defStyleAttr);
     }
 
     public MyLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init(attrs);
+        this(context, attrs, defStyleAttr,0);
     }
-
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public MyLinearLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        init(attrs);
+
+        init(attrs,defStyleAttr);
     }
 
-    public BaseViewHelper getViewHelper() {
-        return viewHelper;
-    }
 
-    public void setViewHelper(BaseViewHelper viewHelper) {
-        this.viewHelper = viewHelper;
-    }
-
-    private void init(AttributeSet attrs) {
-        viewHelper = new BaseViewHelper(this, new ViewHelperInter() {
-            @Override
-            public void onComplete() {
-                complete();
-            }
-        });
+    public void init(AttributeSet attrs,int defStyleAttr) {
+        baseBean=new BaseBean();
         initData();
-        if (attrs == null) {
-            return;
-        }
-        TypedArray viewNormal = this.getContext().obtainStyledAttributes(attrs, R.styleable.MyLinearLayout);
-
-        setAttrForDraw(viewNormal);
-
-
         Drawable background = getBackground();
         if (background != null) {
-            viewNormal.recycle();
             return;
         }
-        Drawable drawable_normal = viewNormal.getDrawable(R.styleable.MyLinearLayout_drawable_normal);
-        Drawable drawable_press = viewNormal.getDrawable(R.styleable.MyLinearLayout_drawable_press);
-
-        if (drawable_normal != null || drawable_press != null) {
-            viewHelper.drawable_normal = drawable_normal;
-            viewHelper.drawable_press = drawable_press;
-            if (drawable_normal == null) {
-                viewHelper.drawable_normal = drawable_press;
-            }
-            if (drawable_press == null) {
-                viewHelper.drawable_press = drawable_normal;
-            }
-            viewNormal.recycle();
-            complete();
-            return;
-        }
-
-        viewHelper.pressColor = viewNormal.getColor(R.styleable.MyLinearLayout_pressColor, viewHelper.getTransparentColor());
-        viewHelper.allLine = viewNormal.getBoolean(R.styleable.MyLinearLayout_all_line, false);
-        viewHelper.leftLine = viewNormal.getBoolean(R.styleable.MyLinearLayout_left_line, false);
-        viewHelper.topLine = viewNormal.getBoolean(R.styleable.MyLinearLayout_top_line, false);
-        viewHelper.rightLine = viewNormal.getBoolean(R.styleable.MyLinearLayout_right_line, false);
-        viewHelper.bottomLine = viewNormal.getBoolean(R.styleable.MyLinearLayout_bottom_line, false);
-        if (viewHelper.leftLine && viewHelper.topLine && viewHelper.rightLine && viewHelper.bottomLine) {
-            viewHelper.allLine = true;
-        }
-        if (!viewHelper.allLine && (viewHelper.leftLine || viewHelper.topLine || viewHelper.rightLine || viewHelper.bottomLine)) {
-            viewHelper.isPartBorder = true;
-        }
-
-        viewHelper.shapeType = viewNormal.getInteger(R.styleable.MyLinearLayout_shapeType, viewHelper.shapeType_rectangle);
-        viewHelper.borderWidth = viewNormal.getDimension(R.styleable.MyLinearLayout_borderWidth, 0);
-        viewHelper.borderColor = viewNormal.getColor(R.styleable.MyLinearLayout_borderColor, viewHelper.getTransparentColor());
-        viewHelper.borderDashWidth = viewNormal.getDimension(R.styleable.MyLinearLayout_borderDashWidth, 0);
-        viewHelper.borderDashGap = viewNormal.getDimension(R.styleable.MyLinearLayout_borderDashGap, 0);
+        /*
+        setAttrForDraw(viewNormal);
+*/
+        baseBean.init(getContext(),attrs,defStyleAttr);
 
 
-        viewHelper.solidColor = viewNormal.getColor(R.styleable.MyLinearLayout_solidColor, viewHelper.getTransparentColor());
 
-        float radius = viewNormal.getDimension(R.styleable.MyLinearLayout_radius, 0);
-        if (radius > 0) {
-            viewHelper.topLeftRadius = radius;
-            viewHelper.topRightRadius = radius;
-            viewHelper.bottomLeftRadius = radius;
-            viewHelper.bottomRightRadius = radius;
-        } else {
-            viewHelper.topLeftRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_topLeftRadius, 0);
-            viewHelper.topRightRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_topRightRadius, 0);
-            viewHelper.bottomLeftRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_bottomLeftRadius, 0);
-            viewHelper.bottomRightRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_bottomRightRadius, 0);
-        }
-
-        viewHelper.gradientType = viewNormal.getInteger(R.styleable.MyLinearLayout_gradientType, -1);
-        if (viewHelper.gradientType != -1) {
-            viewHelper.angle = viewNormal.getInteger(R.styleable.MyLinearLayout_gradientAngle, 0);
-            viewHelper.centerX = viewNormal.getFloat(R.styleable.MyLinearLayout_gradientCenterX, 0.5f);
-            viewHelper.centerY = viewNormal.getFloat(R.styleable.MyLinearLayout_gradientCenterY, 0.5f);
-
-            viewHelper.startColor = viewNormal.getColor(R.styleable.MyLinearLayout_gradientStartColor, 0);
-            viewHelper.centerColor = viewNormal.getColor(R.styleable.MyLinearLayout_gradientCenterColor, 0);
-            viewHelper.endColor = viewNormal.getColor(R.styleable.MyLinearLayout_gradientEndColor, 0);
-
-            viewHelper.gradientRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_gradientRadius, 40);
-        }
-
-
-        viewNormal.recycle();
 
         /**
          * 设置各个自定义属性之后调用此方法设置background
@@ -149,12 +66,12 @@ public class MyLinearLayout extends LinearLayout {
     }
 
     private void initData() {
-        viewHelper.clipBorderColor = Color.parseColor("#34e8a6");
-        viewHelper.clipBorderDashBgColor = Color.WHITE;
+//        baseBean.clipBorderColor = Color.parseColor("#34e8a6");
+//        baseBean.clipBorderDashBgColor = Color.WHITE;
     }
 
     private void setAttrForDraw(TypedArray viewNormal) {
-        float clipRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipRadius, 0);
+       /* float clipRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipRadius, 0);
         if (clipRadius > 0) {
             viewHelper.clipTopLeftRadius = clipRadius;
             viewHelper.clipTopRightRadius = clipRadius;
@@ -174,7 +91,7 @@ public class MyLinearLayout extends LinearLayout {
         viewHelper.clipBorderColor = viewNormal.getColor(R.styleable.MyLinearLayout_clipBorderColor, Color.parseColor("#34e8a6"));
         viewHelper.clipBorderDashBgColor = viewNormal.getColor(R.styleable.MyLinearLayout_clipBorderDashBgColor, Color.WHITE);
         viewHelper.clipBorderDashWidth = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBorderDashWidth, 0);
-        viewHelper.clipBorderDashGap = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBorderDashGap, 0);
+        viewHelper.clipBorderDashGap = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBorderDashGap, 0);*/
 
     }
 
@@ -184,62 +101,348 @@ public class MyLinearLayout extends LinearLayout {
      * 这个方法是将代码设置的各个属性收集生成一个Drawable,然后将它设置为background,简单点这个方法就是用来设置背景的,等价于setBackground方法
      */
     public void complete() {
-        viewHelper.viewComplete(this);
+        baseBean.viewComplete(this);
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        if (viewHelper != null) {
+        /*if (viewHelper != null) {
             viewHelper.onSizeChanged(getPaddingLeft(),
                     getPaddingTop(),
                     getPaddingRight(),
                     getPaddingBottom(), w, h, oldw, oldh);
-        }
+        }*/
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (viewHelper != null) {
+       /* if (viewHelper != null) {
             viewHelper.onRefreshPaint(canvas, getPaddingLeft(),
                     getPaddingTop(),
                     getPaddingRight(),
                     getPaddingBottom(), getWidth(), getHeight());
-        }
+        }*/
     }
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
         int saveLayer = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
         super.dispatchDraw(canvas);
-        viewHelper.dispatchDrawEnd(saveLayer, canvas);
+//        viewHelper.dispatchDrawEnd(saveLayer, canvas);
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (ev.getAction() == MotionEvent.ACTION_UP) {
+        /*if (ev.getAction() == MotionEvent.ACTION_UP) {
             if (viewHelper != null && viewHelper.clipIsAreaClick) {
                 if (viewHelper.onTouchEvent(ev) == false) {//如果这个地方返回true会导致点击事件失效
                     return false;
                 }
             }
-        }
+        }*/
         return super.dispatchTouchEvent(ev);
     }
 
-  /*  @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if(event.getAction()==MotionEvent.ACTION_UP){
-            return viewHelper.onTouchEvent(event);
-        }
-        return super.onTouchEvent(event);
-    }*/
+    @Override
+    public MyLinearLayout clearAttr() {
+        baseBean.clearAttr();
+        return this;
+    }
 
-    /*@Override
-    public boolean onTouchEvent(MotionEvent event) {
-        boolean b = super.onTouchEvent(event);
-        Log.i("==","==="+b);
-        return b;
-    }*/
+    @Override
+    public Drawable getDrawable_normal() {
+        return baseBean.getDrawable_normal();
+    }
+
+    @Override
+    public MyLinearLayout setDrawable_normal(Drawable drawable_normal) {
+        baseBean.setDrawable_normal(drawable_normal);
+        return this;
+
+    }
+
+    @Override
+    public Drawable getDrawable_press() {
+        return baseBean.getDrawable_press();
+    }
+
+    @Override
+    public MyLinearLayout setDrawable_press(Drawable drawable_press) {
+        baseBean.setDrawable_press(drawable_press);
+        return this;
+    }
+
+    @Override
+    public int getPressColor() {
+        return baseBean.getPressColor();
+    }
+
+    @Override
+    public MyLinearLayout setPressColor(int pressColor) {
+        baseBean.setPressColor(pressColor);
+        return this;
+    }
+
+    @Override
+    public boolean isAll_line() {
+        return baseBean.isAll_line();
+    }
+
+    @Override
+    public MyLinearLayout setAll_line(boolean all_line) {
+        baseBean.setAll_line(all_line);
+        return this;
+    }
+
+    @Override
+    public boolean isLeft_line() {
+        return baseBean.isLeft_line();
+    }
+
+    @Override
+    public MyLinearLayout setLeft_line(boolean left_line) {
+        baseBean.setLeft_line(left_line);
+        return this;
+    }
+
+    @Override
+    public boolean isTop_line() {
+        return baseBean.isTop_line();
+    }
+
+    @Override
+    public MyLinearLayout setTop_line(boolean top_line) {
+        baseBean.setTop_line(top_line);
+        return this;
+    }
+
+    @Override
+    public boolean isRight_line() {
+        return baseBean.isRight_line();
+    }
+
+    @Override
+    public MyLinearLayout setRight_line(boolean right_line) {
+        baseBean.setRight_line(right_line);
+        return this;
+    }
+
+    @Override
+    public boolean isBottom_line() {
+        return baseBean.isBottom_line();
+    }
+
+    @Override
+    public MyLinearLayout setBottom_line(boolean bottom_line) {
+        baseBean.setBottom_line(bottom_line);
+        return this;
+    }
+
+    @Override
+    public int getShapeType() {
+        return baseBean.getShapeType();
+    }
+
+    @Override
+    public MyLinearLayout setShapeType(int shapeType) {
+        baseBean.setShapeType(shapeType);
+        return this;
+    }
+
+    @Override
+    public float getBorderWidth() {
+        return baseBean.getBorderWidth();
+    }
+
+    @Override
+    public MyLinearLayout setBorderWidth(float borderWidth) {
+        baseBean.setBorderWidth(borderWidth);
+        return this;
+    }
+
+    @Override
+    public int getBorderColor() {
+        return baseBean.getBorderColor();
+    }
+
+    @Override
+    public MyLinearLayout setBorderColor(int borderColor) {
+        baseBean.setBorderColor(borderColor);
+        return this;
+    }
+
+    @Override
+    public float getBorderDashWidth() {
+        return baseBean.getBorderDashWidth();
+    }
+
+    @Override
+    public MyLinearLayout setBorderDashWidth(float borderDashWidth) {
+        baseBean.setBorderDashWidth(borderDashWidth);
+        return this;
+    }
+
+    @Override
+    public float getBorderDashGap() {
+        return baseBean.getBorderDashGap();
+    }
+
+    @Override
+    public MyLinearLayout setBorderDashGap(float borderDashGap) {
+        baseBean.setBorderDashGap(borderDashGap);
+        return this;
+    }
+
+    @Override
+    public MyLinearLayout setSolidColor(int solidColor) {
+        baseBean.setSolidColor(solidColor);
+        return this;
+    }
+
+
+
+    @Override
+    public MyLinearLayout setRadius(float topLeftRadius, float topRightRadius, float bottomRightRadius, float bottomLeftRadius) {
+        baseBean.setRadius(topLeftRadius,topRightRadius,bottomRightRadius,bottomLeftRadius);
+        return this;
+    }
+    @Override
+    public MyLinearLayout setRadius(float radius) {
+        baseBean.setRadius(radius);
+        return this;
+    }
+    @Override
+    public float getTopLeftRadius() {
+        return baseBean.getTopLeftRadius();
+    }
+    @Override
+    public MyLinearLayout setTopLeftRadius(float topLeftRadius) {
+        baseBean.setTopLeftRadius(topLeftRadius);
+        return this;
+    }
+
+    @Override
+    public float getTopRightRadius() {
+        return baseBean.getTopRightRadius();
+    }
+
+    @Override
+    public MyLinearLayout setTopRightRadius(float topRightRadius) {
+        baseBean.setTopRightRadius(topRightRadius);
+        return this;
+    }
+
+    @Override
+    public float getBottomLeftRadius() {
+        return baseBean.getBottomLeftRadius();
+    }
+
+    @Override
+    public MyLinearLayout setBottomLeftRadius(float bottomLeftRadius) {
+        baseBean.setBottomLeftRadius(bottomLeftRadius);
+        return this;
+    }
+
+    @Override
+    public float getBottomRightRadius() {
+        return baseBean.getBottomRightRadius();
+    }
+
+    @Override
+    public MyLinearLayout setBottomRightRadius(float bottomRightRadius) {
+        baseBean.setBottomRightRadius(bottomRightRadius);
+        return this;
+    }
+
+    @Override
+    public int getGradientType() {
+        return baseBean.getGradientType();
+    }
+
+    @Override
+    public MyLinearLayout setGradientType(int gradientType) {
+        baseBean.setGradientType(gradientType);
+        return this;
+    }
+
+    @Override
+    public int getGradientAngle() {
+        return baseBean.getGradientAngle();
+    }
+
+    @Override
+    public MyLinearLayout setGradientAngle(int gradientAngle) {
+        baseBean.setGradientAngle(gradientAngle);
+        return this;
+    }
+
+    @Override
+    public float getGradientCenterX() {
+        return baseBean.getGradientCenterX();
+    }
+
+    @Override
+    public MyLinearLayout setGradientCenterX(float gradientCenterX) {
+        baseBean.setGradientCenterX(gradientCenterX);
+        return this;
+    }
+
+    @Override
+    public float getGradientCenterY() {
+        return baseBean.getGradientCenterY();
+    }
+
+    @Override
+    public MyLinearLayout setGradientCenterY(float gradientCenterY) {
+        baseBean.setGradientCenterY(gradientCenterY);
+        return this;
+    }
+
+    @Override
+    public int getGradientStartColor() {
+        return baseBean.getGradientStartColor();
+    }
+
+    @Override
+    public MyLinearLayout setGradientStartColor(int gradientStartColor) {
+        baseBean.setGradientStartColor(gradientStartColor);
+        return this;
+    }
+
+    @Override
+    public int getGradientCenterColor() {
+        return baseBean.getGradientCenterColor();
+    }
+
+    @Override
+    public MyLinearLayout setGradientCenterColor(int gradientCenterColor) {
+        baseBean.setGradientCenterColor(gradientCenterColor);
+        return this;
+    }
+
+    @Override
+    public int getGradientEndColor() {
+        return baseBean.getGradientEndColor();
+    }
+
+    @Override
+    public MyLinearLayout setGradientEndColor(int gradientEndColor) {
+        baseBean.setGradientEndColor(gradientEndColor);
+        return this;
+    }
+
+    @Override
+    public float getGradientRadius() {
+        return baseBean.getGradientRadius();
+    }
+
+    @Override
+    public MyLinearLayout setGradientRadius(float gradientRadius) {
+        baseBean.setGradientRadius(gradientRadius);
+        return this;
+    }
+
+
 }

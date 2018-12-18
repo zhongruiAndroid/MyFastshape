@@ -47,7 +47,7 @@ public class XMLActivity extends AppCompatActivity {
                 showMsg("click");
             }
         });
-        viewHelper = ll_view.getViewHelper();
+//        viewHelper = ll_view.getViewHelper();
 
         cb_regin_click = (CheckBox) findViewById(R.id.cb_regin_click);
         cb_regin_click.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

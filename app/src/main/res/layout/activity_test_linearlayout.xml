@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TestLinearlayoutActivity">
+
+    <com.github.fastshape.MyLinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:clickable="true"
+        android:onClick="viewClick"
+        app:borderDashGap="2dp"
+        app:borderWidth="2dp"
+        app:borderColor="@color/colorAccent"
+        app:borderDashWidth="3dp"
+        app:bottom_line="true"
+        app:top_line="true"
+        app:left_line="true"
+        app:right_line="true"
+        app:all_line="true"
+        app:bottomLeftRadius="10dp"
+        app:bottomRightRadius="20dp"
+        app:topLeftRadius="30dp"
+        app:topRightRadius="40dp"
+        app:gradientType="radial"
+        app:gradientStartColor="@color/crimson"
+        app:gradientEndColor="@color/colorAccent"
+        app:gradientAngle="a135"
+        app:gradientCenterColor="@color/mediumspringgreen"
+        app:gradientRadius="110dp"
+        app:gradientCenterX="0.5"
+        app:solidColor="@color/colorAccentAlpha"
+        app:shapeType="rectangle"
+        app:pressColor="@color/c_press"
+        app:gradientCenterY="0.5"
+        app:radius="20dp"
+        app:drawable_normal="@drawable/bird"
+        app:drawable_press="@drawable/check_select"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="testMyLinearLayout"
+            android:textSize="20sp" />
+    </com.github.fastshape.MyLinearLayout>
+</LinearLayout>
