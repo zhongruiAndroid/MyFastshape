@@ -4,7 +4,7 @@ package com.github.fastshape.bean;
  * Created by Administrator on 2018/7/3.
  */
 
-public class TextViewBean extends BaseBean{
+public class TextViewHelper extends BaseHelper {
     /*设置drawableLeft宽高,只设置其中一个属性自动适配另外一个属性*/
     protected int left_width;
     protected int left_height;

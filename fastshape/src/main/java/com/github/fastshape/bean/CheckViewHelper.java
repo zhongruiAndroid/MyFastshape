@@ -8,7 +8,7 @@ import com.github.fastshape.inter.CheckViewInter;
  * @createBy Administrator
  * @time 2018-12-17 15:47
  */
-public class CheckViewBean extends TextViewBean implements CheckViewInter {
+public class CheckViewHelper extends TextViewHelper implements CheckViewInter {
     /*设置normal和check状态的drawable*/
     protected Drawable normal_drawable;
     protected Drawable checked_drawable;

@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -12,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
 
-import com.github.fastshape.bean.BaseBean;
+import com.github.fastshape.bean.BaseHelper;
 import com.github.fastshape.inter.BaseInter;
 
 
@@ -20,7 +19,7 @@ import com.github.fastshape.inter.BaseInter;
  * Created by Administrator on 2016/9/6.
  */
 public class MyLinearLayout extends LinearLayout implements BaseInter<MyLinearLayout> {
-    private BaseBean baseBean;
+    private BaseHelper baseHelper;
 //    private BaseViewHelper viewHelper;
 
     public MyLinearLayout(Context context) {
@@ -28,7 +27,7 @@ public class MyLinearLayout extends LinearLayout implements BaseInter<MyLinearLa
     }
 
     public MyLinearLayout(Context context, AttributeSet attrs) {
-        this(context, attrs,BaseBean.defStyleAttr);
+        this(context, attrs,BaseHelper.defStyleAttr);
     }
 
     public MyLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -43,7 +42,7 @@ public class MyLinearLayout extends LinearLayout implements BaseInter<MyLinearLa
 
 
     public void init(AttributeSet attrs,int defStyleAttr) {
-        baseBean=new BaseBean();
+        baseHelper =new BaseHelper();
         initData();
         Drawable background = getBackground();
         if (background != null) {
@@ -52,7 +51,7 @@ public class MyLinearLayout extends LinearLayout implements BaseInter<MyLinearLa
         /*
         setAttrForDraw(viewNormal);
 */
-        baseBean.init(getContext(),attrs,defStyleAttr);
+        baseHelper.init(getContext(),attrs,defStyleAttr);
 
 
 
@@ -66,8 +65,8 @@ public class MyLinearLayout extends LinearLayout implements BaseInter<MyLinearLa
     }
 
     private void initData() {
-//        baseBean.clipBorderColor = Color.parseColor("#34e8a6");
-//        baseBean.clipBorderDashBgColor = Color.WHITE;
+//        baseHelper.clipBorderColor = Color.parseColor("#34e8a6");
+//        baseHelper.clipBorderDashBgColor = Color.WHITE;
     }
 
     private void setAttrForDraw(TypedArray viewNormal) {
@@ -101,7 +100,7 @@ public class MyLinearLayout extends LinearLayout implements BaseInter<MyLinearLa
      * 这个方法是将代码设置的各个属性收集生成一个Drawable,然后将它设置为background,简单点这个方法就是用来设置背景的,等价于setBackground方法
      */
     public void complete() {
-        baseBean.viewComplete(this);
+        baseHelper.viewComplete(this);
     }
 
     @Override
@@ -147,157 +146,157 @@ public class MyLinearLayout extends LinearLayout implements BaseInter<MyLinearLa
 
     @Override
     public MyLinearLayout clearAttr() {
-        baseBean.clearAttr();
+        baseHelper.clearAttr();
         return this;
     }
 
     @Override
     public Drawable getDrawable_normal() {
-        return baseBean.getDrawable_normal();
+        return baseHelper.getDrawable_normal();
     }
 
     @Override
     public MyLinearLayout setDrawable_normal(Drawable drawable_normal) {
-        baseBean.setDrawable_normal(drawable_normal);
+        baseHelper.setDrawable_normal(drawable_normal);
         return this;
 
     }
 
     @Override
     public Drawable getDrawable_press() {
-        return baseBean.getDrawable_press();
+        return baseHelper.getDrawable_press();
     }
 
     @Override
     public MyLinearLayout setDrawable_press(Drawable drawable_press) {
-        baseBean.setDrawable_press(drawable_press);
+        baseHelper.setDrawable_press(drawable_press);
         return this;
     }
 
     @Override
     public int getPressColor() {
-        return baseBean.getPressColor();
+        return baseHelper.getPressColor();
     }
 
     @Override
     public MyLinearLayout setPressColor(int pressColor) {
-        baseBean.setPressColor(pressColor);
+        baseHelper.setPressColor(pressColor);
         return this;
     }
 
     @Override
     public boolean isAll_line() {
-        return baseBean.isAll_line();
+        return baseHelper.isAll_line();
     }
 
     @Override
     public MyLinearLayout setAll_line(boolean all_line) {
-        baseBean.setAll_line(all_line);
+        baseHelper.setAll_line(all_line);
         return this;
     }
 
     @Override
     public boolean isLeft_line() {
-        return baseBean.isLeft_line();
+        return baseHelper.isLeft_line();
     }
 
     @Override
     public MyLinearLayout setLeft_line(boolean left_line) {
-        baseBean.setLeft_line(left_line);
+        baseHelper.setLeft_line(left_line);
         return this;
     }
 
     @Override
     public boolean isTop_line() {
-        return baseBean.isTop_line();
+        return baseHelper.isTop_line();
     }
 
     @Override
     public MyLinearLayout setTop_line(boolean top_line) {
-        baseBean.setTop_line(top_line);
+        baseHelper.setTop_line(top_line);
         return this;
     }
 
     @Override
     public boolean isRight_line() {
-        return baseBean.isRight_line();
+        return baseHelper.isRight_line();
     }
 
     @Override
     public MyLinearLayout setRight_line(boolean right_line) {
-        baseBean.setRight_line(right_line);
+        baseHelper.setRight_line(right_line);
         return this;
     }
 
     @Override
     public boolean isBottom_line() {
-        return baseBean.isBottom_line();
+        return baseHelper.isBottom_line();
     }
 
     @Override
     public MyLinearLayout setBottom_line(boolean bottom_line) {
-        baseBean.setBottom_line(bottom_line);
+        baseHelper.setBottom_line(bottom_line);
         return this;
     }
 
     @Override
     public int getShapeType() {
-        return baseBean.getShapeType();
+        return baseHelper.getShapeType();
     }
 
     @Override
-    public MyLinearLayout setShapeType(int shapeType) {
-        baseBean.setShapeType(shapeType);
+    public MyLinearLayout setShapeType(@BaseHelper.shapeType int shapeType) {
+        baseHelper.setShapeType(shapeType);
         return this;
     }
 
     @Override
     public float getBorderWidth() {
-        return baseBean.getBorderWidth();
+        return baseHelper.getBorderWidth();
     }
 
     @Override
     public MyLinearLayout setBorderWidth(float borderWidth) {
-        baseBean.setBorderWidth(borderWidth);
+        baseHelper.setBorderWidth(borderWidth);
         return this;
     }
 
     @Override
     public int getBorderColor() {
-        return baseBean.getBorderColor();
+        return baseHelper.getBorderColor();
     }
 
     @Override
     public MyLinearLayout setBorderColor(int borderColor) {
-        baseBean.setBorderColor(borderColor);
+        baseHelper.setBorderColor(borderColor);
         return this;
     }
 
     @Override
     public float getBorderDashWidth() {
-        return baseBean.getBorderDashWidth();
+        return baseHelper.getBorderDashWidth();
     }
 
     @Override
     public MyLinearLayout setBorderDashWidth(float borderDashWidth) {
-        baseBean.setBorderDashWidth(borderDashWidth);
+        baseHelper.setBorderDashWidth(borderDashWidth);
         return this;
     }
 
     @Override
     public float getBorderDashGap() {
-        return baseBean.getBorderDashGap();
+        return baseHelper.getBorderDashGap();
     }
 
     @Override
     public MyLinearLayout setBorderDashGap(float borderDashGap) {
-        baseBean.setBorderDashGap(borderDashGap);
+        baseHelper.setBorderDashGap(borderDashGap);
         return this;
     }
 
     @Override
     public MyLinearLayout setSolidColor(int solidColor) {
-        baseBean.setSolidColor(solidColor);
+        baseHelper.setSolidColor(solidColor);
         return this;
     }
 
@@ -305,142 +304,142 @@ public class MyLinearLayout extends LinearLayout implements BaseInter<MyLinearLa
 
     @Override
     public MyLinearLayout setRadius(float topLeftRadius, float topRightRadius, float bottomRightRadius, float bottomLeftRadius) {
-        baseBean.setRadius(topLeftRadius,topRightRadius,bottomRightRadius,bottomLeftRadius);
+        baseHelper.setRadius(topLeftRadius,topRightRadius,bottomRightRadius,bottomLeftRadius);
         return this;
     }
     @Override
     public MyLinearLayout setRadius(float radius) {
-        baseBean.setRadius(radius);
+        baseHelper.setRadius(radius);
         return this;
     }
     @Override
     public float getTopLeftRadius() {
-        return baseBean.getTopLeftRadius();
+        return baseHelper.getTopLeftRadius();
     }
     @Override
     public MyLinearLayout setTopLeftRadius(float topLeftRadius) {
-        baseBean.setTopLeftRadius(topLeftRadius);
+        baseHelper.setTopLeftRadius(topLeftRadius);
         return this;
     }
 
     @Override
     public float getTopRightRadius() {
-        return baseBean.getTopRightRadius();
+        return baseHelper.getTopRightRadius();
     }
 
     @Override
     public MyLinearLayout setTopRightRadius(float topRightRadius) {
-        baseBean.setTopRightRadius(topRightRadius);
+        baseHelper.setTopRightRadius(topRightRadius);
         return this;
     }
 
     @Override
     public float getBottomLeftRadius() {
-        return baseBean.getBottomLeftRadius();
+        return baseHelper.getBottomLeftRadius();
     }
 
     @Override
     public MyLinearLayout setBottomLeftRadius(float bottomLeftRadius) {
-        baseBean.setBottomLeftRadius(bottomLeftRadius);
+        baseHelper.setBottomLeftRadius(bottomLeftRadius);
         return this;
     }
 
     @Override
     public float getBottomRightRadius() {
-        return baseBean.getBottomRightRadius();
+        return baseHelper.getBottomRightRadius();
     }
 
     @Override
     public MyLinearLayout setBottomRightRadius(float bottomRightRadius) {
-        baseBean.setBottomRightRadius(bottomRightRadius);
+        baseHelper.setBottomRightRadius(bottomRightRadius);
         return this;
     }
 
     @Override
     public int getGradientType() {
-        return baseBean.getGradientType();
+        return baseHelper.getGradientType();
     }
 
     @Override
-    public MyLinearLayout setGradientType(int gradientType) {
-        baseBean.setGradientType(gradientType);
+    public MyLinearLayout setGradientType(@BaseHelper.gradientType int gradientType) {
+        baseHelper.setGradientType(gradientType);
         return this;
     }
 
     @Override
     public int getGradientAngle() {
-        return baseBean.getGradientAngle();
+        return baseHelper.getGradientAngle();
     }
 
     @Override
-    public MyLinearLayout setGradientAngle(int gradientAngle) {
-        baseBean.setGradientAngle(gradientAngle);
+    public MyLinearLayout setGradientAngle(@BaseHelper.angleType int gradientAngle) {
+        baseHelper.setGradientAngle(gradientAngle);
         return this;
     }
 
     @Override
     public float getGradientCenterX() {
-        return baseBean.getGradientCenterX();
+        return baseHelper.getGradientCenterX();
     }
 
     @Override
     public MyLinearLayout setGradientCenterX(float gradientCenterX) {
-        baseBean.setGradientCenterX(gradientCenterX);
+        baseHelper.setGradientCenterX(gradientCenterX);
         return this;
     }
 
     @Override
     public float getGradientCenterY() {
-        return baseBean.getGradientCenterY();
+        return baseHelper.getGradientCenterY();
     }
 
     @Override
     public MyLinearLayout setGradientCenterY(float gradientCenterY) {
-        baseBean.setGradientCenterY(gradientCenterY);
+        baseHelper.setGradientCenterY(gradientCenterY);
         return this;
     }
 
     @Override
     public int getGradientStartColor() {
-        return baseBean.getGradientStartColor();
+        return baseHelper.getGradientStartColor();
     }
 
     @Override
     public MyLinearLayout setGradientStartColor(int gradientStartColor) {
-        baseBean.setGradientStartColor(gradientStartColor);
+        baseHelper.setGradientStartColor(gradientStartColor);
         return this;
     }
 
     @Override
     public int getGradientCenterColor() {
-        return baseBean.getGradientCenterColor();
+        return baseHelper.getGradientCenterColor();
     }
 
     @Override
     public MyLinearLayout setGradientCenterColor(int gradientCenterColor) {
-        baseBean.setGradientCenterColor(gradientCenterColor);
+        baseHelper.setGradientCenterColor(gradientCenterColor);
         return this;
     }
 
     @Override
     public int getGradientEndColor() {
-        return baseBean.getGradientEndColor();
+        return baseHelper.getGradientEndColor();
     }
 
     @Override
     public MyLinearLayout setGradientEndColor(int gradientEndColor) {
-        baseBean.setGradientEndColor(gradientEndColor);
+        baseHelper.setGradientEndColor(gradientEndColor);
         return this;
     }
 
     @Override
     public float getGradientRadius() {
-        return baseBean.getGradientRadius();
+        return baseHelper.getGradientRadius();
     }
 
     @Override
     public MyLinearLayout setGradientRadius(float gradientRadius) {
-        baseBean.setGradientRadius(gradientRadius);
+        baseHelper.setGradientRadius(gradientRadius);
         return this;
     }
 

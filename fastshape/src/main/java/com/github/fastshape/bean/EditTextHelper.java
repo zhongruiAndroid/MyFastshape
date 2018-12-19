@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
  * @createBy Administrator
  * @time 2018-12-17 15:46
  */
-public class EditTextBean extends BaseBean {
+public class EditTextHelper extends BaseHelper {
     /*设置清除按钮drawable(点击清除内容)*/
     protected Drawable clearIconDrawable;
     /*设置清除按钮是否隐藏,默认false*/

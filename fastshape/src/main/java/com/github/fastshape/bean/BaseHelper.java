@@ -11,10 +11,8 @@ import android.os.Build;
 import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
-import com.github.fastshape.BaseViewHelper;
 import com.github.fastshape.Helper;
 import com.github.fastshape.MyButton;
 import com.github.fastshape.MyCheckBox;
@@ -30,8 +28,8 @@ import java.lang.annotation.RetentionPolicy;
  * Created by Administrator on 2018/7/3.
  */
 
-public class BaseBean extends Helper implements BaseInter<BaseBean> {
-    public static final int defStyleAttr=R.attr.fastShapeStyle;
+public class BaseHelper extends Helper implements BaseInter<BaseHelper> {
+    public static final int defStyleAttr=R.attr.fastshapeStyle;
 
     /*设置正常状态背景和press状态背景,覆盖其他所有属性*/
     protected Drawable drawable_normal;
@@ -106,7 +104,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
     protected int gradientAngle;
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({angle_0,angle_45,angle_90,angle_135,angle_180,angle_225,angle_270,angle_315})
-    public @interface angleType{};
+    public  @interface angleType{};
     public static final int angle_0=0;
     public static final int angle_45=45;
     public static final int angle_90=90;
@@ -134,7 +132,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
 
     private boolean isPartBorder;
 
-    public BaseBean() {
+    public BaseHelper() {
 //        clipBorderColor = Color.parseColor("#34e8a6");
 //        clipBorderDashBgColor = Color.WHITE;
     }
@@ -212,7 +210,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         }
     }
 
-    public BaseBean clearAttr() {
+    public BaseHelper clearAttr() {
         this.drawable_normal = null;
         this.drawable_press = null;
 
@@ -609,7 +607,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return drawable_normal;
     }
 
-    public BaseBean setDrawable_normal(Drawable drawable_normal) {
+    public BaseHelper setDrawable_normal(Drawable drawable_normal) {
         this.drawable_normal = drawable_normal;
         return this;
     }
@@ -618,7 +616,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return drawable_press;
     }
 
-    public BaseBean setDrawable_press(Drawable drawable_press) {
+    public BaseHelper setDrawable_press(Drawable drawable_press) {
         this.drawable_press = drawable_press;
         return this;
     }
@@ -627,7 +625,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return pressColor;
     }
 
-    public BaseBean setPressColor(int pressColor) {
+    public BaseHelper setPressColor(int pressColor) {
         this.pressColor = pressColor;
         return this;
     }
@@ -636,7 +634,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return all_line;
     }
 
-    public BaseBean setAll_line(boolean all_line) {
+    public BaseHelper setAll_line(boolean all_line) {
         this.all_line = all_line;
         return this;
     }
@@ -645,7 +643,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return left_line;
     }
 
-    public BaseBean setLeft_line(boolean left_line) {
+    public BaseHelper setLeft_line(boolean left_line) {
         this.left_line = left_line;
         return this;
     }
@@ -654,7 +652,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return top_line;
     }
 
-    public BaseBean setTop_line(boolean top_line) {
+    public BaseHelper setTop_line(boolean top_line) {
         this.top_line = top_line;
         return this;
     }
@@ -663,7 +661,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return right_line;
     }
 
-    public BaseBean setRight_line(boolean right_line) {
+    public BaseHelper setRight_line(boolean right_line) {
         this.right_line = right_line;
         return this;
     }
@@ -672,7 +670,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return bottom_line;
     }
 
-    public BaseBean setBottom_line(boolean bottom_line) {
+    public BaseHelper setBottom_line(boolean bottom_line) {
         this.bottom_line = bottom_line;
         return this;
     }
@@ -681,7 +679,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return shapeType;
     }
 
-    public BaseBean setShapeType(int shapeType) {
+    public BaseHelper setShapeType(@shapeType int shapeType) {
         this.shapeType = shapeType;
         return this;
     }
@@ -690,7 +688,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return borderWidth;
     }
 
-    public BaseBean setBorderWidth(float borderWidth) {
+    public BaseHelper setBorderWidth(float borderWidth) {
         this.borderWidth = borderWidth;
         return this;
     }
@@ -699,7 +697,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return borderColor;
     }
 
-    public BaseBean setBorderColor(int borderColor) {
+    public BaseHelper setBorderColor(int borderColor) {
         this.borderColor = borderColor;
         return this;
     }
@@ -708,7 +706,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return borderDashWidth;
     }
 
-    public BaseBean setBorderDashWidth(float borderDashWidth) {
+    public BaseHelper setBorderDashWidth(float borderDashWidth) {
         this.borderDashWidth = borderDashWidth;
         return this;
     }
@@ -717,7 +715,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return borderDashGap;
     }
 
-    public BaseBean setBorderDashGap(float borderDashGap) {
+    public BaseHelper setBorderDashGap(float borderDashGap) {
         this.borderDashGap = borderDashGap;
         return this;
     }
@@ -726,20 +724,20 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return solidColor;
     }
 
-    public BaseBean setSolidColor(int solidColor) {
+    public BaseHelper setSolidColor(int solidColor) {
         this.solidColor = solidColor;
         return this;
     }
 
 
-    public BaseBean setRadius(float topLeftRadius,float topRightRadius,float bottomRightRadius,float bottomLeftRadius) {
+    public BaseHelper setRadius(float topLeftRadius, float topRightRadius, float bottomRightRadius, float bottomLeftRadius) {
         setTopLeftRadius(topLeftRadius);
         setTopRightRadius(topRightRadius);
         setBottomRightRadius(bottomRightRadius);
         setBottomLeftRadius(bottomLeftRadius);
         return this;
     }
-    public BaseBean setRadius(float radius) {
+    public BaseHelper setRadius(float radius) {
         return setRadius(radius,radius,radius,radius);
     }
 
@@ -747,7 +745,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return topLeftRadius;
     }
 
-    public BaseBean setTopLeftRadius(float topLeftRadius) {
+    public BaseHelper setTopLeftRadius(float topLeftRadius) {
         this.topLeftRadius = topLeftRadius;
         return this;
     }
@@ -756,7 +754,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return topRightRadius;
     }
 
-    public BaseBean setTopRightRadius(float topRightRadius) {
+    public BaseHelper setTopRightRadius(float topRightRadius) {
         this.topRightRadius = topRightRadius;
         return this;
     }
@@ -765,7 +763,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return bottomLeftRadius;
     }
 
-    public BaseBean setBottomLeftRadius(float bottomLeftRadius) {
+    public BaseHelper setBottomLeftRadius(float bottomLeftRadius) {
         this.bottomLeftRadius = bottomLeftRadius;
         return this;
     }
@@ -774,7 +772,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return bottomRightRadius;
     }
 
-    public BaseBean setBottomRightRadius(float bottomRightRadius) {
+    public BaseHelper setBottomRightRadius(float bottomRightRadius) {
         this.bottomRightRadius = bottomRightRadius;
         return this;
     }
@@ -783,7 +781,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return gradientType;
     }
 
-    public BaseBean setGradientType(int gradientType) {
+    public BaseHelper setGradientType(@gradientType int gradientType) {
         this.gradientType = gradientType;
         return this;
     }
@@ -792,7 +790,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return gradientAngle;
     }
 
-    public BaseBean setGradientAngle(int gradientAngle) {
+    public BaseHelper setGradientAngle(@angleType int gradientAngle) {
         this.gradientAngle = gradientAngle;
         return this;
     }
@@ -801,7 +799,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return gradientCenterX;
     }
 
-    public BaseBean setGradientCenterX(float gradientCenterX) {
+    public BaseHelper setGradientCenterX(float gradientCenterX) {
         this.gradientCenterX = gradientCenterX;
         return this;
     }
@@ -810,7 +808,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return gradientCenterY;
     }
 
-    public BaseBean setGradientCenterY(float gradientCenterY) {
+    public BaseHelper setGradientCenterY(float gradientCenterY) {
         this.gradientCenterY = gradientCenterY;
         return this;
     }
@@ -819,7 +817,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return gradientStartColor;
     }
 
-    public BaseBean setGradientStartColor(int gradientStartColor) {
+    public BaseHelper setGradientStartColor(int gradientStartColor) {
         this.gradientStartColor = gradientStartColor;
         return this;
     }
@@ -828,7 +826,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return gradientCenterColor;
     }
 
-    public BaseBean setGradientCenterColor(int gradientCenterColor) {
+    public BaseHelper setGradientCenterColor(int gradientCenterColor) {
         this.gradientCenterColor = gradientCenterColor;
         return this;
     }
@@ -837,7 +835,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return gradientEndColor;
     }
 
-    public BaseBean setGradientEndColor(int gradientEndColor) {
+    public BaseHelper setGradientEndColor(int gradientEndColor) {
         this.gradientEndColor = gradientEndColor;
         return this;
     }
@@ -846,7 +844,7 @@ public class BaseBean extends Helper implements BaseInter<BaseBean> {
         return gradientRadius;
     }
 
-    public BaseBean setGradientRadius(float gradientRadius) {
+    public BaseHelper setGradientRadius(float gradientRadius) {
         this.gradientRadius = gradientRadius;
         return this;
     }

@@ -534,7 +534,7 @@
     <attr name="bottom_height" format="dimension" />
 
     <!--end******************************所有属性*************************************-->
-    <attr name="fastShapeStyle" format="reference"></attr>
+    <attr name="fastshapeStyle" format="reference"></attr>
 
 
     <declare-styleable name="FastShapeAttr">

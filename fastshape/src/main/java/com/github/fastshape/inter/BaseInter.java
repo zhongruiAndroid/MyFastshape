@@ -2,9 +2,6 @@ package com.github.fastshape.inter;
 
 import android.graphics.drawable.Drawable;
 
-import com.github.fastshape.MyLinearLayout;
-import com.github.fastshape.bean.BaseBean;
-
 /**
  * @createBy Administrator
  * @time 2018-12-17 16:35
