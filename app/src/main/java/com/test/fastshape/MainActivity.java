@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                startActivity(new Intent(MainActivity.this,XMLActivity.class));
+                startActivity(new Intent(MainActivity.this,TestLinearlayoutActivity.class));
             }
         });
 
@@ -44,13 +44,19 @@ public class MainActivity extends AppCompatActivity {
         viewHelper.complete();//或者textView.complete();
 
         MyLinearLayout linearLayout=new MyLinearLayout(this);
-        linearLayout.getViewHelper()
+        linearLayout.clearAttr()
+                .setAll_line(true)
+                .setGradientType(BaseViewHelper.gradientType_linear)
+                .setSolidColor(ContextCompat.getColor(this,R.color.white))
+                .setRadius(20)
+                .complete();
+        /*linearLayout.getViewHelper()
                 .clearAttribute()
                 .setAllLine(true)
                 .setGradientType(BaseViewHelper.gradientType_linear)
                 .setSolidColor(ContextCompat.getColor(this,R.color.white))
                 .setRadius(20)
-                .complete();//或者linearLayout.complete();
+                .complete();//或者linearLayout.complete();*/
 
     }
 }
