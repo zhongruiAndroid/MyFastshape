@@ -32,7 +32,6 @@
         app:clipIsCircle="true"
         app:clipIsAreaClick="true"
         app:clipBorderPhase="3"
-        app:clipBorderDashBgColor="@color/white"
         app:solidColor="@color/aliceblue"
         android:padding="20dp"
         app:clipIgnorePadding="false"
@@ -110,7 +109,6 @@
         android:text="是否为圆形"
         android:textColor="@color/blue"
         android:checked="true"
-        android:fontFamily="@font/nicai"
         />
     <com.github.fastshape.MyCheckBox
         android:layout_width="wrap_content"
@@ -136,7 +134,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="边框颜色(黑蓝)22"
-    android:fontFamily="@font/nicai"
     />
         <CheckBox
             android:id="@+id/cb_dash_bg"

@@ -71,7 +71,7 @@
         <attr name="clipBorderColor" />
         <attr name="clipBorderDashWidth" />
         <attr name="clipBorderDashGap" />
-        <attr name="clipBorderDashBgColor" />
+        <attr name="clipBorderDashBgColor"  />`
         <attr name="clipBorderPhase" />
 
     </declare-styleable>
@@ -170,6 +170,29 @@
 
     <!--******************************MyRelativeLayout*************************************-->
     <declare-styleable name="MyRelativeLayout">
+        <!--裁剪是否启用-->
+        <attr name="clipSwitch"  />
+        <!--是否裁剪自身背景-->
+        <attr name="clipBg"/>
+        <!--裁剪属性-->
+        <attr name="clipIsCircle"  />
+        <attr name="clipIsAreaClick"  />
+        <attr name="clipIgnorePadding"  />
+
+        <attr name="clipRadius"  />
+        <attr name="clipTopLeftRadius"  />
+        <attr name="clipTopRightRadius"  />
+        <attr name="clipBottomLeftRadius"  />
+        <attr name="clipBottomRightRadius"  />
+
+        <attr name="clipBorderWidth"  />
+        <attr name="clipBorderColor" />
+        <attr name="clipBorderDashWidth"  />
+        <attr name="clipBorderDashGap"  />
+        <attr name="clipBorderDashBgColor"  />`
+        <attr name="clipBorderPhase"  />
+
+        <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -202,29 +225,35 @@
         <attr name="gradientStartColor" />
         <attr name="gradientCenterColor" />
         <attr name="gradientEndColor" />
-        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用。-->
+        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用-->
         <attr name="gradientType" />
-
-        <!--裁剪-->
-        <attr name="clipIgnorePadding" />
-        <attr name="clipIsCircle" />
-        <attr name="clipIsAreaClick" />
-
-        <attr name="clipRadius" />
-        <attr name="clipTopLeftRadius" />
-        <attr name="clipTopRightRadius" />
-        <attr name="clipBottomLeftRadius" />
-        <attr name="clipBottomRightRadius" />
-
-        <attr name="clipBorderWidth" />
-        <attr name="clipBorderColor" />
-        <attr name="clipBorderDashWidth" />
-        <attr name="clipBorderDashGap" />
-        <attr name="clipBorderDashBgColor" />
-        <attr name="clipBorderPhase" />
+        <!--end MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
     </declare-styleable>
     <!--******************************MyLinearLayout*************************************-->
     <declare-styleable name="MyLinearLayout">
+        <!--裁剪是否启用-->
+        <attr name="clipSwitch"  />
+        <!--是否裁剪自身背景-->
+        <attr name="clipBg"/>
+        <!--裁剪属性-->
+        <attr name="clipIsCircle"  />
+        <attr name="clipIsAreaClick"  />
+        <attr name="clipIgnorePadding"  />
+
+        <attr name="clipRadius"  />
+        <attr name="clipTopLeftRadius"  />
+        <attr name="clipTopRightRadius"  />
+        <attr name="clipBottomLeftRadius"  />
+        <attr name="clipBottomRightRadius"  />
+
+        <attr name="clipBorderWidth"  />
+        <attr name="clipBorderColor" />
+        <attr name="clipBorderDashWidth"  />
+        <attr name="clipBorderDashGap"  />
+        <attr name="clipBorderDashBgColor"  />`
+        <attr name="clipBorderPhase"  />
+
+        <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -257,33 +286,37 @@
         <attr name="gradientStartColor" />
         <attr name="gradientCenterColor" />
         <attr name="gradientEndColor" />
-        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用。-->
+        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用-->
         <attr name="gradientType" />
-        <!--<attr name="innerRadius" format="dimension"/>-->
-        <!--<attr name="thickness" format="dimension"/>-->
-
-        <!--裁剪-->
-        <attr name="clipIgnorePadding" />
-        <attr name="clipIsCircle" />
-        <attr name="clipIsAreaClick" />
-
-        <attr name="clipRadius" />
-        <attr name="clipTopLeftRadius" />
-        <attr name="clipTopRightRadius" />
-        <attr name="clipBottomLeftRadius" />
-        <attr name="clipBottomRightRadius" />
-
-        <attr name="clipBorderWidth" />
-        <attr name="clipBorderColor" />
-        <attr name="clipBorderDashWidth" />
-        <attr name="clipBorderDashGap" />
-        <attr name="clipBorderDashBgColor" />
-        <attr name="clipBorderPhase" />
+        <!--end MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
     </declare-styleable>
 
     <!--******************************MyFrameLayout*************************************-->
     <declare-styleable name="MyFrameLayout">
 
+        <!--裁剪是否启用-->
+        <attr name="clipSwitch"  />
+        <!--是否裁剪自身背景-->
+        <attr name="clipBg"/>
+        <!--裁剪属性-->
+        <attr name="clipIsCircle"  />
+        <attr name="clipIsAreaClick"  />
+        <attr name="clipIgnorePadding"  />
+
+        <attr name="clipRadius"  />
+        <attr name="clipTopLeftRadius"  />
+        <attr name="clipTopRightRadius"  />
+        <attr name="clipBottomLeftRadius"  />
+        <attr name="clipBottomRightRadius"  />
+
+        <attr name="clipBorderWidth"  />
+        <attr name="clipBorderColor" />
+        <attr name="clipBorderDashWidth"  />
+        <attr name="clipBorderDashGap"  />
+        <attr name="clipBorderDashBgColor" />`
+        <attr name="clipBorderPhase"  />
+
+        <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -316,27 +349,9 @@
         <attr name="gradientStartColor" />
         <attr name="gradientCenterColor" />
         <attr name="gradientEndColor" />
-        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用。-->
+        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用-->
         <attr name="gradientType" />
-
-
-        <!--裁剪-->
-        <attr name="clipIgnorePadding" />
-        <attr name="clipIsCircle" />
-        <attr name="clipIsAreaClick" />
-
-        <attr name="clipRadius" />
-        <attr name="clipTopLeftRadius" />
-        <attr name="clipTopRightRadius" />
-        <attr name="clipBottomLeftRadius" />
-        <attr name="clipBottomRightRadius" />
-
-        <attr name="clipBorderWidth" />
-        <attr name="clipBorderColor" />
-        <attr name="clipBorderDashWidth" />
-        <attr name="clipBorderDashGap" />
-        <attr name="clipBorderDashBgColor" />
-        <attr name="clipBorderPhase" />
+        <!--end MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
     </declare-styleable>
 
 
@@ -439,6 +454,8 @@
     </declare-styleable>
 
     <!--start******************************所有属性*************************************-->
+    <attr name="clipSwitch" format="boolean" />
+    <attr name="clipBg" format="boolean" />
     <attr name="clipIsCircle" format="boolean" />
     <attr name="clipIsAreaClick" format="boolean" />
     <attr name="clipIgnorePadding" format="boolean" />
@@ -453,7 +470,7 @@
     <attr name="clipBorderColor" format="color" />
     <attr name="clipBorderDashWidth" format="dimension" />
     <attr name="clipBorderDashGap" format="dimension" />
-    <attr name="clipBorderDashBgColor" format="color" />
+    <attr name="clipBorderDashBgColor" format="color" />`
     <attr name="clipBorderPhase" format="integer" />
 
 
@@ -538,6 +555,28 @@
 
 
     <declare-styleable name="FastShapeAttr">
+        <!--裁剪是否启用-->
+        <attr name="clipSwitch"  />
+        <!--是否裁剪自身背景-->
+        <attr name="clipBg"/>
+        <!--裁剪属性-->
+        <attr name="clipIsCircle"  />
+        <attr name="clipIsAreaClick"  />
+        <attr name="clipIgnorePadding"  />
+
+        <attr name="clipRadius"  />
+        <attr name="clipTopLeftRadius"  />
+        <attr name="clipTopRightRadius"  />
+        <attr name="clipBottomLeftRadius"  />
+        <attr name="clipBottomRightRadius"  />
+
+        <attr name="clipBorderWidth"  />
+        <attr name="clipBorderColor" />
+        <attr name="clipBorderDashWidth"  />
+        <attr name="clipBorderDashGap"  />
+        <attr name="clipBorderDashBgColor"  />`
+        <attr name="clipBorderPhase"  />
+
         <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
         <attr name="drawable_normal" />
         <attr name="drawable_press" />

@@ -183,4 +183,133 @@ public class ClipHelper {
         }
         return true;
     }
+
+
+    public boolean isClipBg() {
+        return clipBg;
+    }
+
+    public void setClipBg(boolean clipBg) {
+        this.clipBg = clipBg;
+    }
+
+    public boolean isClipIsCircle() {
+        return clipIsCircle;
+    }
+
+    public void setClipIsCircle(boolean clipIsCircle) {
+        this.clipIsCircle = clipIsCircle;
+    }
+
+    public boolean isClipIsAreaClick() {
+        return clipIsAreaClick;
+    }
+
+    public void setClipIsAreaClick(boolean clipIsAreaClick) {
+        this.clipIsAreaClick = clipIsAreaClick;
+    }
+
+    public boolean isClipIgnorePadding() {
+        return clipIgnorePadding;
+    }
+
+    public void setClipIgnorePadding(boolean clipIgnorePadding) {
+        this.clipIgnorePadding = clipIgnorePadding;
+    }
+
+    public float getClipTopLeftRadius() {
+        return clipTopLeftRadius;
+    }
+
+    public void setClipTopLeftRadius(float clipTopLeftRadius) {
+        this.clipTopLeftRadius = clipTopLeftRadius;
+    }
+
+    public float getClipTopRightRadius() {
+        return clipTopRightRadius;
+    }
+
+    public void setClipTopRightRadius(float clipTopRightRadius) {
+        this.clipTopRightRadius = clipTopRightRadius;
+    }
+
+    public float getClipBottomLeftRadius() {
+        return clipBottomLeftRadius;
+    }
+
+    public void setClipBottomLeftRadius(float clipBottomLeftRadius) {
+        this.clipBottomLeftRadius = clipBottomLeftRadius;
+    }
+
+    public float getClipBottomRightRadius() {
+        return clipBottomRightRadius;
+    }
+
+    public void setClipBottomRightRadius(float clipBottomRightRadius) {
+        this.clipBottomRightRadius = clipBottomRightRadius;
+    }
+
+    public float getClipBorderWidth() {
+        return clipBorderWidth;
+    }
+
+    public void setClipBorderWidth(float clipBorderWidth) {
+        this.clipBorderWidth = clipBorderWidth;
+    }
+
+    public int getClipBorderColor() {
+        return clipBorderColor;
+    }
+
+    public void setClipBorderColor(int clipBorderColor) {
+        this.clipBorderColor = clipBorderColor;
+    }
+
+    public float getClipBorderDashWidth() {
+        return clipBorderDashWidth;
+    }
+
+    public void setClipBorderDashWidth(float clipBorderDashWidth) {
+        this.clipBorderDashWidth = clipBorderDashWidth;
+    }
+
+    public float getClipBorderDashGap() {
+        return clipBorderDashGap;
+    }
+
+    public void setClipBorderDashGap(float clipBorderDashGap) {
+        this.clipBorderDashGap = clipBorderDashGap;
+    }
+
+    public int getClipBorderDashBgColor() {
+        return clipBorderDashBgColor;
+    }
+
+    public void setClipBorderDashBgColor(int clipBorderDashBgColor) {
+        this.clipBorderDashBgColor = clipBorderDashBgColor;
+    }
+
+    public int getClipBorderPhase() {
+        return clipBorderPhase;
+    }
+
+    public void setClipBorderPhase(int clipBorderPhase) {
+        this.clipBorderPhase = clipBorderPhase;
+    }
+
+    public Shader getShader() {
+        return shader;
+    }
+
+    public void setShader(Shader shader) {
+        this.shader = shader;
+    }
+
+    public PathEffect getPathEffect() {
+        return pathEffect;
+    }
+
+    public void setPathEffect(PathEffect pathEffect) {
+        this.pathEffect = pathEffect;
+    }
 }

@@ -1146,7 +1146,7 @@ public class BaseViewHelper extends Helper implements OnDrawInter {
         //显示部分区域
         canvas.drawPath(clipPath, clipPaint);
 
-        canvas.restore();
+        canvas.restoreToCount(saveLayer);
     }
 
 

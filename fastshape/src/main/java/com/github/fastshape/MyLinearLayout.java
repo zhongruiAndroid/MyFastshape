@@ -2,9 +2,10 @@ package com.github.fastshape;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.PathEffect;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -13,48 +14,40 @@ import android.widget.LinearLayout;
 
 import com.github.fastshape.bean.BaseHelper;
 import com.github.fastshape.inter.BaseInter;
+import com.github.fastshape.inter.ClipInter;
 
 
 /**
  * Created by Administrator on 2016/9/6.
  */
-public class MyLinearLayout extends LinearLayout implements BaseInter<MyLinearLayout> {
+public class MyLinearLayout extends LinearLayout implements BaseInter<MyLinearLayout>,ClipInter<MyLinearLayout> {
     private BaseHelper baseHelper;
-//    private BaseViewHelper viewHelper;
-
+    private int saveLayerCount;
     public MyLinearLayout(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public MyLinearLayout(Context context, AttributeSet attrs) {
-        this(context, attrs,BaseHelper.defStyleAttr);
+        this(context, attrs, BaseHelper.defStyleAttr);
     }
 
     public MyLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
-        this(context, attrs, defStyleAttr,0);
+        this(context, attrs, defStyleAttr, 0);
     }
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public MyLinearLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-
-        init(attrs,defStyleAttr);
+        init(attrs, defStyleAttr);
     }
 
-
-    public void init(AttributeSet attrs,int defStyleAttr) {
-        baseHelper =new BaseHelper();
-        initData();
+    public void init(AttributeSet attrs, int defStyleAttr) {
+        baseHelper = new BaseHelper();
         Drawable background = getBackground();
         if (background != null) {
             return;
         }
-        /*
-        setAttrForDraw(viewNormal);
-*/
-        baseHelper.init(getContext(),attrs,defStyleAttr);
-
-
-
+        baseHelper.init(getContext(), attrs, defStyleAttr);
 
         /**
          * 设置各个自定义属性之后调用此方法设置background
@@ -62,36 +55,6 @@ public class MyLinearLayout extends LinearLayout implements BaseInter<MyLinearLa
          * 这个方法是将代码设置的各个属性收集生成一个Drawable,然后将它设置为background,简单点这个方法就是用来设置背景的,等价于setBackground方法
          */
         complete();
-    }
-
-    private void initData() {
-//        baseHelper.clipBorderColor = Color.parseColor("#34e8a6");
-//        baseHelper.clipBorderDashBgColor = Color.WHITE;
-    }
-
-    private void setAttrForDraw(TypedArray viewNormal) {
-       /* float clipRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipRadius, 0);
-        if (clipRadius > 0) {
-            viewHelper.clipTopLeftRadius = clipRadius;
-            viewHelper.clipTopRightRadius = clipRadius;
-            viewHelper.clipBottomLeftRadius = clipRadius;
-            viewHelper.clipBottomRightRadius = clipRadius;
-        } else {
-            viewHelper.clipTopLeftRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipTopLeftRadius, 0);
-            viewHelper.clipTopRightRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipTopRightRadius, 0);
-            viewHelper.clipBottomLeftRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBottomLeftRadius, 0);
-            viewHelper.clipBottomRightRadius = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBottomRightRadius, 0);
-        }
-
-        viewHelper.clipIgnorePadding = viewNormal.getBoolean(R.styleable.MyLinearLayout_clipIgnorePadding, false);
-        viewHelper.clipIsCircle = viewNormal.getBoolean(R.styleable.MyLinearLayout_clipIsCircle, false);
-        viewHelper.clipIsAreaClick = viewNormal.getBoolean(R.styleable.MyLinearLayout_clipIsAreaClick, true);
-        viewHelper.clipBorderWidth = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBorderWidth, 0);
-        viewHelper.clipBorderColor = viewNormal.getColor(R.styleable.MyLinearLayout_clipBorderColor, Color.parseColor("#34e8a6"));
-        viewHelper.clipBorderDashBgColor = viewNormal.getColor(R.styleable.MyLinearLayout_clipBorderDashBgColor, Color.WHITE);
-        viewHelper.clipBorderDashWidth = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBorderDashWidth, 0);
-        viewHelper.clipBorderDashGap = viewNormal.getDimension(R.styleable.MyLinearLayout_clipBorderDashGap, 0);*/
-
     }
 
     /**
@@ -106,41 +69,53 @@ public class MyLinearLayout extends LinearLayout implements BaseInter<MyLinearLa
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        /*if (viewHelper != null) {
-            viewHelper.onSizeChanged(getPaddingLeft(),
+        if (baseHelper.clipHelper != null) {
+            baseHelper.clipHelper.onSizeChanged();
+            baseHelper.clipHelper.onRefreshPaint(getPaddingLeft(),
                     getPaddingTop(),
                     getPaddingRight(),
-                    getPaddingBottom(), w, h, oldw, oldh);
-        }*/
+                    getPaddingBottom(), getWidth(), getHeight());
+        }
+    }
+
+    @Override
+    public void draw(Canvas canvas) {
+        if (baseHelper.clipHelper != null&&baseHelper.clipHelper.clipBg) {
+            canvas.save();
+            canvas.clipPath(baseHelper.clipHelper.clipPath);
+            super.draw(canvas);
+            canvas.restore();
+        } else {
+            super.draw(canvas);
+        }
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-       /* if (viewHelper != null) {
-            viewHelper.onRefreshPaint(canvas, getPaddingLeft(),
-                    getPaddingTop(),
-                    getPaddingRight(),
-                    getPaddingBottom(), getWidth(), getHeight());
-        }*/
     }
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        int saveLayer = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
+        if (baseHelper.clipHelper != null) {
+            saveLayerCount = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
+        }
         super.dispatchDraw(canvas);
-//        viewHelper.dispatchDrawEnd(saveLayer, canvas);
+
+        if (baseHelper.clipHelper != null) {
+            baseHelper.clipHelper.dispatchDrawEnd(saveLayerCount, canvas);
+        }
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        /*if (ev.getAction() == MotionEvent.ACTION_UP) {
-            if (viewHelper != null && viewHelper.clipIsAreaClick) {
-                if (viewHelper.onTouchEvent(ev) == false) {//如果这个地方返回true会导致点击事件失效
+        if (ev.getAction() == MotionEvent.ACTION_UP) {
+            if (baseHelper.clipHelper != null && baseHelper.clipHelper.clipIsAreaClick) {
+                if (baseHelper.clipHelper.onTouchEvent(ev) == false) {//如果这个地方返回true会导致点击事件失效
                     return false;
                 }
             }
-        }*/
+        }
         return super.dispatchTouchEvent(ev);
     }
 
@@ -301,21 +276,23 @@ public class MyLinearLayout extends LinearLayout implements BaseInter<MyLinearLa
     }
 
 
-
     @Override
     public MyLinearLayout setRadius(float topLeftRadius, float topRightRadius, float bottomRightRadius, float bottomLeftRadius) {
-        baseHelper.setRadius(topLeftRadius,topRightRadius,bottomRightRadius,bottomLeftRadius);
+        baseHelper.setRadius(topLeftRadius, topRightRadius, bottomRightRadius, bottomLeftRadius);
         return this;
     }
+
     @Override
     public MyLinearLayout setRadius(float radius) {
         baseHelper.setRadius(radius);
         return this;
     }
+
     @Override
     public float getTopLeftRadius() {
         return baseHelper.getTopLeftRadius();
     }
+
     @Override
     public MyLinearLayout setTopLeftRadius(float topLeftRadius) {
         baseHelper.setTopLeftRadius(topLeftRadius);
@@ -444,4 +421,190 @@ public class MyLinearLayout extends LinearLayout implements BaseInter<MyLinearLa
     }
 
 
+    /*******************************************clip*********************************************/
+    public void completeClip() {
+        if (baseHelper.clipHelper != null) {
+            baseHelper.clipHelper.onRefreshPaint(getPaddingLeft(),
+                    getPaddingTop(),
+                    getPaddingRight(),
+                    getPaddingBottom(), getWidth(), getHeight());
+            invalidate();
+        }
+    }
+
+    @Override
+    public boolean isClipBg() {
+        return baseHelper.clipHelper.isClipBg();
+    }
+
+    @Override
+    public MyLinearLayout setClipBg(boolean clipBg) {
+        baseHelper.clipHelper.setClipBg(clipBg);
+        return this;
+    }
+
+    @Override
+    public boolean isClipIsCircle() {
+        return baseHelper.clipHelper.isClipIsCircle();
+    }
+
+    @Override
+    public MyLinearLayout setClipIsCircle(boolean clipIsCircle) {
+        baseHelper.clipHelper.setClipIsCircle(clipIsCircle);
+        return this;
+    }
+
+    @Override
+    public boolean isClipIsAreaClick() {
+        return baseHelper.clipHelper.isClipIsAreaClick();
+    }
+
+    @Override
+    public MyLinearLayout setClipIsAreaClick(boolean clipIsAreaClick) {
+        baseHelper.clipHelper.setClipIsAreaClick(clipIsAreaClick);
+        return this;
+    }
+
+    @Override
+    public boolean isClipIgnorePadding() {
+        return baseHelper.clipHelper.isClipIgnorePadding();
+    }
+
+    @Override
+    public MyLinearLayout setClipIgnorePadding(boolean clipIgnorePadding) {
+        baseHelper.clipHelper.setClipIgnorePadding(clipIgnorePadding);
+        return this;
+    }
+
+    @Override
+    public float getClipTopLeftRadius() {
+        return baseHelper.clipHelper.getClipTopLeftRadius();
+    }
+
+    @Override
+    public MyLinearLayout setClipTopLeftRadius(float clipTopLeftRadius) {
+        baseHelper.clipHelper.setClipTopLeftRadius(clipTopLeftRadius);
+        return this;
+    }
+
+    @Override
+    public float getClipTopRightRadius() {
+        return baseHelper.clipHelper.getClipTopRightRadius();
+    }
+
+    @Override
+    public MyLinearLayout setClipTopRightRadius(float clipTopRightRadius) {
+        baseHelper.clipHelper.setClipTopRightRadius(clipTopRightRadius);
+        return this;
+    }
+
+    @Override
+    public float getClipBottomLeftRadius() {
+        return baseHelper.clipHelper.getClipBottomLeftRadius();
+    }
+
+    @Override
+    public MyLinearLayout setClipBottomLeftRadius(float clipBottomLeftRadius) {
+        baseHelper.clipHelper.setClipBottomLeftRadius(clipBottomLeftRadius);
+        return this;
+    }
+
+    @Override
+    public float getClipBottomRightRadius() {
+        return baseHelper.clipHelper.getClipBottomRightRadius();
+    }
+
+    @Override
+    public MyLinearLayout setClipBottomRightRadius(float clipBottomRightRadius) {
+        baseHelper.clipHelper.setClipBottomRightRadius(clipBottomRightRadius);
+        return this;
+    }
+
+    @Override
+    public float getClipBorderWidth() {
+        return baseHelper.clipHelper.getClipBorderWidth();
+    }
+
+    @Override
+    public MyLinearLayout setClipBorderWidth(float clipBorderWidth) {
+        baseHelper.clipHelper.setClipBorderWidth(clipBorderWidth);
+        return this;
+    }
+
+    @Override
+    public int getClipBorderColor() {
+        return baseHelper.clipHelper.getClipBorderColor();
+    }
+
+    @Override
+    public MyLinearLayout setClipBorderColor(int clipBorderColor) {
+        baseHelper.clipHelper.setClipBorderColor(clipBorderColor);
+        return this;
+    }
+
+    @Override
+    public float getClipBorderDashWidth() {
+        return baseHelper.clipHelper.getClipBorderDashWidth();
+    }
+
+    @Override
+    public MyLinearLayout setClipBorderDashWidth(float clipBorderDashWidth) {
+        baseHelper.clipHelper.setClipBorderDashWidth(clipBorderDashWidth);
+        return this;
+    }
+
+    @Override
+    public float getClipBorderDashGap() {
+        return baseHelper.clipHelper.getClipBorderDashGap();
+    }
+
+    @Override
+    public MyLinearLayout setClipBorderDashGap(float clipBorderDashGap) {
+        baseHelper.clipHelper.setClipBorderDashGap(clipBorderDashGap);
+        return this;
+    }
+
+    @Override
+    public int getClipBorderDashBgColor() {
+        return baseHelper.clipHelper.getClipBorderDashBgColor();
+    }
+
+    @Override
+    public MyLinearLayout setClipBorderDashBgColor(int clipBorderDashBgColor) {
+        baseHelper.clipHelper.setClipBorderDashBgColor(clipBorderDashBgColor);
+        return this;
+    }
+
+    @Override
+    public int getClipBorderPhase() {
+        return baseHelper.clipHelper.getClipBorderPhase();
+    }
+
+    @Override
+    public MyLinearLayout setClipBorderPhase(int clipBorderPhase) {
+        baseHelper.clipHelper.setClipBorderPhase(clipBorderPhase);
+        return this;
+    }
+
+    @Override
+    public Shader getShader() {
+        return baseHelper.clipHelper.getShader();
+    }
+
+    @Override
+    public MyLinearLayout setShader(Shader shader) {
+        baseHelper.clipHelper.setShader(shader);
+        return this;
+    }
+
+    @Override
+    public PathEffect getPathEffect() {
+        return baseHelper.clipHelper.getPathEffect();
+    }
+
+    @Override
+    public MyLinearLayout setPathEffect(PathEffect pathEffect) {
+        baseHelper.clipHelper.setPathEffect(pathEffect);
+        return this;
+    }
 }

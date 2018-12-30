@@ -89,8 +89,8 @@ public class MyImageView extends AppCompatImageView {
         viewHelper.clipIsAreaClick = viewNormal.getBoolean(R.styleable.MyImageView_clipIsAreaClick, true);
         viewHelper.clipBorderWidth = viewNormal.getDimension(R.styleable.MyImageView_clipBorderWidth, 0);
         viewHelper.clipBorderColor = viewNormal.getColor(R.styleable.MyImageView_clipBorderColor, Color.parseColor("#34e8a6"));
-        viewHelper.clipBorderDashBgColor = viewNormal.getColor(R.styleable.MyImageView_clipBorderDashBgColor, Color.WHITE);
         viewHelper.clipBorderDashWidth = viewNormal.getDimension(R.styleable.MyImageView_clipBorderDashWidth, 0);
+        viewHelper.clipBorderDashBgColor = viewNormal.getColor(R.styleable.MyFrameLayout_clipBorderDashBgColor, Color.TRANSPARENT);
         viewHelper.clipBorderDashGap = viewNormal.getDimension(R.styleable.MyImageView_clipBorderDashGap, 0);
 
     }

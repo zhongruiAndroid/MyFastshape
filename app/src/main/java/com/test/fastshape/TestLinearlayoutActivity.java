@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.github.fastshape.MyLinearLayout;
 import com.github.fastshape.bean.BaseHelper;
@@ -18,6 +19,11 @@ public class TestLinearlayoutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test_linearlayout);
 
         ll = findViewById(R.id.ll);
+        TestV testV=new TestV(this);
+        testV.aa();
+    }
+    public void LL(View view){
+        Toast.makeText(this,"makeText",Toast.LENGTH_SHORT).show();
     }
 
     public void viewClick(View view) {

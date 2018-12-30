@@ -1,6 +1,7 @@
 package com.test.fastshape;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -22,5 +23,11 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("com.github.fastshape", appContext.getPackageName());
+    }
+    @Test
+    public void sd() throws Exception {
+        // Context of the app under test.
+            System.out.println("============="+Color.alpha(Color.BLACK));
+            System.out.println("============="+Color.alpha(0x70000000));
     }
 }

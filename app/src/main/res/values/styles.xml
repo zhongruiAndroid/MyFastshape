@@ -16,17 +16,13 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:fontFamily">@font/nicai</item>
         <item name="android:editTextStyle">@style/testEditStyle</item>
         <item name="editTextStyle">@style/testEditStyle</item>
         <item name="android:checkboxStyle">@style/customfontstyle</item>
     </style>
     <style name="customfontstyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
-        <item name="android:fontFamily">@font/nicai</item>
-        <item name="fontFamily">@font/nicai</item>
     </style>
     <style name="testBoxStyle"   >
-        <item name="android:fontFamily">@font/nicai</item>
     </style>
     <style name="testEditStyle"  parent="@style/Base.Widget.AppCompat.EditText">
         <item name="android:textSize">26sp</item>

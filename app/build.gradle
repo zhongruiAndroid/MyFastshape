@@ -5,7 +5,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.test.fastshape"
-        minSdkVersion 18
+        minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
