@@ -30,6 +30,7 @@ import java.lang.annotation.RetentionPolicy;
 
 public class BaseHelper extends Helper implements BaseInter<BaseHelper> {
     public static final int defStyleAttr=R.attr.fastshapeStyle;
+    public ClipHelper clipHelper;
 
     /*设置正常状态背景和press状态背景,覆盖其他所有属性*/
     protected Drawable drawable_normal;
@@ -133,8 +134,7 @@ public class BaseHelper extends Helper implements BaseInter<BaseHelper> {
     private boolean isPartBorder;
 
     public BaseHelper() {
-//        clipBorderColor = Color.parseColor("#34e8a6");
-//        clipBorderDashBgColor = Color.WHITE;
+        clipHelper=new ClipHelper();
     }
 
     public void init(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -142,9 +142,41 @@ public class BaseHelper extends Helper implements BaseInter<BaseHelper> {
 
         publicFirstAttr(viewNormal);
 
+        clipAttr(viewNormal);
+
         viewNormal.recycle();
     }
 
+    /*裁剪属性*/
+    protected void clipAttr(TypedArray viewNormal) {
+        if(viewNormal.getBoolean(R.styleable.FastShapeAttr_clipSwitch, false)==false){
+            clipHelper=null;
+            return;
+        }
+        float clipRadius = viewNormal.getDimension(R.styleable.FastShapeAttr_clipRadius, 0);
+        if (clipRadius > 0) {
+            clipHelper.clipTopLeftRadius = clipRadius;
+            clipHelper.clipTopRightRadius = clipRadius;
+            clipHelper.clipBottomLeftRadius = clipRadius;
+            clipHelper.clipBottomRightRadius = clipRadius;
+        } else {
+            clipHelper.clipTopLeftRadius = viewNormal.getDimension(R.styleable.FastShapeAttr_clipTopLeftRadius, 0);
+            clipHelper.clipTopRightRadius = viewNormal.getDimension(R.styleable.FastShapeAttr_clipTopRightRadius, 0);
+            clipHelper.clipBottomLeftRadius = viewNormal.getDimension(R.styleable.FastShapeAttr_clipBottomLeftRadius, 0);
+            clipHelper.clipBottomRightRadius = viewNormal.getDimension(R.styleable.FastShapeAttr_clipBottomRightRadius, 0);
+        }
+        clipHelper.clipBg = viewNormal.getBoolean(R.styleable.FastShapeAttr_clipBg,true);
+        clipHelper.clipIgnorePadding = viewNormal.getBoolean(R.styleable.FastShapeAttr_clipIgnorePadding,true);
+        clipHelper.clipIsCircle = viewNormal.getBoolean(R.styleable.FastShapeAttr_clipIsCircle, false);
+        clipHelper.clipIsAreaClick = viewNormal.getBoolean(R.styleable.FastShapeAttr_clipIsAreaClick, true);
+        clipHelper.clipBorderWidth = viewNormal.getDimension(R.styleable.FastShapeAttr_clipBorderWidth, 0);
+        clipHelper.clipBorderColor = viewNormal.getColor(R.styleable.FastShapeAttr_clipBorderColor, Color.WHITE);
+        clipHelper.clipBorderDashWidth = viewNormal.getDimension(R.styleable.FastShapeAttr_clipBorderDashWidth, 0);
+        clipHelper.clipBorderDashGap = viewNormal.getDimension(R.styleable.FastShapeAttr_clipBorderDashGap, 0);
+        clipHelper.clipBorderDashBgColor = viewNormal.getColor(R.styleable.FastShapeAttr_clipBorderDashBgColor, Color.TRANSPARENT);
+        clipHelper.clipBorderPhase = viewNormal.getInt(R.styleable.FastShapeAttr_clipBorderPhase, 0);
+    }
+    /*第一部分公共属性*/
     protected void publicFirstAttr(TypedArray viewNormal) {
         Drawable drawable_normal = viewNormal.getDrawable(R.styleable.FastShapeAttr_drawable_normal);
         Drawable drawable_press = viewNormal.getDrawable(R.styleable.FastShapeAttr_drawable_press);
