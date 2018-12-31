@@ -13,6 +13,24 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
+        TestA a=new TestA();
+        a.b();
+//        a.a="aaaaa";
+//        U.testA(a);
+        System.out.println(a.a);
     }
 
+    public class TestA{
+        protected String a;
+        public void b(){
+            a="bb";
+            U.testA(this);
+            a="bb2";
+        }
+    }
+    public static class U{
+        public static void testA(TestA testA){
+            testA.a="void2";
+        }
+    }
 }
