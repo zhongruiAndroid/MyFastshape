@@ -2,6 +2,8 @@ package com.github.fastshape.newbean;
 
 import android.graphics.drawable.Drawable;
 
+import com.github.fastshape.inter.CompleteInter;
+
 /***
  *   created by zhongrui on 2018/12/31
  *   MyEditText
@@ -15,4 +17,7 @@ public class FourthHelper extends SecondHelper{
     protected int clearIcon_width;
     protected int clearIcon_height;
 
+    public FourthHelper(CompleteInter completeInter) {
+        super(completeInter);
+    }
 }

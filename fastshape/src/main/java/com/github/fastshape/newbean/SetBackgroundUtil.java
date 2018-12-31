@@ -18,7 +18,65 @@ import static com.github.fastshape.newbean.FirstHelper.gradientType_radial;
  */
 public class SetBackgroundUtil {
 
-    public <T extends SecondHelper>void setCompoundDrawables(TextView myView,T secondHelper) {
+
+    public static<T extends FirstHelper>void viewComplete(View myView,T firstHelper) {
+        if (firstHelper.drawable_normal != null) {
+            StateListDrawable stateListDrawableForLayer = new StateListDrawable();
+            stateListDrawableForLayer.addState(new int[]{-android.R.attr.state_pressed}, firstHelper.drawable_normal);
+            stateListDrawableForLayer.addState(new int[]{android.R.attr.state_pressed}, firstHelper.drawable_press);
+            stateListDrawableForLayer.addState(new int[]{}, firstHelper.drawable_normal);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                myView.setBackground(stateListDrawableForLayer);
+            } else {
+                myView.setBackgroundDrawable(stateListDrawableForLayer);
+            }
+            return;
+        }
+
+        if (firstHelper.all_line || (!firstHelper.left_line && !firstHelper.top_line && !firstHelper.right_line && !firstHelper.bottom_line)) {
+            firstHelper.isPartBorder = false;
+        }
+        if (!firstHelper.all_line && (firstHelper.left_line || firstHelper.top_line || firstHelper.right_line || firstHelper.bottom_line)) {
+            firstHelper.isPartBorder = true;
+        }
+
+        //设置虚线需要设置layertype
+        if (firstHelper.shapeType == firstHelper.shapeType_line && myView.getLayerType() == View.LAYER_TYPE_NONE) {
+            myView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        }
+        //是否是全边框
+        if (!firstHelper.isPartBorder) {
+            //是否设置pressColor
+            if (firstHelper.pressColor == Color.TRANSPARENT) {
+                //无部分边框，无presscolor
+                noPartBorderNoPressColor(myView,firstHelper);
+            } else {
+                //无部分边框，有presscolor
+                noPartBorderHasPressColor(myView,firstHelper);
+            }
+        } else {
+            //是否设置pressColor
+            if (firstHelper.pressColor == Color.TRANSPARENT) {
+                //有部分边框，无presscolor
+                hasPartBorderNoPressColor(myView,firstHelper);
+            } else {
+                //有部分边框，有presscolor
+                hasPartBorderHasPressColor(myView,firstHelper);
+            }
+        }
+        /*if (myView instanceof MyButton) {
+            setCompoundDrawables((TextView) myView,secondHelper);
+        } else if(myView instanceof MyTextView) {
+            setCompoundDrawables((TextView)myView,secondHelper);
+        }else if(myView instanceof MyCheckBox){
+            setCompoundDrawables((TextView)myView,secondHelper);
+        }else if(myView instanceof MyRadioButton){
+            setCompoundDrawables((TextView)myView,secondHelper);
+        }*/
+    }
+
+    public static<T extends SecondHelper>void setCompoundDrawables(TextView myView,T secondHelper) {
         Drawable drawable0 = myView.getCompoundDrawables()[0];
         Drawable drawable1 = myView.getCompoundDrawables()[1];
         Drawable drawable2 = myView.getCompoundDrawables()[2];
@@ -49,7 +107,7 @@ public class SetBackgroundUtil {
         myView.setCompoundDrawables(drawable0, drawable1, drawable2, drawable3);
     }
 
-    public <T extends FirstHelper>void noPartBorderNoPressColor(View myView,T firstHelper) {
+    public static<T extends FirstHelper>void noPartBorderNoPressColor(View myView,T firstHelper) {
         GradientDrawable gradientDrawableNormal = getNoPartBorderNoPressColorGradientDrawable(true,firstHelper);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -59,7 +117,7 @@ public class SetBackgroundUtil {
         }
     }
 
-    public <T extends FirstHelper>void noPartBorderHasPressColor(View myView,T firstHelper) {
+    public static<T extends FirstHelper>void noPartBorderHasPressColor(View myView,T firstHelper) {
 
         GradientDrawable gradientDrawableNormal = getNoPartBorderNoPressColorGradientDrawable(false,firstHelper);
         GradientDrawable gradientDrawablePress = getNoPartBorderNoPressColorGradientDrawable(false,firstHelper);
@@ -78,7 +136,7 @@ public class SetBackgroundUtil {
         }
     }
 
-    public <T extends FirstHelper>void hasPartBorderNoPressColor(View myView,T firstHelper) {
+    public static<T extends FirstHelper>void hasPartBorderNoPressColor(View myView,T firstHelper) {
         setBorderWidthForPartBorder(firstHelper);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -89,7 +147,7 @@ public class SetBackgroundUtil {
 
     }
 
-    public <T extends FirstHelper>void hasPartBorderHasPressColor(View myView,T firstHelper) {
+    public static<T extends FirstHelper>void hasPartBorderHasPressColor(View myView,T firstHelper) {
         setBorderWidthForPartBorder(firstHelper);
 
 
@@ -136,7 +194,7 @@ public class SetBackgroundUtil {
         return layerDrawable;
     }
 
-    public <T extends FirstHelper> GradientDrawable getHasPartBorderNoPressColorGradientDrawableNormal(T firstHelper) {
+    public static<T extends FirstHelper> GradientDrawable getHasPartBorderNoPressColorGradientDrawableNormal(T firstHelper) {
         //顶层
         GradientDrawable layerGradientDrawableNormal = new GradientDrawable();
         layerGradientDrawableNormal.setShape(firstHelper.shapeType);
@@ -154,7 +212,7 @@ public class SetBackgroundUtil {
         return layerGradientDrawableNormal;
     }
 
-    public <T extends FirstHelper> LayerDrawable getHasPartBorderNoPressColorLayerDrawableNormal(T firstHelper) {
+    public static<T extends FirstHelper> LayerDrawable getHasPartBorderNoPressColorLayerDrawableNormal(T firstHelper) {
         GradientDrawable layerDrawable = getHasPartBorderNoPressColorGradientDrawable(firstHelper);
         GradientDrawable layerGradientDrawableNormal = getHasPartBorderNoPressColorGradientDrawableNormal(firstHelper);
 
@@ -168,7 +226,7 @@ public class SetBackgroundUtil {
         return layerDrawableNormal;
     }
 
-    protected <T extends FirstHelper> void setBorderWidthForPartBorder(T firstHelper) {
+    protected static<T extends FirstHelper> void setBorderWidthForPartBorder(T firstHelper) {
         int[] partBorderWidth = new int[]{0, 0, 0, 0};
         if (firstHelper.left_line) {
             if (firstHelper.borderWidth == 0) {
@@ -209,7 +267,7 @@ public class SetBackgroundUtil {
         firstHelper.partBorderWidth=partBorderWidth;
     }
 
-    public <T extends FirstHelper>GradientDrawable getNoPartBorderNoPressColorGradientDrawable(boolean isSetGradientType,T firstHelper) {
+    public static<T extends FirstHelper>GradientDrawable getNoPartBorderNoPressColorGradientDrawable(boolean isSetGradientType,T firstHelper) {
         GradientDrawable gradientDrawableNormal = new GradientDrawable();
 
         gradientDrawableNormal.setShape(firstHelper.shapeType);
@@ -240,7 +298,7 @@ public class SetBackgroundUtil {
         return gradientDrawableNormal;
     }
 
-    public <T extends FirstHelper>void setDrawableGradientType(GradientDrawable gradientDrawableNormal,T firstHelper) {
+    public static<T extends FirstHelper>void setDrawableGradientType(GradientDrawable gradientDrawableNormal,T firstHelper) {
         if (firstHelper.gradientType != -1) {
             /*gradient属性*/
             gradientDrawableNormal.setGradientCenter(firstHelper.gradientCenterX, firstHelper.gradientCenterY);
@@ -266,7 +324,7 @@ public class SetBackgroundUtil {
 
     }
 
-    public GradientDrawable.Orientation getViewOrientation(int angle) {
+    public static GradientDrawable.Orientation getViewOrientation(int angle) {
         GradientDrawable.Orientation orientation = GradientDrawable.Orientation.LEFT_RIGHT;
         switch (angle) {
             case 0:
@@ -298,7 +356,7 @@ public class SetBackgroundUtil {
     }
 
 
-    protected <T extends SecondHelper>int[] getLeftWH(int width,int height,T secondHelper){
+    protected static<T extends SecondHelper>int[] getLeftWH(int width,int height,T secondHelper){
         if(secondHelper.left_width!=-1&&secondHelper.left_height!=-1){
             return new int[]{secondHelper.left_width,secondHelper.left_height};
         }else if(secondHelper.left_width!=-1){
@@ -309,7 +367,7 @@ public class SetBackgroundUtil {
             return new int[]{width,height};
         }
     }
-    protected <T extends SecondHelper>int[] getTopWH(int width,int height,T secondHelper){
+    protected static<T extends SecondHelper>int[] getTopWH(int width,int height,T secondHelper){
         if(secondHelper.top_width!=-1&&secondHelper.top_height!=-1){
             return new int[]{secondHelper.top_width,secondHelper.top_height};
         }else if(secondHelper.top_width!=-1){
@@ -320,7 +378,7 @@ public class SetBackgroundUtil {
             return new int[]{width,height};
         }
     }
-    protected <T extends SecondHelper>int[] getRightWH(int width,int height,T secondHelper){
+    protected static<T extends SecondHelper>int[] getRightWH(int width,int height,T secondHelper){
         if(secondHelper.right_width!=-1&&secondHelper.right_height!=-1){
             return new int[]{secondHelper.right_width,secondHelper.right_height};
         }else if(secondHelper.right_width!=-1){
@@ -331,7 +389,7 @@ public class SetBackgroundUtil {
             return new int[]{width,height};
         }
     }
-    protected <T extends SecondHelper>int[] getBottomWH(int width,int height,T secondHelper){
+    protected static<T extends SecondHelper>int[] getBottomWH(int width,int height,T secondHelper){
         if(secondHelper.bottom_width!=-1&&secondHelper.bottom_height!=-1){
             return new int[]{secondHelper.bottom_width,secondHelper.bottom_height};
         }else if(secondHelper.bottom_width!=-1){
@@ -343,10 +401,10 @@ public class SetBackgroundUtil {
         }
     }
 
-    protected  double chuFa(double d1,double d2) {
+    protected static double chuFa(double d1,double d2) {
         return chuFa(d1,d2,2);
     }
-    private  double chuFa(double d1,double d2,int scale) {
+    private static double chuFa(double d1,double d2,int scale) {
         //  当然在此之前，你要判断分母是否为0，
         //  为0你可以根据实际需求做相应的处理
         try {
@@ -361,15 +419,15 @@ public class SetBackgroundUtil {
         return bd1.divide
                 (bd2, scale, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
-    protected double chengFa(double d1,double d2){
+    protected static double chengFa(double d1,double d2){
         BigDecimal bd1 = new BigDecimal(d1);
         BigDecimal bd2 = new BigDecimal(d2);
         return round(bd1.multiply(bd2).doubleValue());
     }
-    protected double round(double value) {
+    protected static double round(double value) {
         return round(value,2, BigDecimal.ROUND_HALF_UP);
     }
-    protected double round(double value, int scale,int roundingMode) {
+    protected static double round(double value, int scale,int roundingMode) {
         BigDecimal bd = new BigDecimal(value);
         bd = bd.setScale(scale, roundingMode);
         double d = bd.doubleValue();
@@ -382,11 +440,11 @@ public class SetBackgroundUtil {
      *
      * @return
      */
-    protected int getDefBorderColor() {
+    protected static int getDefBorderColor() {
         return Color.parseColor("#E2E2E2");
     }
 
-    protected int getTransparentColor() {
+    protected static int getTransparentColor() {
         return Color.TRANSPARENT;
     }
 

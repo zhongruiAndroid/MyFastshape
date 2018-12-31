@@ -13,10 +13,14 @@ import android.graphics.Region;
 import android.graphics.Shader;
 import android.view.MotionEvent;
 
+import com.github.fastshape.inter.ClipInter;
+
 /***
  *   created by zhongrui on 2018/12/29
  */
-public class ClipHelper {
+public class ClipHelper implements ClipInter<ClipHelper> {
+    /*是否启用裁剪*/
+    public boolean clipSwitch;
     /*是否裁剪背景*/
     public boolean clipBg=true;
     /*裁剪成圆形*/
@@ -189,127 +193,143 @@ public class ClipHelper {
         return clipBg;
     }
 
-    public void setClipBg(boolean clipBg) {
+    public ClipHelper setClipBg(boolean clipBg) {
         this.clipBg = clipBg;
+        return this;
     }
 
     public boolean isClipIsCircle() {
         return clipIsCircle;
     }
 
-    public void setClipIsCircle(boolean clipIsCircle) {
+    public ClipHelper setClipIsCircle(boolean clipIsCircle) {
         this.clipIsCircle = clipIsCircle;
+        return this;
     }
 
     public boolean isClipIsAreaClick() {
         return clipIsAreaClick;
     }
 
-    public void setClipIsAreaClick(boolean clipIsAreaClick) {
+    public ClipHelper setClipIsAreaClick(boolean clipIsAreaClick) {
         this.clipIsAreaClick = clipIsAreaClick;
+        return this;
     }
 
     public boolean isClipIgnorePadding() {
         return clipIgnorePadding;
     }
 
-    public void setClipIgnorePadding(boolean clipIgnorePadding) {
+    public ClipHelper setClipIgnorePadding(boolean clipIgnorePadding) {
         this.clipIgnorePadding = clipIgnorePadding;
+        return this;
     }
 
     public float getClipTopLeftRadius() {
         return clipTopLeftRadius;
     }
 
-    public void setClipTopLeftRadius(float clipTopLeftRadius) {
+    public ClipHelper setClipTopLeftRadius(float clipTopLeftRadius) {
         this.clipTopLeftRadius = clipTopLeftRadius;
+        return this;
     }
 
     public float getClipTopRightRadius() {
         return clipTopRightRadius;
     }
 
-    public void setClipTopRightRadius(float clipTopRightRadius) {
+    public ClipHelper setClipTopRightRadius(float clipTopRightRadius) {
         this.clipTopRightRadius = clipTopRightRadius;
+        return this;
     }
 
     public float getClipBottomLeftRadius() {
         return clipBottomLeftRadius;
     }
 
-    public void setClipBottomLeftRadius(float clipBottomLeftRadius) {
+    public ClipHelper setClipBottomLeftRadius(float clipBottomLeftRadius) {
         this.clipBottomLeftRadius = clipBottomLeftRadius;
+        return this;
     }
 
     public float getClipBottomRightRadius() {
         return clipBottomRightRadius;
     }
 
-    public void setClipBottomRightRadius(float clipBottomRightRadius) {
+    public ClipHelper setClipBottomRightRadius(float clipBottomRightRadius) {
         this.clipBottomRightRadius = clipBottomRightRadius;
+        return this;
     }
 
     public float getClipBorderWidth() {
         return clipBorderWidth;
     }
 
-    public void setClipBorderWidth(float clipBorderWidth) {
+    public ClipHelper setClipBorderWidth(float clipBorderWidth) {
         this.clipBorderWidth = clipBorderWidth;
+        return this;
     }
 
     public int getClipBorderColor() {
         return clipBorderColor;
     }
 
-    public void setClipBorderColor(int clipBorderColor) {
+    public ClipHelper setClipBorderColor(int clipBorderColor) {
         this.clipBorderColor = clipBorderColor;
+        return this;
     }
 
     public float getClipBorderDashWidth() {
         return clipBorderDashWidth;
     }
 
-    public void setClipBorderDashWidth(float clipBorderDashWidth) {
+    public ClipHelper setClipBorderDashWidth(float clipBorderDashWidth) {
         this.clipBorderDashWidth = clipBorderDashWidth;
+        return this;
     }
 
     public float getClipBorderDashGap() {
         return clipBorderDashGap;
     }
 
-    public void setClipBorderDashGap(float clipBorderDashGap) {
+    public ClipHelper setClipBorderDashGap(float clipBorderDashGap) {
         this.clipBorderDashGap = clipBorderDashGap;
+        return this;
     }
 
     public int getClipBorderDashBgColor() {
         return clipBorderDashBgColor;
     }
 
-    public void setClipBorderDashBgColor(int clipBorderDashBgColor) {
+    public ClipHelper setClipBorderDashBgColor(int clipBorderDashBgColor) {
         this.clipBorderDashBgColor = clipBorderDashBgColor;
+        return this;
     }
 
     public int getClipBorderPhase() {
         return clipBorderPhase;
     }
 
-    public void setClipBorderPhase(int clipBorderPhase) {
+    public ClipHelper setClipBorderPhase(int clipBorderPhase) {
         this.clipBorderPhase = clipBorderPhase;
+        return this;
     }
 
     public Shader getShader() {
         return shader;
     }
 
-    public void setShader(Shader shader) {
+    public ClipHelper setShader(Shader shader) {
         this.shader = shader;
+        return this;
     }
 
     public PathEffect getPathEffect() {
         return pathEffect;
     }
 
-    public void setPathEffect(PathEffect pathEffect) {
+    public ClipHelper setPathEffect(PathEffect pathEffect) {
         this.pathEffect = pathEffect;
+        return this;
     }
 }

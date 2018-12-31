@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         viewHelper.complete();//或者textView.complete();
 
         MyLinearLayout linearLayout=new MyLinearLayout(this);
-        linearLayout.clearAttr()
+        linearLayout.getViewHelper().clearAttr()
                 .setAll_line(true)
                 .setGradientType(BaseViewHelper.gradientType_linear)
                 .setSolidColor(ContextCompat.getColor(this,R.color.white))

@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.github.fastshape.MyLinearLayout;
 import com.github.fastshape.bean.BaseHelper;
+import com.github.fastshape.newbean.FirstHelper;
 
 public class TestLinearlayoutActivity extends AppCompatActivity {
 
@@ -27,7 +28,7 @@ public class TestLinearlayoutActivity extends AppCompatActivity {
     }
 
     public void viewClick(View view) {
-        ll.clearAttr()
+        ll.getViewHelper().clearAttr()
                 .setShapeType(BaseHelper.shapeType_rectangle)
                 .setRadius(50)
                 .setSolidColor(Color.parseColor("#87ceeb"))
@@ -41,16 +42,16 @@ public class TestLinearlayoutActivity extends AppCompatActivity {
                 .setBorderDashWidth(10)
                 .setBorderDashGap(20)
                 .setGradientAngle(BaseHelper.angle_0)
-                .setGradientType(BaseHelper.gradientType_radial)
+                .setGradientType(FirstHelper.gradientType_radial)
                 .setGradientStartColor(Color.BLACK)
                 .setGradientEndColor(Color.RED)
                 .setGradientCenterColor(Color.GREEN)
                 .setGradientCenterX(0.5f)
                 .setGradientCenterY(0.5f)
                 .setGradientRadius(140)
-                .setPressColor(Color.GRAY)
-                .setDrawable_press(getDrawable(R.drawable.check_select))
-                .setDrawable_normal(getDrawable(R.drawable.check_normal))
-                .complete();
+                .setPressColor(Color.GRAY);
+//                .setDrawable_press(getDrawable(R.drawable.check_select))
+//                .setDrawable_normal(getDrawable(R.drawable.check_normal));
+        ll.complete();
     }
 }
