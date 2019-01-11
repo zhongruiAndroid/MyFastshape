@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.test.fastshape.R;
 
-public class TestSecondActivity extends AppCompatActivity {
+public class TextViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_text_view);
     }
 }

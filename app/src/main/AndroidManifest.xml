@@ -20,13 +20,24 @@
         </activity>
         <activity android:name=".XMLActivity"/>
         <activity android:name=".TestLinearlayoutActivity"/>
-        <activity android:name=".test.ShapeTestListActivity">
+        <activity
+            android:label="@string/app_name" android:name=".test.ShapeTestListActivity">
         </activity>
-        <activity android:name=".test.TestFirstActivity">
+        <activity android:name=".test.LinearLayoutActivity">
         </activity>
-        <activity android:name=".test.TestSecondActivity">
+        <activity android:name=".test.FrameLayoutActivity">
         </activity>
-        <activity android:name=".test.TestThirdActivity">
+        <activity android:name=".test.RelativeLayoutActivity">
+        </activity>
+        <activity android:name=".test.TextViewActivity">
+        </activity>
+        <activity android:name=".test.ButtonActivity">
+        </activity>
+        <activity android:name=".test.EditTextActivity">
+        </activity>
+        <activity android:name=".test.RadioButtonActivity">
+        </activity>
+        <activity android:name=".test.CheckBoxActivity">
         </activity>
     </application>
 

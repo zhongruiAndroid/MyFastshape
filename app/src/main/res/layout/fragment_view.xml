@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".test.LinearLayoutActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="左上圆角"
+                android:ems="4"
+                />
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/sbRadiusTopLeft"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="右上圆角"
+                />
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/sbRadiusTopRight"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="左下圆角"
+                android:ems="4"
+                />
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/sbRadiusBottomLeft"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="右下圆角"
+                />
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/sbRadiusBottomRight"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="全部圆角"
+                android:ems="4"
+                />
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/sbAllRadius"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="borderWidth"
+                />
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/sbBorderWidth"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DashWidth "
+                />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/sbBorderDashWidth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DashGap"
+                />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/sbBorderDashGap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+        <com.github.fastshape.FlowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <CheckBox
+                android:id="@+id/cbLeftLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="leftLine"
+                android:textColor="@color/gray_6"
+                />
+
+            <CheckBox
+                android:id="@+id/cbTopLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="topLine"
+                android:textColor="@color/gray_6"
+                />
+
+            <CheckBox
+                android:id="@+id/cbRightLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rightLine"
+                android:textColor="@color/gray_6"
+                />
+
+            <CheckBox
+                android:id="@+id/cbBottomLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="bottomLine"
+                android:textColor="@color/gray_6"
+                />
+
+            <CheckBox
+                android:id="@+id/cbAllLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="allLine"
+                android:textColor="@color/gray_6"
+                />
+        </com.github.fastshape.FlowLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="5"
+                android:text="shapeType"
+                android:textColor="@color/gray_6"
+                />
+
+            <RadioGroup
+                android:id="@+id/rgShapeType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <com.github.fastshape.MyRadioButton
+                    android:id="@+id/rbShapeType1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2"
+                    android:checked="true"
+                    android:text="rectangle"
+                    android:textColor="@color/gray_6"
+                    />
+
+                <com.github.fastshape.MyRadioButton
+                    android:id="@+id/rbShapeType2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="oval"
+                    android:textColor="@color/gray_6"
+                    />
+
+                <com.github.fastshape.MyRadioButton
+                    android:id="@+id/rbShapeType3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="line"
+                    android:textColor="@color/gray_6"
+                    />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="5"
+                android:text="gradientType"
+                android:textColor="@color/gray_6"
+                />
+
+            <RadioGroup
+                android:id="@+id/rgGradientType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <com.github.fastshape.MyRadioButton
+                    android:id="@+id/rbGradientType1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2"
+                    android:checked="true"
+                    android:text="linear"
+                    android:textColor="@color/gray_6"
+                    />
+
+                <com.github.fastshape.MyRadioButton
+                    android:id="@+id/rbGradientType2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="radial"
+                    android:textColor="@color/gray_6"
+                    />
+
+                <com.github.fastshape.MyRadioButton
+                    android:id="@+id/rbGradientType3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="sweep"
+                    android:textColor="@color/gray_6"
+                    />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <com.github.fastshape.FlowLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
+                        android:ems="6"
+                        android:text="pressColor"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvPressColor"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="10dp"
+                        android:background="#ffffffff"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
+                        android:ems="6"
+                        android:text="solidColor"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvSolidColor"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="10dp"
+                        android:background="#E2E2E2"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
+                        android:ems="6"
+                        android:text="borderColor"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvBorderColor"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="10dp"
+                        android:background="#E2E2E2"
+                        />
+
+
+                </com.github.fastshape.FlowLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <com.github.fastshape.FlowLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
+                        android:ems="8"
+                        android:text="gradientStartColor"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvStartColor"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="10dp"
+                        android:background="#E2E2E2"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
+                        android:ems="8"
+                        android:text="gradientCenterColor"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvCenterColor"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="10dp"
+                        android:background="#ffffffff"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
+                        android:ems="8"
+                        android:text="gradientEndColor"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvEndColor"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="10dp"
+                        android:background="#E2E2E2"
+                        />
+                </com.github.fastshape.FlowLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.github.fastshape.FlowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:text="gradientAngle"
+                />
+
+            <com.github.fastshape.MyRadioButton
+                android:id="@+id/rbAngle0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="0"
+                android:textColor="@color/gray_6"
+                />
+
+            <com.github.fastshape.MyRadioButton
+                android:id="@+id/rbAngle45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="45"
+                android:textColor="@color/gray_6"
+                />
+
+            <com.github.fastshape.MyRadioButton
+                android:id="@+id/rbAngle90"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="90"
+                android:textColor="@color/gray_6"
+                />
+
+            <com.github.fastshape.MyRadioButton
+                android:id="@+id/rbAngle135"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="135"
+                android:textColor="@color/gray_6"
+                />
+
+            <com.github.fastshape.MyRadioButton
+                android:id="@+id/rbAngle180"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="180"
+                android:textColor="@color/gray_6"
+                />
+
+            <com.github.fastshape.MyRadioButton
+                android:id="@+id/rbAngle225"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="225"
+                android:textColor="@color/gray_6"
+                />
+
+            <com.github.fastshape.MyRadioButton
+                android:id="@+id/rbAngle270"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="270"
+                android:textColor="@color/gray_6"
+                />
+
+            <com.github.fastshape.MyRadioButton
+                android:id="@+id/rbAngle315"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="315"
+                android:textColor="@color/gray_6"
+                />
+        </com.github.fastshape.FlowLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="gradientCenterX"
+                />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/sbGradientCenterX"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="gradientCenterY"
+                />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/sbGradientCenterY"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="gradientRadius  "
+                />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/sbGradientRadius"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
