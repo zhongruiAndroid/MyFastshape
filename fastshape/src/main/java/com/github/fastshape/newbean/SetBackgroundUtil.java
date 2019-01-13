@@ -33,13 +33,17 @@ public class SetBackgroundUtil {
             }
             return;
         }
-
-        if (firstHelper.all_line || (!firstHelper.left_line && !firstHelper.top_line && !firstHelper.right_line && !firstHelper.bottom_line)) {
+        if(firstHelper.all_line){
             firstHelper.isPartBorder = false;
-        }
-        if (!firstHelper.all_line && (firstHelper.left_line || firstHelper.top_line || firstHelper.right_line || firstHelper.bottom_line)) {
+        }else if(firstHelper.all_line==false&&firstHelper.left_line && firstHelper.top_line && firstHelper.right_line && firstHelper.bottom_line){
+            firstHelper.isPartBorder = false;
+        }else if(!firstHelper.all_line&&!firstHelper.left_line && !firstHelper.top_line &&! firstHelper.right_line && !firstHelper.bottom_line){
+            firstHelper.isPartBorder = false;
+        }else {
             firstHelper.isPartBorder = true;
         }
+
+
 
         //设置虚线需要设置layertype
         if (firstHelper.shapeType == firstHelper.shapeType_line && myView.getLayerType() == View.LAYER_TYPE_NONE) {

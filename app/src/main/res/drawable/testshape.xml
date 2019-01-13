@@ -11,5 +11,6 @@
         android:right="11dp"
         android:top="11dp"
         />
-    <solid android:color="@color/transparent"/>
+    <solid android:color="@color/transparent" />
+    <corners android:radius="21111dp"/>
 </shape>

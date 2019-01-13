@@ -47,9 +47,9 @@ public class MyLinearLayout extends LinearLayout   {
         return viewHelper;
     }
 
-    public void setViewHelper(FirstHelper baseHelper) {
+    /*public void setViewHelper(FirstHelper baseHelper) {
         this.viewHelper = baseHelper;
-    }
+    }*/
 
     public void init(AttributeSet attrs, int defStyleAttr) {
         Drawable background = getBackground();

@@ -9,19 +9,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.github.fastshape.MyLinearLayout;
 import com.test.fastshape.R;
 
-public class ViewFragment extends Fragment {
+public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeListener,CompoundButton.OnCheckedChangeListener {
     public static final int type_linearlayout=1;
     public static final int type_framelayout=2;
     public static final int type_relativelayout=3;
     public static final int type_textview=4;
     private int type;
 
+    LinearLayout ll_content;
     AppCompatSeekBar sbRadiusTopLeft;
     AppCompatSeekBar sbRadiusTopRight;
     AppCompatSeekBar sbRadiusBottomLeft;
@@ -60,8 +65,7 @@ public class ViewFragment extends Fragment {
     AppCompatSeekBar sbGradientCenterX;
     AppCompatSeekBar sbGradientCenterY;
     AppCompatSeekBar sbGradientRadius;
-
-
+    private MyLinearLayout ll;
 
 
     public ViewFragment() {
@@ -90,19 +94,77 @@ public class ViewFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        View itemView=null;
+        if(type==type_linearlayout){
+            itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_linearlayout_item, null);
+            ll = itemView.findViewById(R.id.ll);
+        }
+        if(itemView!=null){
+            ll_content=view.findViewById(R.id.ll_content);
+            ll_content.addView(itemView,0);
+        }
         sbRadiusTopLeft=view.findViewById(R.id.sbRadiusTopLeft);
+        sbRadiusTopLeft.setOnSeekBarChangeListener(this);
+
         sbRadiusTopRight=view.findViewById(R.id.sbRadiusTopRight);
+        sbRadiusTopRight.setOnSeekBarChangeListener(this);
+
         sbRadiusBottomLeft=view.findViewById(R.id.sbRadiusBottomLeft);
+        sbRadiusBottomLeft.setOnSeekBarChangeListener(this);
+
         sbRadiusBottomRight=view.findViewById(R.id.sbRadiusBottomRight);
+        sbRadiusBottomRight.setOnSeekBarChangeListener(this);
+
         sbAllRadius=view.findViewById(R.id.sbAllRadius);
+        sbAllRadius.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                sbRadiusTopLeft.setProgress(progress);
+                sbRadiusTopRight.setProgress(progress);
+                sbRadiusBottomLeft.setProgress(progress);
+                sbRadiusBottomRight.setProgress(progress);
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
         sbBorderWidth=view.findViewById(R.id.sbBorderWidth);
+        sbBorderWidth.setOnSeekBarChangeListener(this);
+
         sbBorderDashWidth=view.findViewById(R.id.sbBorderDashWidth);
+        sbBorderDashWidth.setOnSeekBarChangeListener(this);
+
         sbBorderDashGap=view.findViewById(R.id.sbBorderDashGap);
+        sbBorderDashGap.setOnSeekBarChangeListener(this);
+
         cbLeftLine=view.findViewById(R.id.cbLeftLine);
+        cbLeftLine.setOnCheckedChangeListener(this);
+
         cbTopLine=view.findViewById(R.id.cbTopLine);
+        cbTopLine.setOnCheckedChangeListener(this);
+
         cbRightLine=view.findViewById(R.id.cbRightLine);
+        cbRightLine.setOnCheckedChangeListener(this);
+
         cbBottomLine=view.findViewById(R.id.cbBottomLine);
+        cbBottomLine.setOnCheckedChangeListener(this);
+
         cbAllLine=view.findViewById(R.id.cbAllLine);
+        cbAllLine.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                ll.getViewHelper().setAll_line(isChecked).complete();
+                cbLeftLine.setChecked(isChecked);
+                cbTopLine.setChecked(isChecked);
+                cbRightLine.setChecked(isChecked);
+                cbBottomLine.setChecked(isChecked);
+            }
+        });
+
         rgShapeType=view.findViewById(R.id.rgShapeType);
         rbShapeType1=view.findViewById(R.id.rbShapeType1);
         rbShapeType2=view.findViewById(R.id.rbShapeType2);
@@ -129,5 +191,92 @@ public class ViewFragment extends Fragment {
         sbGradientCenterY=view.findViewById(R.id.sbGradientCenterY);
         sbGradientRadius=view.findViewById(R.id.sbGradientRadius);
 
+    }
+    float radiusScale=1.5f;
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        switch (seekBar.getId()){
+            case R.id.sbRadiusTopLeft:
+                if(type==type_linearlayout){
+                    ll.getViewHelper().setTopLeftRadius(progress*radiusScale).complete();
+                }else{
+
+                }
+            break;
+            case R.id.sbRadiusTopRight:
+                if(type==type_linearlayout){
+                    ll.getViewHelper().setTopRightRadius(progress*radiusScale).complete();
+                }else{
+
+                }
+                break;
+            case R.id.sbRadiusBottomLeft:
+                if(type==type_linearlayout){
+                    ll.getViewHelper().setBottomLeftRadius(progress*radiusScale).complete();
+                }else{
+
+                }
+                break;
+            case R.id.sbRadiusBottomRight:
+                if(type==type_linearlayout){
+                    ll.getViewHelper().setBottomRightRadius(progress*radiusScale).complete();
+                }else{
+
+                }
+                break;
+            case R.id.sbBorderWidth:
+                if(type==type_linearlayout){
+                    ll.getViewHelper().setBorderWidth(progress).complete();
+                }else{
+
+                }
+                break;
+            case R.id.sbBorderDashWidth:
+                if(type==type_linearlayout){
+                    ll.getViewHelper().setBorderDashWidth(progress).complete();
+                }else{
+
+                }
+                break;
+            case R.id.sbBorderDashGap:
+                if(type==type_linearlayout){
+                    ll.getViewHelper().setBorderDashGap(progress).complete();
+                }else{
+
+                }
+                break;
+        }
+    }
+
+    private void changLL(float progress) {
+        ll.getViewHelper().setTopLeftRadius(progress).complete();
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        switch (buttonView.getId()){
+            case R.id.cbLeftLine:
+                ll.getViewHelper().setLeft_line(isChecked).complete();
+            break;
+            case R.id.cbTopLine:
+                ll.getViewHelper().setTop_line(isChecked).complete();
+            break;
+            case R.id.cbRightLine:
+                ll.getViewHelper().setRight_line(isChecked).complete();
+            break;
+            case R.id.cbBottomLine:
+                ll.getViewHelper().setBottom_line(isChecked).complete();
+            break;
+        }
     }
 }
