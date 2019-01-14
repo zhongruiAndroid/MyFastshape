@@ -17,9 +17,12 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.github.fastshape.MyLinearLayout;
+import com.github.fastshape.newbean.FirstHelper;
 import com.test.fastshape.R;
 
-public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeListener,CompoundButton.OnCheckedChangeListener {
+public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeListener
+        ,CompoundButton.OnCheckedChangeListener
+{
     public static final int type_linearlayout=1;
     public static final int type_framelayout=2;
     public static final int type_relativelayout=3;
@@ -39,7 +42,6 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     CheckBox cbTopLine;
     CheckBox cbRightLine;
     CheckBox cbBottomLine;
-    CheckBox cbAllLine;
     RadioGroup rgShapeType;
     RadioButton rbShapeType1;
     RadioButton rbShapeType2;
@@ -54,6 +56,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     TextView tvStartColor;
     TextView tvCenterColor;
     TextView tvEndColor;
+    RadioButton selectButton;
     RadioButton rbAngle0;
     RadioButton rbAngle45;
     RadioButton rbAngle90;
@@ -65,6 +68,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     AppCompatSeekBar sbGradientCenterX;
     AppCompatSeekBar sbGradientCenterY;
     AppCompatSeekBar sbGradientRadius;
+
     private MyLinearLayout ll;
 
 
@@ -153,43 +157,67 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
         cbBottomLine=view.findViewById(R.id.cbBottomLine);
         cbBottomLine.setOnCheckedChangeListener(this);
 
-        cbAllLine=view.findViewById(R.id.cbAllLine);
-        cbAllLine.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                ll.getViewHelper().complete();
-                cbLeftLine.setChecked(isChecked);
-                cbTopLine.setChecked(isChecked);
-                cbRightLine.setChecked(isChecked);
-                cbBottomLine.setChecked(isChecked);
-            }
-        });
+
 
         rgShapeType=view.findViewById(R.id.rgShapeType);
         rbShapeType1=view.findViewById(R.id.rbShapeType1);
+        rbShapeType1.setOnCheckedChangeListener(this);
+
         rbShapeType2=view.findViewById(R.id.rbShapeType2);
+        rbShapeType2.setOnCheckedChangeListener(this);
+
         rbShapeType3=view.findViewById(R.id.rbShapeType3);
+        rbShapeType3.setOnCheckedChangeListener(this);
+
         rgGradientType=view.findViewById(R.id.rgGradientType);
         rbGradientType1=view.findViewById(R.id.rbGradientType1);
+        rbGradientType1.setOnCheckedChangeListener(this);
+
         rbGradientType2=view.findViewById(R.id.rbGradientType2);
+        rbGradientType2.setOnCheckedChangeListener(this);
+
         rbGradientType3=view.findViewById(R.id.rbGradientType3);
+        rbGradientType3.setOnCheckedChangeListener(this);
+
         tvPressColor=view.findViewById(R.id.tvPressColor);
         tvSolidColor=view.findViewById(R.id.tvSolidColor);
         tvBorderColor=view.findViewById(R.id.tvBorderColor);
         tvStartColor=view.findViewById(R.id.tvStartColor);
         tvCenterColor=view.findViewById(R.id.tvCenterColor);
         tvEndColor=view.findViewById(R.id.tvEndColor);
+
         rbAngle0=view.findViewById(R.id.rbAngle0);
+        rbAngle0.setOnCheckedChangeListener(this);
+        selectButton=rbAngle0;
         rbAngle45=view.findViewById(R.id.rbAngle45);
+        rbAngle45.setOnCheckedChangeListener(this);
+
         rbAngle90=view.findViewById(R.id.rbAngle90);
+        rbAngle90.setOnCheckedChangeListener(this);
+
         rbAngle135=view.findViewById(R.id.rbAngle135);
+        rbAngle135.setOnCheckedChangeListener(this);
+
         rbAngle180=view.findViewById(R.id.rbAngle180);
+        rbAngle180.setOnCheckedChangeListener(this);
+
         rbAngle225=view.findViewById(R.id.rbAngle225);
+        rbAngle225.setOnCheckedChangeListener(this);
+
         rbAngle270=view.findViewById(R.id.rbAngle270);
+        rbAngle270.setOnCheckedChangeListener(this);
+
         rbAngle315=view.findViewById(R.id.rbAngle315);
+        rbAngle315.setOnCheckedChangeListener(this);
+
         sbGradientCenterX=view.findViewById(R.id.sbGradientCenterX);
+        sbGradientCenterX.setOnSeekBarChangeListener(this);
+
         sbGradientCenterY=view.findViewById(R.id.sbGradientCenterY);
+        sbGradientCenterY.setOnSeekBarChangeListener(this);
+
         sbGradientRadius=view.findViewById(R.id.sbGradientRadius);
+        sbGradientRadius.setOnSeekBarChangeListener(this);
 
     }
     float radiusScale=1.5f;
@@ -245,6 +273,29 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
 
                 }
                 break;
+            case R.id.sbGradientRadius:
+                if(type==type_linearlayout){
+                    ll.getViewHelper().setGradientRadius(progress*2).complete();
+                }else{
+
+                }
+                break;
+            case R.id.sbGradientCenterX:
+                if(type==type_linearlayout){
+                    float x = 1f*progress / 100;
+                    ll.getViewHelper().setGradientCenterX(x).complete();
+                }else{
+
+                }
+                break;
+            case R.id.sbGradientCenterY:
+                if(type==type_linearlayout){
+                    float y = 1f*progress / 100;
+                    ll.getViewHelper().setGradientCenterY(y).complete();
+                }else{
+
+                }
+                break;
         }
     }
 
@@ -276,6 +327,92 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             break;
             case R.id.cbBottomLine:
                 ll.getViewHelper().setBottom_line(isChecked).complete();
+            break;
+            case R.id.rbShapeType1:
+                if(isChecked){
+                    ll.getViewHelper().setShapeType(FirstHelper.shapeType_rectangle).complete();
+                }
+            break;
+            case R.id.rbShapeType2:
+                if(isChecked){
+                    ll.getViewHelper().setShapeType(FirstHelper.shapeType_oval).complete();
+                }
+            break;
+            case R.id.rbShapeType3:
+                if(isChecked){
+                    ll.getViewHelper().setShapeType(FirstHelper.shapeType_line).complete();
+                }
+            break;
+            case R.id.rbGradientType1:
+                if(isChecked){
+                    ll.getViewHelper().setGradientType(FirstHelper.gradientType_linear).complete();
+                }
+            break;
+            case R.id.rbGradientType2:
+                if(isChecked){
+                    ll.getViewHelper().setGradientType(FirstHelper.gradientType_radial).complete();
+                }
+            break;
+            case R.id.rbGradientType3:
+                if(isChecked){
+                    ll.getViewHelper().setGradientType(FirstHelper.gradientType_sweep).complete();
+                }
+            break;
+            case R.id.rbAngle0:
+                if(isChecked){
+                    selectButton.setChecked(false);
+                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_0).complete();
+                    selectButton=rbAngle0;
+                }
+            break;
+            case R.id.rbAngle45:
+                if(isChecked){
+                    selectButton.setChecked(false);
+                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_45).complete();
+                    selectButton=rbAngle45;
+                }
+            break;
+            case R.id.rbAngle90:
+                if(isChecked){
+                    selectButton.setChecked(false);
+                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_90).complete();
+                    selectButton=rbAngle90;
+                }
+            break;
+            case R.id.rbAngle135:
+                if(isChecked){
+                    selectButton.setChecked(false);
+                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_135).complete();
+                    selectButton=rbAngle135;
+                }
+            break;
+            case R.id.rbAngle180:
+                if(isChecked){
+                    selectButton.setChecked(false);
+                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_180).complete();
+                    selectButton=rbAngle180;
+                }
+            break;
+            case R.id.rbAngle225:
+                if(isChecked){
+                    selectButton.setChecked(false);
+                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_225).complete();
+                    selectButton=rbAngle225;
+                }
+            break;
+            case R.id.rbAngle270:
+                if(isChecked){
+                    selectButton.setChecked(false);
+                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_270).complete();
+                    selectButton=rbAngle270;
+                }
+            break;
+            case R.id.rbAngle315:
+                if(isChecked){
+                    selectButton.setChecked(false);
+                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_315).complete();
+                    selectButton=rbAngle315;
+                }
             break;
         }
     }
