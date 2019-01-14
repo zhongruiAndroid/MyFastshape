@@ -160,16 +160,7 @@ public class MyFrameLayout extends FrameLayout implements BaseInter<MyFrameLayou
         return this;
     }
 
-    @Override
-    public boolean isAll_line() {
-        return baseHelper.isAll_line();
-    }
 
-    @Override
-    public MyFrameLayout setAll_line(boolean all_line) {
-        baseHelper.setAll_line(all_line);
-        return this;
-    }
 
     @Override
     public boolean isLeft_line() {

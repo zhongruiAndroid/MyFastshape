@@ -157,7 +157,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
         cbAllLine.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                ll.getViewHelper().setAll_line(isChecked).complete();
+                ll.getViewHelper().complete();
                 cbLeftLine.setChecked(isChecked);
                 cbTopLine.setChecked(isChecked);
                 cbRightLine.setChecked(isChecked);

@@ -32,7 +32,6 @@ public class TestLinearlayoutActivity extends AppCompatActivity {
                 .setShapeType(BaseHelper.shapeType_rectangle)
                 .setRadius(50)
                 .setSolidColor(Color.parseColor("#87ceeb"))
-                .setAll_line(true)
                 .setBorderWidth(10)
                 .setBottomLeftRadius(20)
                 .setBottomRightRadius(30)

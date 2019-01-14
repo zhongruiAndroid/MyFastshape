@@ -16,7 +16,6 @@
         android:clickable="true"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        app:all_line="true"
         app:borderColor="@color/fenhong"
         app:borderDashGap="2dp"
         app:borderDashWidth="4dp"

@@ -160,16 +160,6 @@ public class MyRelativeLayout extends RelativeLayout implements BaseInter<Relati
         return this;
     }
 
-    @Override
-    public boolean isAll_line() {
-        return baseHelper.isAll_line();
-    }
-
-    @Override
-    public MyRelativeLayout setAll_line(boolean all_line) {
-        baseHelper.setAll_line(all_line);
-        return this;
-    }
 
     @Override
     public boolean isLeft_line() {

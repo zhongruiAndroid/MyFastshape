@@ -16,7 +16,6 @@
         android:clickable="true"
         android:gravity="center"
         android:onClick="viewClick"
-        app:all_line="true"
         app:borderColor="@color/colorAccent"
         app:borderDashGap="2dp"
         app:borderDashWidth="3dp"

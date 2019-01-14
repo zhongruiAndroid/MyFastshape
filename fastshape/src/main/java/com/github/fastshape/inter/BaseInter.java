@@ -21,9 +21,6 @@ public interface BaseInter<T> {
 
     T setPressColor(int pressColor);
 
-    boolean isAll_line();
-
-    T setAll_line(boolean all_line);
 
     boolean isLeft_line();
 

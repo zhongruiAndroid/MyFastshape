@@ -98,7 +98,6 @@ public class MyEditText extends AppCompatEditText implements View.OnFocusChangeL
         }
 
         viewHelper.pressColor = viewNormal.getColor(R.styleable.MyEditText_pressColor, viewHelper.getTransparentColor());
-        viewHelper.allLine = viewNormal.getBoolean(R.styleable.MyEditText_all_line, false);
         viewHelper.leftLine = viewNormal.getBoolean(R.styleable.MyEditText_left_line, false);
         viewHelper.topLine = viewNormal.getBoolean(R.styleable.MyEditText_top_line, false);
         viewHelper.rightLine = viewNormal.getBoolean(R.styleable.MyEditText_right_line, false);

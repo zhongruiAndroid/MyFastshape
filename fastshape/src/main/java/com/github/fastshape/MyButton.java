@@ -86,7 +86,6 @@ public class MyButton extends AppCompatButton {
         }
 
         viewHelper.pressColor = viewNormal.getColor(R.styleable.MyButton_pressColor, viewHelper.getTransparentColor());
-        viewHelper.allLine = viewNormal.getBoolean(R.styleable.MyButton_all_line, false);
         viewHelper.leftLine = viewNormal.getBoolean(R.styleable.MyButton_left_line, false);
         viewHelper.topLine = viewNormal.getBoolean(R.styleable.MyButton_top_line, false);
         viewHelper.rightLine = viewNormal.getBoolean(R.styleable.MyButton_right_line, false);

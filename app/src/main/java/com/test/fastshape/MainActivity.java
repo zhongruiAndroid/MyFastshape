@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
                 MyLinearLayout linearLayout = new MyLinearLayout(MainActivity.this);
                 linearLayout.getViewHelper().clearAttr()
-                        .setAll_line(true)
                         .setGradientType(BaseViewHelper.gradientType_linear)
                         .setSolidColor(ContextCompat.getColor(MainActivity.this, R.color.white))
                         .setRadius(20)

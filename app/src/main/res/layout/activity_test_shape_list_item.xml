@@ -13,7 +13,6 @@
         android:layout_height="45dp"
         android:gravity="center"
         android:text="LinearLayout"
-        app:all_line="true"
         app:borderWidth="2px"
         app:borderColor="@color/colorPrimary"
         android:textColor="@color/colorPrimary"

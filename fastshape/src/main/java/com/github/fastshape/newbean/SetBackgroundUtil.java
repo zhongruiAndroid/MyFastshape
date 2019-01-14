@@ -33,11 +33,9 @@ public class SetBackgroundUtil {
             }
             return;
         }
-        if(firstHelper.all_line){
+        if (firstHelper.left_line && firstHelper.top_line && firstHelper.right_line && firstHelper.bottom_line) {
             firstHelper.isPartBorder = false;
-        }else if(firstHelper.all_line==false&&firstHelper.left_line && firstHelper.top_line && firstHelper.right_line && firstHelper.bottom_line){
-            firstHelper.isPartBorder = false;
-        }else if(!firstHelper.all_line&&!firstHelper.left_line && !firstHelper.top_line &&! firstHelper.right_line && !firstHelper.bottom_line){
+        }else if(firstHelper.left_line==false && firstHelper.top_line==false && firstHelper.right_line==false && firstHelper.bottom_line==false){
             firstHelper.isPartBorder = false;
         }else {
             firstHelper.isPartBorder = true;
@@ -276,12 +274,9 @@ public class SetBackgroundUtil {
 
         gradientDrawableNormal.setShape(firstHelper.shapeType);
 
-        if (firstHelper.all_line) {
+        if (firstHelper.borderWidth >0) {
             if (firstHelper.borderColor == Color.TRANSPARENT) {
                 firstHelper.borderColor = getDefBorderColor();
-            }
-            if (firstHelper.borderWidth <= 0) {
-                firstHelper.borderWidth = 1;
             }
         }
         gradientDrawableNormal.setStroke((int) firstHelper.borderWidth, firstHelper.borderColor, firstHelper.borderDashWidth, firstHelper.borderDashGap);

@@ -91,7 +91,6 @@ public class MyTextView extends AppCompatTextView {
         }
 
         viewHelper.pressColor = viewNormal.getColor(R.styleable.MyTextView_pressColor, viewHelper.getTransparentColor());
-        viewHelper.allLine = viewNormal.getBoolean(R.styleable.MyTextView_all_line, false);
         viewHelper.leftLine = viewNormal.getBoolean(R.styleable.MyTextView_left_line, false);
         viewHelper.topLine = viewNormal.getBoolean(R.styleable.MyTextView_top_line, false);
         viewHelper.rightLine = viewNormal.getBoolean(R.styleable.MyTextView_right_line, false);

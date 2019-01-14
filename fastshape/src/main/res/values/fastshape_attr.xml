@@ -85,7 +85,6 @@
 
         <attr name="pressColor" />
 
-        <attr name="all_line" />
         <attr name="left_line" />
         <attr name="top_line" />
         <attr name="right_line" />
@@ -161,7 +160,6 @@
 
         <attr name="pressColor" />
 
-        <attr name="all_line" />
         <attr name="left_line" />
         <attr name="top_line" />
         <attr name="right_line" />
@@ -222,7 +220,6 @@
 
         <attr name="pressColor" />
 
-        <attr name="all_line" />
         <attr name="left_line" />
         <attr name="top_line" />
         <attr name="right_line" />
@@ -285,7 +282,6 @@
 
         <attr name="pressColor" />
 
-        <attr name="all_line" />
         <attr name="left_line" />
         <attr name="top_line" />
         <attr name="right_line" />
@@ -331,7 +327,6 @@
 
         <attr name="pressColor" />
 
-        <attr name="all_line" />
         <attr name="left_line" />
         <attr name="top_line" />
         <attr name="right_line" />
@@ -371,7 +366,6 @@
 
         <attr name="pressColor" />
 
-        <attr name="all_line" />
         <attr name="left_line" />
         <attr name="top_line" />
         <attr name="right_line" />
@@ -442,7 +436,6 @@
 
     <attr name="pressColor" format="color" />
 
-    <attr name="all_line" format="boolean" />
     <attr name="left_line" format="boolean" />
     <attr name="top_line" format="boolean" />
     <attr name="right_line" format="boolean" />
@@ -546,7 +539,6 @@
 
         <attr name="pressColor" />
 
-        <attr name="all_line" />
         <attr name="left_line" />
         <attr name="top_line" />
         <attr name="right_line" />

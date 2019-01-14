@@ -31,8 +31,6 @@ public class FirstHelper extends ClipHelper{
     /*设置press颜色,设置了点击事件才生效*/
     protected int pressColor;
 
-    /*显示四个边框*/
-    protected boolean all_line;
     /*显示左边框*/
     protected boolean left_line;
     /*显示上边框*/
@@ -192,15 +190,16 @@ public class FirstHelper extends ClipHelper{
         }
 
         pressColor = viewNormal.getColor(R.styleable.FastShapeAttr_pressColor, Color.TRANSPARENT);
-        all_line = viewNormal.getBoolean(R.styleable.FastShapeAttr_all_line, false);
         left_line = viewNormal.getBoolean(R.styleable.FastShapeAttr_left_line, false);
         top_line = viewNormal.getBoolean(R.styleable.FastShapeAttr_top_line, false);
         right_line = viewNormal.getBoolean(R.styleable.FastShapeAttr_right_line, false);
         bottom_line = viewNormal.getBoolean(R.styleable.FastShapeAttr_bottom_line, false);
+
         if (left_line && top_line && right_line && bottom_line) {
-            all_line = true;
-        }
-        if (!all_line && (left_line || top_line || right_line || bottom_line)) {
+            isPartBorder = false;
+        }else if(left_line==false && top_line==false && right_line==false && bottom_line==false){
+            isPartBorder = false;
+        }else {
             isPartBorder = true;
         }
 
@@ -247,7 +246,6 @@ public class FirstHelper extends ClipHelper{
         this.drawable_press = null;
 
         this.pressColor = getTransparentColor();
-        this.all_line = false;
         this.left_line = false;
         this.top_line = false;
         this.right_line = false;
@@ -300,14 +298,7 @@ public class FirstHelper extends ClipHelper{
         return this;
     }
 
-    public boolean isAll_line() {
-        return all_line;
-    }
 
-    public FirstHelper setAll_line(boolean all_line) {
-        this.all_line = all_line;
-        return this;
-    }
 
     public boolean isLeft_line() {
         return left_line;
