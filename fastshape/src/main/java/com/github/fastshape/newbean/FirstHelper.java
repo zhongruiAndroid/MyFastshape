@@ -83,8 +83,9 @@ public class FirstHelper extends ClipHelper{
      * */
     protected int gradientType;
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef({gradientType_linear,gradientType_radial,gradientType_sweep})
+    @IntDef({gradientType_linear,gradientType_radial,gradientType_sweep,gradientType_none})
     public @interface gradientType{};
+    public static final int gradientType_none=-1;
     public static final int gradientType_linear=0;
     public static final int gradientType_radial=1;
     public static final int gradientType_sweep=2;
@@ -225,7 +226,7 @@ public class FirstHelper extends ClipHelper{
             bottomRightRadius = viewNormal.getDimension(R.styleable.FastShapeAttr_bottomRightRadius, 0);
         }
 
-        gradientType = viewNormal.getInteger(R.styleable.FastShapeAttr_gradientType, -1);
+        gradientType = viewNormal.getInteger(R.styleable.FastShapeAttr_gradientType, gradientType_none);
         if (gradientType != -1) {
             gradientAngle = viewNormal.getInteger(R.styleable.FastShapeAttr_gradientAngle, 0);
             gradientCenterX = viewNormal.getFloat(R.styleable.FastShapeAttr_gradientCenterX, 0.5f);

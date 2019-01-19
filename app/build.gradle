@@ -40,5 +40,5 @@ dependencies {
     //    compile project(':customview')
     //    compile 'com.github:customview:1.0.4'
     implementation project(':fastshape')
-
+    implementation "com.github.skydoves:colorpickerview:2.0.2"
 }

@@ -271,9 +271,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="26dp"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:paddingLeft="5dp"
                 >
 
@@ -296,7 +296,7 @@
                         android:id="@+id/rbGradientType1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.2"
+                        android:layout_weight="1"
                         android:checked="true"
                         android:text="linear"
                         android:textColor="@color/gray_6"
@@ -306,7 +306,7 @@
                         android:id="@+id/rbGradientType2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="1"
                         android:text="radial"
                         android:textColor="@color/gray_6"
                         />
@@ -317,6 +317,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="sweep"
+                        android:textColor="@color/gray_6"
+                        />
+                    <com.github.fastshape.MyRadioButton
+                        android:id="@+id/rbGradientTypeNone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="none"
                         android:textColor="@color/gray_6"
                         />
                 </RadioGroup>
