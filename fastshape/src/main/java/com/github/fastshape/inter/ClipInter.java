@@ -11,11 +11,11 @@ public interface ClipInter<T> {
 
     T setClipBg(boolean clipBg);
 
-    boolean isClipIsCircle();
+    boolean getClipIsCircle();
 
     T setClipIsCircle(boolean clipIsCircle);
 
-    boolean isClipIsAreaClick();
+    boolean getClipIsAreaClick();
 
     T setClipIsAreaClick(boolean clipIsAreaClick);
 

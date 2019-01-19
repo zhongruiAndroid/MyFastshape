@@ -22,46 +22,46 @@ import com.github.fastshape.inter.CompleteInter;
 public class ClipHelper implements ClipInter<ClipHelper> {
     protected CompleteInter completeInter;
     /*是否启用裁剪*/
-    public boolean clipSwitch;
+    protected boolean clipSwitch;
     /*是否裁剪背景*/
-    public boolean clipBg=true;
+    protected boolean clipBg=true;
     /*裁剪成圆形*/
-    public boolean clipIsCircle = false;
+    protected boolean clipIsCircle = false;
     /*裁剪之后的区域点击，true:只有剩余部分有点击事件，false:所有区域有点击事件*/
-    public boolean clipIsAreaClick = true;
+    protected boolean clipIsAreaClick = true;
     /*裁剪时是否忽略padding,true:忽略，false：不忽略*/
-    public boolean clipIgnorePadding = true;
-    public float clipTopLeftRadius;
-    public float clipTopRightRadius;
-    public float clipBottomLeftRadius;
-    public float clipBottomRightRadius;
+    protected boolean clipIgnorePadding = true;
+    protected float clipTopLeftRadius;
+    protected float clipTopRightRadius;
+    protected float clipBottomLeftRadius;
+    protected float clipBottomRightRadius;
     /*裁剪边框宽度*/
-    public float clipBorderWidth;
+    protected float clipBorderWidth;
     /*裁剪边框颜色*/
-    public int clipBorderColor;
+    protected int clipBorderColor;
     /*裁剪虚线长度*/
-    public float clipBorderDashWidth;
+    protected float clipBorderDashWidth;
     /*裁剪虚线之间的间隔*/
-    public float clipBorderDashGap;
+    protected float clipBorderDashGap;
     /*裁剪时虚线背景*/
-    public int clipBorderDashBgColor;
+    protected int clipBorderDashBgColor;
 
     /*裁剪虚线起始点*/
-    public int clipBorderPhase;
+    protected int clipBorderPhase;
 
 
-    public  Paint clipPaint;
-    public  Paint clipBorderPaint;
-    public  Paint clipBorderDashBgPaint;
-    public  Paint clipClearPaint;
+    public   Paint clipPaint;
+    protected  Paint clipBorderPaint;
+    protected  Paint clipBorderDashBgPaint;
+    protected  Paint clipClearPaint;
 
     public  Path clipPath;
-    public  Path clipBorderPath;
-    public  Region viewRegion;
-    public  Region clickRegion;
+    protected  Path clipBorderPath;
+    protected  Region viewRegion;
+    protected  Region clickRegion;
 
-    public  Shader shader;
-    public PathEffect pathEffect;
+    protected  Shader shader;
+    protected PathEffect pathEffect;
 
 
     public void onSizeChanged() {
@@ -200,7 +200,7 @@ public class ClipHelper implements ClipInter<ClipHelper> {
         return this;
     }
 
-    public boolean isClipSwitch() {
+    public boolean getClipSwitch() {
         return clipSwitch;
     }
 
@@ -209,7 +209,7 @@ public class ClipHelper implements ClipInter<ClipHelper> {
         return this;
     }
 
-    public boolean isClipIsCircle() {
+    public boolean getClipIsCircle() {
         return clipIsCircle;
     }
 
@@ -218,7 +218,7 @@ public class ClipHelper implements ClipInter<ClipHelper> {
         return this;
     }
 
-    public boolean isClipIsAreaClick() {
+    public boolean getClipIsAreaClick() {
         return clipIsAreaClick;
     }
 

@@ -84,7 +84,7 @@ public class MyFrameLayout extends FrameLayout {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        if (viewHelper != null&& viewHelper.clipSwitch) {
+        if (viewHelper != null&& viewHelper.getClipSwitch()) {
             viewHelper.onSizeChanged();
             viewHelper.onRefreshPaint(getPaddingLeft(),
                     getPaddingTop(),
@@ -95,7 +95,7 @@ public class MyFrameLayout extends FrameLayout {
 
     @Override
     public void draw(Canvas canvas) {
-        if (viewHelper != null&& viewHelper.clipBg&& viewHelper.clipSwitch) {
+        if (viewHelper != null&& viewHelper.isClipBg()&& viewHelper.getClipSwitch()) {
             canvas.save();
             canvas.clipPath(viewHelper.clipPath);
             super.draw(canvas);
@@ -112,12 +112,12 @@ public class MyFrameLayout extends FrameLayout {
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        if (viewHelper != null&& viewHelper.clipSwitch) {
+        if (viewHelper != null&& viewHelper.getClipSwitch()) {
             saveLayerCount = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
         }
         super.dispatchDraw(canvas);
 
-        if (viewHelper != null&& viewHelper.clipSwitch) {
+        if (viewHelper != null&& viewHelper.getClipSwitch()) {
             viewHelper.dispatchDrawEnd(saveLayerCount, canvas);
         }
     }
@@ -125,7 +125,7 @@ public class MyFrameLayout extends FrameLayout {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_UP) {
-            if (viewHelper != null && viewHelper.clipIsAreaClick&& viewHelper.clipSwitch) {
+            if (viewHelper != null && viewHelper.getClipIsAreaClick()&& viewHelper.getClipSwitch()) {
                 if (viewHelper.onTouchEvent(ev) == false) {//如果这个地方返回true会导致点击事件失效
                     return false;
                 }
@@ -138,7 +138,7 @@ public class MyFrameLayout extends FrameLayout {
 
     /*******************************************clip*********************************************/
     public void completeClip() {
-        if (viewHelper != null&& viewHelper.clipSwitch) {
+        if (viewHelper != null&& viewHelper.getClipSwitch()) {
             if(viewHelper.clipPaint==null){
                 viewHelper.onSizeChanged();
             }
@@ -151,7 +151,7 @@ public class MyFrameLayout extends FrameLayout {
     }
     public void resetClip() {
         if (viewHelper != null) {
-            viewHelper.clipSwitch=false;
+            viewHelper.setClipSwitch(false);
             invalidate();
         }
     }

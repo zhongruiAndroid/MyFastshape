@@ -614,7 +614,26 @@
                     android:layout_weight="1"
                     />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                >
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="padding               "
+                    />
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/sbPadding"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -671,13 +690,14 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/cbClipBg"
                     app:layout_constraintTop_toTopOf="parent"
+                    android:checked="true"
                     />
 
                 <CheckBox
                     android:id="@+id/cbClipIsAreaClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="裁剪掉的部分是否具有点击事件"
+                    android:text="true:被裁剪的部分没有点击事件"
                     android:textColor="@color/gray_6"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/cbClipIsCircle"

@@ -25,6 +25,11 @@
         app:gradientType="linear"
         app:radius="6dp"
         app:solidColor="@color/c_press"
+        app:clipSwitch="true"
+        app:clipBorderDashWidth="5dp"
+        app:clipBorderDashGap="5dp"
+        app:clipBorderWidth="10dp"
+        app:clipBorderColor="@color/black"
         >
         <TextView
             android:layout_width="match_parent"
