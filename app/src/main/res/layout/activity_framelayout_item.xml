@@ -4,17 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".test.LinearLayoutActivity"
-    android:orientation="horizontal">
-    <com.github.fastshape.MyLinearLayout
-        android:id="@+id/ll"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".test.FrameLayoutActivity">
+
+    <com.github.fastshape.MyFrameLayout
+        android:id="@+id/fl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:layout_weight="1"
         android:clickable="true"
         android:gravity="center_vertical"
-        android:orientation="vertical"
         app:borderColor="@color/fenhong"
         app:borderDashGap="2dp"
         app:borderDashWidth="4dp"
@@ -26,24 +27,23 @@
         app:radius="6dp"
         app:solidColor="@color/c_press"
         >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MyLinearLayout"
-            />
-
         <ImageView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:src="@drawable/bird"
             />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MyLinearLayout"
+            android:text="MyFrameLayout"
+            android:layout_gravity="top"
             />
-    </com.github.fastshape.MyLinearLayout>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MyFrameLayout"
+            android:layout_gravity="bottom"
+            />
+    </com.github.fastshape.MyFrameLayout>
 </LinearLayout>

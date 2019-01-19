@@ -1,28 +1,24 @@
 package com.github.fastshape;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.PathEffect;
 import android.graphics.RectF;
-import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 
 import com.github.fastshape.bean.BaseHelper;
-import com.github.fastshape.inter.BaseInter;
-import com.github.fastshape.inter.ClipInter;
+import com.github.fastshape.inter.CompleteInter;
+import com.github.fastshape.newbean.FirstHelper;
+import com.github.fastshape.newbean.SetBackgroundUtil;
 
 
 /**
  * Created by Administrator on 2016/9/6.
  */
-public class MyFrameLayout extends FrameLayout implements BaseInter<MyFrameLayout>,ClipInter<MyFrameLayout> {
-
-    private BaseHelper baseHelper;
+public class MyFrameLayout extends FrameLayout {
+    private FirstHelper viewHelper;
     private int saveLayerCount;
     public MyFrameLayout(Context context) {
         this(context, null);
@@ -33,22 +29,34 @@ public class MyFrameLayout extends FrameLayout implements BaseInter<MyFrameLayou
     }
 
     public MyFrameLayout(Context context, AttributeSet attrs, int defStyleAttr) {
-        this(context, attrs, defStyleAttr, 0);
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public MyFrameLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
+        super(context, attrs, defStyleAttr);
+        viewHelper = new FirstHelper(new CompleteInter() {
+            @Override
+            public void complete() {
+                MyFrameLayout.this.complete();
+            }
+            @Override
+            public void completeClip() {
+                MyFrameLayout.this.completeClip();
+            }
+        });
         init(attrs, defStyleAttr);
     }
 
+    public FirstHelper getViewHelper() {
+        return viewHelper;
+    }
+
+    /*public void setViewHelper(FirstHelper baseHelper) {
+        this.viewHelper = baseHelper;
+    }*/
+
     public void init(AttributeSet attrs, int defStyleAttr) {
-        baseHelper = new BaseHelper();
         Drawable background = getBackground();
         if (background != null) {
             return;
         }
-        baseHelper.init(getContext(), attrs, defStyleAttr);
+        viewHelper.init(getContext(), attrs, defStyleAttr);
 
         /**
          * 设置各个自定义属性之后调用此方法设置background
@@ -64,15 +72,16 @@ public class MyFrameLayout extends FrameLayout implements BaseInter<MyFrameLayou
      * 这个方法是将代码设置的各个属性收集生成一个Drawable,然后将它设置为background,简单点这个方法就是用来设置背景的,等价于setBackground方法
      */
     public void complete() {
-        baseHelper.viewComplete(this);
+        if (viewHelper != null) {
+            SetBackgroundUtil.viewComplete(this, viewHelper);
+        }
     }
-
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        if (baseHelper.clipHelper != null) {
-            baseHelper.clipHelper.onSizeChanged();
-            baseHelper.clipHelper.onRefreshPaint(getPaddingLeft(),
+        if (viewHelper != null&& viewHelper.clipSwitch) {
+            viewHelper.onSizeChanged();
+            viewHelper.onRefreshPaint(getPaddingLeft(),
                     getPaddingTop(),
                     getPaddingRight(),
                     getPaddingBottom(), getWidth(), getHeight());
@@ -81,9 +90,9 @@ public class MyFrameLayout extends FrameLayout implements BaseInter<MyFrameLayou
 
     @Override
     public void draw(Canvas canvas) {
-        if (baseHelper.clipHelper != null&&baseHelper.clipHelper.clipBg) {
+        if (viewHelper != null&& viewHelper.clipBg&& viewHelper.clipSwitch) {
             canvas.save();
-            canvas.clipPath(baseHelper.clipHelper.clipPath);
+            canvas.clipPath(viewHelper.clipPath);
             super.draw(canvas);
             canvas.restore();
         } else {
@@ -98,21 +107,21 @@ public class MyFrameLayout extends FrameLayout implements BaseInter<MyFrameLayou
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        if (baseHelper.clipHelper != null) {
+        if (viewHelper != null&& viewHelper.clipSwitch) {
             saveLayerCount = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
         }
         super.dispatchDraw(canvas);
 
-        if (baseHelper.clipHelper != null) {
-            baseHelper.clipHelper.dispatchDrawEnd(saveLayerCount, canvas);
+        if (viewHelper != null&& viewHelper.clipSwitch) {
+            viewHelper.dispatchDrawEnd(saveLayerCount, canvas);
         }
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_UP) {
-            if (baseHelper.clipHelper != null && baseHelper.clipHelper.clipIsAreaClick) {
-                if (baseHelper.clipHelper.onTouchEvent(ev) == false) {//如果这个地方返回true会导致点击事件失效
+            if (viewHelper != null && viewHelper.clipIsAreaClick&& viewHelper.clipSwitch) {
+                if (viewHelper.onTouchEvent(ev) == false) {//如果这个地方返回true会导致点击事件失效
                     return false;
                 }
             }
@@ -120,483 +129,16 @@ public class MyFrameLayout extends FrameLayout implements BaseInter<MyFrameLayou
         return super.dispatchTouchEvent(ev);
     }
 
-    @Override
-    public MyFrameLayout clearAttr() {
-        baseHelper.clearAttr();
-        return this;
-    }
-
-    @Override
-    public Drawable getDrawable_normal() {
-        return baseHelper.getDrawable_normal();
-    }
-
-    @Override
-    public MyFrameLayout setDrawable_normal(Drawable drawable_normal) {
-        baseHelper.setDrawable_normal(drawable_normal);
-        return this;
-
-    }
-
-    @Override
-    public Drawable getDrawable_press() {
-        return baseHelper.getDrawable_press();
-    }
-
-    @Override
-    public MyFrameLayout setDrawable_press(Drawable drawable_press) {
-        baseHelper.setDrawable_press(drawable_press);
-        return this;
-    }
-
-    @Override
-    public int getPressColor() {
-        return baseHelper.getPressColor();
-    }
-
-    @Override
-    public MyFrameLayout setPressColor(int pressColor) {
-        baseHelper.setPressColor(pressColor);
-        return this;
-    }
-
-
-
-    @Override
-    public boolean isLeft_line() {
-        return baseHelper.isLeft_line();
-    }
-
-    @Override
-    public MyFrameLayout setLeft_line(boolean left_line) {
-        baseHelper.setLeft_line(left_line);
-        return this;
-    }
-
-    @Override
-    public boolean isTop_line() {
-        return baseHelper.isTop_line();
-    }
-
-    @Override
-    public MyFrameLayout setTop_line(boolean top_line) {
-        baseHelper.setTop_line(top_line);
-        return this;
-    }
-
-    @Override
-    public boolean isRight_line() {
-        return baseHelper.isRight_line();
-    }
-
-    @Override
-    public MyFrameLayout setRight_line(boolean right_line) {
-        baseHelper.setRight_line(right_line);
-        return this;
-    }
-
-    @Override
-    public boolean isBottom_line() {
-        return baseHelper.isBottom_line();
-    }
-
-    @Override
-    public MyFrameLayout setBottom_line(boolean bottom_line) {
-        baseHelper.setBottom_line(bottom_line);
-        return this;
-    }
-
-    @Override
-    public int getShapeType() {
-        return baseHelper.getShapeType();
-    }
-
-    @Override
-    public MyFrameLayout setShapeType(@BaseHelper.shapeType int shapeType) {
-        baseHelper.setShapeType(shapeType);
-        return this;
-    }
-
-    @Override
-    public float getBorderWidth() {
-        return baseHelper.getBorderWidth();
-    }
-
-    @Override
-    public MyFrameLayout setBorderWidth(float borderWidth) {
-        baseHelper.setBorderWidth(borderWidth);
-        return this;
-    }
-
-    @Override
-    public int getBorderColor() {
-        return baseHelper.getBorderColor();
-    }
-
-    @Override
-    public MyFrameLayout setBorderColor(int borderColor) {
-        baseHelper.setBorderColor(borderColor);
-        return this;
-    }
-
-    @Override
-    public float getBorderDashWidth() {
-        return baseHelper.getBorderDashWidth();
-    }
-
-    @Override
-    public MyFrameLayout setBorderDashWidth(float borderDashWidth) {
-        baseHelper.setBorderDashWidth(borderDashWidth);
-        return this;
-    }
-
-    @Override
-    public float getBorderDashGap() {
-        return baseHelper.getBorderDashGap();
-    }
-
-    @Override
-    public MyFrameLayout setBorderDashGap(float borderDashGap) {
-        baseHelper.setBorderDashGap(borderDashGap);
-        return this;
-    }
-
-    @Override
-    public MyFrameLayout setSolidColor(int solidColor) {
-        baseHelper.setSolidColor(solidColor);
-        return this;
-    }
-
-
-    @Override
-    public MyFrameLayout setRadius(float topLeftRadius, float topRightRadius, float bottomRightRadius, float bottomLeftRadius) {
-        baseHelper.setRadius(topLeftRadius, topRightRadius, bottomRightRadius, bottomLeftRadius);
-        return this;
-    }
-
-    @Override
-    public MyFrameLayout setRadius(float radius) {
-        baseHelper.setRadius(radius);
-        return this;
-    }
-
-    @Override
-    public float getTopLeftRadius() {
-        return baseHelper.getTopLeftRadius();
-    }
-
-    @Override
-    public MyFrameLayout setTopLeftRadius(float topLeftRadius) {
-        baseHelper.setTopLeftRadius(topLeftRadius);
-        return this;
-    }
-
-    @Override
-    public float getTopRightRadius() {
-        return baseHelper.getTopRightRadius();
-    }
-
-    @Override
-    public MyFrameLayout setTopRightRadius(float topRightRadius) {
-        baseHelper.setTopRightRadius(topRightRadius);
-        return this;
-    }
-
-    @Override
-    public float getBottomLeftRadius() {
-        return baseHelper.getBottomLeftRadius();
-    }
-
-    @Override
-    public MyFrameLayout setBottomLeftRadius(float bottomLeftRadius) {
-        baseHelper.setBottomLeftRadius(bottomLeftRadius);
-        return this;
-    }
-
-    @Override
-    public float getBottomRightRadius() {
-        return baseHelper.getBottomRightRadius();
-    }
-
-    @Override
-    public MyFrameLayout setBottomRightRadius(float bottomRightRadius) {
-        baseHelper.setBottomRightRadius(bottomRightRadius);
-        return this;
-    }
-
-    @Override
-    public int getGradientType() {
-        return baseHelper.getGradientType();
-    }
-
-    @Override
-    public MyFrameLayout setGradientType(@BaseHelper.gradientType int gradientType) {
-        baseHelper.setGradientType(gradientType);
-        return this;
-    }
-
-    @Override
-    public int getGradientAngle() {
-        return baseHelper.getGradientAngle();
-    }
-
-    @Override
-    public MyFrameLayout setGradientAngle(@BaseHelper.angleType int gradientAngle) {
-        baseHelper.setGradientAngle(gradientAngle);
-        return this;
-    }
-
-    @Override
-    public float getGradientCenterX() {
-        return baseHelper.getGradientCenterX();
-    }
-
-    @Override
-    public MyFrameLayout setGradientCenterX(float gradientCenterX) {
-        baseHelper.setGradientCenterX(gradientCenterX);
-        return this;
-    }
-
-    @Override
-    public float getGradientCenterY() {
-        return baseHelper.getGradientCenterY();
-    }
-
-    @Override
-    public MyFrameLayout setGradientCenterY(float gradientCenterY) {
-        baseHelper.setGradientCenterY(gradientCenterY);
-        return this;
-    }
-
-    @Override
-    public int getGradientStartColor() {
-        return baseHelper.getGradientStartColor();
-    }
-
-    @Override
-    public MyFrameLayout setGradientStartColor(int gradientStartColor) {
-        baseHelper.setGradientStartColor(gradientStartColor);
-        return this;
-    }
-
-    @Override
-    public int getGradientCenterColor() {
-        return baseHelper.getGradientCenterColor();
-    }
-
-    @Override
-    public MyFrameLayout setGradientCenterColor(int gradientCenterColor) {
-        baseHelper.setGradientCenterColor(gradientCenterColor);
-        return this;
-    }
-
-    @Override
-    public int getGradientEndColor() {
-        return baseHelper.getGradientEndColor();
-    }
-
-    @Override
-    public MyFrameLayout setGradientEndColor(int gradientEndColor) {
-        baseHelper.setGradientEndColor(gradientEndColor);
-        return this;
-    }
-
-    @Override
-    public float getGradientRadius() {
-        return baseHelper.getGradientRadius();
-    }
-
-    @Override
-    public MyFrameLayout setGradientRadius(float gradientRadius) {
-        baseHelper.setGradientRadius(gradientRadius);
-        return this;
-    }
 
 
     /*******************************************clip*********************************************/
     public void completeClip() {
-        if (baseHelper.clipHelper != null) {
-            baseHelper.clipHelper.onRefreshPaint(getPaddingLeft(),
+        if (viewHelper != null&& viewHelper.clipSwitch) {
+            viewHelper.onRefreshPaint(getPaddingLeft(),
                     getPaddingTop(),
                     getPaddingRight(),
                     getPaddingBottom(), getWidth(), getHeight());
             invalidate();
         }
-    }
-
-    @Override
-    public boolean isClipBg() {
-        return baseHelper.clipHelper.isClipBg();
-    }
-
-    @Override
-    public MyFrameLayout setClipBg(boolean clipBg) {
-        baseHelper.clipHelper.setClipBg(clipBg);
-        return this;
-    }
-
-    @Override
-    public boolean isClipIsCircle() {
-        return baseHelper.clipHelper.isClipIsCircle();
-    }
-
-    @Override
-    public MyFrameLayout setClipIsCircle(boolean clipIsCircle) {
-        baseHelper.clipHelper.setClipIsCircle(clipIsCircle);
-        return this;
-    }
-
-    @Override
-    public boolean isClipIsAreaClick() {
-        return baseHelper.clipHelper.isClipIsAreaClick();
-    }
-
-    @Override
-    public MyFrameLayout setClipIsAreaClick(boolean clipIsAreaClick) {
-        baseHelper.clipHelper.setClipIsAreaClick(clipIsAreaClick);
-        return this;
-    }
-
-    @Override
-    public boolean isClipIgnorePadding() {
-        return baseHelper.clipHelper.isClipIgnorePadding();
-    }
-
-    @Override
-    public MyFrameLayout setClipIgnorePadding(boolean clipIgnorePadding) {
-        baseHelper.clipHelper.setClipIgnorePadding(clipIgnorePadding);
-        return this;
-    }
-
-    @Override
-    public float getClipTopLeftRadius() {
-        return baseHelper.clipHelper.getClipTopLeftRadius();
-    }
-
-    @Override
-    public MyFrameLayout setClipTopLeftRadius(float clipTopLeftRadius) {
-        baseHelper.clipHelper.setClipTopLeftRadius(clipTopLeftRadius);
-        return this;
-    }
-
-    @Override
-    public float getClipTopRightRadius() {
-        return baseHelper.clipHelper.getClipTopRightRadius();
-    }
-
-    @Override
-    public MyFrameLayout setClipTopRightRadius(float clipTopRightRadius) {
-        baseHelper.clipHelper.setClipTopRightRadius(clipTopRightRadius);
-        return this;
-    }
-
-    @Override
-    public float getClipBottomLeftRadius() {
-        return baseHelper.clipHelper.getClipBottomLeftRadius();
-    }
-
-    @Override
-    public MyFrameLayout setClipBottomLeftRadius(float clipBottomLeftRadius) {
-        baseHelper.clipHelper.setClipBottomLeftRadius(clipBottomLeftRadius);
-        return this;
-    }
-
-    @Override
-    public float getClipBottomRightRadius() {
-        return baseHelper.clipHelper.getClipBottomRightRadius();
-    }
-
-    @Override
-    public MyFrameLayout setClipBottomRightRadius(float clipBottomRightRadius) {
-        baseHelper.clipHelper.setClipBottomRightRadius(clipBottomRightRadius);
-        return this;
-    }
-
-    @Override
-    public float getClipBorderWidth() {
-        return baseHelper.clipHelper.getClipBorderWidth();
-    }
-
-    @Override
-    public MyFrameLayout setClipBorderWidth(float clipBorderWidth) {
-        baseHelper.clipHelper.setClipBorderWidth(clipBorderWidth);
-        return this;
-    }
-
-    @Override
-    public int getClipBorderColor() {
-        return baseHelper.clipHelper.getClipBorderColor();
-    }
-
-    @Override
-    public MyFrameLayout setClipBorderColor(int clipBorderColor) {
-        baseHelper.clipHelper.setClipBorderColor(clipBorderColor);
-        return this;
-    }
-
-    @Override
-    public float getClipBorderDashWidth() {
-        return baseHelper.clipHelper.getClipBorderDashWidth();
-    }
-
-    @Override
-    public MyFrameLayout setClipBorderDashWidth(float clipBorderDashWidth) {
-        baseHelper.clipHelper.setClipBorderDashWidth(clipBorderDashWidth);
-        return this;
-    }
-
-    @Override
-    public float getClipBorderDashGap() {
-        return baseHelper.clipHelper.getClipBorderDashGap();
-    }
-
-    @Override
-    public MyFrameLayout setClipBorderDashGap(float clipBorderDashGap) {
-        baseHelper.clipHelper.setClipBorderDashGap(clipBorderDashGap);
-        return this;
-    }
-
-    @Override
-    public int getClipBorderDashBgColor() {
-        return baseHelper.clipHelper.getClipBorderDashBgColor();
-    }
-
-    @Override
-    public MyFrameLayout setClipBorderDashBgColor(int clipBorderDashBgColor) {
-        baseHelper.clipHelper.setClipBorderDashBgColor(clipBorderDashBgColor);
-        return this;
-    }
-
-    @Override
-    public int getClipBorderPhase() {
-        return baseHelper.clipHelper.getClipBorderPhase();
-    }
-
-    @Override
-    public MyFrameLayout setClipBorderPhase(int clipBorderPhase) {
-        baseHelper.clipHelper.setClipBorderPhase(clipBorderPhase);
-        return this;
-    }
-
-    @Override
-    public Shader getShader() {
-        return baseHelper.clipHelper.getShader();
-    }
-
-    @Override
-    public MyFrameLayout setShader(Shader shader) {
-        baseHelper.clipHelper.setShader(shader);
-        return this;
-    }
-
-    @Override
-    public PathEffect getPathEffect() {
-        return baseHelper.clipHelper.getPathEffect();
-    }
-
-    @Override
-    public MyFrameLayout setPathEffect(PathEffect pathEffect) {
-        baseHelper.clipHelper.setPathEffect(pathEffect);
-        return this;
     }
 }

@@ -7,8 +7,8 @@
     android:layout_height="wrap_content"
     tools:context=".test.LinearLayoutActivity"
     android:orientation="horizontal">
-    <com.github.fastshape.MyLinearLayout
-        android:id="@+id/ll"
+    <com.github.fastshape.MyRelativeLayout
+        android:id="@+id/rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -26,24 +26,28 @@
         app:radius="6dp"
         app:solidColor="@color/c_press"
         >
+
         <TextView
+            android:id="@+id/tvRl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MyLinearLayout"
+            android:text="MyRelativeLayout"
             />
-
         <ImageView
+            android:id="@+id/ivBird"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:src="@drawable/bird"
+            android:layout_below="@id/tvRl"
             />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MyLinearLayout"
+            android:text="MyRelativeLayout"
+            android:layout_below="@id/ivBird"
             />
-    </com.github.fastshape.MyLinearLayout>
+    </com.github.fastshape.MyRelativeLayout>
 
 </LinearLayout>

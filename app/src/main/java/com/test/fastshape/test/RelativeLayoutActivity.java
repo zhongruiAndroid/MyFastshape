@@ -11,5 +11,9 @@ public class RelativeLayoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_relativelayout);
+
+
+        ViewFragment fragment = ViewFragment.newInstance(ViewFragment.type_relativelayout);
+        getSupportFragmentManager().beginTransaction().add(R.id.fl_fragment,fragment).commitAllowingStateLoss();
     }
 }

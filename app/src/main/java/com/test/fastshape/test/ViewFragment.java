@@ -19,7 +19,9 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.github.fastshape.MyFrameLayout;
 import com.github.fastshape.MyLinearLayout;
+import com.github.fastshape.MyRelativeLayout;
 import com.github.fastshape.newbean.FirstHelper;
 import com.skydoves.colorpickerview.ColorPickerView;
 import com.skydoves.colorpickerview.listeners.ColorListener;
@@ -77,7 +79,9 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     AppCompatSeekBar sbGradientRadius;
 
     private MyLinearLayout ll;
-
+    private MyFrameLayout fl;
+    private MyRelativeLayout rl;
+    FirstHelper firstHelper;
     float radiusScale = 1.5f;
 
     public ViewFragment() {
@@ -108,6 +112,8 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ll_content = view.findViewById(R.id.ll_content);
 
         sbRadiusTopLeft = view.findViewById(R.id.sbRadiusTopLeft);
         sbRadiusTopLeft.setOnSeekBarChangeListener(this);
@@ -245,193 +251,203 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
         if (type == type_linearlayout) {
             itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_linearlayout_item, null);
             ll = itemView.findViewById(R.id.ll);
-
-            FirstHelper viewHelper = ll.getViewHelper();
-            float topLeftRadius = viewHelper.getTopLeftRadius();
-            float topRightRadius = viewHelper.getTopRightRadius();
-            float bottomLeftRadius = viewHelper.getBottomLeftRadius();
-            float bottomRightRadius = viewHelper.getBottomRightRadius();
-            float borderWidth = viewHelper.getBorderWidth();
-            float borderDashWidth = viewHelper.getBorderDashWidth();
-            float borderDashGap = viewHelper.getBorderDashGap();
-            boolean left_line = viewHelper.isLeft_line();
-            boolean top_line = viewHelper.isTop_line();
-            boolean right_line = viewHelper.isRight_line();
-            boolean bottom_line = viewHelper.isBottom_line();
-            int shapeType = viewHelper.getShapeType();
-            int gradientType = viewHelper.getGradientType();
-            int pressColor = viewHelper.getPressColor();
-            int solidColor = viewHelper.getSolidColor();
-            int borderColor = viewHelper.getBorderColor();
-            int gradientStartColor = viewHelper.getGradientStartColor();
-            int gradientCenterColor = viewHelper.getGradientCenterColor();
-            int gradientEndColor = viewHelper.getGradientEndColor();
-            int gradientAngle = viewHelper.getGradientAngle();
-            float gradientCenterX = viewHelper.getGradientCenterX();
-            float gradientCenterY = viewHelper.getGradientCenterY();
-            float gradientRadius = viewHelper.getGradientRadius();
-
-            sbRadiusTopLeft.setProgress((int) ((int) topLeftRadius / radiusScale));
-            sbRadiusTopRight.setProgress((int) ((int) topRightRadius / radiusScale));
-            sbRadiusBottomLeft.setProgress((int) ((int) bottomLeftRadius / radiusScale));
-            sbRadiusBottomRight.setProgress((int) ((int) bottomRightRadius / radiusScale));
-            sbBorderWidth.setProgress((int) borderWidth);
-            sbBorderDashWidth.setProgress((int) borderDashWidth);
-            sbBorderDashGap.setProgress((int) borderDashGap);
-            cbLeftLine.setChecked(left_line);
-            cbTopLine.setChecked(top_line);
-            cbRightLine.setChecked(right_line);
-            cbBottomLine.setChecked(bottom_line);
-            if (shapeType == FirstHelper.shapeType_rectangle) {
-                rbShapeType1.setChecked(true);
-            } else if (shapeType == FirstHelper.shapeType_oval) {
-                rbShapeType2.setChecked(true);
-            } else if (shapeType == FirstHelper.shapeType_line) {
-                rbShapeType3.setChecked(true);
-            }
-
-            if (gradientType == FirstHelper.gradientType_linear) {
-                rbGradientType1.setChecked(true);
-            } else if (gradientType == FirstHelper.gradientType_radial) {
-                rbGradientType2.setChecked(true);
-            } else if (gradientType == FirstHelper.gradientType_sweep) {
-                rbGradientType3.setChecked(true);
-            }else if(gradientType == FirstHelper.gradientType_none){
-                rbGradientTypeNone.setChecked(true);
-            }
-
-
-            tvPressColor.setBackgroundColor(pressColor);
-            tvSolidColor.setBackgroundColor(solidColor);
-            tvBorderColor.setBackgroundColor(borderColor);
-            tvStartColor.setBackgroundColor(gradientStartColor);
-            tvCenterColor.setBackgroundColor(gradientCenterColor);
-            tvEndColor.setBackgroundColor(gradientEndColor);
-            switch (gradientAngle) {
-                case FirstHelper.angle_0:
-//                    selectButton.setChecked(false);
-                    selectButton = rbAngle0;
-                    selectButton.setChecked(true);
-                    break;
-                case FirstHelper.angle_45:
-//                    selectButton.setChecked(false);
-                    selectButton = rbAngle45;
-                    selectButton.setChecked(true);
-                    break;
-                case FirstHelper.angle_90:
-//                    selectButton.setChecked(false);
-                    selectButton = rbAngle90;
-                    selectButton.setChecked(true);
-                    break;
-                case FirstHelper.angle_135:
-//                    selectButton.setChecked(false);
-                    selectButton = rbAngle135;
-                    selectButton.setChecked(true);
-                    break;
-                case FirstHelper.angle_180:
-//                    selectButton.setChecked(false);
-                    selectButton = rbAngle180;
-                    selectButton.setChecked(true);
-                    break;
-                case FirstHelper.angle_225:
-//                    selectButton.setChecked(false);
-                    selectButton = rbAngle225;
-                    selectButton.setChecked(true);
-                    break;
-                case FirstHelper.angle_270:
-//                    selectButton.setChecked(false);
-                    selectButton = rbAngle270;
-                    selectButton.setChecked(true);
-                    break;
-                case FirstHelper.angle_315:
-//                    selectButton.setChecked(false);
-                    selectButton = rbAngle0;
-                    selectButton.setChecked(true);
-                    break;
-            }
-            sbGradientCenterX.setProgress((int) (gradientCenterX * 100));
-            sbGradientCenterY.setProgress((int) (gradientCenterY * 100));
-            sbGradientRadius.setProgress((int) (gradientRadius / 2));
-
+            firstHelper = ll.getViewHelper();
+            getViewData();
+        } else if (type == type_framelayout) {
+            itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_framelayout_item, null);
+            fl = itemView.findViewById(R.id.fl);
+            firstHelper = fl.getViewHelper();
+            getViewData();
+        } else if (type == type_relativelayout) {
+            itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_relativelayout_item, null);
+            rl = itemView.findViewById(R.id.rl);
+            firstHelper = rl.getViewHelper();
+            getViewData();
         }
+
+
         if (itemView != null) {
-            ll_content = view.findViewById(R.id.ll_content);
             ll_content.addView(itemView, 0);
         }
     }
+    private void getViewData() {
+        float topLeftRadius = firstHelper.getTopLeftRadius();
+        float topRightRadius = firstHelper.getTopRightRadius();
+        float bottomLeftRadius = firstHelper.getBottomLeftRadius();
+        float bottomRightRadius = firstHelper.getBottomRightRadius();
+        float borderWidth = firstHelper.getBorderWidth();
+        float borderDashWidth = firstHelper.getBorderDashWidth();
+        float borderDashGap = firstHelper.getBorderDashGap();
+        boolean left_line = firstHelper.isLeft_line();
+        boolean top_line = firstHelper.isTop_line();
+        boolean right_line = firstHelper.isRight_line();
+        boolean bottom_line = firstHelper.isBottom_line();
+        int shapeType = firstHelper.getShapeType();
+        int gradientType = firstHelper.getGradientType();
+        int pressColor = firstHelper.getPressColor();
+        int solidColor = firstHelper.getSolidColor();
+        int borderColor = firstHelper.getBorderColor();
+        int gradientStartColor = firstHelper.getGradientStartColor();
+        int gradientCenterColor = firstHelper.getGradientCenterColor();
+        int gradientEndColor = firstHelper.getGradientEndColor();
+        int gradientAngle = firstHelper.getGradientAngle();
+        float gradientCenterX = firstHelper.getGradientCenterX();
+        float gradientCenterY = firstHelper.getGradientCenterY();
+        float gradientRadius = firstHelper.getGradientRadius();
+
+        sbRadiusTopLeft.setProgress((int) ((int) topLeftRadius / radiusScale));
+        sbRadiusTopRight.setProgress((int) ((int) topRightRadius / radiusScale));
+        sbRadiusBottomLeft.setProgress((int) ((int) bottomLeftRadius / radiusScale));
+        sbRadiusBottomRight.setProgress((int) ((int) bottomRightRadius / radiusScale));
+        sbBorderWidth.setProgress((int) borderWidth);
+        sbBorderDashWidth.setProgress((int) borderDashWidth);
+        sbBorderDashGap.setProgress((int) borderDashGap);
+        cbLeftLine.setChecked(left_line);
+        cbTopLine.setChecked(top_line);
+        cbRightLine.setChecked(right_line);
+        cbBottomLine.setChecked(bottom_line);
+        if (shapeType == FirstHelper.shapeType_rectangle) {
+            rbShapeType1.setChecked(true);
+        } else if (shapeType == FirstHelper.shapeType_oval) {
+            rbShapeType2.setChecked(true);
+        } else if (shapeType == FirstHelper.shapeType_line) {
+            rbShapeType3.setChecked(true);
+        }
+
+        if (gradientType == FirstHelper.gradientType_linear) {
+            rbGradientType1.setChecked(true);
+        } else if (gradientType == FirstHelper.gradientType_radial) {
+            rbGradientType2.setChecked(true);
+        } else if (gradientType == FirstHelper.gradientType_sweep) {
+            rbGradientType3.setChecked(true);
+        } else if (gradientType == FirstHelper.gradientType_none) {
+            rbGradientTypeNone.setChecked(true);
+        }
 
 
+        tvPressColor.setBackgroundColor(pressColor);
+        tvSolidColor.setBackgroundColor(solidColor);
+        tvBorderColor.setBackgroundColor(borderColor);
+        tvStartColor.setBackgroundColor(gradientStartColor);
+        tvCenterColor.setBackgroundColor(gradientCenterColor);
+        tvEndColor.setBackgroundColor(gradientEndColor);
+        switch (gradientAngle) {
+            case FirstHelper.angle_0:
+//                    selectButton.setChecked(false);
+                selectButton = rbAngle0;
+                selectButton.setChecked(true);
+                break;
+            case FirstHelper.angle_45:
+//                    selectButton.setChecked(false);
+                selectButton = rbAngle45;
+                selectButton.setChecked(true);
+                break;
+            case FirstHelper.angle_90:
+//                    selectButton.setChecked(false);
+                selectButton = rbAngle90;
+                selectButton.setChecked(true);
+                break;
+            case FirstHelper.angle_135:
+//                    selectButton.setChecked(false);
+                selectButton = rbAngle135;
+                selectButton.setChecked(true);
+                break;
+            case FirstHelper.angle_180:
+//                    selectButton.setChecked(false);
+                selectButton = rbAngle180;
+                selectButton.setChecked(true);
+                break;
+            case FirstHelper.angle_225:
+//                    selectButton.setChecked(false);
+                selectButton = rbAngle225;
+                selectButton.setChecked(true);
+                break;
+            case FirstHelper.angle_270:
+//                    selectButton.setChecked(false);
+                selectButton = rbAngle270;
+                selectButton.setChecked(true);
+                break;
+            case FirstHelper.angle_315:
+//                    selectButton.setChecked(false);
+                selectButton = rbAngle0;
+                selectButton.setChecked(true);
+                break;
+        }
+        sbGradientCenterX.setProgress((int) (gradientCenterX * 100));
+        sbGradientCenterY.setProgress((int) (gradientCenterY * 100));
+        sbGradientRadius.setProgress((int) (gradientRadius / 2));
+    }
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         switch (seekBar.getId()) {
             case R.id.sbRadiusTopLeft:
-                if (type == type_linearlayout) {
-                    ll.getViewHelper().setTopLeftRadius(progress * radiusScale).complete();
+                if (firstHelper != null) {
+                    firstHelper.setTopLeftRadius(progress * radiusScale).complete();
                 } else {
 
                 }
                 break;
             case R.id.sbRadiusTopRight:
-                if (type == type_linearlayout) {
-                    ll.getViewHelper().setTopRightRadius(progress * radiusScale).complete();
+                if (firstHelper != null) {
+                    firstHelper.setTopRightRadius(progress * radiusScale).complete();
                 } else {
 
                 }
                 break;
             case R.id.sbRadiusBottomLeft:
-                if (type == type_linearlayout) {
-                    ll.getViewHelper().setBottomLeftRadius(progress * radiusScale).complete();
+                if (firstHelper != null) {
+                    firstHelper.setBottomLeftRadius(progress * radiusScale).complete();
                 } else {
 
                 }
                 break;
             case R.id.sbRadiusBottomRight:
-                if (type == type_linearlayout) {
-                    ll.getViewHelper().setBottomRightRadius(progress * radiusScale).complete();
+                if (firstHelper != null) {
+                    firstHelper.setBottomRightRadius(progress * radiusScale).complete();
                 } else {
 
                 }
                 break;
             case R.id.sbBorderWidth:
-                if (type == type_linearlayout) {
-                    ll.getViewHelper().setBorderWidth(progress).complete();
+                if (firstHelper != null) {
+                    firstHelper.setBorderWidth(progress).complete();
                 } else {
 
                 }
                 break;
             case R.id.sbBorderDashWidth:
-                if (type == type_linearlayout) {
-                    ll.getViewHelper().setBorderDashWidth(progress).complete();
+                if (firstHelper != null) {
+                    firstHelper.setBorderDashWidth(progress).complete();
                 } else {
 
                 }
                 break;
             case R.id.sbBorderDashGap:
-                if (type == type_linearlayout) {
-                    ll.getViewHelper().setBorderDashGap(progress).complete();
+                if (firstHelper != null) {
+                    firstHelper.setBorderDashGap(progress).complete();
                 } else {
 
                 }
                 break;
             case R.id.sbGradientRadius:
-                if (type == type_linearlayout) {
-                    ll.getViewHelper().setGradientRadius(progress * 2).complete();
+                if (firstHelper != null) {
+                    firstHelper.setGradientRadius(progress * 2).complete();
                 } else {
 
                 }
                 break;
             case R.id.sbGradientCenterX:
-                if (type == type_linearlayout) {
+                if (firstHelper != null) {
                     float x = 1f * progress / 100;
-                    ll.getViewHelper().setGradientCenterX(x).complete();
+                    firstHelper.setGradientCenterX(x).complete();
                 } else {
 
                 }
                 break;
             case R.id.sbGradientCenterY:
-                if (type == type_linearlayout) {
+                if (firstHelper != null) {
                     float y = 1f * progress / 100;
-                    ll.getViewHelper().setGradientCenterY(y).complete();
+                    firstHelper.setGradientCenterY(y).complete();
                 } else {
 
                 }
@@ -451,105 +467,105 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         switch (buttonView.getId()) {
             case R.id.cbLeftLine:
-                ll.getViewHelper().setLeft_line(isChecked).complete();
+                firstHelper.setLeft_line(isChecked).complete();
                 break;
             case R.id.cbTopLine:
-                ll.getViewHelper().setTop_line(isChecked).complete();
+                firstHelper.setTop_line(isChecked).complete();
                 break;
             case R.id.cbRightLine:
-                ll.getViewHelper().setRight_line(isChecked).complete();
+                firstHelper.setRight_line(isChecked).complete();
                 break;
             case R.id.cbBottomLine:
-                ll.getViewHelper().setBottom_line(isChecked).complete();
+                firstHelper.setBottom_line(isChecked).complete();
                 break;
             case R.id.rbShapeType1:
                 if (isChecked) {
-                    ll.getViewHelper().setShapeType(FirstHelper.shapeType_rectangle).complete();
+                    firstHelper.setShapeType(FirstHelper.shapeType_rectangle).complete();
                 }
                 break;
             case R.id.rbShapeType2:
                 if (isChecked) {
-                    ll.getViewHelper().setShapeType(FirstHelper.shapeType_oval).complete();
+                    firstHelper.setShapeType(FirstHelper.shapeType_oval).complete();
                 }
                 break;
             case R.id.rbShapeType3:
                 if (isChecked) {
-                    ll.getViewHelper().setShapeType(FirstHelper.shapeType_line).complete();
+                    firstHelper.setShapeType(FirstHelper.shapeType_line).complete();
                 }
                 break;
             case R.id.rbGradientType1:
                 if (isChecked) {
-                    ll.getViewHelper().setGradientType(FirstHelper.gradientType_linear).complete();
+                    firstHelper.setGradientType(FirstHelper.gradientType_linear).complete();
                 }
                 break;
             case R.id.rbGradientType2:
                 if (isChecked) {
-                    ll.getViewHelper().setGradientType(FirstHelper.gradientType_radial).complete();
+                    firstHelper.setGradientType(FirstHelper.gradientType_radial).complete();
                 }
                 break;
             case R.id.rbGradientType3:
                 if (isChecked) {
-                    ll.getViewHelper().setGradientType(FirstHelper.gradientType_sweep).complete();
+                    firstHelper.setGradientType(FirstHelper.gradientType_sweep).complete();
                 }
                 break;
             case R.id.rbGradientTypeNone:
                 if (isChecked) {
-                    ll.getViewHelper().setGradientType(FirstHelper.gradientType_none).complete();
+                    firstHelper.setGradientType(FirstHelper.gradientType_none).complete();
                 }
                 break;
             case R.id.rbAngle0:
                 if (isChecked) {
                     selectButton.setChecked(false);
-                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_0).complete();
+                    firstHelper.setGradientAngle(FirstHelper.angle_0).complete();
                     selectButton = rbAngle0;
                 }
                 break;
             case R.id.rbAngle45:
                 if (isChecked) {
                     selectButton.setChecked(false);
-                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_45).complete();
+                    firstHelper.setGradientAngle(FirstHelper.angle_45).complete();
                     selectButton = rbAngle45;
                 }
                 break;
             case R.id.rbAngle90:
                 if (isChecked) {
                     selectButton.setChecked(false);
-                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_90).complete();
+                    firstHelper.setGradientAngle(FirstHelper.angle_90).complete();
                     selectButton = rbAngle90;
                 }
                 break;
             case R.id.rbAngle135:
                 if (isChecked) {
                     selectButton.setChecked(false);
-                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_135).complete();
+                    firstHelper.setGradientAngle(FirstHelper.angle_135).complete();
                     selectButton = rbAngle135;
                 }
                 break;
             case R.id.rbAngle180:
                 if (isChecked) {
                     selectButton.setChecked(false);
-                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_180).complete();
+                    firstHelper.setGradientAngle(FirstHelper.angle_180).complete();
                     selectButton = rbAngle180;
                 }
                 break;
             case R.id.rbAngle225:
                 if (isChecked) {
                     selectButton.setChecked(false);
-                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_225).complete();
+                    firstHelper.setGradientAngle(FirstHelper.angle_225).complete();
                     selectButton = rbAngle225;
                 }
                 break;
             case R.id.rbAngle270:
                 if (isChecked) {
                     selectButton.setChecked(false);
-                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_270).complete();
+                    firstHelper.setGradientAngle(FirstHelper.angle_270).complete();
                     selectButton = rbAngle270;
                 }
                 break;
             case R.id.rbAngle315:
                 if (isChecked) {
                     selectButton.setChecked(false);
-                    ll.getViewHelper().setGradientAngle(FirstHelper.angle_315).complete();
+                    firstHelper.setGradientAngle(FirstHelper.angle_315).complete();
                     selectButton = rbAngle315;
                 }
                 break;
@@ -610,27 +626,27 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
         switch (viewId) {
             case R.id.tvPressColor:
                 tvPressColor.setBackgroundColor(selectColor);
-                ll.getViewHelper().setPressColor(selectColor).complete();
+                firstHelper.setPressColor(selectColor).complete();
                 break;
             case R.id.tvSolidColor:
                 tvSolidColor.setBackgroundColor(selectColor);
-                ll.getViewHelper().setSolidColor(selectColor).complete();
+                firstHelper.setSolidColor(selectColor).complete();
                 break;
             case R.id.tvBorderColor:
                 tvBorderColor.setBackgroundColor(selectColor);
-                ll.getViewHelper().setBorderColor(selectColor).complete();
+                firstHelper.setBorderColor(selectColor).complete();
                 break;
             case R.id.tvStartColor:
                 tvStartColor.setBackgroundColor(selectColor);
-                ll.getViewHelper().setGradientStartColor(selectColor).complete();
+                firstHelper.setGradientStartColor(selectColor).complete();
                 break;
             case R.id.tvCenterColor:
                 tvCenterColor.setBackgroundColor(selectColor);
-                ll.getViewHelper().setGradientCenterColor(selectColor).complete();
+                firstHelper.setGradientCenterColor(selectColor).complete();
                 break;
             case R.id.tvEndColor:
                 tvEndColor.setBackgroundColor(selectColor);
-                ll.getViewHelper().setGradientEndColor(selectColor).complete();
+                firstHelper.setGradientEndColor(selectColor).complete();
                 break;
         }
     }
