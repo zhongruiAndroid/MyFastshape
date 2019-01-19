@@ -6,4 +6,5 @@ package com.github.fastshape.inter;
 public interface CompleteInter {
     void complete();
     void completeClip();
+    void resetClip();
 }

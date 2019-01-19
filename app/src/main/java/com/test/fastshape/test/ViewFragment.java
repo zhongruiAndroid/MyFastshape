@@ -84,6 +84,24 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     FirstHelper firstHelper;
     float radiusScale = 1.5f;
 
+    /**********************裁剪**********************/
+    CheckBox cbClipSwitch;
+    CheckBox cbClipBg;
+    CheckBox cbClipIsCircle;
+    CheckBox cbClipIgnorePadding;
+    CheckBox cbClipIsAreaClick;
+    AppCompatSeekBar sbClipRadiusTopLeft;
+    AppCompatSeekBar sbClipRadiusTopRight;
+    AppCompatSeekBar sbClipRadiusBottomLeft;
+    AppCompatSeekBar sbClipRadiusBottomRight;
+    AppCompatSeekBar sbClipAllRadius;
+    AppCompatSeekBar sbClipBorderWidth;
+    AppCompatSeekBar sbClipBorderDashWidth;
+    AppCompatSeekBar sbClipBorderDashGap;
+    TextView tvClipBorderColor;
+    TextView tvClipDashBgColor;
+    AppCompatSeekBar sbClipBorderPhase;
+
     public ViewFragment() {
     }
 
@@ -244,6 +262,59 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
         sbGradientRadius.setOnSeekBarChangeListener(this);
 
         initData(view);
+
+        initClipView(view);
+    }
+
+    private void initClipView(View view) {
+        cbClipSwitch=view.findViewById(R.id.cbClipSwitch);
+        cbClipSwitch.setOnCheckedChangeListener(this);
+
+        cbClipBg=view.findViewById(R.id.cbClipBg);
+        cbClipBg.setOnCheckedChangeListener(this);
+
+        cbClipIsCircle=view.findViewById(R.id.cbClipIsCircle);
+        cbClipIsCircle.setOnCheckedChangeListener(this);
+
+        cbClipIgnorePadding=view.findViewById(R.id.cbClipIgnorePadding);
+        cbClipIgnorePadding.setOnCheckedChangeListener(this);
+
+        cbClipIsAreaClick=view.findViewById(R.id.cbClipIsAreaClick);
+        cbClipIsAreaClick.setOnCheckedChangeListener(this);
+
+        sbClipRadiusTopLeft=view.findViewById(R.id.sbClipRadiusTopLeft);
+        sbClipRadiusTopLeft.setOnSeekBarChangeListener(this);
+
+        sbClipRadiusTopRight=view.findViewById(R.id.sbClipRadiusTopRight);
+        sbClipRadiusTopRight.setOnSeekBarChangeListener(this);
+
+        sbClipRadiusBottomLeft=view.findViewById(R.id.sbClipRadiusBottomLeft);
+        sbClipRadiusBottomLeft.setOnSeekBarChangeListener(this);
+
+        sbClipRadiusBottomRight=view.findViewById(R.id.sbClipRadiusBottomRight);
+        sbClipRadiusBottomRight.setOnSeekBarChangeListener(this);
+
+        sbClipAllRadius=view.findViewById(R.id.sbClipAllRadius);
+        sbClipAllRadius.setOnSeekBarChangeListener(this);
+
+        sbClipBorderWidth=view.findViewById(R.id.sbClipBorderWidth);
+        sbClipBorderWidth.setOnSeekBarChangeListener(this);
+
+        sbClipBorderDashWidth=view.findViewById(R.id.sbClipBorderDashWidth);
+        sbClipBorderDashWidth.setOnSeekBarChangeListener(this);
+
+        sbClipBorderDashGap=view.findViewById(R.id.sbClipBorderDashGap);
+        sbClipBorderDashGap.setOnSeekBarChangeListener(this);
+
+        tvClipDashBgColor=view.findViewById(R.id.tvClipDashBgColor);
+        tvClipDashBgColor.setOnClickListener(this);
+
+        tvClipBorderColor=view.findViewById(R.id.tvClipBorderColor);
+        tvClipBorderColor.setOnClickListener(this);
+
+        sbClipBorderPhase=view.findViewById(R.id.sbClipBorderPhase);
+        sbClipBorderPhase.setOnSeekBarChangeListener(this);
+
     }
 
     private void initData(View view) {
@@ -452,6 +523,72 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
 
                 }
                 break;
+            case R.id.sbClipRadiusTopLeft:
+                if (firstHelper != null) {
+                    firstHelper.setClipTopLeftRadius(progress * radiusScale).completeClip();
+                } else {
+
+                }
+                break;
+            case R.id.sbClipRadiusTopRight:
+                if (firstHelper != null) {
+                    firstHelper.setClipTopRightRadius(progress * radiusScale).completeClip();
+                } else {
+
+                }
+                break;
+            case R.id.sbClipRadiusBottomLeft:
+                if (firstHelper != null) {
+                    firstHelper.setClipBottomLeftRadius(progress * radiusScale).completeClip();
+                } else {
+
+                }
+                break;
+            case R.id.sbClipRadiusBottomRight:
+                if (firstHelper != null) {
+                    firstHelper.setClipBottomRightRadius(progress * radiusScale).completeClip();
+                } else {
+
+                }
+                break;
+            case R.id.sbClipAllRadius:
+                if (firstHelper != null) {
+                    sbClipRadiusTopLeft.setProgress(progress);
+                    sbClipRadiusTopRight.setProgress(progress);
+                    sbClipRadiusBottomLeft.setProgress(progress);
+                    sbClipRadiusBottomRight.setProgress(progress);
+                } else {
+
+                }
+                break;
+            case R.id.sbClipBorderWidth:
+                if (firstHelper != null) {
+                    firstHelper.setClipBorderWidth(progress).completeClip();
+                } else {
+
+                }
+                break;
+            case R.id.sbClipBorderDashWidth:
+                if (firstHelper != null) {
+                    firstHelper.setClipBorderDashWidth(progress).completeClip();
+                } else {
+
+                }
+                break;
+            case R.id.sbClipBorderDashGap:
+                if (firstHelper != null) {
+                    firstHelper.setBorderDashGap(progress).completeClip();
+                } else {
+
+                }
+                break;
+            case R.id.sbClipBorderPhase:
+                if (firstHelper != null) {
+                    firstHelper.setClipBorderPhase(progress).completeClip();
+                } else {
+
+                }
+                break;
         }
     }
 
@@ -569,6 +706,24 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
                     selectButton = rbAngle315;
                 }
                 break;
+            case R.id.cbClipSwitch:
+                firstHelper.setClipSwitch(isChecked).completeClip();
+                if(isChecked==false){
+                    firstHelper.resetClip();
+                }
+                break;
+            case R.id.cbClipBg:
+                firstHelper.setClipBg(isChecked).completeClip();
+                break;
+            case R.id.cbClipIsCircle:
+                firstHelper.setClipIsCircle(isChecked).completeClip();
+                break;
+            case R.id.cbClipIgnorePadding:
+                firstHelper.setClipIgnorePadding(isChecked).completeClip();
+                break;
+            case R.id.cbClipIsAreaClick:
+                firstHelper.setClipIsAreaClick(isChecked).completeClip();
+                break;
         }
     }
 
@@ -647,6 +802,14 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             case R.id.tvEndColor:
                 tvEndColor.setBackgroundColor(selectColor);
                 firstHelper.setGradientEndColor(selectColor).complete();
+                break;
+            case R.id.tvClipDashBgColor:
+                tvClipDashBgColor.setBackgroundColor(selectColor);
+                firstHelper.setClipBorderDashBgColor(selectColor).completeClip();
+                break;
+            case R.id.tvClipBorderColor:
+                tvClipBorderColor.setBackgroundColor(selectColor);
+                firstHelper.setClipBorderColor(selectColor).completeClip();
                 break;
         }
     }

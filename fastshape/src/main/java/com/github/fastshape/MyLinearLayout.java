@@ -39,6 +39,11 @@ public class MyLinearLayout extends LinearLayout   {
             public void completeClip() {
                 MyLinearLayout.this.completeClip();
             }
+
+            @Override
+            public void resetClip() {
+                MyLinearLayout.this.resetClip();
+            }
         });
         init(attrs, defStyleAttr);
     }
@@ -134,10 +139,19 @@ public class MyLinearLayout extends LinearLayout   {
     /*******************************************clip*********************************************/
     public void completeClip() {
         if (viewHelper != null&& viewHelper.clipSwitch) {
+            if(viewHelper.clipPaint==null){
+                viewHelper.onSizeChanged();
+            }
             viewHelper.onRefreshPaint(getPaddingLeft(),
                     getPaddingTop(),
                     getPaddingRight(),
                     getPaddingBottom(), getWidth(), getHeight());
+            invalidate();
+        }
+    }
+    public void resetClip() {
+        if (viewHelper != null) {
+            viewHelper.clipSwitch=false;
             invalidate();
         }
     }

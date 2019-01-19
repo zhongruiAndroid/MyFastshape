@@ -23,7 +23,6 @@ import static com.github.fastshape.newbean.SetBackgroundUtil.getTransparentColor
  *   MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性
  */
 public class FirstHelper extends ClipHelper{
-    private CompleteInter completeInter;
     /*设置正常状态背景和press状态背景,覆盖其他所有属性*/
     protected Drawable drawable_normal;
     protected Drawable drawable_press;
@@ -127,11 +126,6 @@ public class FirstHelper extends ClipHelper{
     public void complete() {
         if(completeInter!=null){
             completeInter.complete();
-        }
-    }
-    public void completeClip() {
-        if(completeInter!=null){
-            completeInter.completeClip();
         }
     }
     public FirstHelper(CompleteInter completeInter) {

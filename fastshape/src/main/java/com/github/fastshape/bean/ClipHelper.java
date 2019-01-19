@@ -14,11 +14,13 @@ import android.graphics.Shader;
 import android.view.MotionEvent;
 
 import com.github.fastshape.inter.ClipInter;
+import com.github.fastshape.inter.CompleteInter;
 
 /***
  *   created by zhongrui on 2018/12/29
  */
 public class ClipHelper implements ClipInter<ClipHelper> {
+    protected CompleteInter completeInter;
     /*是否启用裁剪*/
     public boolean clipSwitch;
     /*是否裁剪背景*/
@@ -198,6 +200,15 @@ public class ClipHelper implements ClipInter<ClipHelper> {
         return this;
     }
 
+    public boolean isClipSwitch() {
+        return clipSwitch;
+    }
+
+    public ClipHelper setClipSwitch(boolean clipSwitch) {
+        this.clipSwitch = clipSwitch;
+        return this;
+    }
+
     public boolean isClipIsCircle() {
         return clipIsCircle;
     }
@@ -331,5 +342,15 @@ public class ClipHelper implements ClipInter<ClipHelper> {
     public ClipHelper setPathEffect(PathEffect pathEffect) {
         this.pathEffect = pathEffect;
         return this;
+    }
+    public void completeClip() {
+        if(completeInter!=null){
+            completeInter.completeClip();
+        }
+    }
+    public void resetClip() {
+        if(completeInter!=null){
+            completeInter.resetClip();
+        }
     }
 }

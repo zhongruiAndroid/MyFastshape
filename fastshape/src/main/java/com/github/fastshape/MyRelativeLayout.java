@@ -39,6 +39,10 @@ public class MyRelativeLayout extends RelativeLayout {
             public void completeClip() {
                 MyRelativeLayout.this.completeClip();
             }
+            @Override
+            public void resetClip() {
+                MyRelativeLayout.this.resetClip();
+            }
         });
         init(attrs, defStyleAttr);
     }
@@ -134,10 +138,19 @@ public class MyRelativeLayout extends RelativeLayout {
     /*******************************************clip*********************************************/
     public void completeClip() {
         if (viewHelper != null&& viewHelper.clipSwitch) {
+            if(viewHelper.clipPaint==null){
+                viewHelper.onSizeChanged();
+            }
             viewHelper.onRefreshPaint(getPaddingLeft(),
                     getPaddingTop(),
                     getPaddingRight(),
                     getPaddingBottom(), getWidth(), getHeight());
+            invalidate();
+        }
+    }
+    public void resetClip() {
+        if (viewHelper != null) {
+            viewHelper.clipSwitch=false;
             invalidate();
         }
     }

@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".test.LinearLayoutActivity">
+
     <LinearLayout
         android:id="@+id/ll_content"
         android:layout_width="match_parent"
@@ -19,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -319,6 +321,7 @@
                         android:text="sweep"
                         android:textColor="@color/gray_6"
                         />
+
                     <com.github.fastshape.MyRadioButton
                         android:id="@+id/rbGradientTypeNone"
                         android:layout_width="0dp"
@@ -567,6 +570,7 @@
                     android:layout_weight="1"
                     />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -574,6 +578,7 @@
                 android:orientation="horizontal"
                 android:paddingLeft="5dp"
                 >
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -604,6 +609,289 @@
 
                 <android.support.v7.widget.AppCompatSeekBar
                     android:id="@+id/sbGradientRadius"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:text="clip功能(对button无效)"
+                android:textColor="@color/black"
+                />
+            <!--clip-->
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp">
+
+                <CheckBox
+                    android:id="@+id/cbClipSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否开启裁剪"
+                    android:textColor="@color/gray_6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <CheckBox
+                    android:id="@+id/cbClipBg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="44dp"
+                    android:layout_marginStart="42dp"
+                    android:text="是否裁剪自身背景"
+                    android:textColor="@color/gray_6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/cbClipIsCircle"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:checked="true"
+                    />
+
+                <CheckBox
+                    android:id="@+id/cbClipIsCircle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否裁剪成圆形"
+                    android:textColor="@color/gray_6"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/cbClipSwitch"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <CheckBox
+                    android:id="@+id/cbClipIgnorePadding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="裁剪是否忽略padding"
+                    android:textColor="@color/gray_6"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/cbClipBg"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <CheckBox
+                    android:id="@+id/cbClipIsAreaClick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="裁剪掉的部分是否具有点击事件"
+                    android:textColor="@color/gray_6"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/cbClipIsCircle"
+                    android:checked="true"
+                    />
+            </android.support.constraint.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="2dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="4"
+                    android:text="左上圆角"
+                    />
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/sbClipRadiusTopLeft"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="右上圆角"
+                    />
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/sbClipRadiusTopRight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="2dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="4"
+                    android:text="左下圆角"
+                    />
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/sbClipRadiusBottomLeft"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="右下圆角"
+                    />
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/sbClipRadiusBottomRight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="2dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="4"
+                    android:text="全部圆角"
+                    />
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/sbClipAllRadius"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="borderWidth"
+                    />
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/sbClipBorderWidth"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DashWidth "
+                    />
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/sbClipBorderDashWidth"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DashGap"
+                    />
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/sbClipBorderDashGap"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="22dp"
+                    android:layout_marginRight="10dp"
+                    android:text="clipBorderColor"
+                    />
+
+                <TextView
+                    android:id="@+id/tvClipBorderColor"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="#ffffffff"
+                    tools:layout_editor_absoluteX="308dp"
+                    tools:layout_editor_absoluteY="63dp"/>
+
+                <Space
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="22dp"
+                    android:layout_marginRight="10dp"
+                    android:text="clipDashBgColor"/>
+
+                <TextView
+                    android:id="@+id/tvClipDashBgColor"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="#ffffffff"
+                    tools:layout_editor_absoluteX="308dp"
+                    tools:layout_editor_absoluteY="63dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="clipBorderPhase "
+                    />
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/sbClipBorderPhase"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

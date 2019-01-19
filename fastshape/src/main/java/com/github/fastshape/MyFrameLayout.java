@@ -39,6 +39,11 @@ public class MyFrameLayout extends FrameLayout {
             public void completeClip() {
                 MyFrameLayout.this.completeClip();
             }
+
+            @Override
+            public void resetClip() {
+                MyFrameLayout.this.resetClip();
+            }
         });
         init(attrs, defStyleAttr);
     }
@@ -134,10 +139,19 @@ public class MyFrameLayout extends FrameLayout {
     /*******************************************clip*********************************************/
     public void completeClip() {
         if (viewHelper != null&& viewHelper.clipSwitch) {
+            if(viewHelper.clipPaint==null){
+                viewHelper.onSizeChanged();
+            }
             viewHelper.onRefreshPaint(getPaddingLeft(),
                     getPaddingTop(),
                     getPaddingRight(),
                     getPaddingBottom(), getWidth(), getHeight());
+            invalidate();
+        }
+    }
+    public void resetClip() {
+        if (viewHelper != null) {
+            viewHelper.clipSwitch=false;
             invalidate();
         }
     }
