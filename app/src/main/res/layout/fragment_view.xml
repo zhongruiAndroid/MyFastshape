@@ -645,7 +645,7 @@
             <!--clip-->
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="90dp">
+                android:layout_height="60dp">
 
                 <CheckBox
                     android:id="@+id/cbClipSwitch"
@@ -679,19 +679,19 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/cbClipSwitch"
                     app:layout_constraintTop_toTopOf="parent"
-                    />
+                    app:layout_constraintVertical_bias="1.0"/>
 
                 <CheckBox
                     android:id="@+id/cbClipIgnorePadding"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:text="裁剪是否忽略padding"
                     android:textColor="@color/gray_6"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/cbClipBg"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:checked="true"
-                    />
+                    app:layout_constraintVertical_bias="1.0"/>
 
                 <CheckBox
                     android:id="@+id/cbClipIsAreaClick"
@@ -702,6 +702,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/cbClipIsCircle"
                     android:checked="true"
+                    android:visibility="gone"
                     />
             </android.support.constraint.ConstraintLayout>
 

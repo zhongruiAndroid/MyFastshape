@@ -63,11 +63,7 @@ public class MyLinearLayout extends LinearLayout   {
         }
         viewHelper.init(getContext(), attrs, defStyleAttr);
 
-        /**
-         * 设置各个自定义属性之后调用此方法设置background
-         * 这里有必要说明一下,为什么设置属性了还需要调用这个方法才能生效?
-         * 这个方法是将代码设置的各个属性收集生成一个Drawable,然后将它设置为background,简单点这个方法就是用来设置背景的,等价于setBackground方法
-         */
+
         complete();
     }
 
