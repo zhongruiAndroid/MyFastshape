@@ -29,7 +29,6 @@ import java.lang.annotation.RetentionPolicy;
  */
 
 public class BaseHelper extends Helper implements BaseInter<BaseHelper> {
-    public static final int defStyleAttr=R.attr.fastshapeStyle;
     public ClipHelper clipHelper;
 
     /*设置正常状态背景和press状态背景,覆盖其他所有属性*/

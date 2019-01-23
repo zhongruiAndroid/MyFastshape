@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 
 import com.github.fastshape.bean.BaseHelper;
 import com.github.fastshape.inter.CompleteInter;
+import com.github.fastshape.newbean.FirstHelper;
 import com.github.fastshape.newbean.SecondHelper;
 import com.github.fastshape.newbean.SetBackgroundUtil;
 
@@ -25,7 +26,7 @@ public class MyButton extends AppCompatButton  {
     }
 
     public MyButton(Context context, AttributeSet attrs) {
-        this(context, attrs, BaseHelper.defStyleAttr);
+        this(context, attrs, FirstHelper.defStyleAttr);
     }
 
     public MyButton(Context context, AttributeSet attrs, int defStyleAttr) {

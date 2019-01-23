@@ -22,7 +22,9 @@ import android.widget.TextView;
 import com.github.fastshape.MyFrameLayout;
 import com.github.fastshape.MyLinearLayout;
 import com.github.fastshape.MyRelativeLayout;
+import com.github.fastshape.MyTextView;
 import com.github.fastshape.newbean.FirstHelper;
+import com.github.fastshape.newbean.SecondHelper;
 import com.skydoves.colorpickerview.ColorPickerView;
 import com.skydoves.colorpickerview.listeners.ColorListener;
 import com.skydoves.colorpickerview.sliders.AlphaSlideBar;
@@ -38,6 +40,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     private int type;
 
     LinearLayout ll_content;
+    LinearLayout llClip;
     AppCompatSeekBar sbRadiusTopLeft;
     AppCompatSeekBar sbRadiusTopRight;
     AppCompatSeekBar sbRadiusBottomLeft;
@@ -82,7 +85,9 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     private MyLinearLayout ll;
     private MyFrameLayout fl;
     private MyRelativeLayout rl;
+    private MyTextView tv;
     FirstHelper firstHelper;
+    SecondHelper secondHelper;
     float radiusScale = 1.5f;
 
     /**********************裁剪**********************/
@@ -133,6 +138,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
         super.onViewCreated(view, savedInstanceState);
 
         ll_content = view.findViewById(R.id.ll_content);
+        llClip = view.findViewById(R.id.llClip);
 
         sbRadiusTopLeft = view.findViewById(R.id.sbRadiusTopLeft);
         sbRadiusTopLeft.setOnSeekBarChangeListener(this);
@@ -329,16 +335,25 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             ll = itemView.findViewById(R.id.ll);
             firstHelper = ll.getViewHelper();
             getViewData();
+            llClip.setVisibility(View.VISIBLE);
         } else if (type == type_framelayout) {
             itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_framelayout_item, null);
             fl = itemView.findViewById(R.id.fl);
             firstHelper = fl.getViewHelper();
             getViewData();
+            llClip.setVisibility(View.VISIBLE);
         } else if (type == type_relativelayout) {
             itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_relativelayout_item, null);
             rl = itemView.findViewById(R.id.rl);
             firstHelper = rl.getViewHelper();
             getViewData();
+            llClip.setVisibility(View.VISIBLE);
+        }else if (type == type_textview) {
+            itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_textview_item, null);
+            tv = itemView.findViewById(R.id.tv);
+            firstHelper = tv.getViewHelper();
+            getViewData();
+            llClip.setVisibility(View.GONE);
         }
 
 

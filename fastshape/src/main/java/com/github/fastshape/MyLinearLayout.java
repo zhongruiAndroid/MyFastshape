@@ -25,7 +25,7 @@ public class MyLinearLayout extends LinearLayout   {
     }
 
     public MyLinearLayout(Context context, AttributeSet attrs) {
-        this(context, attrs, BaseHelper.defStyleAttr);
+        this(context, attrs, FirstHelper.defStyleAttr);
     }
 
     public MyLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -99,11 +99,6 @@ public class MyLinearLayout extends LinearLayout   {
         } else {
             super.draw(canvas);
         }
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
     }
 
     @Override

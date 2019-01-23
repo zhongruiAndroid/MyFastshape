@@ -25,7 +25,7 @@ public class MyFrameLayout extends FrameLayout {
     }
 
     public MyFrameLayout(Context context, AttributeSet attrs) {
-        this(context, attrs, BaseHelper.defStyleAttr);
+        this(context, attrs, FirstHelper.defStyleAttr);
     }
 
     public MyFrameLayout(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -103,11 +103,6 @@ public class MyFrameLayout extends FrameLayout {
         } else {
             super.draw(canvas);
         }
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
     }
 
     @Override

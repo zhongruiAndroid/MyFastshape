@@ -23,6 +23,8 @@ import static com.github.fastshape.newbean.SetBackgroundUtil.getTransparentColor
  *   MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性
  */
 public class FirstHelper extends ClipHelper{
+    public static final int defStyleAttr=R.attr.fastshapeStyle;
+
     /*设置正常状态背景和press状态背景,覆盖其他所有属性*/
     protected Drawable drawable_normal;
     protected Drawable drawable_press;

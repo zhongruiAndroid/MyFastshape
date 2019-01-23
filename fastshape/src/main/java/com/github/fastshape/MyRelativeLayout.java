@@ -25,7 +25,7 @@ public class MyRelativeLayout extends RelativeLayout {
     }
 
     public MyRelativeLayout(Context context, AttributeSet attrs) {
-        this(context, attrs, BaseHelper.defStyleAttr);
+        this(context, attrs, FirstHelper.defStyleAttr);
     }
 
     public MyRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -102,11 +102,6 @@ public class MyRelativeLayout extends RelativeLayout {
         } else {
             super.draw(canvas);
         }
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
     }
 
     @Override

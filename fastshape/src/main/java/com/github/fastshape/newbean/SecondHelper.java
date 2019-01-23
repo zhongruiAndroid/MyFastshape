@@ -60,4 +60,12 @@ public class SecondHelper extends FirstHelper{
         bottom_width =  (int) viewNormal.getDimension(R.styleable.FastShapeAttr_bottom_width, -1);
         bottom_height = (int) viewNormal.getDimension(R.styleable.FastShapeAttr_bottom_height,-1);
     }
+
+    @Deprecated
+    public void completeClip() {
+    }
+
+    @Deprecated
+    public void resetClip() {
+    }
 }
