@@ -37,8 +37,8 @@ public class SecondHelper extends FirstHelper{
         /*第二部分公共属性*/
         publicSecondAttr(viewNormal);
 
-        /*裁剪属性*/
-        clipAttr(viewNormal);
+        /*裁剪属性 viewGroup属性*/
+//        clipAttr(viewNormal);
 
         viewNormal.recycle();
     }
@@ -67,5 +67,77 @@ public class SecondHelper extends FirstHelper{
 
     @Deprecated
     public void resetClip() {
+    }
+
+    public int getLeft_width() {
+        return left_width;
+    }
+
+    public SecondHelper setLeft_width(int left_width) {
+        this.left_width = left_width;
+        return this;
+    }
+
+    public int getLeft_height() {
+        return left_height;
+    }
+
+    public SecondHelper setLeft_height(int left_height) {
+        this.left_height = left_height;
+        return this;
+    }
+
+    public int getTop_width() {
+        return top_width;
+    }
+
+    public SecondHelper setTop_width(int top_width) {
+        this.top_width = top_width;
+        return this;
+    }
+
+    public int getTop_height() {
+        return top_height;
+    }
+
+    public SecondHelper setTop_height(int top_height) {
+        this.top_height = top_height;
+        return this;
+    }
+
+    public int getRight_width() {
+        return right_width;
+    }
+
+    public SecondHelper setRight_width(int right_width) {
+        this.right_width = right_width;
+        return this;
+    }
+
+    public int getRight_height() {
+        return right_height;
+    }
+
+    public SecondHelper setRight_height(int right_height) {
+        this.right_height = right_height;
+        return this;
+    }
+
+    public int getBottom_width() {
+        return bottom_width;
+    }
+
+    public SecondHelper setBottom_width(int bottom_width) {
+        this.bottom_width = bottom_width;
+        return this;
+    }
+
+    public int getBottom_height() {
+        return bottom_height;
+    }
+
+    public SecondHelper setBottom_height(int bottom_height) {
+        this.bottom_height = bottom_height;
+        return this;
     }
 }

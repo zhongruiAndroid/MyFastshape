@@ -637,6 +637,7 @@
                     />
             </LinearLayout>
 
+
             <LinearLayout
                 android:id="@+id/llClip"
                 android:layout_width="match_parent"
@@ -644,6 +645,7 @@
                 android:orientation="vertical"
                 android:visibility="gone"
                 >
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -929,6 +931,171 @@
                         />
                 </LinearLayout>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                >
+
+                <CheckBox
+                    android:id="@+id/cbSetDrawable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设置四个方向的drawable"
+                    android:textColor="@color/gray_6"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="5"
+                        android:text="left_width"
+                        />
+
+                    <android.support.v7.widget.AppCompatSeekBar
+                        android:id="@+id/sbLeftWidth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="5"
+                        android:text="left_height"
+                        />
+
+                    <android.support.v7.widget.AppCompatSeekBar
+                        android:id="@+id/sbLeftHeight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="5"
+                        android:text="top_width"
+                        />
+
+                    <android.support.v7.widget.AppCompatSeekBar
+                        android:id="@+id/sbTopWidth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="5"
+                        android:text="top_height"
+                        />
+
+                    <android.support.v7.widget.AppCompatSeekBar
+                        android:id="@+id/sbTopHeight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="5"
+                        android:text="right_width"
+                        />
+
+                    <android.support.v7.widget.AppCompatSeekBar
+                        android:id="@+id/sbRightWidth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="5"
+                        android:text="right_height"
+                        />
+
+                    <android.support.v7.widget.AppCompatSeekBar
+                        android:id="@+id/sbRightHeight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="5"
+                        android:text="bottom_w"
+                        />
+
+                    <android.support.v7.widget.AppCompatSeekBar
+                        android:id="@+id/sbBottomWidth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="5"
+                        android:text="bottom_h"
+                        />
+
+                    <android.support.v7.widget.AppCompatSeekBar
+                        android:id="@+id/sbBottomHeight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

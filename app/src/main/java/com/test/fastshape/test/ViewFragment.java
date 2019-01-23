@@ -2,10 +2,12 @@ package com.test.fastshape.test;
 
 import android.app.Dialog;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatSeekBar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -108,6 +110,18 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     TextView tvClipDashBgColor;
     AppCompatSeekBar sbClipBorderPhase;
 
+    /***************************MyTextView***************************/
+    LinearLayout llTextView;
+    CheckBox cbSetDrawable;
+    AppCompatSeekBar sbLeftWidth;
+    AppCompatSeekBar sbLeftHeight;
+    AppCompatSeekBar sbTopWidth;
+    AppCompatSeekBar sbTopHeight;
+    AppCompatSeekBar sbRightWidth;
+    AppCompatSeekBar sbRightHeight;
+    AppCompatSeekBar sbBottomWidth;
+    AppCompatSeekBar sbBottomHeight;
+
     public ViewFragment() {
     }
 
@@ -139,6 +153,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
 
         ll_content = view.findViewById(R.id.ll_content);
         llClip = view.findViewById(R.id.llClip);
+        llTextView =view.findViewById(R.id.llTextView);
 
         sbRadiusTopLeft = view.findViewById(R.id.sbRadiusTopLeft);
         sbRadiusTopLeft.setOnSeekBarChangeListener(this);
@@ -336,30 +351,78 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             firstHelper = ll.getViewHelper();
             getViewData();
             llClip.setVisibility(View.VISIBLE);
+            llTextView.setVisibility(View.GONE);
         } else if (type == type_framelayout) {
             itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_framelayout_item, null);
             fl = itemView.findViewById(R.id.fl);
             firstHelper = fl.getViewHelper();
             getViewData();
             llClip.setVisibility(View.VISIBLE);
+            llTextView.setVisibility(View.GONE);
         } else if (type == type_relativelayout) {
             itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_relativelayout_item, null);
             rl = itemView.findViewById(R.id.rl);
             firstHelper = rl.getViewHelper();
             getViewData();
             llClip.setVisibility(View.VISIBLE);
+            llTextView.setVisibility(View.GONE);
         }else if (type == type_textview) {
+            getTextViewId(view);
             itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_textview_item, null);
             tv = itemView.findViewById(R.id.tv);
             firstHelper = tv.getViewHelper();
+            secondHelper=tv.getViewHelper();
             getViewData();
             llClip.setVisibility(View.GONE);
+            llTextView.setVisibility(View.VISIBLE);
         }
 
 
         if (itemView != null) {
             ll_content.addView(itemView, 0);
         }
+    }
+
+    private void getTextViewId(View view) {
+        cbSetDrawable =view.findViewById(R.id.cbSetDrawable);
+        cbSetDrawable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Drawable drawable1 =ContextCompat.getDrawable(getActivity(), R.drawable.select);
+                    Drawable drawable2 =ContextCompat.getDrawable(getActivity(), R.drawable.select);
+                    Drawable drawable3 =ContextCompat.getDrawable(getActivity(), R.drawable.select);
+                    Drawable drawable4 =ContextCompat.getDrawable(getActivity(), R.drawable.select);
+                    tv.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable1,drawable2,drawable3,drawable4);
+                }else{
+                    tv.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,null,null);
+                }
+            }
+        });
+        sbLeftWidth =view.findViewById(R.id.sbLeftWidth);
+        sbLeftWidth.setOnSeekBarChangeListener(this);
+
+        sbLeftHeight =view.findViewById(R.id.sbLeftHeight);
+        sbLeftHeight.setOnSeekBarChangeListener(this);
+
+        sbTopWidth =view.findViewById(R.id.sbTopWidth);
+        sbTopWidth.setOnSeekBarChangeListener(this);
+
+        sbTopHeight =view.findViewById(R.id.sbTopHeight);
+        sbTopHeight.setOnSeekBarChangeListener(this);
+
+        sbRightWidth =view.findViewById(R.id.sbRightWidth);
+        sbRightWidth.setOnSeekBarChangeListener(this);
+
+        sbRightHeight =view.findViewById(R.id.sbRightHeight);
+        sbRightHeight.setOnSeekBarChangeListener(this);
+
+        sbBottomWidth =view.findViewById(R.id.sbBottomWidth);
+        sbBottomWidth.setOnSeekBarChangeListener(this);
+
+        sbBottomHeight =view.findViewById(R.id.sbBottomHeight);
+        sbBottomHeight.setOnSeekBarChangeListener(this);
+
     }
 
     private void getViewData() {
@@ -649,6 +712,62 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             case R.id.sbClipBorderPhase:
                 if (firstHelper != null) {
                     firstHelper.setClipBorderPhase(progress).completeClip();
+                } else {
+
+                }
+                break;
+            case R.id.sbLeftWidth:
+                if (secondHelper != null) {
+                    secondHelper.setLeft_width(progress).complete();
+                } else {
+
+                }
+                break;
+            case R.id.sbLeftHeight:
+                if (secondHelper != null) {
+                    secondHelper.setLeft_height(progress).complete();
+                } else {
+
+                }
+                break;
+            case R.id.sbTopWidth:
+                if (secondHelper != null) {
+                    secondHelper.setTop_width(progress).complete();
+                } else {
+
+                }
+                break;
+            case R.id.sbTopHeight:
+                if (secondHelper != null) {
+                    secondHelper.setTop_height(progress).complete();
+                } else {
+
+                }
+                break;
+            case R.id.sbRightWidth:
+                if (secondHelper != null) {
+                    secondHelper.setRight_width(progress).complete();
+                } else {
+
+                }
+                break;
+            case R.id.sbRightHeight:
+                if (secondHelper != null) {
+                    secondHelper.setRight_height(progress).complete();
+                } else {
+
+                }
+                break;
+            case R.id.sbBottomWidth:
+                if (secondHelper != null) {
+                    secondHelper.setBottom_width(progress).complete();
+                } else {
+
+                }
+                break;
+            case R.id.sbBottomHeight:
+                if (secondHelper != null) {
+                    secondHelper.setBottom_height(progress).complete();
                 } else {
 
                 }

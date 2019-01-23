@@ -20,7 +20,6 @@ import com.github.fastshape.newbean.SetBackgroundUtil;
  */
 public class MyButton extends AppCompatButton  {
     private SecondHelper viewHelper;
-    private int saveLayerCount;
     public MyButton(Context context) {
         this(context, null);
     }
@@ -38,12 +37,9 @@ public class MyButton extends AppCompatButton  {
             }
             @Override
             public void completeClip() {
-                MyButton.this.completeClip();
             }
-
             @Override
             public void resetClip() {
-                MyButton.this.resetClip();
             }
         });
         init(attrs, defStyleAttr);
@@ -79,78 +75,5 @@ public class MyButton extends AppCompatButton  {
             SetBackgroundUtil.setCompoundDrawables(this,viewHelper);
         }
     }
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        if (viewHelper != null&& viewHelper.getClipSwitch()) {
-            viewHelper.onSizeChanged();
-            viewHelper.onRefreshPaint(getPaddingLeft(),
-                    getPaddingTop(),
-                    getPaddingRight(),
-                    getPaddingBottom(), getWidth(), getHeight());
-        }
-    }
 
-    @Override
-    public void draw(Canvas canvas) {
-        if (viewHelper != null&& viewHelper.isClipBg()&& viewHelper.getClipSwitch()) {
-            canvas.save();
-            canvas.clipPath(viewHelper.clipPath);
-            super.draw(canvas);
-            canvas.restore();
-        } else {
-            super.draw(canvas);
-        }
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-    }
-
-    @Override
-    protected void dispatchDraw(Canvas canvas) {
-        if (viewHelper != null&& viewHelper.getClipSwitch()) {
-            saveLayerCount = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
-        }
-        super.dispatchDraw(canvas);
-
-        if (viewHelper != null&& viewHelper.getClipSwitch()) {
-            viewHelper.dispatchDrawEnd(saveLayerCount, canvas);
-        }
-    }
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (ev.getAction() == MotionEvent.ACTION_UP) {
-            if (viewHelper != null && viewHelper.getClipIsAreaClick()&& viewHelper.getClipSwitch()) {
-                if (viewHelper.onTouchEvent(ev) == false) {//如果这个地方返回true会导致点击事件失效
-                    return false;
-                }
-            }
-        }
-        return super.dispatchTouchEvent(ev);
-    }
-
-
-
-    /*******************************************clip*********************************************/
-    public void completeClip() {
-        if (viewHelper != null&& viewHelper.getClipSwitch()) {
-            if(viewHelper.clipPaint==null){
-                viewHelper.onSizeChanged();
-            }
-            viewHelper.onRefreshPaint(getPaddingLeft(),
-                    getPaddingTop(),
-                    getPaddingRight(),
-                    getPaddingBottom(), getWidth(), getHeight());
-            invalidate();
-        }
-    }
-    public void resetClip() {
-        if (viewHelper != null) {
-            viewHelper.setClipSwitch(false);
-            invalidate();
-        }
-    }
 }

@@ -19,7 +19,6 @@ import com.github.fastshape.newbean.SetBackgroundUtil;
  */
 public class MyTextView extends AppCompatTextView  {
     private SecondHelper viewHelper;
-    private int saveLayerCount;
     public MyTextView(Context context) {
         this(context, null);
     }
