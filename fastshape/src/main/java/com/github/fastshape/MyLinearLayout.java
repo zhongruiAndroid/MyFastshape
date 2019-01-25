@@ -21,15 +21,18 @@ public class MyLinearLayout extends LinearLayout   {
     private FirstHelper viewHelper;
     private int saveLayerCount;
     public MyLinearLayout(Context context) {
-        this(context, null);
+        super(context);
+        initHelper(null);
     }
-
     public MyLinearLayout(Context context, AttributeSet attrs) {
-        this(context, attrs, FirstHelper.defStyleAttr);
+        super(context, attrs);
+        initHelper(attrs);
     }
-
     public MyLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initHelper(attrs);
+    }
+    private void initHelper(AttributeSet attrs ) {
         viewHelper = new FirstHelper(new CompleteInter() {
             @Override
             public void complete() {
@@ -45,7 +48,7 @@ public class MyLinearLayout extends LinearLayout   {
                 MyLinearLayout.this.resetClip();
             }
         });
-        init(attrs, defStyleAttr);
+        init(attrs );
     }
 
     public FirstHelper getViewHelper() {
@@ -56,12 +59,12 @@ public class MyLinearLayout extends LinearLayout   {
         this.viewHelper = baseHelper;
     }*/
 
-    public void init(AttributeSet attrs, int defStyleAttr) {
+    public void init(AttributeSet attrs ) {
         Drawable background = getBackground();
         if (background != null) {
             return;
         }
-        viewHelper.init(getContext(), attrs, defStyleAttr);
+        viewHelper.init(getContext(), attrs );
 
 
         complete();

@@ -10,7 +10,7 @@ public class RelativeLayoutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_relativelayout);
+        setContentView(R.layout.activity_viewgroup);
 
 
         ViewFragment fragment = ViewFragment.newInstance(ViewFragment.type_relativelayout);

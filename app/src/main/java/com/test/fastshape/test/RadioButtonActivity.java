@@ -11,6 +11,6 @@ public class RadioButtonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_radio_button);
+        setContentView(R.layout.activity_viewgroup);
     }
 }

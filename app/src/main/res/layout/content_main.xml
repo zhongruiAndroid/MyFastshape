@@ -349,7 +349,16 @@
                 android:orientation="horizontal"
                 android:gravity="center"
                 >
-
+<com.github.fastshape.MyRadioButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:checked="true"
+    android:text="Android"
+    app:checked_drawable="@drawable/check_select"
+    app:checked_textColor="@color/colorPrimaryDark"
+    app:normal_drawable="@drawable/check_normal"
+    app:normal_textColor="@color/colorText"
+    />
                 <com.github.fastshape.MyCheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

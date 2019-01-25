@@ -21,15 +21,21 @@ public class MyRelativeLayout extends RelativeLayout {
     private FirstHelper viewHelper;
     private int saveLayerCount;
     public MyRelativeLayout(Context context) {
-        this(context, null);
+        super(context);
+        initHelper(null);
     }
 
     public MyRelativeLayout(Context context, AttributeSet attrs) {
-        this(context, attrs, FirstHelper.defStyleAttr);
+        super(context, attrs);
+        initHelper(attrs);
     }
 
     public MyRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initHelper(attrs);
+
+    }
+    private void initHelper(AttributeSet attrs ) {
         viewHelper = new FirstHelper(new CompleteInter() {
             @Override
             public void complete() {
@@ -39,14 +45,14 @@ public class MyRelativeLayout extends RelativeLayout {
             public void completeClip() {
                 MyRelativeLayout.this.completeClip();
             }
+
             @Override
             public void resetClip() {
                 MyRelativeLayout.this.resetClip();
             }
         });
-        init(attrs, defStyleAttr);
+        init(attrs );
     }
-
     public FirstHelper getViewHelper() {
         return viewHelper;
     }
@@ -55,12 +61,12 @@ public class MyRelativeLayout extends RelativeLayout {
         this.viewHelper = baseHelper;
     }*/
 
-    public void init(AttributeSet attrs, int defStyleAttr) {
+    public void init(AttributeSet attrs ) {
         Drawable background = getBackground();
         if (background != null) {
             return;
         }
-        viewHelper.init(getContext(), attrs, defStyleAttr);
+        viewHelper.init(getContext(), attrs );
 
         /**
          * 设置各个自定义属性之后调用此方法设置background

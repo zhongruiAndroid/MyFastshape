@@ -20,15 +20,21 @@ import com.github.fastshape.newbean.SetBackgroundUtil;
 public class MyTextView extends AppCompatTextView  {
     private SecondHelper viewHelper;
     public MyTextView(Context context) {
-        this(context, null);
+        super(context);
+        initHelper(null);
     }
 
     public MyTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, FirstHelper.defStyleAttr);
+        super(context,attrs);
+        initHelper(attrs);
     }
 
     public MyTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initHelper(attrs);
+    }
+
+    private void initHelper(AttributeSet attrs) {
         viewHelper = new SecondHelper(new CompleteInter() {
             @Override
             public void complete() {
@@ -41,7 +47,7 @@ public class MyTextView extends AppCompatTextView  {
             public void resetClip() {
             }
         });
-        init(attrs, defStyleAttr);
+        init(attrs);
     }
 
     public SecondHelper getViewHelper() {
@@ -52,12 +58,12 @@ public class MyTextView extends AppCompatTextView  {
         this.viewHelper = baseHelper;
     }*/
 
-    public void init(AttributeSet attrs, int defStyleAttr) {
+    public void init(AttributeSet attrs ) {
         Drawable background = getBackground();
         if (background != null) {
             return;
         }
-        viewHelper.init(getContext(), attrs, defStyleAttr);
+        viewHelper.init(getContext(), attrs );
 
 
         complete();

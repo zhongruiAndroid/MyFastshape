@@ -5,10 +5,14 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
+import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 
 import com.github.fastshape.R;
 import com.github.fastshape.inter.CompleteInter;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 /***
  *   created by zhongrui on 2018/12/31
@@ -42,10 +46,14 @@ public class ThirdHelper extends SecondHelper {
     /***显示Drawable方向--底部*/
     public static final int BOTTOM=4;
 
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({DEFAULT,LEFT,TOP,RIGHT,BOTTOM})
+    public @interface direction{}
+
     public ThirdHelper(CompleteInter completeInter) {
         super(completeInter);
     }
-    public void init(Context context, AttributeSet attrs, int defStyleAttr) {
+    public void init(Context context, AttributeSet attrs ) {
         TypedArray viewNormal = context.obtainStyledAttributes(attrs, R.styleable.FastShapeAttr,defStyleAttr,0);
         /*第一部分公共属性*/
         publicFirstAttr(viewNormal);
@@ -72,4 +80,48 @@ public class ThirdHelper extends SecondHelper {
         drawable_direction = viewNormal.getInt(R.styleable.FastShapeAttr_drawable_direction,DEFAULT);
     }
 
+    public Drawable getNormal_drawable() {
+        return normal_drawable;
+    }
+
+    public ThirdHelper setNormal_drawable(Drawable normal_drawable) {
+        this.normal_drawable = normal_drawable;
+        return this;
+    }
+
+    public Drawable getChecked_drawable() {
+        return checked_drawable;
+    }
+
+    public ThirdHelper setChecked_drawable(Drawable checked_drawable) {
+        this.checked_drawable = checked_drawable;
+        return this;
+    }
+
+    public int getNormal_textColor() {
+        return normal_textColor;
+    }
+
+    public ThirdHelper setNormal_textColor(int normal_textColor) {
+        this.normal_textColor = normal_textColor;
+        return this;
+    }
+
+    public int getChecked_textColor() {
+        return checked_textColor;
+    }
+
+    public ThirdHelper setChecked_textColor(int checked_textColor) {
+        this.checked_textColor = checked_textColor;
+        return this;
+    }
+
+    public int getDrawable_direction() {
+        return drawable_direction;
+    }
+
+    public ThirdHelper setDrawable_direction(@direction int drawable_direction) {
+        this.drawable_direction = drawable_direction;
+        return this;
+    }
 }

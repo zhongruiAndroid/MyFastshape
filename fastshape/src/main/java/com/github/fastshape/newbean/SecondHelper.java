@@ -29,8 +29,8 @@ public class SecondHelper extends FirstHelper{
     public SecondHelper(CompleteInter completeInter) {
         super(completeInter);
     }
-    public void init(Context context, AttributeSet attrs, int defStyleAttr) {
-        TypedArray viewNormal = context.obtainStyledAttributes(attrs, R.styleable.FastShapeAttr,defStyleAttr,0);
+    public void init(Context context, AttributeSet attrs ) {
+        TypedArray viewNormal = context.obtainStyledAttributes(attrs, R.styleable.FastShapeAttr,R.attr.fastshapeStyle,0);
         /*第一部分公共属性*/
         publicFirstAttr(viewNormal);
 

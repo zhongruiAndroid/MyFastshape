@@ -21,12 +21,14 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.github.fastshape.MyCheckBox;
 import com.github.fastshape.MyFrameLayout;
 import com.github.fastshape.MyLinearLayout;
 import com.github.fastshape.MyRelativeLayout;
 import com.github.fastshape.MyTextView;
 import com.github.fastshape.newbean.FirstHelper;
 import com.github.fastshape.newbean.SecondHelper;
+import com.github.fastshape.newbean.ThirdHelper;
 import com.skydoves.colorpickerview.ColorPickerView;
 import com.skydoves.colorpickerview.listeners.ColorListener;
 import com.skydoves.colorpickerview.sliders.AlphaSlideBar;
@@ -39,6 +41,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     public static final int type_framelayout = 2;
     public static final int type_relativelayout = 3;
     public static final int type_textview = 4;
+    public static final int type_checkview = 5;
     private int type;
 
     LinearLayout ll_content;
@@ -88,8 +91,10 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     private MyFrameLayout fl;
     private MyRelativeLayout rl;
     private MyTextView tv;
+    private MyCheckBox cb;
     FirstHelper firstHelper;
     SecondHelper secondHelper;
+    ThirdHelper thirdHelper;
     float radiusScale = 1.5f;
 
     /**********************裁剪**********************/
@@ -122,6 +127,15 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     AppCompatSeekBar sbBottomWidth;
     AppCompatSeekBar sbBottomHeight;
 
+    /***************************MyCheckBox***************************/
+    LinearLayout llCheckBox;
+    CheckBox cbSetCheckIcon;
+    RadioButton cbSetDefault;
+    RadioButton cbSetLeftDrawable;
+    RadioButton cbSetTopDrawable;
+    RadioButton cbSetRightDrawable;
+    RadioButton cbSetBottomDrawable;
+
     public ViewFragment() {
     }
 
@@ -153,7 +167,8 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
 
         ll_content = view.findViewById(R.id.ll_content);
         llClip = view.findViewById(R.id.llClip);
-        llTextView =view.findViewById(R.id.llTextView);
+        llTextView = view.findViewById(R.id.llTextView);
+        llCheckBox = view.findViewById(R.id.llCheckBox);
 
         sbRadiusTopLeft = view.findViewById(R.id.sbRadiusTopLeft);
         sbRadiusTopLeft.setOnSeekBarChangeListener(this);
@@ -366,15 +381,31 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             getViewData();
             llClip.setVisibility(View.VISIBLE);
             llTextView.setVisibility(View.GONE);
-        }else if (type == type_textview) {
+        } else if (type == type_textview) {
             getTextViewId(view);
             itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_textview_item, null);
             tv = itemView.findViewById(R.id.tv);
             firstHelper = tv.getViewHelper();
-            secondHelper=tv.getViewHelper();
+            secondHelper = tv.getViewHelper();
             getViewData();
             llClip.setVisibility(View.GONE);
             llTextView.setVisibility(View.VISIBLE);
+            llCheckBox.setVisibility(View.GONE);
+        } else if (type == type_checkview) {
+            getTextViewId(view);
+            getCheckBoxId(view);
+            itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_checkbox_item, null);
+            cb = itemView.findViewById(R.id.cb);
+            cb.setChecked(true);
+            firstHelper = cb.getViewHelper();
+            secondHelper = cb.getViewHelper();
+            thirdHelper = cb.getViewHelper();
+
+            getViewData();
+
+            llClip.setVisibility(View.GONE);
+            llTextView.setVisibility(View.VISIBLE);
+            llCheckBox.setVisibility(View.VISIBLE);
         }
 
 
@@ -383,44 +414,112 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
         }
     }
 
+    private void getCheckBoxId(View view) {
+
+        cbSetCheckIcon = view.findViewById(R.id.cbSetCheckIcon);
+        cbSetCheckIcon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    thirdHelper.setChecked_drawable(ContextCompat.getDrawable(getActivity(),R.drawable.select))
+                            .setNormal_drawable(ContextCompat.getDrawable(getActivity(),R.drawable.normal)).complete();
+                }else{
+                    thirdHelper.setChecked_drawable(null).setNormal_drawable(null).complete();
+                }
+            }
+        });
+
+        cbSetDefault = view.findViewById(R.id.cbSetDefault);
+        cbSetDefault.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    thirdHelper.setDrawable_direction(ThirdHelper.DEFAULT).complete();
+                }
+            }
+        });
+        cbSetLeftDrawable = view.findViewById(R.id.cbSetLeftDrawable);
+        cbSetLeftDrawable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    thirdHelper.setDrawable_direction(ThirdHelper.LEFT).complete();
+                }
+            }
+        });
+
+        cbSetTopDrawable = view.findViewById(R.id.cbSetTopDrawable);
+        cbSetTopDrawable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    thirdHelper.setDrawable_direction(ThirdHelper.TOP).complete();
+                }
+            }
+        });
+
+        cbSetRightDrawable = view.findViewById(R.id.cbSetRightDrawable);
+        cbSetRightDrawable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    thirdHelper.setDrawable_direction(ThirdHelper.RIGHT).complete();
+                }
+            }
+        });
+
+        cbSetBottomDrawable = view.findViewById(R.id.cbSetBottomDrawable);
+        cbSetBottomDrawable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    thirdHelper.setDrawable_direction(ThirdHelper.BOTTOM).complete();
+                }
+            }
+        });
+    }
+
     private void getTextViewId(View view) {
-        cbSetDrawable =view.findViewById(R.id.cbSetDrawable);
+        cbSetDrawable = view.findViewById(R.id.cbSetDrawable);
+        if(type==type_checkview){
+            cbSetDrawable.setVisibility(View.GONE);
+        }
         cbSetDrawable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    Drawable drawable1 =ContextCompat.getDrawable(getActivity(), R.drawable.select);
-                    Drawable drawable2 =ContextCompat.getDrawable(getActivity(), R.drawable.select);
-                    Drawable drawable3 =ContextCompat.getDrawable(getActivity(), R.drawable.select);
-                    Drawable drawable4 =ContextCompat.getDrawable(getActivity(), R.drawable.select);
-                    tv.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable1,drawable2,drawable3,drawable4);
-                }else{
-                    tv.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,null,null);
+                    Drawable drawable1 = ContextCompat.getDrawable(getActivity(), R.drawable.select);
+                    Drawable drawable2 = ContextCompat.getDrawable(getActivity(), R.drawable.select);
+                    Drawable drawable3 = ContextCompat.getDrawable(getActivity(), R.drawable.select);
+                    Drawable drawable4 = ContextCompat.getDrawable(getActivity(), R.drawable.select);
+                    tv.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable1, drawable2, drawable3, drawable4);
+                } else {
+                    tv.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null);
                 }
             }
         });
-        sbLeftWidth =view.findViewById(R.id.sbLeftWidth);
+        sbLeftWidth = view.findViewById(R.id.sbLeftWidth);
         sbLeftWidth.setOnSeekBarChangeListener(this);
 
-        sbLeftHeight =view.findViewById(R.id.sbLeftHeight);
+        sbLeftHeight = view.findViewById(R.id.sbLeftHeight);
         sbLeftHeight.setOnSeekBarChangeListener(this);
 
-        sbTopWidth =view.findViewById(R.id.sbTopWidth);
+        sbTopWidth = view.findViewById(R.id.sbTopWidth);
         sbTopWidth.setOnSeekBarChangeListener(this);
 
-        sbTopHeight =view.findViewById(R.id.sbTopHeight);
+        sbTopHeight = view.findViewById(R.id.sbTopHeight);
         sbTopHeight.setOnSeekBarChangeListener(this);
 
-        sbRightWidth =view.findViewById(R.id.sbRightWidth);
+        sbRightWidth = view.findViewById(R.id.sbRightWidth);
         sbRightWidth.setOnSeekBarChangeListener(this);
 
-        sbRightHeight =view.findViewById(R.id.sbRightHeight);
+        sbRightHeight = view.findViewById(R.id.sbRightHeight);
         sbRightHeight.setOnSeekBarChangeListener(this);
 
-        sbBottomWidth =view.findViewById(R.id.sbBottomWidth);
+        sbBottomWidth = view.findViewById(R.id.sbBottomWidth);
         sbBottomWidth.setOnSeekBarChangeListener(this);
 
-        sbBottomHeight =view.findViewById(R.id.sbBottomHeight);
+        sbBottomHeight = view.findViewById(R.id.sbBottomHeight);
         sbBottomHeight.setOnSeekBarChangeListener(this);
 
     }
@@ -733,7 +832,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             case R.id.sbTopWidth:
                 if (secondHelper != null) {
                     secondHelper.setTop_width(progress).complete();
-                } else {
+                }else{
 
                 }
                 break;

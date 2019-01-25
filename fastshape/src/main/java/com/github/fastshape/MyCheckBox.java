@@ -1,8 +1,12 @@
 package com.github.fastshape;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.util.AttributeSet;
 
@@ -16,18 +20,24 @@ import com.github.fastshape.newbean.ThirdHelper;
 /**
  * Created by Administrator on 2016/8/29.
  */
-public class MyCheckBox extends AppCompatCheckBox  {
+public class MyCheckBox extends AppCompatCheckBox   {
     private ThirdHelper viewHelper;
     public MyCheckBox(Context context) {
-        this(context, null);
+        super(context);
+        initHelper(null);
     }
 
     public MyCheckBox(Context context, AttributeSet attrs) {
-        this(context, attrs, FirstHelper.defStyleAttr);
+        super(context,attrs);
+        initHelper(attrs);
     }
 
     public MyCheckBox(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initHelper(attrs);
+    }
+
+    private void initHelper(AttributeSet attrs) {
         viewHelper = new ThirdHelper(new CompleteInter() {
             @Override
             public void complete() {
@@ -40,24 +50,25 @@ public class MyCheckBox extends AppCompatCheckBox  {
             public void resetClip() {
             }
         });
-        init(attrs, defStyleAttr);
+        init(attrs);
     }
 
-    public SecondHelper getViewHelper() {
+    public ThirdHelper getViewHelper() {
         return viewHelper;
     }
 
-    /*public void setViewHelper(SecondHelper baseHelper) {
+    /*public void setViewHelper(ThirdHelper baseHelper) {
         this.viewHelper = baseHelper;
     }*/
 
-    public void init(AttributeSet attrs, int defStyleAttr) {
+    public void init(AttributeSet attrs ) {
         Drawable background = getBackground();
         if (background != null) {
             return;
         }
-        viewHelper.setDefaultTextColor(this.getCurrentTextColor());
-        viewHelper.init(getContext(), attrs, defStyleAttr);
+        viewHelper.init(getContext(), attrs );
+
+
         complete();
     }
 

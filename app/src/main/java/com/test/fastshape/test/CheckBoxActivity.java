@@ -11,6 +11,10 @@ public class CheckBoxActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_check_box);
+        setContentView(R.layout.activity_viewgroup);
+
+
+        ViewFragment fragment = ViewFragment.newInstance(ViewFragment.type_checkview);
+        getSupportFragmentManager().beginTransaction().add(R.id.fl_fragment,fragment).commitAllowingStateLoss();
     }
 }
