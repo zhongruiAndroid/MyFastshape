@@ -32,7 +32,7 @@
         app:clipBorderWidth="10dp"
         app:clipBorderColor="@color/black"
         android:checked="true"
-        android:background="@null"
-        app:drawable_direction="left"
+        android:background="@color/gray"
+        app:background="@color/white"
         />
 </LinearLayout>

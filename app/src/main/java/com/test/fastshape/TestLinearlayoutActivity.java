@@ -28,7 +28,7 @@ public class TestLinearlayoutActivity extends AppCompatActivity {
     }
 
     public void viewClick(View view) {
-        ll.getViewHelper().clearAttr()
+        ll.getViewHelper().clearShapeAttr()
                 .setShapeType(BaseHelper.shapeType_rectangle)
                 .setRadius(50)
                 .setSolidColor(Color.parseColor("#87ceeb"))

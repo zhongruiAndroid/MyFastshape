@@ -19,10 +19,7 @@
         <item name="android:checkboxStyle">@style/customfontstyle</item>
     </style>
 
-    <style name="customfontstyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
-    </style>
-    <style name="testBoxStyle"  >
-    </style>
+
     <style name="testEditStyle" parent="@style/Base.Widget.AppCompat.EditText">
         <item name="android:textSize">26sp</item>
         <item name="android:background">@color/c_press_bt</item>

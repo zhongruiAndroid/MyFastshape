@@ -3,12 +3,10 @@ package com.github.fastshape;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 
-import com.github.fastshape.bean.BaseHelper;
 import com.github.fastshape.inter.CompleteInter;
 import com.github.fastshape.newbean.FirstHelper;
 import com.github.fastshape.newbean.SetBackgroundUtil;
@@ -62,10 +60,6 @@ public class MyRelativeLayout extends RelativeLayout {
     }*/
 
     public void init(AttributeSet attrs ) {
-        Drawable background = getBackground();
-        if (background != null) {
-            return;
-        }
         viewHelper.init(getContext(), attrs );
 
         /**

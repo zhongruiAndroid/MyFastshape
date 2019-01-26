@@ -39,11 +39,57 @@
 
     </declare-styleable>
     <declare-styleable name="MyCheckBox">
-        <attr name="normal_drawable" />
-        <attr name="checked_drawable" />
+        <attr name="normal_drawable_left" />
+        <attr name="checked_drawable_left" />
+
+        <attr name="normal_drawable_top"   />
+        <attr name="checked_drawable_top"   />
+
+        <attr name="normal_drawable_right"  />
+        <attr name="checked_drawable_right"  />
+
+        <attr name="normal_drawable_bottom"  />
+        <attr name="checked_drawable_bottom"  />
         <attr name="normal_textColor" />
         <attr name="checked_textColor" />
-        <attr name="drawable_direction" />
+
+
+        <attr name="background" />
+        <attr name="drawable_normal" />
+        <attr name="drawable_press" />
+
+        <attr name="pressColor" />
+
+        <attr name="left_line" />
+        <attr name="top_line" />
+        <attr name="right_line" />
+        <attr name="bottom_line" />
+        <!--shapeType-->
+        <attr name="shapeType" />
+        <!--stroke-->
+        <attr name="borderWidth" />
+        <attr name="borderColor" />
+        <attr name="borderDashWidth" />
+        <attr name="borderDashGap" />
+        <!--solid-->
+        <attr name="solidColor" />
+        <!--corners-->
+        <attr name="radius" />
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+        <!--gradient-->
+        <attr name="gradientAngle" />
+        <attr name="gradientCenterX" />
+        <attr name="gradientCenterY" />
+        <attr name="gradientStartColor" />
+        <attr name="gradientCenterColor" />
+        <attr name="gradientEndColor" />
+        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用。-->
+        <attr name="gradientType" />
+
+
         <attr name="left_width" />
         <attr name="left_height" />
 
@@ -52,17 +98,64 @@
 
         <attr name="right_width" />
         <attr name="right_height" />
+
 
         <attr name="bottom_width" />
         <attr name="bottom_height" />
 
     </declare-styleable>
     <declare-styleable name="MyRadioButton">
-        <attr name="normal_drawable" />
-        <attr name="checked_drawable" />
+        <attr name="normal_drawable_left" />
+        <attr name="checked_drawable_left" />
+
+        <attr name="normal_drawable_top"   />
+        <attr name="checked_drawable_top"   />
+
+        <attr name="normal_drawable_right"  />
+        <attr name="checked_drawable_right"  />
+
+        <attr name="normal_drawable_bottom"  />
+        <attr name="checked_drawable_bottom"  />
         <attr name="normal_textColor" />
         <attr name="checked_textColor" />
-        <attr name="drawable_direction" />
+
+
+        <attr name="background" />
+        <attr name="drawable_normal" />
+        <attr name="drawable_press" />
+
+        <attr name="pressColor" />
+
+        <attr name="left_line" />
+        <attr name="top_line" />
+        <attr name="right_line" />
+        <attr name="bottom_line" />
+        <!--shapeType-->
+        <attr name="shapeType" />
+        <!--stroke-->
+        <attr name="borderWidth" />
+        <attr name="borderColor" />
+        <attr name="borderDashWidth" />
+        <attr name="borderDashGap" />
+        <!--solid-->
+        <attr name="solidColor" />
+        <!--corners-->
+        <attr name="radius" />
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+        <!--gradient-->
+        <attr name="gradientAngle" />
+        <attr name="gradientCenterX" />
+        <attr name="gradientCenterY" />
+        <attr name="gradientStartColor" />
+        <attr name="gradientCenterColor" />
+        <attr name="gradientEndColor" />
+        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用。-->
+        <attr name="gradientType" />
+
+
         <attr name="left_width" />
         <attr name="left_height" />
 
@@ -71,6 +164,7 @@
 
         <attr name="right_width" />
         <attr name="right_height" />
+
 
         <attr name="bottom_width" />
         <attr name="bottom_height" />
@@ -79,7 +173,7 @@
 
     <!--******************************MyButton*************************************-->
     <declare-styleable name="MyButton">
-
+        <attr name="background" />
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -155,6 +249,7 @@
         <attr name="clipBorderPhase"  />
 
         <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
+        <attr name="background" />
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -215,6 +310,7 @@
         <attr name="clipBorderPhase"  />
 
         <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
+        <attr name="background" />
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -277,6 +373,7 @@
         <attr name="clipBorderPhase"  />
 
         <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
+        <attr name="background" />
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -322,6 +419,7 @@
         <attr name="clearIcon_width" format="dimension" />
         <attr name="clearIcon_height" format="dimension" />
 
+        <attr name="background" />
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -361,6 +459,7 @@
     <!--******************************MyTextView*************************************-->
     <declare-styleable name="MyTextView">
 
+        <attr name="background" />
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -431,6 +530,8 @@
     <attr name="clipBorderPhase" format="integer" />
 
 
+    <attr name="background" format="reference"/>
+
     <attr name="drawable_normal" format="reference" />
     <attr name="drawable_press" format="reference" />
 
@@ -483,16 +584,21 @@
         <enum name="sweep" value="2" />
     </attr>
     <!--MyCheckBox和MyRadioButton自定义属性-->
-    <attr name="normal_drawable" format="reference" />
-    <attr name="checked_drawable" format="reference" />
+    <attr name="normal_drawable_left" format="reference" />
+    <attr name="checked_drawable_left" format="reference" />
+
+    <attr name="normal_drawable_top" format="reference" />
+    <attr name="checked_drawable_top" format="reference" />
+
+    <attr name="normal_drawable_right" format="reference" />
+    <attr name="checked_drawable_right" format="reference" />
+
+    <attr name="normal_drawable_bottom" format="reference" />
+    <attr name="checked_drawable_bottom" format="reference" />
+
     <attr name="normal_textColor" format="color" />
     <attr name="checked_textColor" format="color" />
-    <attr name="drawable_direction" format="enum">
-        <enum name="left" value="1"></enum>
-        <enum name="top" value="2"></enum>
-        <enum name="right" value="3"></enum>
-        <enum name="bottom" value="4"></enum>
-    </attr>
+
     <attr name="left_width" format="dimension" />
     <attr name="left_height" format="dimension" />
 
@@ -534,6 +640,7 @@
         <attr name="clipBorderPhase"  />
 
         <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
+        <attr name="background" />
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -587,11 +694,19 @@
 
 
         <!--start MyCheckBox,MyRadioButton公共属性-->
-        <attr name="normal_drawable" />
-        <attr name="checked_drawable" />
+        <attr name="normal_drawable_left" />
+        <attr name="checked_drawable_left" />
+
+        <attr name="normal_drawable_top"   />
+        <attr name="checked_drawable_top"   />
+
+        <attr name="normal_drawable_right"  />
+        <attr name="checked_drawable_right"  />
+
+        <attr name="normal_drawable_bottom"  />
+        <attr name="checked_drawable_bottom"  />
         <attr name="normal_textColor" />
         <attr name="checked_textColor" />
-        <attr name="drawable_direction" />
         <!--end MyCheckBox,MyRadioButton公共属性-->
 
 

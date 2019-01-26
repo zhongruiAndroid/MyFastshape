@@ -1104,46 +1104,30 @@
                     android:orientation="vertical"
                     android:gravity="center_vertical"
                     >
+
+
                     <CheckBox
-                        android:id="@+id/cbSetCheckIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/gray_6"
-                        android:text="设置MyCheckBox选中和不选中的图片"
-                        />
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    <RadioButton
-                        android:id="@+id/cbSetDefault"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="默认"
-                        android:textColor="@color/gray_6"
-                        android:checked="true"
-                        />
-                    <RadioButton
                         android:id="@+id/cbSetLeftDrawable"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="设置LeftDrawable"
                         android:textColor="@color/gray_6"
                         />
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/cbSetTopDrawable"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="设置TopDrawable"
                         android:textColor="@color/gray_6"
                         />
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/cbSetRightDrawable"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="设置RightDrawable"
                         android:textColor="@color/gray_6"
                         />
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/cbSetBottomDrawable"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -1151,7 +1135,7 @@
                         android:textColor="@color/gray_6"
                         />
 
-                    </RadioGroup>
+
                 </LinearLayout>
             </LinearLayout>
 

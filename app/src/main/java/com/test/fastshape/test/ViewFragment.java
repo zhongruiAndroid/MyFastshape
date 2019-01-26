@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.github.fastshape.MyCheckBox;
 import com.github.fastshape.MyFrameLayout;
 import com.github.fastshape.MyLinearLayout;
+import com.github.fastshape.MyRadioButton;
 import com.github.fastshape.MyRelativeLayout;
 import com.github.fastshape.MyTextView;
 import com.github.fastshape.newbean.FirstHelper;
@@ -42,6 +43,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     public static final int type_relativelayout = 3;
     public static final int type_textview = 4;
     public static final int type_checkview = 5;
+    public static final int type_radioview = 6;
     private int type;
 
     LinearLayout ll_content;
@@ -92,6 +94,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     private MyRelativeLayout rl;
     private MyTextView tv;
     private MyCheckBox cb;
+    private MyRadioButton rb;
     FirstHelper firstHelper;
     SecondHelper secondHelper;
     ThirdHelper thirdHelper;
@@ -129,12 +132,10 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
 
     /***************************MyCheckBox***************************/
     LinearLayout llCheckBox;
-    CheckBox cbSetCheckIcon;
-    RadioButton cbSetDefault;
-    RadioButton cbSetLeftDrawable;
-    RadioButton cbSetTopDrawable;
-    RadioButton cbSetRightDrawable;
-    RadioButton cbSetBottomDrawable;
+    CheckBox cbSetLeftDrawable;
+    CheckBox cbSetTopDrawable;
+    CheckBox cbSetRightDrawable;
+    CheckBox cbSetBottomDrawable;
 
     public ViewFragment() {
     }
@@ -406,6 +407,21 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             llClip.setVisibility(View.GONE);
             llTextView.setVisibility(View.VISIBLE);
             llCheckBox.setVisibility(View.VISIBLE);
+        }else if (type == type_radioview) {
+            getTextViewId(view);
+            getCheckBoxId(view);
+            itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_radio_item, null);
+            rb = itemView.findViewById(R.id.rb);
+            rb.setChecked(true);
+            firstHelper = rb.getViewHelper();
+            secondHelper = rb.getViewHelper();
+            thirdHelper = rb.getViewHelper();
+
+            getViewData();
+
+            llClip.setVisibility(View.GONE);
+            llTextView.setVisibility(View.VISIBLE);
+            llCheckBox.setVisibility(View.VISIBLE);
         }
 
 
@@ -416,34 +432,16 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
 
     private void getCheckBoxId(View view) {
 
-        cbSetCheckIcon = view.findViewById(R.id.cbSetCheckIcon);
-        cbSetCheckIcon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    thirdHelper.setChecked_drawable(ContextCompat.getDrawable(getActivity(),R.drawable.select))
-                            .setNormal_drawable(ContextCompat.getDrawable(getActivity(),R.drawable.normal)).complete();
-                }else{
-                    thirdHelper.setChecked_drawable(null).setNormal_drawable(null).complete();
-                }
-            }
-        });
 
-        cbSetDefault = view.findViewById(R.id.cbSetDefault);
-        cbSetDefault.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    thirdHelper.setDrawable_direction(ThirdHelper.DEFAULT).complete();
-                }
-            }
-        });
         cbSetLeftDrawable = view.findViewById(R.id.cbSetLeftDrawable);
         cbSetLeftDrawable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    thirdHelper.setDrawable_direction(ThirdHelper.LEFT).complete();
+                    thirdHelper.setChecked_drawable_left(ContextCompat.getDrawable(getActivity(),R.drawable.check_select))
+                            .setNormal_drawable_left(ContextCompat.getDrawable(getActivity(),R.drawable.normal)).complete();
+                }else{
+                    thirdHelper.setChecked_drawable_left(null).complete();
                 }
             }
         });
@@ -453,7 +451,10 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    thirdHelper.setDrawable_direction(ThirdHelper.TOP).complete();
+                    thirdHelper.setChecked_drawable_top(ContextCompat.getDrawable(getActivity(),R.drawable.check_select))
+                            .setNormal_drawable_top(ContextCompat.getDrawable(getActivity(),R.drawable.normal)).complete();
+                }else{
+                    thirdHelper.setChecked_drawable_top(null).complete();
                 }
             }
         });
@@ -463,7 +464,10 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    thirdHelper.setDrawable_direction(ThirdHelper.RIGHT).complete();
+                    thirdHelper.setChecked_drawable_right(ContextCompat.getDrawable(getActivity(),R.drawable.check_select))
+                            .setNormal_drawable_right(ContextCompat.getDrawable(getActivity(),R.drawable.normal)).complete();
+                }else{
+                    thirdHelper.setChecked_drawable_right(null).complete();
                 }
             }
         });
@@ -473,7 +477,10 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    thirdHelper.setDrawable_direction(ThirdHelper.BOTTOM).complete();
+                    thirdHelper.setChecked_drawable_bottom(ContextCompat.getDrawable(getActivity(),R.drawable.check_select))
+                            .setNormal_drawable_bottom(ContextCompat.getDrawable(getActivity(),R.drawable.normal)).complete();
+                }else{
+                    thirdHelper.setChecked_drawable_bottom(null).complete();
                 }
             }
         });
@@ -481,7 +488,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
 
     private void getTextViewId(View view) {
         cbSetDrawable = view.findViewById(R.id.cbSetDrawable);
-        if(type==type_checkview){
+        if(type==type_checkview||type==type_radioview){
             cbSetDrawable.setVisibility(View.GONE);
         }
         cbSetDrawable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

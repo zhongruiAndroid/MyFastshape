@@ -1,19 +1,10 @@
 package com.github.fastshape;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.util.AttributeSet;
 
 import com.github.fastshape.inter.CompleteInter;
-import com.github.fastshape.inter.ViewHelperInter;
-import com.github.fastshape.newbean.FirstHelper;
-import com.github.fastshape.newbean.SecondHelper;
 import com.github.fastshape.newbean.SetBackgroundUtil;
 import com.github.fastshape.newbean.ThirdHelper;
 
@@ -62,12 +53,7 @@ public class MyCheckBox extends AppCompatCheckBox   {
     }*/
 
     public void init(AttributeSet attrs ) {
-        Drawable background = getBackground();
-        if (background != null) {
-            return;
-        }
         viewHelper.init(getContext(), attrs );
-
 
         complete();
     }

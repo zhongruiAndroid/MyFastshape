@@ -23,6 +23,14 @@ public class SetBackgroundUtil {
 
 
     public static<T extends FirstHelper>void viewComplete(View myView,T firstHelper) {
+        if(firstHelper.getBackground()!=null){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                myView.setBackground(firstHelper.getBackground());
+            } else {
+                myView.setBackgroundDrawable(firstHelper.getBackground());
+            }
+            return;
+        }
         if (firstHelper.drawable_normal != null) {
             StateListDrawable stateListDrawableForLayer = new StateListDrawable();
             stateListDrawableForLayer.addState(new int[]{-android.R.attr.state_pressed}, firstHelper.drawable_normal);
@@ -120,8 +128,12 @@ public class SetBackgroundUtil {
         myView.setCompoundDrawables(drawable0, drawable1, drawable2, drawable3);
     }
     public static <T extends ThirdHelper>void setCompoundDrawables(CompoundButton myView,T thirdHelper) {
-        if(thirdHelper.normal_drawable !=null&& thirdHelper.checked_drawable !=null){
+        setLeftDrawable(myView,thirdHelper);
+        setTopDrawable(myView,thirdHelper);
+        setRightDrawable(myView,thirdHelper);
+        setBottomDrawable(myView,thirdHelper);
 
+        /*if(thirdHelper.normal_drawable !=null&& thirdHelper.checked_drawable !=null){
             StateListDrawable stateListDrawable = new StateListDrawable();
             stateListDrawable.addState(new int[]{android.R.attr.state_checked}, thirdHelper.checked_drawable);
             stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable);
@@ -175,7 +187,7 @@ public class SetBackgroundUtil {
                     myView.setCompoundDrawables(drawable0,drawable1,drawable2,stateListDrawable);
                     break;
             }
-        }
+        }*/
 
         int [][]colorState=new int[2][];
         int []myColor=new int[]{thirdHelper.checked_textColor, thirdHelper.normal_textColor};
@@ -183,6 +195,90 @@ public class SetBackgroundUtil {
         colorState[1]=new int[]{};
         ColorStateList colorStateList=new ColorStateList(colorState,myColor);
         myView.setTextColor(colorStateList);
+    }
+
+    private static <T extends ThirdHelper> void setBottomDrawable(CompoundButton myView, T thirdHelper) {
+        Drawable drawable0 = myView.getCompoundDrawables()[0];
+        Drawable drawable1 = myView.getCompoundDrawables()[1];
+        Drawable drawable2 = myView.getCompoundDrawables()[2];
+//            Drawable drawable3 = myView.getCompoundDrawables()[3];
+        if(thirdHelper.normal_drawable_bottom !=null&& thirdHelper.checked_drawable_bottom !=null){
+            StateListDrawable stateListDrawable = new StateListDrawable();
+            stateListDrawable.addState(new int[]{android.R.attr.state_checked}, thirdHelper.checked_drawable_bottom);
+            stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable_bottom);
+
+
+
+            int w=stateListDrawable.getIntrinsicWidth();
+            int h=stateListDrawable.getIntrinsicHeight();
+            stateListDrawable.setBounds(0,0,getBottomWH(w,h,thirdHelper)[0],getBottomWH(w,h,thirdHelper)[1]);
+            myView.setCompoundDrawables(drawable0,drawable1,drawable2,stateListDrawable);
+        }else{
+            myView.setCompoundDrawables(drawable0,drawable1,drawable2,null);
+        }
+    }
+
+    private static <T extends ThirdHelper> void setRightDrawable(CompoundButton myView, T thirdHelper) {
+        Drawable drawable0 = myView.getCompoundDrawables()[0];
+        Drawable drawable1 = myView.getCompoundDrawables()[1];
+//            Drawable drawable2 = myView.getCompoundDrawables()[2];
+        Drawable drawable3 = myView.getCompoundDrawables()[3];
+        if(thirdHelper.normal_drawable_right !=null&& thirdHelper.checked_drawable_right !=null){
+            StateListDrawable stateListDrawable = new StateListDrawable();
+            stateListDrawable.addState(new int[]{android.R.attr.state_checked}, thirdHelper.checked_drawable_right);
+            stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable_right);
+
+
+
+            int w=stateListDrawable.getIntrinsicWidth();
+            int h=stateListDrawable.getIntrinsicHeight();
+            stateListDrawable.setBounds(0,0,getRightWH(w,h,thirdHelper)[0],getRightWH(w,h,thirdHelper)[1]);
+            myView.setCompoundDrawables(drawable0,drawable1,stateListDrawable,drawable3);
+        }else{
+            myView.setCompoundDrawables(drawable0,drawable1,null,drawable3);
+        }
+    }
+
+    private static <T extends ThirdHelper> void setTopDrawable(CompoundButton myView, T thirdHelper) {
+        Drawable drawable0 = myView.getCompoundDrawables()[0];
+//            Drawable drawable1 = myView.getCompoundDrawables()[1];
+        Drawable drawable2 = myView.getCompoundDrawables()[2];
+        Drawable drawable3 = myView.getCompoundDrawables()[3];
+        if(thirdHelper.normal_drawable_top !=null&& thirdHelper.checked_drawable_top !=null){
+            StateListDrawable stateListDrawable = new StateListDrawable();
+            stateListDrawable.addState(new int[]{android.R.attr.state_checked}, thirdHelper.checked_drawable_top);
+            stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable_top);
+
+
+
+            int w=stateListDrawable.getIntrinsicWidth();
+            int h=stateListDrawable.getIntrinsicHeight();
+            stateListDrawable.setBounds(0,0,getTopWH(w,h,thirdHelper)[0],getTopWH(w,h,thirdHelper)[1]);
+            myView.setCompoundDrawables(drawable0,stateListDrawable,drawable2,drawable3);
+        }else{
+            myView.setCompoundDrawables(drawable0,null,drawable2,drawable3);
+        }
+    }
+
+    private static <T extends ThirdHelper> void setLeftDrawable(CompoundButton myView, T thirdHelper) {
+        Drawable drawable1 = myView.getCompoundDrawables()[1];
+        Drawable drawable2 = myView.getCompoundDrawables()[2];
+        Drawable drawable3 = myView.getCompoundDrawables()[3];
+        if(thirdHelper.normal_drawable_left !=null&& thirdHelper.checked_drawable_left !=null){
+            StateListDrawable stateListDrawable = new StateListDrawable();
+            stateListDrawable.addState(new int[]{android.R.attr.state_checked}, thirdHelper.checked_drawable_left);
+            stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable_left);
+
+//            Drawable drawable0 = myView.getCompoundDrawables()[0];
+
+
+            int w=stateListDrawable.getIntrinsicWidth();
+            int h=stateListDrawable.getIntrinsicHeight();
+            stateListDrawable.setBounds(0,0,getLeftWH(w,h,thirdHelper)[0],getLeftWH(w,h,thirdHelper)[1]);
+            myView.setCompoundDrawables(stateListDrawable,drawable1,drawable2,drawable3);
+        }else{
+            myView.setCompoundDrawables(null,drawable1,drawable2,drawable3);
+        }
     }
 
     public static<T extends FirstHelper>void noPartBorderNoPressColor(View myView,T firstHelper) {

@@ -3,12 +3,10 @@ package com.github.fastshape;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 
-import com.github.fastshape.bean.BaseHelper;
 import com.github.fastshape.inter.CompleteInter;
 import com.github.fastshape.newbean.FirstHelper;
 import com.github.fastshape.newbean.SetBackgroundUtil;
@@ -62,12 +60,7 @@ public class MyFrameLayout extends FrameLayout {
     }*/
 
     public void init(AttributeSet attrs ) {
-        Drawable background = getBackground();
-        if (background != null) {
-            return;
-        }
         viewHelper.init(getContext(), attrs );
-
         /**
          * 设置各个自定义属性之后调用此方法设置background
          * 这里有必要说明一下,为什么设置属性了还需要调用这个方法才能生效?

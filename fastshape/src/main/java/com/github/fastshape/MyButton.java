@@ -1,16 +1,10 @@
 package com.github.fastshape;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 
-import com.github.fastshape.bean.BaseHelper;
 import com.github.fastshape.inter.CompleteInter;
-import com.github.fastshape.newbean.FirstHelper;
 import com.github.fastshape.newbean.SecondHelper;
 import com.github.fastshape.newbean.SetBackgroundUtil;
 
@@ -21,15 +15,21 @@ import com.github.fastshape.newbean.SetBackgroundUtil;
 public class MyButton extends AppCompatButton  {
     private SecondHelper viewHelper;
     public MyButton(Context context) {
-        this(context, null);
+        super(context);
+        initHelper(null);
     }
 
     public MyButton(Context context, AttributeSet attrs) {
-        this(context, attrs, FirstHelper.defStyleAttr);
+        super(context,attrs);
+        initHelper(attrs);
     }
 
     public MyButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initHelper(attrs);
+    }
+
+    private void initHelper(AttributeSet attrs) {
         viewHelper = new SecondHelper(new CompleteInter() {
             @Override
             public void complete() {
@@ -42,7 +42,7 @@ public class MyButton extends AppCompatButton  {
             public void resetClip() {
             }
         });
-        init(attrs, defStyleAttr);
+        init(attrs);
     }
 
     public SecondHelper getViewHelper() {
@@ -53,13 +53,8 @@ public class MyButton extends AppCompatButton  {
         this.viewHelper = baseHelper;
     }*/
 
-    public void init(AttributeSet attrs, int defStyleAttr) {
-        Drawable background = getBackground();
-        if (background != null) {
-            return;
-        }
-        viewHelper.init(getContext(), attrs, defStyleAttr);
-
+    public void init(AttributeSet attrs ) {
+        viewHelper.init(getContext(), attrs );
 
         complete();
     }

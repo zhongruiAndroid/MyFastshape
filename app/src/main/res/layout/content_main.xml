@@ -354,9 +354,9 @@
     android:layout_height="wrap_content"
     android:checked="true"
     android:text="Android"
-    app:checked_drawable="@drawable/check_select"
+    app:checked_drawable_left="@drawable/check_select"
     app:checked_textColor="@color/colorPrimaryDark"
-    app:normal_drawable="@drawable/check_normal"
+    app:normal_drawable_left="@drawable/check_normal"
     app:normal_textColor="@color/colorText"
     />
                 <com.github.fastshape.MyCheckBox
@@ -364,9 +364,9 @@
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="Android"
-                    app:checked_drawable="@drawable/check_select"
+                    app:checked_drawable_left="@drawable/check_select"
                     app:checked_textColor="@color/colorPrimaryDark"
-                    app:normal_drawable="@drawable/check_normal"
+                    app:normal_drawable_left="@drawable/check_normal"
                     app:normal_textColor="@color/colorText"
                     />
 
@@ -376,9 +376,9 @@
                     android:layout_marginLeft="40dp"
                     android:checked="false"
                     android:text="Android"
-                    app:checked_drawable="@drawable/check_select"
+                    app:checked_drawable_left="@drawable/check_select"
                     app:checked_textColor="@color/colorPrimaryDark"
-                    app:normal_drawable="@drawable/check_normal"
+                    app:normal_drawable_left="@drawable/check_normal"
                     app:normal_textColor="@color/colorText"
                     />
             </com.github.fastshape.MyLinearLayout>
