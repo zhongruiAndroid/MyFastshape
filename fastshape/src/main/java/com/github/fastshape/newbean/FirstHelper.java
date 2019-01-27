@@ -24,7 +24,6 @@ import static com.github.fastshape.newbean.SetBackgroundUtil.getTransparentColor
  */
 public class FirstHelper extends ClipHelper{
     public static final int defStyleAttr=R.attr.fastshapeStyle;
-    protected Drawable background;
     /*设置正常状态背景和press状态背景,覆盖其他所有属性*/
     protected Drawable drawable_normal;
     protected Drawable drawable_press;
@@ -171,7 +170,6 @@ public class FirstHelper extends ClipHelper{
     }
     /*第一部分公共属性*/
     protected void publicFirstAttr(TypedArray viewNormal) {
-        this.background = viewNormal.getDrawable(R.styleable.FastShapeAttr_background);
         Drawable drawable_normal = viewNormal.getDrawable(R.styleable.FastShapeAttr_drawable_normal);
         Drawable drawable_press = viewNormal.getDrawable(R.styleable.FastShapeAttr_drawable_press);
 
@@ -269,14 +267,7 @@ public class FirstHelper extends ClipHelper{
         return this;
     }
 
-    public Drawable getBackground() {
-        return background;
-    }
 
-    public FirstHelper setBackground(Drawable background) {
-        this.background = background;
-        return this;
-    }
 
     public Drawable getDrawable_normal() {
         return drawable_normal;

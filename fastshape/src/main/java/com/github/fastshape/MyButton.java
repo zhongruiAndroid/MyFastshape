@@ -56,7 +56,9 @@ public class MyButton extends AppCompatButton  {
     public void init(AttributeSet attrs ) {
         viewHelper.init(getContext(), attrs );
 
-        complete();
+        if (getBackground() == null) {
+            complete();
+        }
     }
 
     /**

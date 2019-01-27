@@ -23,14 +23,7 @@ public class SetBackgroundUtil {
 
 
     public static<T extends FirstHelper>void viewComplete(View myView,T firstHelper) {
-        if(firstHelper.getBackground()!=null){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                myView.setBackground(firstHelper.getBackground());
-            } else {
-                myView.setBackgroundDrawable(firstHelper.getBackground());
-            }
-            return;
-        }
+
         if (firstHelper.drawable_normal != null) {
             StateListDrawable stateListDrawableForLayer = new StateListDrawable();
             stateListDrawableForLayer.addState(new int[]{-android.R.attr.state_pressed}, firstHelper.drawable_normal);
@@ -211,7 +204,7 @@ public class SetBackgroundUtil {
 
             int w=stateListDrawable.getIntrinsicWidth();
             int h=stateListDrawable.getIntrinsicHeight();
-            stateListDrawable.setBounds(0,0,getBottomWH(w,h,thirdHelper)[0],getBottomWH(w,h,thirdHelper)[1]);
+            stateListDrawable.setBounds(0,0-thirdHelper.padding_bottom,getBottomWH(w,h,thirdHelper)[0],getBottomWH(w,h,thirdHelper)[1]-thirdHelper.padding_bottom);
             myView.setCompoundDrawables(drawable0,drawable1,drawable2,stateListDrawable);
         }else{
             myView.setCompoundDrawables(drawable0,drawable1,drawable2,null);
@@ -232,7 +225,7 @@ public class SetBackgroundUtil {
 
             int w=stateListDrawable.getIntrinsicWidth();
             int h=stateListDrawable.getIntrinsicHeight();
-            stateListDrawable.setBounds(0,0,getRightWH(w,h,thirdHelper)[0],getRightWH(w,h,thirdHelper)[1]);
+            stateListDrawable.setBounds(0-thirdHelper.padding_right,0,getRightWH(w,h,thirdHelper)[0]-thirdHelper.padding_right,getRightWH(w,h,thirdHelper)[1]);
             myView.setCompoundDrawables(drawable0,drawable1,stateListDrawable,drawable3);
         }else{
             myView.setCompoundDrawables(drawable0,drawable1,null,drawable3);
@@ -253,7 +246,7 @@ public class SetBackgroundUtil {
 
             int w=stateListDrawable.getIntrinsicWidth();
             int h=stateListDrawable.getIntrinsicHeight();
-            stateListDrawable.setBounds(0,0,getTopWH(w,h,thirdHelper)[0],getTopWH(w,h,thirdHelper)[1]);
+            stateListDrawable.setBounds(0,thirdHelper.padding_top+0,getTopWH(w,h,thirdHelper)[0],thirdHelper.padding_top+getTopWH(w,h,thirdHelper)[1]);
             myView.setCompoundDrawables(drawable0,stateListDrawable,drawable2,drawable3);
         }else{
             myView.setCompoundDrawables(drawable0,null,drawable2,drawable3);
@@ -274,7 +267,7 @@ public class SetBackgroundUtil {
 
             int w=stateListDrawable.getIntrinsicWidth();
             int h=stateListDrawable.getIntrinsicHeight();
-            stateListDrawable.setBounds(0,0,getLeftWH(w,h,thirdHelper)[0],getLeftWH(w,h,thirdHelper)[1]);
+            stateListDrawable.setBounds(thirdHelper.padding_left+0,0,thirdHelper.padding_left+getLeftWH(w,h,thirdHelper)[0],getLeftWH(w,h,thirdHelper)[1]);
             myView.setCompoundDrawables(stateListDrawable,drawable1,drawable2,drawable3);
         }else{
             myView.setCompoundDrawables(null,drawable1,drawable2,drawable3);

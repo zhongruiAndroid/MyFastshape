@@ -55,7 +55,11 @@ public class MyCheckBox extends AppCompatCheckBox   {
     public void init(AttributeSet attrs ) {
         viewHelper.init(getContext(), attrs );
 
-        complete();
+        if (getBackground() == null) {
+            complete();
+        }else{
+            SetBackgroundUtil.setCompoundDrawables(this,viewHelper);
+        }
     }
 
     /**

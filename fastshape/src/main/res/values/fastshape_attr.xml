@@ -53,8 +53,12 @@
         <attr name="normal_textColor" />
         <attr name="checked_textColor" />
 
+        <attr name="padding_left"  />
+        <attr name="padding_top"   />
+        <attr name="padding_right"  />
+        <attr name="padding_bottom"   />
 
-        <attr name="background" />
+
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -119,8 +123,12 @@
         <attr name="normal_textColor" />
         <attr name="checked_textColor" />
 
+        <attr name="padding_left"  />
+        <attr name="padding_top"   />
+        <attr name="padding_right"  />
+        <attr name="padding_bottom"   />
 
-        <attr name="background" />
+
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -173,7 +181,6 @@
 
     <!--******************************MyButton*************************************-->
     <declare-styleable name="MyButton">
-        <attr name="background" />
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -249,7 +256,6 @@
         <attr name="clipBorderPhase"  />
 
         <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
-        <attr name="background" />
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -310,7 +316,6 @@
         <attr name="clipBorderPhase"  />
 
         <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
-        <attr name="background" />
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -373,7 +378,6 @@
         <attr name="clipBorderPhase"  />
 
         <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
-        <attr name="background" />
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -419,7 +423,6 @@
         <attr name="clearIcon_width" format="dimension" />
         <attr name="clearIcon_height" format="dimension" />
 
-        <attr name="background" />
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -459,7 +462,6 @@
     <!--******************************MyTextView*************************************-->
     <declare-styleable name="MyTextView">
 
-        <attr name="background" />
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -530,7 +532,6 @@
     <attr name="clipBorderPhase" format="integer" />
 
 
-    <attr name="background" format="reference"/>
 
     <attr name="drawable_normal" format="reference" />
     <attr name="drawable_press" format="reference" />
@@ -599,6 +600,12 @@
     <attr name="normal_textColor" format="color" />
     <attr name="checked_textColor" format="color" />
 
+
+    <attr name="padding_left" format="dimension" />
+    <attr name="padding_top" format="dimension" />
+    <attr name="padding_right" format="dimension" />
+    <attr name="padding_bottom" format="dimension" />
+
     <attr name="left_width" format="dimension" />
     <attr name="left_height" format="dimension" />
 
@@ -640,7 +647,6 @@
         <attr name="clipBorderPhase"  />
 
         <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
-        <attr name="background" />
         <attr name="drawable_normal" />
         <attr name="drawable_press" />
 
@@ -707,6 +713,11 @@
         <attr name="checked_drawable_bottom"  />
         <attr name="normal_textColor" />
         <attr name="checked_textColor" />
+
+        <attr name="padding_left"  />
+        <attr name="padding_top"   />
+        <attr name="padding_right"  />
+        <attr name="padding_bottom"   />
         <!--end MyCheckBox,MyRadioButton公共属性-->
 
 

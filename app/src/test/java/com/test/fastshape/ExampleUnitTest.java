@@ -11,6 +11,11 @@ import static org.junit.Assert.assertEquals;
  */
 public class ExampleUnitTest {
     @Test
+    public void sfd() throws Exception {
+        int i = Integer.MAX_VALUE >> 2;
+        System.out.println(i+"===========");
+    }
+    @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
         TestA a=new TestA();

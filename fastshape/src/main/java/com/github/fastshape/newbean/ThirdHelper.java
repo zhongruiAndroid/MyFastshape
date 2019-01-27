@@ -31,6 +31,13 @@ public class ThirdHelper extends SecondHelper {
     protected int normal_textColor;
     protected int checked_textColor;
 
+    /*设置drawable到边框的偏移量*/
+    protected int padding_left;
+    protected int padding_top;
+    protected int padding_right;
+    protected int padding_bottom;
+
+
     /*
      * 设置button所在方向left,top,right,bottom
      * 设置此属性需要:android:button="@null"
@@ -76,6 +83,14 @@ public class ThirdHelper extends SecondHelper {
 
         normal_textColor =  viewNormal.getColor(R.styleable.FastShapeAttr_normal_textColor,textDefaultColor);//this.getTextColors().getDefaultColor()
         checked_textColor =  viewNormal.getColor(R.styleable.FastShapeAttr_checked_textColor,textDefaultColor);
+
+
+        padding_left = (int) viewNormal.getDimension(R.styleable.FastShapeAttr_padding_left,0);
+        padding_top =  (int) viewNormal.getDimension(R.styleable.FastShapeAttr_padding_top,0);
+        padding_right = (int)  viewNormal.getDimension(R.styleable.FastShapeAttr_padding_right,0);
+        padding_bottom =  (int) viewNormal.getDimension(R.styleable.FastShapeAttr_padding_bottom,0);
+
+
     }
 
     public Drawable getNormal_drawable_left() {

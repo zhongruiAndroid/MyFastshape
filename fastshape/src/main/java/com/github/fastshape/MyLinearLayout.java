@@ -60,7 +60,9 @@ public class MyLinearLayout extends LinearLayout   {
     public void init(AttributeSet attrs ) {
         viewHelper.init(getContext(), attrs );
 
-        complete();
+        if (getBackground() == null) {
+            complete();
+        }
     }
 
     /**
