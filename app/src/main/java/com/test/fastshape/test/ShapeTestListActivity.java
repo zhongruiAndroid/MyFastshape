@@ -27,6 +27,7 @@ public class ShapeTestListActivity extends AppCompatActivity {
         actList.add(EditTextActivity.class);
         actList.add(RadioButtonActivity.class);
         actList.add(CheckBoxActivity.class);
+        actList.add(ImageViewActivity.class);
 
         List<String > itemList=new ArrayList<>();
         itemList.add("LinearLayout");
@@ -37,6 +38,7 @@ public class ShapeTestListActivity extends AppCompatActivity {
         itemList.add("EditText");
         itemList.add("RadioButton");
         itemList.add("CheckBox");
+        itemList.add("ImageView");
 
         adapter = new ListAdapter(this);
         adapter.setActList(actList);

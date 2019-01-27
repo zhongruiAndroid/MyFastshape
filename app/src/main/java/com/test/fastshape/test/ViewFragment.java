@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.github.fastshape.MyCheckBox;
 import com.github.fastshape.MyFrameLayout;
+import com.github.fastshape.MyImageView;
 import com.github.fastshape.MyLinearLayout;
 import com.github.fastshape.MyRadioButton;
 import com.github.fastshape.MyRelativeLayout;
@@ -44,6 +45,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     public static final int type_textview = 4;
     public static final int type_checkview = 5;
     public static final int type_radioview = 6;
+    public static final int type_imageview = 7;
     private int type;
 
     LinearLayout ll_content;
@@ -95,6 +97,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     private MyTextView tv;
     private MyCheckBox cb;
     private MyRadioButton rb;
+    private MyImageView iv;
     FirstHelper firstHelper;
     SecondHelper secondHelper;
     ThirdHelper thirdHelper;
@@ -422,6 +425,13 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             llClip.setVisibility(View.GONE);
             llTextView.setVisibility(View.VISIBLE);
             llCheckBox.setVisibility(View.VISIBLE);
+        }else if (type == type_imageview) {
+            itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_imageview_item, null);
+            iv = itemView.findViewById(R.id.iv);
+            firstHelper = iv.getViewHelper();
+            getViewData();
+            llClip.setVisibility(View.VISIBLE);
+            llTextView.setVisibility(View.GONE);
         }
 
 

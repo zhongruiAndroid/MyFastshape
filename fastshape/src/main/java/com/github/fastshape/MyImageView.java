@@ -1,132 +1,190 @@
 package com.github.fastshape;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.RectF;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import com.github.fastshape.inter.ViewHelperInter;
+import com.github.fastshape.inter.CompleteInter;
+import com.github.fastshape.newbean.FirstHelper;
+import com.github.fastshape.newbean.SetBackgroundUtil;
 
 /**
  * Created by Administrator on 2017/7/24.
  */
 
-public class MyImageView extends AppCompatImageView {
-    private BaseViewHelper viewHelper;
+public class MyImageView extends AppCompatImageView  {
+    private FirstHelper viewHelper;
+    private int saveLayerCount;
     public MyImageView(Context context) {
         super(context);
-        init(context,null);
+        initHelper(null);
     }
-
     public MyImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context,attrs);
+        initHelper(attrs);
     }
-
     public MyImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context,attrs);
+        initHelper(attrs);
     }
-    public BaseViewHelper getViewHelper() {
-        return viewHelper;
-    }
-    private void init(Context context, AttributeSet attrs) {
-        viewHelper = new BaseViewHelper(this, new ViewHelperInter() {
+    private void initHelper(AttributeSet attrs ) {
+        viewHelper = new FirstHelper(new CompleteInter() {
             @Override
-            public void onComplete() {
-                complete();
+            public void complete() {
+                MyImageView.this.complete();
+            }
+            @Override
+            public void completeClip() {
+                MyImageView.this.completeClip();
+            }
+
+            @Override
+            public void resetClip() {
+                MyImageView.this.resetClip();
             }
         });
-        initData();
-        if (attrs == null) {
-            return;
+        init(attrs );
+    }
+
+    public FirstHelper getViewHelper() {
+        return viewHelper;
+    }
+    public void init(AttributeSet attrs ) {
+        viewHelper.init(getContext(), attrs );
+
+        if (getBackground() == null) {
+            complete();
         }
-        TypedArray viewNormal = context.obtainStyledAttributes(attrs, R.styleable.MyImageView);
-
-        setAttrForDraw(viewNormal);
-
-/*        radius = viewNormal.getDimension(R.styleable.MyImageView_radius, 0);
-        bottomRightRadius = viewNormal.getDimension(R.styleable.MyImageView_bottomRightRadius, 0);
-        bottomLeftRadius = viewNormal.getDimension(R.styleable.MyImageView_bottomLeftRadius, 0);
-        topRightRadius = viewNormal.getDimension(R.styleable.MyImageView_topRightRadius, 0);
-        topLeftRadius = viewNormal.getDimension(R.styleable.MyImageView_topLeftRadius, 0);
-
-        paint = new Paint();
-        paint.setColor(Color.WHITE);
-        paint.setAntiAlias(true);
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
-
-        paintView = new Paint();
-        paintView.setXfermode(null);*/
     }
-    public void complete(){
-        viewHelper.viewComplete(this);
-    }
-    private void initData() {
-        viewHelper.clipBorderColor = Color.parseColor("#34e8a6");
-        viewHelper.clipBorderDashBgColor = Color.WHITE;
-    }
-    private void setAttrForDraw(TypedArray viewNormal) {
-        float clipRadius = viewNormal.getDimension(R.styleable.MyImageView_clipRadius, 0);
-        if (clipRadius > 0) {
-            viewHelper.clipTopLeftRadius = clipRadius;
-            viewHelper.clipTopRightRadius = clipRadius;
-            viewHelper.clipBottomLeftRadius = clipRadius;
-            viewHelper.clipBottomRightRadius = clipRadius;
-        } else {
-            viewHelper.clipTopLeftRadius = viewNormal.getDimension(R.styleable.MyImageView_clipTopLeftRadius, 0);
-            viewHelper.clipTopRightRadius = viewNormal.getDimension(R.styleable.MyImageView_clipTopRightRadius, 0);
-            viewHelper.clipBottomLeftRadius = viewNormal.getDimension(R.styleable.MyImageView_clipBottomLeftRadius, 0);
-            viewHelper.clipBottomRightRadius = viewNormal.getDimension(R.styleable.MyImageView_clipBottomRightRadius, 0);
+
+    /**
+     * 设置各个自定义属性之后调用此方法设置background
+     * 这里有必要说明一下,为什么设置属性了还需要调用这个方法才能生效?
+     * 这个方法是将代码设置的各个属性收集生成一个Drawable,然后将它设置为background,简单点这个方法就是用来设置背景的,等价于setBackground方法
+     */
+    public void complete() {
+        if (viewHelper != null) {
+            SetBackgroundUtil.viewComplete(this, viewHelper);
         }
-
-        viewHelper.clipIgnorePadding = viewNormal.getBoolean(R.styleable.MyImageView_clipIgnorePadding, false);
-        viewHelper.clipIsCircle = viewNormal.getBoolean(R.styleable.MyImageView_clipIsCircle, false);
-        viewHelper.clipIsAreaClick = viewNormal.getBoolean(R.styleable.MyImageView_clipIsAreaClick, true);
-        viewHelper.clipBorderWidth = viewNormal.getDimension(R.styleable.MyImageView_clipBorderWidth, 0);
-        viewHelper.clipBorderColor = viewNormal.getColor(R.styleable.MyImageView_clipBorderColor, Color.parseColor("#34e8a6"));
-        viewHelper.clipBorderDashWidth = viewNormal.getDimension(R.styleable.MyImageView_clipBorderDashWidth, 0);
-        viewHelper.clipBorderDashBgColor = viewNormal.getColor(R.styleable.MyFrameLayout_clipBorderDashBgColor, Color.TRANSPARENT);
-        viewHelper.clipBorderDashGap = viewNormal.getDimension(R.styleable.MyImageView_clipBorderDashGap, 0);
-
     }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        if (viewHelper != null) {
-            viewHelper.onSizeChanged(getPaddingLeft(),
-                    getPaddingTop(),
-                    getPaddingRight(),
-                    getPaddingBottom(), w, h, oldw, oldh);
-        }
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        if (viewHelper != null) {
-            viewHelper.onRefreshPaint(canvas, getPaddingLeft(),
+        if (viewHelper != null&& viewHelper.getClipSwitch()) {
+            viewHelper.onSizeChanged();
+            viewHelper.onRefreshPaint(getPaddingLeft(),
                     getPaddingTop(),
                     getPaddingRight(),
                     getPaddingBottom(), getWidth(), getHeight());
         }
-        int saveLayer = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
+    }
+
+    @Override
+    public void draw(Canvas canvas) {
+//        if (viewHelper != null&& viewHelper.isClipBg()&& viewHelper.getClipSwitch()) {
+//            canvas.save();
+//            canvas.clipPath(viewHelper.clipPath);
+            super.draw(canvas);
+//            canvas.restore();
+//        } else {
+//            super.draw(canvas);
+//        }
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        /*if (viewHelper != null&& viewHelper.getClipSwitch()) {
+//            saveLayerCount = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
+        }
         super.onDraw(canvas);
-        viewHelper.dispatchDrawEnd(saveLayer, canvas);
+        if (viewHelper != null&& viewHelper.getClipSwitch()) {
+            viewHelper.dispatchDrawEnd(0, canvas);
+        }*/
+//        super.onDraw(canvas);
+        Drawable mDrawable = getDrawable();
+        int mDrawableWidth = mDrawable.getIntrinsicWidth();
+        int mDrawableHeight = mDrawable.getIntrinsicHeight();
+        Matrix mDrawMatrix = getImageMatrix();
+        int mPaddingTop=getPaddingTop();
+        int mPaddingLeft=getPaddingLeft();
+        int  mPaddingRight=getPaddingRight();
+        int  mPaddingBottom=getPaddingBottom();
+
+        boolean mCropToPadding = getCropToPadding();
+        int mScrollX=getScrollX();
+        int mScrollY=getScrollY();
+        int mRight=getRight();
+        int mLeft=getLeft();
+        int mBottom=getBottom();
+        int mTop=getTop();
+
+        if (mDrawable == null) {
+            return; // couldn't resolve the URI
+        }
+
+        if (mDrawableWidth == 0 || mDrawableHeight == 0) {
+            return;     // nothing to draw (empty bounds)
+        }
+
+        if (mDrawMatrix == null && mPaddingTop == 0 && mPaddingLeft == 0) {
+            mDrawable.draw(canvas);
+        } else {
+            final int saveCount = canvas.getSaveCount();
+            canvas.save();
+
+            if (mCropToPadding) {
+                final int scrollX = mScrollX;
+                final int scrollY = mScrollY;
+                canvas.clipRect(scrollX + mPaddingLeft, scrollY + mPaddingTop,
+                        scrollX + mRight - mLeft - mPaddingRight,
+                        scrollY + mBottom - mTop - mPaddingBottom);
+            }
+
+            canvas.translate(mPaddingLeft, mPaddingTop);
+
+            if (mDrawMatrix != null) {
+                canvas.concat(mDrawMatrix);
+            }
+            mDrawable.draw(canvas);
+            canvas.restoreToCount(saveCount);
+        }
 
     }
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_UP) {
-            if (viewHelper != null && viewHelper.clipIsAreaClick) {
+            if (viewHelper != null && viewHelper.getClipIsAreaClick()&& viewHelper.getClipSwitch()) {
                 if (viewHelper.onTouchEvent(ev) == false) {//如果这个地方返回true会导致点击事件失效
                     return false;
                 }
             }
         }
         return super.dispatchTouchEvent(ev);
+    }
+
+
+    /*******************************************clip*********************************************/
+    public void completeClip() {
+        if (viewHelper != null&& viewHelper.getClipSwitch()) {
+            if(viewHelper.clipPaint==null){
+                viewHelper.onSizeChanged();
+            }
+            viewHelper.onRefreshPaint(getPaddingLeft(),
+                    getPaddingTop(),
+                    getPaddingRight(),
+                    getPaddingBottom(), getWidth(), getHeight());
+            invalidate();
+        }
+    }
+    public void resetClip() {
+        if (viewHelper != null) {
+            viewHelper.setClipSwitch(false);
+            invalidate();
+        }
     }
 }

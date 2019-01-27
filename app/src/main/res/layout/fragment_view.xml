@@ -1104,8 +1104,6 @@
                     android:orientation="vertical"
                     android:gravity="center_vertical"
                     >
-
-
                     <CheckBox
                         android:id="@+id/cbSetLeftDrawable"
                         android:layout_width="wrap_content"
