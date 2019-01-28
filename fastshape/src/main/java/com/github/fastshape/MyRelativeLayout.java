@@ -147,7 +147,7 @@ public class MyRelativeLayout extends RelativeLayout {
     }
     public void resetClip() {
         if (viewHelper != null) {
-            viewHelper.setClipSwitch(false);
+            viewHelper.clearClipAttr();
             invalidate();
         }
     }

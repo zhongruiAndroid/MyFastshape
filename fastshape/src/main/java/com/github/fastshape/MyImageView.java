@@ -1,22 +1,28 @@
 package com.github.fastshape;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.github.fastshape.inter.CompleteInter;
 import com.github.fastshape.newbean.FirstHelper;
+import com.github.fastshape.newbean.ImageHelper;
 import com.github.fastshape.newbean.SetBackgroundUtil;
 
 /**
  * Created by Administrator on 2017/7/24.
  */
 
-public class MyImageView extends AppCompatImageView  {
+public class MyImageView extends AppCompatImageView   {
     private FirstHelper viewHelper;
     private int saveLayerCount;
     public MyImageView(Context context) {
@@ -53,8 +59,15 @@ public class MyImageView extends AppCompatImageView  {
     public FirstHelper getViewHelper() {
         return viewHelper;
     }
+
+    /*public void setViewHelper(FirstHelper baseHelper) {
+        this.viewHelper = baseHelper;
+    }*/
+
     public void init(AttributeSet attrs ) {
-        viewHelper.init(getContext(), attrs );
+        viewHelper.init(getContext(),attrs);
+        /*ImageView自动开启裁剪*/
+        viewHelper.setClipSwitch(true);
 
         if (getBackground() == null) {
             complete();
@@ -71,7 +84,6 @@ public class MyImageView extends AppCompatImageView  {
             SetBackgroundUtil.viewComplete(this, viewHelper);
         }
     }
-
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -86,75 +98,30 @@ public class MyImageView extends AppCompatImageView  {
 
     @Override
     public void draw(Canvas canvas) {
-//        if (viewHelper != null&& viewHelper.isClipBg()&& viewHelper.getClipSwitch()) {
-//            canvas.save();
-//            canvas.clipPath(viewHelper.clipPath);
+        if (viewHelper != null&& viewHelper.isClipBg()&& viewHelper.getClipSwitch()) {
+            canvas.save();
+            canvas.clipPath(viewHelper.clipPath);
             super.draw(canvas);
-//            canvas.restore();
-//        } else {
-//            super.draw(canvas);
-//        }
+            canvas.restore();
+        } else {
+            super.draw(canvas);
+        }
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        /*if (viewHelper != null&& viewHelper.getClipSwitch()) {
-//            saveLayerCount = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
+        if (viewHelper != null&& viewHelper.getClipSwitch()) {
+            canvas.save();
+            saveLayerCount = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
         }
         super.onDraw(canvas);
         if (viewHelper != null&& viewHelper.getClipSwitch()) {
-            viewHelper.dispatchDrawEnd(0, canvas);
-        }*/
-//        super.onDraw(canvas);
-        Drawable mDrawable = getDrawable();
-        int mDrawableWidth = mDrawable.getIntrinsicWidth();
-        int mDrawableHeight = mDrawable.getIntrinsicHeight();
-        Matrix mDrawMatrix = getImageMatrix();
-        int mPaddingTop=getPaddingTop();
-        int mPaddingLeft=getPaddingLeft();
-        int  mPaddingRight=getPaddingRight();
-        int  mPaddingBottom=getPaddingBottom();
-
-        boolean mCropToPadding = getCropToPadding();
-        int mScrollX=getScrollX();
-        int mScrollY=getScrollY();
-        int mRight=getRight();
-        int mLeft=getLeft();
-        int mBottom=getBottom();
-        int mTop=getTop();
-
-        if (mDrawable == null) {
-            return; // couldn't resolve the URI
+            viewHelper.dispatchDrawEnd(-1, canvas);
+            canvas.restore();
         }
-
-        if (mDrawableWidth == 0 || mDrawableHeight == 0) {
-            return;     // nothing to draw (empty bounds)
-        }
-
-        if (mDrawMatrix == null && mPaddingTop == 0 && mPaddingLeft == 0) {
-            mDrawable.draw(canvas);
-        } else {
-            final int saveCount = canvas.getSaveCount();
-            canvas.save();
-
-            if (mCropToPadding) {
-                final int scrollX = mScrollX;
-                final int scrollY = mScrollY;
-                canvas.clipRect(scrollX + mPaddingLeft, scrollY + mPaddingTop,
-                        scrollX + mRight - mLeft - mPaddingRight,
-                        scrollY + mBottom - mTop - mPaddingBottom);
-            }
-
-            canvas.translate(mPaddingLeft, mPaddingTop);
-
-            if (mDrawMatrix != null) {
-                canvas.concat(mDrawMatrix);
-            }
-            mDrawable.draw(canvas);
-            canvas.restoreToCount(saveCount);
-        }
-
     }
+
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_UP) {
@@ -166,6 +133,7 @@ public class MyImageView extends AppCompatImageView  {
         }
         return super.dispatchTouchEvent(ev);
     }
+
 
 
     /*******************************************clip*********************************************/
@@ -183,7 +151,7 @@ public class MyImageView extends AppCompatImageView  {
     }
     public void resetClip() {
         if (viewHelper != null) {
-            viewHelper.setClipSwitch(false);
+            viewHelper.clearClipAttr();
             invalidate();
         }
     }

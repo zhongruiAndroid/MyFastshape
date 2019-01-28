@@ -146,7 +146,7 @@ public class MyFrameLayout extends FrameLayout {
     }
     public void resetClip() {
         if (viewHelper != null) {
-            viewHelper.setClipSwitch(false);
+            viewHelper.clearClipAttr();
             invalidate();
         }
     }

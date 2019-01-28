@@ -9,6 +9,7 @@ import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -49,7 +50,13 @@ public class SetBackgroundUtil {
 
         //设置虚线需要设置layertype
         if (firstHelper.shapeType == firstHelper.shapeType_line && myView.getLayerType() == View.LAYER_TYPE_NONE) {
-            myView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+            if(myView instanceof ImageView){
+                //ImageView不做处理
+            }else{
+                myView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+            }
+        }else{
+            myView.setLayerType(View.LAYER_TYPE_NONE, null);
         }
         //是否是全边框
         if (!firstHelper.isPartBorder) {

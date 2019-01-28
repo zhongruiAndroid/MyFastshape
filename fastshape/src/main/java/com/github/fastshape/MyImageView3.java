@@ -3,30 +3,30 @@ package com.github.fastshape;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.RectF;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.LinearLayout;
 
 import com.github.fastshape.inter.CompleteInter;
 import com.github.fastshape.newbean.FirstHelper;
 import com.github.fastshape.newbean.SetBackgroundUtil;
 
-
 /**
- * Created by Administrator on 2016/9/6.
+ * Created by Administrator on 2017/7/24.
  */
-public class MyLinearLayout extends LinearLayout   {
+
+public class MyImageView3 extends AppCompatImageView    {
     private FirstHelper viewHelper;
     private int saveLayerCount;
-    public MyLinearLayout(Context context) {
+    public MyImageView3(Context context) {
         super(context);
         initHelper(null);
     }
-    public MyLinearLayout(Context context, AttributeSet attrs) {
+    public MyImageView3(Context context, AttributeSet attrs) {
         super(context, attrs);
         initHelper(attrs);
     }
-    public MyLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MyImageView3(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initHelper(attrs);
     }
@@ -34,16 +34,16 @@ public class MyLinearLayout extends LinearLayout   {
         viewHelper = new FirstHelper(new CompleteInter() {
             @Override
             public void complete() {
-                MyLinearLayout.this.complete();
+                MyImageView3.this.complete();
             }
             @Override
             public void completeClip() {
-                MyLinearLayout.this.completeClip();
+                MyImageView3.this.completeClip();
             }
 
             @Override
             public void resetClip() {
-                MyLinearLayout.this.resetClip();
+                MyImageView3.this.resetClip();
             }
         });
         init(attrs );
@@ -58,7 +58,9 @@ public class MyLinearLayout extends LinearLayout   {
     }*/
 
     public void init(AttributeSet attrs ) {
-        viewHelper.init(getContext(), attrs );
+        viewHelper.init(getContext(),attrs);
+        /*ImageView自动开启裁剪*/
+        viewHelper.setClipSwitch(true);
 
         if (getBackground() == null) {
             complete();
@@ -100,16 +102,18 @@ public class MyLinearLayout extends LinearLayout   {
     }
 
     @Override
-    protected void dispatchDraw(Canvas canvas) {
+    protected void onDraw(Canvas canvas) {
         if (viewHelper != null&& viewHelper.getClipSwitch()) {
+            canvas.save();
             saveLayerCount = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
         }
-        super.dispatchDraw(canvas);
-
+        super.onDraw(canvas);
         if (viewHelper != null&& viewHelper.getClipSwitch()) {
-            viewHelper.dispatchDrawEnd(saveLayerCount, canvas);
+            viewHelper.dispatchDrawEnd(-1, canvas);
+            canvas.restore();
         }
     }
+
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -140,9 +144,8 @@ public class MyLinearLayout extends LinearLayout   {
     }
     public void resetClip() {
         if (viewHelper != null) {
-            viewHelper.clearClipAttr();
+            viewHelper.setClipSwitch(false);
             invalidate();
         }
     }
 }
-

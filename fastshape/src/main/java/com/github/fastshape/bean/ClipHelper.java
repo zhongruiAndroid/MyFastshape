@@ -24,7 +24,7 @@ public class ClipHelper implements ClipInter<ClipHelper> {
     /*是否启用裁剪*/
     protected boolean clipSwitch;
     /*是否裁剪背景*/
-    protected boolean clipBg=true;
+    protected boolean clipBg = true;
     /*裁剪成圆形*/
     protected boolean clipIsCircle = false;
     /*裁剪之后的区域点击，true:只有剩余部分有点击事件，false:所有区域有点击事件*/
@@ -50,17 +50,17 @@ public class ClipHelper implements ClipInter<ClipHelper> {
     protected int clipBorderPhase;
 
 
-    public   Paint clipPaint;
-    protected  Paint clipBorderPaint;
-    protected  Paint clipBorderDashBgPaint;
-    protected  Paint clipClearPaint;
+    public Paint clipPaint;
+    protected Paint clipBorderPaint;
+    protected Paint clipBorderDashBgPaint;
+    protected Paint clipClearPaint;
 
-    public  Path clipPath;
-    protected  Path clipBorderPath;
-    protected  Region viewRegion;
-    protected  Region clickRegion;
+    public Path clipPath;
+    protected Path clipBorderPath;
+    protected Region viewRegion;
+    protected Region clickRegion;
 
-    protected  Shader shader;
+    protected Shader shader;
     protected PathEffect pathEffect;
 
 
@@ -112,7 +112,7 @@ public class ClipHelper implements ClipInter<ClipHelper> {
 
         if (shader != null) {
             clipBorderPaint.setShader(shader);
-        }else{
+        } else {
             clipBorderPaint.setShader(null);
         }
         if (clipBorderDashWidth > 0 && clipBorderDashGap > 0) {
@@ -160,7 +160,7 @@ public class ClipHelper implements ClipInter<ClipHelper> {
         if (clipBorderWidth > 0) {
 
             /*如果边框有透明度或者是绘制虚线就执行以下代码*/
-            if(Color.alpha(clipBorderColor)<255|| pathEffect !=null){
+            if (Color.alpha(clipBorderColor) < 255 || pathEffect != null) {
                 /*绘制半透明边框作用*/
                 clipClearPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
                 canvas.drawPath(clipBorderPath, clipClearPaint);
@@ -169,7 +169,7 @@ public class ClipHelper implements ClipInter<ClipHelper> {
             }
 
             /*绘制虚线背景*/
-            if(clipBorderDashBgColor!=Color.TRANSPARENT&&pathEffect !=null){
+            if (clipBorderDashBgColor != Color.TRANSPARENT && pathEffect != null) {
                 canvas.drawPath(clipBorderPath, clipBorderDashBgPaint);
             }
             clipBorderPaint.setColor(clipBorderColor);
@@ -177,8 +177,9 @@ public class ClipHelper implements ClipInter<ClipHelper> {
         }
         //通过setXfermode裁剪出需要显示部分区域
         canvas.drawPath(clipPath, clipPaint);
-
-        canvas.restoreToCount(saveLayerCount);
+        if (saveLayerCount > 0) {
+            canvas.restoreToCount(saveLayerCount);
+        }
     }
 
     public boolean onTouchEvent(MotionEvent event) {
@@ -206,6 +207,24 @@ public class ClipHelper implements ClipInter<ClipHelper> {
 
     public ClipHelper setClipSwitch(boolean clipSwitch) {
         this.clipSwitch = clipSwitch;
+        return this;
+    }
+
+    public ClipHelper clearClipAttr() {
+        clipBg = true;
+        clipIsCircle = false;
+        clipIsAreaClick = true;
+        clipIgnorePadding = true;
+        clipTopLeftRadius = 0;
+        clipTopRightRadius = 0;
+        clipBottomLeftRadius = 0;
+        clipBottomRightRadius = 0;
+        clipBorderWidth = 0;
+        clipBorderColor = Color.TRANSPARENT;
+        clipBorderDashWidth = 0;
+        clipBorderDashGap = 0;
+        clipBorderDashBgColor = Color.TRANSPARENT;
+        clipBorderPhase=0;
         return this;
     }
 
@@ -343,13 +362,15 @@ public class ClipHelper implements ClipInter<ClipHelper> {
         this.pathEffect = pathEffect;
         return this;
     }
+
     public void completeClip() {
-        if(completeInter!=null){
+        if (completeInter != null) {
             completeInter.completeClip();
         }
     }
+
     public void resetClip() {
-        if(completeInter!=null){
+        if (completeInter != null) {
             completeInter.resetClip();
         }
     }
