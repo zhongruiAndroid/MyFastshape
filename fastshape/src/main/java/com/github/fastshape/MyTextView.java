@@ -53,7 +53,7 @@ public class MyTextView extends AppCompatTextView  {
     }*/
 
     public void init(AttributeSet attrs ) {
-        viewHelper.init(getContext(), attrs );
+        viewHelper.init(getContext(), attrs ,R.attr.MyTextViewStyle );
         if (getBackground() == null) {
             complete();
         }

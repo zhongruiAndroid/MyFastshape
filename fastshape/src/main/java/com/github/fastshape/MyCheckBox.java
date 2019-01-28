@@ -53,7 +53,7 @@ public class MyCheckBox extends AppCompatCheckBox   {
     }*/
 
     public void init(AttributeSet attrs ) {
-        viewHelper.init(getContext(), attrs );
+        viewHelper.init(getContext(), attrs,R.attr.MyCheckBoxStyle);
 
         if (getBackground() == null) {
             complete();

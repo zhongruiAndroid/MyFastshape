@@ -655,7 +655,17 @@
     <attr name="bottom_height" format="dimension" />
 
     <!--end******************************所有属性*************************************-->
-    <attr name="fastshapeStyle" format="reference"></attr>
+
+
+    <attr name="MyTextViewStyle" format="reference"></attr>
+    <attr name="MyRelativeLayoutStyle" format="reference"></attr>
+    <attr name="MyRadioButtonStyle" format="reference"></attr>
+    <attr name="MyLinearLayoutStyle" format="reference"></attr>
+    <attr name="MyImageViewStyle" format="reference"></attr>
+    <attr name="MyFrameLayoutStyle" format="reference"></attr>
+    <attr name="MyEditTextStyle" format="reference"></attr>
+    <attr name="MyCheckBoxStyle" format="reference"></attr>
+    <attr name="MyButtonStyle" format="reference"></attr>
 
 
     <declare-styleable name="FastShapeAttr">

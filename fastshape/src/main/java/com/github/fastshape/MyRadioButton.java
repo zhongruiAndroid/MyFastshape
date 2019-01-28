@@ -53,7 +53,7 @@ public class MyRadioButton extends AppCompatRadioButton {
     }*/
 
     public void init(AttributeSet attrs ) {
-        viewHelper.init(getContext(), attrs );
+        viewHelper.init(getContext(), attrs ,R.attr.MyRadioButtonStyle);
         if (getBackground() == null) {
             complete();
         }else{

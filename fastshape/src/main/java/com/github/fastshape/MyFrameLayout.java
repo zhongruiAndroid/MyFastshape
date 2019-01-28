@@ -60,7 +60,7 @@ public class MyFrameLayout extends FrameLayout {
     }*/
 
     public void init(AttributeSet attrs ) {
-        viewHelper.init(getContext(), attrs );
+        viewHelper.init(getContext(), attrs ,R.attr.MyFrameLayoutStyle);
         /**
          * 设置各个自定义属性之后调用此方法设置background
          * 这里有必要说明一下,为什么设置属性了还需要调用这个方法才能生效?

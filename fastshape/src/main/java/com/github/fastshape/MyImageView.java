@@ -64,7 +64,7 @@ public class MyImageView extends AppCompatImageView   {
     }*/
 
     public void init(AttributeSet attrs ) {
-        viewHelper.init(getContext(),attrs);
+        viewHelper.init(getContext(),attrs,R.attr.MyImageViewStyle);
         /*ImageView自动开启裁剪*/
         viewHelper.setClipSwitch(true);
 

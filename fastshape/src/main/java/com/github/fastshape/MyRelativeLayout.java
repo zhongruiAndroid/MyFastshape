@@ -60,7 +60,7 @@ public class MyRelativeLayout extends RelativeLayout {
     }*/
 
     public void init(AttributeSet attrs ) {
-        viewHelper.init(getContext(), attrs );
+        viewHelper.init(getContext(), attrs,R.attr.MyRelativeLayoutStyle );
 
         /**
          * 设置各个自定义属性之后调用此方法设置background

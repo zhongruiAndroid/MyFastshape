@@ -133,8 +133,8 @@ public class FirstHelper extends ClipHelper{
     public FirstHelper(CompleteInter completeInter) {
         this.completeInter = completeInter;
     }
-    public void init(Context context, AttributeSet attrs) {
-        TypedArray viewNormal = context.obtainStyledAttributes(attrs, R.styleable.FastShapeAttr,R.attr.fastshapeStyle,0);
+    public void init(Context context, AttributeSet attrs,int defStyleAttr) {
+        TypedArray viewNormal = context.obtainStyledAttributes(attrs, R.styleable.FastShapeAttr,defStyleAttr,0);
 
         publicFirstAttr(viewNormal);
 

@@ -58,7 +58,7 @@ public class MyLinearLayout extends LinearLayout   {
     }*/
 
     public void init(AttributeSet attrs ) {
-        viewHelper.init(getContext(), attrs );
+        viewHelper.init(getContext(), attrs ,R.attr.MyLinearLayoutStyle);
 
         if (getBackground() == null) {
             complete();
