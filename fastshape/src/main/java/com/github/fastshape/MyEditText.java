@@ -15,21 +15,22 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.github.fastshape.inter.CompleteInter;
 import com.github.fastshape.inter.ViewHelperInter;
+import com.github.fastshape.newbean.FourthHelper;
+import com.github.fastshape.newbean.SetBackgroundUtil;
+import com.github.fastshape.newbean.ThirdHelper;
 
 /**
  * Created by Administrator on 2016/9/6.
  */
 public class MyEditText extends AppCompatEditText implements View.OnFocusChangeListener {
+    private FourthHelper viewHelper;
 
-
-    private BaseViewHelper viewHelper;
     /***清除文本内容的icon*/
-    private Drawable mClearDrawable;
-    private boolean hasFoucs,isHiddenClear;
+    private boolean hasFoucs;
+    private boolean isHiddenClear;
     public MyEditText.OnRightListener onRightListener;
-    private int clearIcon_width;
-    private int clearIcon_height;
 
     public interface OnRightListener{
         boolean clickRight();
@@ -39,122 +40,45 @@ public class MyEditText extends AppCompatEditText implements View.OnFocusChangeL
     }
     public MyEditText(Context context) {
         super(context);
-        init(null);
+        initHelper(null);
     }
     public MyEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(attrs);
+        initHelper(attrs);
     }
     public MyEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(attrs);
+        initHelper(attrs);
     }
-    public BaseViewHelper getViewHelper() {
+    public FourthHelper getViewHelper() {
         return viewHelper;
     }
-
-    public void setViewHelper(BaseViewHelper viewHelper) {
-        this.viewHelper = viewHelper;
-    }
-
-    private void init(AttributeSet attrs) {
-        viewHelper = new BaseViewHelper(new ViewHelperInter() {
+    private void initHelper(AttributeSet attrs) {
+        viewHelper = new FourthHelper(new CompleteInter() {
             @Override
-            public void onComplete() {
-                complete();
+            public void complete() {
+                MyEditText.this.complete();
+            }
+            @Override
+            public void completeClip() {
+            }
+            @Override
+            public void resetClip() {
             }
         });
-        if (attrs == null) {
-            return;
-        }
+        init(attrs);
+    }
+    public void init(AttributeSet attrs ) {
+        viewHelper.init(getContext(), attrs,R.attr.MyEditTextStyle);
+
+        setClearDrawable(viewHelper.getClearIconDrawable());
         Drawable background = getBackground();
+
         if (background instanceof ColorDrawable &&background!=null) {
-            return;
-        }
-        TypedArray viewNormal = this.getContext().obtainStyledAttributes(attrs, R.styleable.MyEditText);
-        Drawable drawable_normal = viewNormal.getDrawable(R.styleable.MyEditText_drawable_normal);
-        Drawable drawable_press  = viewNormal.getDrawable(R.styleable.MyEditText_drawable_press);
-
-
-        clearIcon_width =  (int) viewNormal.getDimension(R.styleable.MyEditText_clearIcon_width, -1);
-        clearIcon_height = (int) viewNormal.getDimension(R.styleable.MyEditText_clearIcon_height,-1);
-
-        isHiddenClear= viewNormal.getBoolean(R.styleable.MyEditText_hiddenClearIcon, false);
-        Drawable clearIcon = viewNormal.getDrawable(R.styleable.MyEditText_clearIconDrawable);
-        setRightDrawble(clearIcon);
-
-        if(drawable_normal!=null||drawable_press!=null){
-            viewHelper.drawable_normal=drawable_normal;
-            viewHelper.drawable_press=drawable_press;
-            if(drawable_normal==null){
-                viewHelper.drawable_normal=drawable_press;
-            }
-            if(drawable_press==null){
-                viewHelper.drawable_press=drawable_normal;
-            }
-            viewNormal.recycle();
+            SetBackgroundUtil.setCompoundDrawables(this,viewHelper);
+        }else{
             complete();
-            return;
         }
-
-        viewHelper.pressColor = viewNormal.getColor(R.styleable.MyEditText_pressColor, viewHelper.getTransparentColor());
-        viewHelper.leftLine = viewNormal.getBoolean(R.styleable.MyEditText_left_line, false);
-        viewHelper.topLine = viewNormal.getBoolean(R.styleable.MyEditText_top_line, false);
-        viewHelper.rightLine = viewNormal.getBoolean(R.styleable.MyEditText_right_line, false);
-        viewHelper.bottomLine = viewNormal.getBoolean(R.styleable.MyEditText_bottom_line, false);
-        if(viewHelper.leftLine&&viewHelper.topLine&&viewHelper.rightLine&&viewHelper.bottomLine){
-            viewHelper.allLine=true;
-        }
-        if(!viewHelper.allLine&&(viewHelper.leftLine||viewHelper.topLine||viewHelper.rightLine||viewHelper.bottomLine)){
-            viewHelper.isPartBorder=true;
-        }
-
-        viewHelper.shapeType = viewNormal.getInteger(R.styleable.MyEditText_shapeType, viewHelper.shapeType_rectangle);
-        viewHelper.borderWidth = viewNormal.getDimension(R.styleable.MyEditText_borderWidth, 0);
-        viewHelper.borderColor = viewNormal.getColor(R.styleable.MyEditText_borderColor, viewHelper.getTransparentColor());
-        viewHelper.borderDashWidth = viewNormal.getDimension(R.styleable.MyEditText_borderDashWidth, 0);
-        viewHelper.borderDashGap = viewNormal.getDimension(R.styleable.MyEditText_borderDashGap, 0);
-
-
-        viewHelper.solidColor = viewNormal.getColor(R.styleable.MyEditText_solidColor, viewHelper.getTransparentColor());
-
-        float radius = viewNormal.getDimension(R.styleable.MyEditText_radius, 0);
-        if (radius > 0) {
-            viewHelper.topLeftRadius = radius;
-            viewHelper.topRightRadius = radius;
-            viewHelper.bottomLeftRadius = radius;
-            viewHelper.bottomRightRadius = radius;
-        } else {
-            viewHelper.topLeftRadius = viewNormal.getDimension(R.styleable.MyEditText_topLeftRadius, 0);
-            viewHelper.topRightRadius = viewNormal.getDimension(R.styleable.MyEditText_topRightRadius, 0);
-            viewHelper.bottomLeftRadius = viewNormal.getDimension(R.styleable.MyEditText_bottomLeftRadius, 0);
-            viewHelper.bottomRightRadius = viewNormal.getDimension(R.styleable.MyEditText_bottomRightRadius, 0);
-        }
-
-        viewHelper.gradientType = viewNormal.getInteger(R.styleable.MyEditText_gradientType, -1);
-        if(viewHelper.gradientType!=-1){
-            viewHelper.angle = viewNormal.getInteger(R.styleable.MyEditText_gradientAngle, 0);
-            viewHelper.centerX = viewNormal.getFloat(R.styleable.MyEditText_gradientCenterX, 0.5f);
-            viewHelper.centerY = viewNormal.getFloat(R.styleable.MyEditText_gradientCenterY, 0.5f);
-
-            viewHelper.startColor = viewNormal.getColor(R.styleable.MyEditText_gradientStartColor, 0);
-            viewHelper.centerColor = viewNormal.getColor(R.styleable.MyEditText_gradientCenterColor, 0);
-            viewHelper.endColor = viewNormal.getColor(R.styleable.MyEditText_gradientEndColor, 0);
-
-            viewHelper.gradientRadius = viewNormal.getDimension(R.styleable.MyEditText_gradientRadius, 40);
-        }
-
-
-        viewNormal.recycle();
-
-        /**
-         * 设置各个自定义属性之后调用此方法设置background
-         * 这里有必要说明一下,为什么设置属性了还需要调用这个方法才能生效?
-         * 这个方法是将代码设置的各个属性收集生成一个Drawable,然后将它设置为background,简单点这个方法就是用来设置背景的,等价于setBackground方法
-         */
-        complete();
-
-
     }
 
     /**
@@ -163,10 +87,11 @@ public class MyEditText extends AppCompatEditText implements View.OnFocusChangeL
      * 这个方法是将代码设置的各个属性收集生成一个Drawable,然后将它设置为background,简单点这个方法就是用来设置背景的,等价于setBackground方法
      */
     public void complete() {
-        viewHelper.viewComplete(this);
+        if (viewHelper != null) {
+            SetBackgroundUtil.viewComplete(this, viewHelper);
+            SetBackgroundUtil.setCompoundDrawables(this,viewHelper);
+        }
     }
-
-
     /***************************************************set方法****************************************************/
     /**
      * 设置清除文本内容的icon
@@ -174,7 +99,7 @@ public class MyEditText extends AppCompatEditText implements View.OnFocusChangeL
      */
     public void setClearDrawable(Drawable clearDrawable) {
 //        this.mClearDrawable = clearDrawable;
-        setRightDrawble(clearDrawable);
+        setRightDrawable(clearDrawable);
     }
     /**
      * 设置清除文本内容的icon
@@ -191,39 +116,40 @@ public class MyEditText extends AppCompatEditText implements View.OnFocusChangeL
         this.isHiddenClear = isHiddenClear;
     }
 
-    private void setRightDrawble(Drawable clearIcon) {
-        if(isInEditMode()){
+    private void setRightDrawable(Drawable clearIcon) {
+        /*if(isInEditMode()){
             return;
-        }
+        }*/
         if(clearIcon!=null){
-            mClearDrawable=clearIcon;
+            viewHelper.setClearIconDrawable(clearIcon);
         }else{
-            mClearDrawable = getCompoundDrawables()[2];
+            viewHelper.setClearIconDrawable( getCompoundDrawables()[2]);
         }
 
-        if (mClearDrawable == null) {
+        if (viewHelper.getClearIconDrawable() == null) {
 //            mClearDrawable = getResources().getDrawable(R.drawable.textclear);
-            mClearDrawable = ContextCompat.getDrawable(getContext(),R.drawable.textclear);
+            viewHelper.setClearIconDrawable( ContextCompat.getDrawable(getContext(),R.drawable.textclear));
         }
-        int width=mClearDrawable.getIntrinsicWidth();
-        int height=mClearDrawable.getIntrinsicHeight();
+        /*图片宽高*/
+        int width=viewHelper.getClearIconDrawable().getIntrinsicWidth();
+        int height=viewHelper.getClearIconDrawable().getIntrinsicHeight();
 
-        int w=mClearDrawable.getIntrinsicWidth();
-        int h=mClearDrawable.getIntrinsicHeight();
+        /*属性设置宽高*/
+        int w=viewHelper.getClearIcon_width();
+        int h=viewHelper.getClearIcon_height();
 
+        if(w>0&&h>0){
 
-        if(clearIcon_width!=-1&&clearIcon_height!=-1){
-            w=clearIcon_width;
-            h=clearIcon_height;
-        }else if(clearIcon_width!=-1){
-            w=clearIcon_width;
-            h= (int) viewHelper.chuFa(viewHelper.chengFa(clearIcon_width,height),width);
-        }else if(clearIcon_height!=-1){
-            w=clearIcon_height;
-            h= (int) viewHelper.chuFa(viewHelper.chengFa(clearIcon_height,width),height);
+        }else if(w>0){
+            h= (int) SetBackgroundUtil.chuFa(SetBackgroundUtil.chengFa(w,height),width);
+        }else if(h>0){
+            w= (int) SetBackgroundUtil.chuFa(SetBackgroundUtil.chengFa(h,width),height);
+        }else{
+            w=width;
+            h=height;
         }
 
-        mClearDrawable.setBounds(0, 0, w, h);
+        viewHelper.getClearIconDrawable().setBounds(0, 0, w, h);
 //        this.setCompoundDrawablePadding(dip2px(getContext(), 5));
 //        this.setPadding(0,0,15,0);
         // 默认设置隐藏图标
@@ -252,10 +178,9 @@ public class MyEditText extends AppCompatEditText implements View.OnFocusChangeL
      * @param visible
      */
     protected void setClearIconVisible(boolean visible) {
-        Drawable right = visible&&!isHiddenClear ? mClearDrawable : null;
+        Drawable right = (visible&&!isHiddenClear) ? viewHelper.getClearIconDrawable() : null;
         setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], right, getCompoundDrawables()[3]);
     }
-
     /**
      * 设置光标位置
      * @param text
@@ -298,14 +223,5 @@ public class MyEditText extends AppCompatEditText implements View.OnFocusChangeL
 
             }
         };
-    }
-    private int px2dip(Context context, float pxValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (pxValue / scale + 0.5f);
-    }
-
-    private int dip2px(Context context, float dipValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dipValue * scale + 0.5f);
     }
 }

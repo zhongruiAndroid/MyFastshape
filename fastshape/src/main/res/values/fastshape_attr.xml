@@ -767,8 +767,8 @@
 
 
         <!--start MyEditText-->
-        <attr name="hiddenClearIcon"    />
         <attr name="clearIconDrawable"  />
+        <attr name="hiddenClearIcon"    />
         <attr name="clearIcon_width"    />
         <attr name="clearIcon_height"   />
         <!--end MyEditText-->

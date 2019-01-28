@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".test.LinearLayoutActivity"
+    android:orientation="horizontal">
+    <com.github.fastshape.MyEditText
+        android:id="@+id/et"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:text="Android"
+        android:textSize="19sp"
+        android:textColor="#333333"
+        app:borderColor="@color/fenhong"
+        app:borderDashGap="2dp"
+        app:borderDashWidth="4dp"
+        app:borderWidth="2px"
+        app:gradientCenterColor="@color/colorPrimary"
+        app:gradientStartColor="@color/fenhong"
+        app:gradientEndColor="@color/c_press"
+        app:gradientType="linear"
+        app:radius="16dp"
+        app:solidColor="@color/palevioletred"
+        android:background="@null"
+        />
+</LinearLayout>

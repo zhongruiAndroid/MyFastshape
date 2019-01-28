@@ -22,6 +22,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.github.fastshape.MyCheckBox;
+import com.github.fastshape.MyEditText;
 import com.github.fastshape.MyFrameLayout;
 import com.github.fastshape.MyImageView;
 import com.github.fastshape.MyLinearLayout;
@@ -29,6 +30,7 @@ import com.github.fastshape.MyRadioButton;
 import com.github.fastshape.MyRelativeLayout;
 import com.github.fastshape.MyTextView;
 import com.github.fastshape.newbean.FirstHelper;
+import com.github.fastshape.newbean.FourthHelper;
 import com.github.fastshape.newbean.SecondHelper;
 import com.github.fastshape.newbean.ThirdHelper;
 import com.skydoves.colorpickerview.ColorPickerView;
@@ -46,6 +48,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     public static final int type_checkview = 5;
     public static final int type_radioview = 6;
     public static final int type_imageview = 7;
+    public static final int type_edittext = 8;
     private int type;
 
     LinearLayout ll_content;
@@ -95,12 +98,14 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     private MyFrameLayout fl;
     private MyRelativeLayout rl;
     private MyTextView tv;
+    private MyEditText et;
     private MyCheckBox cb;
     private MyRadioButton rb;
     private MyImageView iv;
     FirstHelper firstHelper;
     SecondHelper secondHelper;
     ThirdHelper thirdHelper;
+    FourthHelper fourthHelper;
     float radiusScale = 1.5f;
 
     /**********************裁剪**********************/
@@ -432,6 +437,17 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             getViewData();
             llClip.setVisibility(View.VISIBLE);
             llTextView.setVisibility(View.GONE);
+        } else if (type == type_edittext) {
+            getTextViewId(view);
+            itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_edittext_item, null);
+            et = itemView.findViewById(R.id.et);
+            firstHelper = et.getViewHelper();
+            secondHelper = et.getViewHelper();
+            fourthHelper = et.getViewHelper();
+            getViewData();
+            llClip.setVisibility(View.GONE);
+            llTextView.setVisibility(View.VISIBLE);
+            llCheckBox.setVisibility(View.GONE);
         }
 
 
@@ -509,9 +525,17 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
                     Drawable drawable2 = ContextCompat.getDrawable(getActivity(), R.drawable.select);
                     Drawable drawable3 = ContextCompat.getDrawable(getActivity(), R.drawable.select);
                     Drawable drawable4 = ContextCompat.getDrawable(getActivity(), R.drawable.select);
-                    tv.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable1, drawable2, drawable3, drawable4);
+                    if(type==type_textview){
+                        tv.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable1, drawable2, drawable3, drawable4);
+                    }else if(type==type_edittext){
+                        et.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable1, drawable2, drawable3, drawable4);
+                    }
                 } else {
-                    tv.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null);
+                    if(type==type_textview){
+                        tv.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null);
+                    }else if(type==type_edittext){
+                        et.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null);
+                    }
                 }
             }
         });
@@ -748,6 +772,16 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
                     fl.setPadding(progress, progress, progress, progress);
                 } else if (type == type_relativelayout) {
                     rl.setPadding(progress, progress, progress, progress);
+                }else if(type==type_textview){
+                    tv.setPadding(progress, progress, progress, progress);
+                }else if(type==type_checkview){
+                    cb.setPadding(progress, progress, progress, progress);
+                }else if(type==type_radioview){
+                    rb.setPadding(progress, progress, progress, progress);
+                }else if(type==type_edittext){
+                    et.setPadding(progress, progress, progress, progress);
+                }else if(type==type_imageview){
+                    iv.setPadding(progress, progress, progress, progress);
                 }
                 break;
             case R.id.sbGradientCenterX:

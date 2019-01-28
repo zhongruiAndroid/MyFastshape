@@ -572,7 +572,7 @@ public class SetBackgroundUtil {
         }
     }
 
-    protected static double chuFa(double d1,double d2) {
+    public static double chuFa(double d1,double d2) {
         return chuFa(d1,d2,2);
     }
     private static double chuFa(double d1,double d2,int scale) {
@@ -590,7 +590,7 @@ public class SetBackgroundUtil {
         return bd1.divide
                 (bd2, scale, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
-    protected static double chengFa(double d1,double d2){
+    public static double chengFa(double d1,double d2){
         BigDecimal bd1 = new BigDecimal(d1);
         BigDecimal bd2 = new BigDecimal(d2);
         return round(bd1.multiply(bd2).doubleValue());
