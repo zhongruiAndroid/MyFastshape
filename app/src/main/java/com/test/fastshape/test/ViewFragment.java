@@ -126,6 +126,8 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     TextView tvClipDashBgColor;
     AppCompatSeekBar sbClipBorderPhase;
 
+    /***************************MyEditText***************************/
+    CheckBox cbSetClearIcon;
     /***************************MyTextView***************************/
     LinearLayout llTextView;
     CheckBox cbSetDrawable;
@@ -178,6 +180,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
         llClip = view.findViewById(R.id.llClip);
         llTextView = view.findViewById(R.id.llTextView);
         llCheckBox = view.findViewById(R.id.llCheckBox);
+        cbSetClearIcon = view.findViewById(R.id.cbSetClearIcon);
 
         sbRadiusTopLeft = view.findViewById(R.id.sbRadiusTopLeft);
         sbRadiusTopLeft.setOnSeekBarChangeListener(this);
@@ -400,6 +403,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             llClip.setVisibility(View.GONE);
             llTextView.setVisibility(View.VISIBLE);
             llCheckBox.setVisibility(View.GONE);
+            cbSetClearIcon.setVisibility(View.GONE);
         } else if (type == type_checkview) {
             getTextViewId(view);
             getCheckBoxId(view);
@@ -448,6 +452,18 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             llClip.setVisibility(View.GONE);
             llTextView.setVisibility(View.VISIBLE);
             llCheckBox.setVisibility(View.GONE);
+            cbSetClearIcon.setVisibility(View.VISIBLE);
+            cbSetClearIcon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        fourthHelper.setClearIconDrawable(ContextCompat.getDrawable(getActivity(),R.drawable.select));
+//                        fourthHelper.getClearIconDrawable().setBounds(0, 0, 50, 50);
+                    }else{
+                        fourthHelper.setClearIconDrawable(null);
+                    }
+                }
+            });
         }
 
 

@@ -948,6 +948,13 @@
                     android:text="设置四个方向的drawable"
                     android:textColor="@color/gray_6"
                     />
+                <CheckBox
+                    android:id="@+id/cbSetClearIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设置清除文本icon"
+                    android:textColor="@color/gray_6"
+                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"
