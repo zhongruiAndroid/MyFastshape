@@ -6,7 +6,30 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+     <!--   <item name="MyTextViewStyle">@style/TextView</item>
+        <item name="MyEditTextStyle">@style/EditText</item>
+        <item name="MyLinearLayoutStyle">@style/LinearLayout</item>
+        <item name="MyRelativeLayoutStyle">@style/RelativeLayout</item>-->
     </style>
+
+    <style name="TextView">
+        <item name="solidColor">@color/white</item>
+    </style>
+    <style name="EditText">
+        <item name="solidColor">@color/white</item>
+        <item name="clearIconDrawable">@drawable/normal</item>
+        <item name="clearIcon_height">10dp</item>
+        <item name="clearIcon_width">5dp</item>
+    </style>
+    <style name="LinearLayout">
+        <item name="solidColor">@color/c_press</item>
+    </style>
+    <style name="RelativeLayout">
+        <item name="solidColor">@color/burlywood</item>
+    </style>
+
+
+
     <style name="addDataEditStyle" parent="@style/editTextStyle">
         <item name="android:textSize">16sp</item>
         <!--<item name="android:background">@android:color/transparent</item>-->

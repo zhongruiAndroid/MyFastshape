@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.test.fastshape.R;
+import com.test.fastshape.TestLinearlayoutActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,8 @@ public class ShapeTestListActivity extends AppCompatActivity {
         actList.add(RadioButtonActivity.class);
         actList.add(CheckBoxActivity.class);
         actList.add(ImageViewActivity.class);
-
+//        actList.add(TestLinearlayoutActivity.class);
+//
         List<String > itemList=new ArrayList<>();
         itemList.add("LinearLayout");
         itemList.add("FrameLayout");
@@ -39,6 +41,7 @@ public class ShapeTestListActivity extends AppCompatActivity {
         itemList.add("RadioButton");
         itemList.add("CheckBox");
         itemList.add("ImageView");
+//        itemList.add("测试Theme");
 
         adapter = new ListAdapter(this);
         adapter.setActList(actList);

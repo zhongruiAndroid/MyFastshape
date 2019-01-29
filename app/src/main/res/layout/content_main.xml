@@ -23,9 +23,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
             >
+
             <com.github.fastshape.MyLinearLayout
                 android:layout_width="140dp"
                 android:layout_height="140dp"
@@ -35,101 +36,110 @@
                 app:borderWidth="2px"
                 app:radius="70dp"
                 >
+
                 <RelativeLayout
                     android:layout_width="140dp"
                     android:layout_height="140dp">
+
                     <com.github.fastshape.MyTextView
+                        android:id="@+id/view"
                         android:layout_width="@dimen/yuan_width"
                         android:layout_height="@dimen/yuan_height"
-                        android:gravity="center"
-                        app:radius="@dimen/yuan_radius"
-                        app:borderColor="@color/colorPrimaryDark"
-                        app:borderWidth="2px"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:id="@+id/view"/>
+                        android:gravity="center"
+                        app:borderColor="@color/colorPrimaryDark"
+                        app:borderWidth="2px"
+                        app:radius="@dimen/yuan_radius"/>
+
+                    <com.github.fastshape.MyTextView
+                        android:id="@+id/view2"
+                        android:layout_width="@dimen/yuan_width"
+                        android:layout_height="@dimen/yuan_height"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="11dp"
+                        android:gravity="center"
+                        app:borderColor="@color/colorPrimaryDark"
+                        app:borderWidth="2px"
+                        app:radius="@dimen/yuan_radius"/>
+
+                    <com.github.fastshape.MyTextView
+                        android:id="@+id/view4"
+                        android:layout_width="@dimen/yuan_width"
+                        android:layout_height="@dimen/yuan_height"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        app:borderColor="@color/colorPrimaryDark"
+                        app:borderWidth="2px"
+                        app:radius="@dimen/yuan_radius"/>
+
+                    <com.github.fastshape.MyTextView
+                        android:id="@+id/view3"
+                        android:layout_width="@dimen/yuan_width"
+                        android:layout_height="@dimen/yuan_height"
+                        android:layout_alignLeft="@+id/view2"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/view2"
+                        android:layout_marginBottom="11dp"
+                        android:gravity="center"
+                        app:borderColor="@color/colorPrimaryDark"
+                        app:borderWidth="2px"
+                        app:radius="@dimen/yuan_radius"/>
 
                     <com.github.fastshape.MyTextView
                         android:layout_width="@dimen/yuan_width"
                         android:layout_height="@dimen/yuan_height"
-                        android:gravity="center"
-                        app:radius="@dimen/yuan_radius"
-                        app:borderColor="@color/colorPrimaryDark"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginStart="10dp"
-                        android:id="@+id/view2"
-                        app:borderWidth="2px"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginTop="11dp"/>
-                    <com.github.fastshape.MyTextView
-                        android:layout_width="@dimen/yuan_width"
-                        android:layout_height="@dimen/yuan_height"
-                        android:gravity="center"
-                        app:radius="@dimen/yuan_radius"
-                        app:borderWidth="2px"
-                        app:borderColor="@color/colorPrimaryDark"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:id="@+id/view4"/>
-                    <com.github.fastshape.MyTextView
-                        android:layout_width="@dimen/yuan_width"
-                        android:layout_height="@dimen/yuan_height"
-                        android:gravity="center"
-                        app:radius="@dimen/yuan_radius"
-                        app:borderWidth="2px"
-                        app:borderColor="@color/colorPrimaryDark"
-                        android:layout_marginBottom="11dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignLeft="@+id/view2"
-                        android:layout_alignStart="@+id/view2"
-                        android:id="@+id/view3"/>
-                    <com.github.fastshape.MyTextView
-                        android:layout_width="@dimen/yuan_width"
-                        android:layout_height="@dimen/yuan_height"
-                        android:gravity="center"
-                        app:radius="@dimen/yuan_radius"
-                        app:borderWidth="2px"
-                        app:borderColor="@color/colorPrimaryDark"
-                        android:layout_alignParentBottom="true"
                         android:layout_alignLeft="@+id/view"
-                        android:layout_alignStart="@+id/view"/>
-                    <com.github.fastshape.MyTextView
-                        android:layout_width="@dimen/yuan_width"
-                        android:layout_height="@dimen/yuan_height"
-                        android:gravity="center"
-                        app:radius="@dimen/yuan_radius"
-                        app:borderWidth="2px"
-                        app:borderColor="@color/colorPrimaryDark"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/view5"/>
-                    <com.github.fastshape.MyTextView
-                        android:layout_width="@dimen/yuan_width"
-                        android:layout_height="@dimen/yuan_height"
-                        android:gravity="center"
-                        app:radius="@dimen/yuan_radius"
-                        app:borderWidth="2px"
-                        app:borderColor="@color/colorPrimaryDark"
-                        android:layout_marginBottom="11dp"
                         android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/view"
+                        android:gravity="center"
+                        app:borderColor="@color/colorPrimaryDark"
+                        app:borderWidth="2px"
+                        app:radius="@dimen/yuan_radius"/>
+
+                    <com.github.fastshape.MyTextView
+                        android:id="@+id/view5"
+                        android:layout_width="@dimen/yuan_width"
+                        android:layout_height="@dimen/yuan_height"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        app:borderColor="@color/colorPrimaryDark"
+                        app:borderWidth="2px"
+                        app:radius="@dimen/yuan_radius"/>
+
+                    <com.github.fastshape.MyTextView
+                        android:layout_width="@dimen/yuan_width"
+                        android:layout_height="@dimen/yuan_height"
                         android:layout_alignLeft="@+id/view6"
-                        android:layout_alignStart="@+id/view6"/>
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignStart="@+id/view6"
+                        android:layout_marginBottom="11dp"
+                        android:gravity="center"
+                        app:borderColor="@color/colorPrimaryDark"
+                        app:borderWidth="2px"
+                        app:radius="@dimen/yuan_radius"/>
+
                     <com.github.fastshape.MyTextView
                         android:id="@+id/view6"
                         android:layout_width="@dimen/yuan_width"
                         android:layout_height="@dimen/yuan_height"
-                        android:gravity="center"
-                        app:radius="@dimen/yuan_radius"
-                        app:borderWidth="2px"
-                        app:borderColor="@color/colorPrimaryDark"
-                        android:layout_alignParentTop="true"
                         android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
                         android:layout_marginRight="10dp"
-                        android:layout_marginTop="11dp"/>
+                        android:layout_marginTop="11dp"
+                        android:gravity="center"
+                        app:borderColor="@color/colorPrimaryDark"
+                        app:borderWidth="2px"
+                        app:radius="@dimen/yuan_radius"/>
                 </RelativeLayout>
+
                 <com.github.fastshape.MyLinearLayout
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -148,8 +158,8 @@
                             android:gravity="center"
                             android:text="A"
                             app:bottomLeftRadius="@dimen/radius"
-                            app:topRightRadius="@dimen/radius"
                             app:solidColor="@color/colorPrimaryDark"
+                            app:topRightRadius="@dimen/radius"
                             />
 
                         <com.github.fastshape.MyTextView
@@ -158,8 +168,8 @@
                             android:gravity="center"
                             android:text="B"
                             app:bottomRightRadius="@dimen/radius"
-                            app:topLeftRadius="@dimen/radius"
                             app:solidColor="@color/colorPrimaryDark"
+                            app:topLeftRadius="@dimen/radius"
                             />
 
                     </com.github.fastshape.MyLinearLayout>
@@ -180,8 +190,8 @@
                         android:gravity="center"
                         android:text="C"
                         app:bottomRightRadius="@dimen/radius"
-                        app:topLeftRadius="@dimen/radius"
                         app:solidColor="@color/colorPrimaryDark"
+                        app:topLeftRadius="@dimen/radius"
                         />
 
                     <com.github.fastshape.MyTextView
@@ -190,8 +200,8 @@
                         android:gravity="center"
                         android:text="D"
                         app:bottomLeftRadius="@dimen/radius"
-                        app:topRightRadius="@dimen/radius"
                         app:solidColor="@color/colorPrimaryDark"
+                        app:topRightRadius="@dimen/radius"
                         />
 
                 </com.github.fastshape.MyLinearLayout>
@@ -201,8 +211,8 @@
             <com.github.fastshape.MyLinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_marginLeft="20dp"
+                android:orientation="vertical"
                 >
 
                 <com.github.fastshape.MyLinearLayout
@@ -215,8 +225,8 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:orientation="horizontal"
-                        app:topLeftRadius="35dp"
                         app:solidColor="#2CE38F"
+                        app:topLeftRadius="35dp"
                         >
 
                         <RelativeLayout
@@ -230,11 +240,11 @@
                                 android:layout_alignParentBottom="true"
                                 android:layout_alignParentEnd="true"
                                 android:layout_alignParentRight="true"
-                                app:bottomLeftRadius="@dimen/ll_radius"
-                                app:topRightRadius="@dimen/ll_radius"
+                                app:borderColor="#ffffff"
                                 app:borderWidth="2dp"
+                                app:bottomLeftRadius="@dimen/ll_radius"
                                 app:solidColor="#2CE38F"
-                                app:borderColor="#ffffff"/>
+                                app:topRightRadius="@dimen/ll_radius"/>
                         </RelativeLayout>
                     </com.github.fastshape.MyLinearLayout>
 
@@ -242,9 +252,10 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:orientation="horizontal"
-                        app:topRightRadius="35dp"
                         app:solidColor="#14BBF7"
+                        app:topRightRadius="35dp"
                         >
+
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
@@ -253,14 +264,14 @@
                             <com.github.fastshape.MyTextView
                                 android:layout_width="@dimen/ll_width"
                                 android:layout_height="@dimen/ll_width"
-                                app:bottomRightRadius="@dimen/ll_radius"
-                                app:topLeftRadius="@dimen/ll_radius"
-                                app:borderWidth="2dp"
-                                app:solidColor="#14BBF7"
-                                app:borderColor="#ffffff"
                                 android:layout_alignParentBottom="true"
                                 android:layout_alignParentLeft="true"
-                                android:layout_alignParentStart="true"/>
+                                android:layout_alignParentStart="true"
+                                app:borderColor="#ffffff"
+                                app:borderWidth="2dp"
+                                app:bottomRightRadius="@dimen/ll_radius"
+                                app:solidColor="#14BBF7"
+                                app:topLeftRadius="@dimen/ll_radius"/>
                         </RelativeLayout>
                     </com.github.fastshape.MyLinearLayout>
                 </com.github.fastshape.MyLinearLayout>
@@ -284,6 +295,7 @@
                             app:bottomLeftRadius="35dp"
                             app:solidColor="#FFD586"
                             >
+
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
@@ -292,14 +304,14 @@
                                 <com.github.fastshape.MyTextView
                                     android:layout_width="@dimen/ll_width"
                                     android:layout_height="@dimen/ll_width"
-                                    app:bottomRightRadius="@dimen/ll_radius"
-                                    app:topLeftRadius="@dimen/ll_radius"
-                                    app:borderWidth="2dp"
-                                    app:solidColor="#FFD586"
-                                    app:borderColor="#ffffff"
-                                    android:layout_alignParentTop="true"
+                                    android:layout_alignParentEnd="true"
                                     android:layout_alignParentRight="true"
-                                    android:layout_alignParentEnd="true"/>
+                                    android:layout_alignParentTop="true"
+                                    app:borderColor="#ffffff"
+                                    app:borderWidth="2dp"
+                                    app:bottomRightRadius="@dimen/ll_radius"
+                                    app:solidColor="#FFD586"
+                                    app:topLeftRadius="@dimen/ll_radius"/>
                             </RelativeLayout>
                         </com.github.fastshape.MyLinearLayout>
 
@@ -310,6 +322,7 @@
                             app:bottomRightRadius="35dp"
                             app:solidColor="#FF7B6F"
                             >
+
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
@@ -318,14 +331,14 @@
                                 <com.github.fastshape.MyTextView
                                     android:layout_width="@dimen/ll_width"
                                     android:layout_height="@dimen/ll_width"
-                                    app:bottomLeftRadius="@dimen/ll_radius"
-                                    app:topRightRadius="@dimen/ll_radius"
-                                    app:borderWidth="2dp"
-                                    app:solidColor="#FF7B6F"
-                                    app:borderColor="#ffffff"
-                                    android:layout_alignParentTop="true"
                                     android:layout_alignParentLeft="true"
-                                    android:layout_alignParentStart="true"/>
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    app:borderColor="#ffffff"
+                                    app:borderWidth="2dp"
+                                    app:bottomLeftRadius="@dimen/ll_radius"
+                                    app:solidColor="#FF7B6F"
+                                    app:topRightRadius="@dimen/ll_radius"/>
                             </RelativeLayout>
                         </com.github.fastshape.MyLinearLayout>
                     </com.github.fastshape.MyLinearLayout>
@@ -339,35 +352,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
             >
 
             <com.github.fastshape.MyLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:gravity="center"
+                android:orientation="horizontal"
                 >
-<com.github.fastshape.MyRadioButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:checked="true"
-    android:text="Android"
-    app:checked_drawable_left="@drawable/check_select"
-    app:checked_textColor="@color/colorPrimaryDark"
-    app:normal_drawable_left="@drawable/check_normal"
-    app:normal_textColor="@color/colorText"
-    />
+
                 <com.github.fastshape.MyCheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="Android"
-                    app:checked_drawable_left="@drawable/check_select"
-                    app:checked_textColor="@color/colorPrimaryDark"
-                    app:normal_drawable_left="@drawable/check_normal"
-                    app:normal_textColor="@color/colorText"
                     />
 
                 <com.github.fastshape.MyCheckBox
@@ -376,45 +376,41 @@
                     android:layout_marginLeft="40dp"
                     android:checked="false"
                     android:text="Android"
-                    app:checked_drawable_left="@drawable/check_select"
-                    app:checked_textColor="@color/colorPrimaryDark"
-                    app:normal_drawable_left="@drawable/check_normal"
-                    app:normal_textColor="@color/colorText"
                     />
             </com.github.fastshape.MyLinearLayout>
 
-
         </com.github.fastshape.MyLinearLayout>
 
-       <com.github.fastshape.MyLinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="2px"
-           app:shapeType="line"
-           android:layout_marginTop="10dp"
-           android:layout_marginBottom="10dp"
-           app:borderWidth="1px"
-           app:borderColor="@color/colorPrimary"
-           >
-       </com.github.fastshape.MyLinearLayout>
+        <com.github.fastshape.MyLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            app:borderColor="@color/colorPrimary"
+            app:borderWidth="1px"
+            app:shapeType="line"
+            >
+        </com.github.fastshape.MyLinearLayout>
+
         <com.github.fastshape.MyLinearLayout
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            app:shapeType="line"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            app:borderWidth="1px"
+            android:layout_marginTop="10dp"
+            app:borderColor="@color/colorPrimary"
             app:borderDashGap="5dp"
             app:borderDashWidth="8dp"
-            app:borderColor="@color/colorPrimary"
+            app:borderWidth="1px"
+            app:shapeType="line"
             >
-       </com.github.fastshape.MyLinearLayout>
+        </com.github.fastshape.MyLinearLayout>
 
         <com.github.fastshape.MyLinearLayout
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:orientation="horizontal"
-            android:focusableInTouchMode="true"
             android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal"
             >
 
             <com.github.fastshape.MyEditText
@@ -423,30 +419,30 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
+                android:background="@null"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:text="android"
                 android:textColor="@color/colorText"
                 android:textSize="14sp"
                 app:borderColor="@color/colorPrimary"
                 app:borderWidth="1px"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:background="@null"
                 />
 
             <com.github.fastshape.MyEditText
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@null"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:text="android"
                 android:textColor="@color/colorText"
                 android:textSize="14sp"
                 app:borderColor="@color/colorPrimary"
                 app:borderWidth="1px"
                 app:clearIconDrawable="@drawable/text_clear2"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
                 app:hiddenClearIcon="true"
-                android:background="@null"
                 />
         </com.github.fastshape.MyLinearLayout>
 
@@ -463,54 +459,58 @@
             app:pressColor="@color/c_press"
 
             />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
             android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
             >
+
             <com.github.fastshape.MyTextView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:shapeType="oval"
-                app:gradientStartColor="@color/colorAccentAlpha"
-                app:gradientEndColor="@color/colorPrimary"
-                app:gradientType="radial"
-                app:gradientRadius="20dp"
                 android:layout_marginRight="10dp"
+                app:gradientEndColor="@color/colorPrimary"
+                app:gradientRadius="20dp"
+                app:gradientStartColor="@color/colorAccentAlpha"
+                app:gradientType="radial"
+                app:shapeType="oval"
                 />
+
             <com.github.fastshape.MyTextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="40dp"
-                app:shapeType="rectangle"
-                app:gradientStartColor="@color/colorPrimary"
-                app:gradientEndColor="@color/colorAccentAlpha"
-                app:gradientType="linear"
                 android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                app:gradientEndColor="@color/colorAccentAlpha"
+                app:gradientStartColor="@color/colorPrimary"
+                app:gradientType="linear"
+                app:shapeType="rectangle"
                 />
 
             <com.github.fastshape.MyTextView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:shapeType="oval"
-                app:gradientStartColor="@color/colorAccentAlpha"
                 app:gradientEndColor="@color/colorPrimary"
+                app:gradientStartColor="@color/colorAccentAlpha"
                 app:gradientType="sweep"
+                app:shapeType="oval"
                 />
         </LinearLayout>
+
         <com.github.fastshape.MyTextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="Android"
-            android:gravity="center"
             android:layout_marginTop="10dp"
-            app:top_line="true"
-            app:bottom_line="true"
+            android:gravity="center"
+            android:text="Android"
             app:borderColor="@color/colorPrimary"
             app:borderDashGap="2dp"
             app:borderDashWidth="8dp"
+            app:bottom_line="true"
+            app:top_line="true"
             />
     </LinearLayout>
 
