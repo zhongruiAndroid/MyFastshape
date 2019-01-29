@@ -512,6 +512,20 @@
             app:bottom_line="true"
             app:top_line="true"
             />
+
+        <com.github.fastshape.MyTextView
+            android:id="@+id/tvLook"
+            android:layout_width="140dp"
+            android:layout_height="35dp"
+            android:text="点我看效果"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            app:borderColor="@color/colorPrimary"
+            app:borderWidth="1px"
+            app:radius="4dp"
+            app:pressColor="@color/c_press"
+            />
     </LinearLayout>
 
 </ScrollView>
