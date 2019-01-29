@@ -3,7 +3,9 @@ package com.github.fastshape.newbean;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import com.github.fastshape.R;
 import com.github.fastshape.inter.CompleteInter;
@@ -31,9 +33,6 @@ public class SecondHelper extends FirstHelper{
         super(completeInter);
     }
     public void init(Context context, AttributeSet attrs ,int defStyleAttr) {
-        Resources.Theme theme = context.getTheme();
-        TypedArray typedArray = theme.obtainStyledAttributes(attrs, R.styleable.FastShapeAttr, defStyleAttr, 0);
-
 
         TypedArray viewNormal = context.obtainStyledAttributes(attrs, R.styleable.FastShapeAttr,defStyleAttr,0);
         /*第一部分公共属性*/

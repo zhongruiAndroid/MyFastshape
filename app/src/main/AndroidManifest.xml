@@ -35,7 +35,8 @@
         </activity>
         <activity android:name=".test.RelativeLayoutActivity">
         </activity>
-        <activity android:name=".test.TextViewActivity">
+        <activity android:name=".test.TextViewActivity"
+                  android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".test.ButtonActivity">
         </activity>

@@ -13,14 +13,58 @@
         <item name="android:ellipsize">end</item>
         <item name="android:singleLine">true</item>
     </style>
-    <style name="AppTheme.NoActionBar">
+    <style name="testEditStyle2"  >
+        <!--
+        android:textSize="19sp"
+        android:textColor="#333333"
+        app:borderColor="@color/fenhong"
+        app:borderDashGap="2dp"
+        app:borderDashWidth="4dp"
+        app:borderWidth="2px"
+        app:gradientCenterColor="@color/colorPrimary"
+        app:gradientStartColor="@color/fenhong"
+        app:gradientEndColor="@color/c_press"
+        app:gradientType="linear"
+        app:radius="16dp"
+        app:solidColor="@color/palevioletred"
+        android:background="@null"-->
+        <item name="borderColor">@color/c_press_bt</item>
+        <item name="borderDashGap">26sp</item>
+        <item name="borderDashWidth">6sp</item>
+        <item name="borderWidth">6sp</item>
+        <item name="radius">26dp</item>
+        <item name="solidColor">@color/red_point1</item>
+        <item name="clearIconDrawable">@drawable/normal</item>
+    </style>
+    <style name="testEditStyle3"  >
+        <!--
+        android:textSize="19sp"
+        android:textColor="#333333"
+        app:borderColor="@color/fenhong"
+        app:borderDashGap="2dp"
+        app:borderDashWidth="4dp"
+        app:borderWidth="2px"
+        app:gradientCenterColor="@color/colorPrimary"
+        app:gradientStartColor="@color/fenhong"
+        app:gradientEndColor="@color/c_press"
+        app:gradientType="linear"
+        app:radius="16dp"
+        app:solidColor="@color/palevioletred"
+        android:background="@null"-->
+        <item name="borderColor">@color/red_point1</item>
+        <item name="borderDashGap">26sp</item>
+        <item name="borderDashWidth">6sp</item>
+        <item name="borderWidth">6sp</item>
+        <item name="radius">56dp</item>
+        <item name="solidColor">@color/c_press_bt</item>
+    </style>
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:editTextStyle">@style/testEditStyle</item>
         <item name="editTextStyle">@style/testEditStyle</item>
         <item name="android:checkboxStyle">@style/customfontstyle</item>
         <!--<item name="MyEditTextStyle">@style/testEditStyle2</item>-->
-        <!--<item name="MyTextViewStyle">@style/testEditStyle2</item>-->
     </style>
     <style name="customfontstyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
     </style>

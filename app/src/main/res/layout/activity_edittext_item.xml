@@ -15,6 +15,5 @@
         android:clickable="true"
         android:orientation="vertical"
         android:text="Android"
-        android:background="@null"
         />
 </LinearLayout>
