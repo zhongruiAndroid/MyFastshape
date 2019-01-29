@@ -27,9 +27,8 @@
         app:solidColor="@color/c_press"
         app:clipSwitch="true"
         app:clipBorderDashWidth="15dp"
-        app:clipBorderDashGap="5dp"
-        app:clipBorderWidth="3dp"
-        app:clipBorderColor="@color/black"
+        app:clipBorderWidth="2dp"
+        app:clipBorderColor="@color/top_color"
         >
         <TextView
             android:layout_width="match_parent"
