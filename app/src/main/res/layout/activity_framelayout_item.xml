@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_weight="1"
         android:clickable="true"
         android:gravity="center_vertical"
         app:borderColor="@color/fenhong"
@@ -28,10 +27,11 @@
         app:solidColor="@color/c_press"
         >
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
             android:adjustViewBounds="true"
             android:src="@drawable/bird"
+            android:layout_marginTop="20dp"
             />
         <TextView
             android:layout_width="match_parent"
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MyFrameLayout"
-            android:layout_gravity="bottom"
+            android:layout_marginTop="100dp"
             />
     </com.github.fastshape.MyFrameLayout>
 </LinearLayout>
