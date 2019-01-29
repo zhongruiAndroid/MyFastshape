@@ -56,6 +56,8 @@ public class MyTextView extends AppCompatTextView  {
         viewHelper.init(getContext(), attrs ,R.attr.MyTextViewStyle );
         if (getBackground() == null) {
             complete();
+        }else{
+            SetBackgroundUtil.setCompoundDrawables(this,viewHelper);
         }
     }
 

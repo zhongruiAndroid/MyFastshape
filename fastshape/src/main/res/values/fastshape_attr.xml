@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+    <!--theme-->
+
+    <!--<declare-styleable name="fastShapeStyle">-->
+    <attr name="MyRelativeLayoutStyle" format="reference"></attr>
+    <attr name="MyRadioButtonStyle" format="reference"></attr>
+    <attr name="MyLinearLayoutStyle" format="reference"></attr>
+    <attr name="MyImageViewStyle" format="reference"></attr>
+    <attr name="MyFrameLayoutStyle" format="reference"></attr>
+    <attr name="MyEditTextStyle" format="reference"></attr>
+    <attr name="MyCheckBoxStyle" format="reference"></attr>
+    <attr name="MyButtonStyle" format="reference"></attr>
+    <attr name="MyTextViewStyle" format="reference"></attr>
+    <!--</declare-styleable>-->
+
     <declare-styleable name="FlowLayout_LayoutParams">
-        <attr name="layout_newLine" format="boolean" />
-        <attr name="layout_horizontalSpacing" format="dimension" />
-        <attr name="layout_verticalSpacing" format="dimension" />
+        <attr name="layout_newLine" format="boolean"/>
+        <attr name="layout_horizontalSpacing" format="dimension"/>
+        <attr name="layout_verticalSpacing" format="dimension"/>
     </declare-styleable>
 
     <declare-styleable name="FlowLayout">
-        <attr name="android:gravity" />
+        <attr name="android:gravity"/>
     </declare-styleable>
     <declare-styleable name="FlowLayout_Layout">
-        <attr name="android:layout_gravity" />
+        <attr name="android:layout_gravity"/>
     </declare-styleable>
 
     <declare-styleable name="MyImageView">
@@ -19,371 +35,371 @@
         <!--是否裁剪自身背景-->
         <attr name="clipBg"/>
         <!--裁剪属性-->
-        <attr name="clipIsCircle"  />
-        <attr name="clipIsAreaClick"  />
-        <attr name="clipIgnorePadding"  />
+        <attr name="clipIsCircle"/>
+        <attr name="clipIsAreaClick"/>
+        <attr name="clipIgnorePadding"/>
 
-        <attr name="clipRadius"  />
-        <attr name="clipTopLeftRadius"  />
-        <attr name="clipTopRightRadius"  />
-        <attr name="clipBottomLeftRadius"  />
-        <attr name="clipBottomRightRadius"  />
+        <attr name="clipRadius"/>
+        <attr name="clipTopLeftRadius"/>
+        <attr name="clipTopRightRadius"/>
+        <attr name="clipBottomLeftRadius"/>
+        <attr name="clipBottomRightRadius"/>
 
-        <attr name="clipBorderWidth"  />
-        <attr name="clipBorderColor" />
-        <attr name="clipBorderDashWidth"  />
-        <attr name="clipBorderDashGap"  />
-        <attr name="clipBorderDashBgColor" />`
-        <attr name="clipBorderPhase"  />
+        <attr name="clipBorderWidth"/>
+        <attr name="clipBorderColor"/>
+        <attr name="clipBorderDashWidth"/>
+        <attr name="clipBorderDashGap"/>
+        <attr name="clipBorderDashBgColor"/>`
+        <attr name="clipBorderPhase"/>
 
         <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
-        <attr name="drawable_normal" />
-        <attr name="drawable_press" />
+        <attr name="drawable_normal"/>
+        <attr name="drawable_press"/>
 
-        <attr name="pressColor" />
+        <attr name="pressColor"/>
 
-        <attr name="left_line" />
-        <attr name="top_line" />
-        <attr name="right_line" />
-        <attr name="bottom_line" />
+        <attr name="left_line"/>
+        <attr name="top_line"/>
+        <attr name="right_line"/>
+        <attr name="bottom_line"/>
         <!--shapeType-->
-        <attr name="shapeType" />
+        <attr name="shapeType"/>
         <!--stroke-->
-        <attr name="borderWidth" />
-        <attr name="borderColor" />
-        <attr name="borderDashWidth" />
-        <attr name="borderDashGap" />
+        <attr name="borderWidth"/>
+        <attr name="borderColor"/>
+        <attr name="borderDashWidth"/>
+        <attr name="borderDashGap"/>
         <!--solid-->
-        <attr name="solidColor" />
+        <attr name="solidColor"/>
         <!--corners-->
-        <attr name="radius" />
-        <attr name="topLeftRadius" />
-        <attr name="topRightRadius" />
-        <attr name="bottomLeftRadius" />
-        <attr name="bottomRightRadius" />
+        <attr name="radius"/>
+        <attr name="topLeftRadius"/>
+        <attr name="topRightRadius"/>
+        <attr name="bottomLeftRadius"/>
+        <attr name="bottomRightRadius"/>
         <!--gradient-->
-        <attr name="gradientAngle" />
-        <attr name="gradientCenterX" />
-        <attr name="gradientCenterY" />
-        <attr name="gradientStartColor" />
-        <attr name="gradientCenterColor" />
-        <attr name="gradientEndColor" />
-        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用-->
-        <attr name="gradientType" />
+        <attr name="gradientAngle"/>
+        <attr name="gradientCenterX"/>
+        <attr name="gradientCenterY"/>
+        <attr name="gradientStartColor"/>
+        <attr name="gradientCenterColor"/>
+        <attr name="gradientEndColor"/>
+        <attr name="gradientRadius"/><!--渐变的半径。仅在 android:type="radial" 时适用-->
+        <attr name="gradientType"/>
         <!--end MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
 
     </declare-styleable>
     <declare-styleable name="MyCheckBox">
-        <attr name="normal_drawable_left" />
-        <attr name="checked_drawable_left" />
+        <attr name="normal_drawable_left"/>
+        <attr name="checked_drawable_left"/>
 
-        <attr name="normal_drawable_top"   />
-        <attr name="checked_drawable_top"   />
+        <attr name="normal_drawable_top"/>
+        <attr name="checked_drawable_top"/>
 
-        <attr name="normal_drawable_right"  />
-        <attr name="checked_drawable_right"  />
+        <attr name="normal_drawable_right"/>
+        <attr name="checked_drawable_right"/>
 
-        <attr name="normal_drawable_bottom"  />
-        <attr name="checked_drawable_bottom"  />
-        <attr name="normal_textColor" />
-        <attr name="checked_textColor" />
+        <attr name="normal_drawable_bottom"/>
+        <attr name="checked_drawable_bottom"/>
+        <attr name="normal_textColor"/>
+        <attr name="checked_textColor"/>
 
-        <attr name="padding_left"  />
-        <attr name="padding_top"   />
-        <attr name="padding_right"  />
-        <attr name="padding_bottom"   />
+        <attr name="padding_left"/>
+        <attr name="padding_top"/>
+        <attr name="padding_right"/>
+        <attr name="padding_bottom"/>
 
 
-        <attr name="drawable_normal" />
-        <attr name="drawable_press" />
+        <attr name="drawable_normal"/>
+        <attr name="drawable_press"/>
 
-        <attr name="pressColor" />
+        <attr name="pressColor"/>
 
-        <attr name="left_line" />
-        <attr name="top_line" />
-        <attr name="right_line" />
-        <attr name="bottom_line" />
+        <attr name="left_line"/>
+        <attr name="top_line"/>
+        <attr name="right_line"/>
+        <attr name="bottom_line"/>
         <!--shapeType-->
-        <attr name="shapeType" />
+        <attr name="shapeType"/>
         <!--stroke-->
-        <attr name="borderWidth" />
-        <attr name="borderColor" />
-        <attr name="borderDashWidth" />
-        <attr name="borderDashGap" />
+        <attr name="borderWidth"/>
+        <attr name="borderColor"/>
+        <attr name="borderDashWidth"/>
+        <attr name="borderDashGap"/>
         <!--solid-->
-        <attr name="solidColor" />
+        <attr name="solidColor"/>
         <!--corners-->
-        <attr name="radius" />
-        <attr name="topLeftRadius" />
-        <attr name="topRightRadius" />
-        <attr name="bottomLeftRadius" />
-        <attr name="bottomRightRadius" />
+        <attr name="radius"/>
+        <attr name="topLeftRadius"/>
+        <attr name="topRightRadius"/>
+        <attr name="bottomLeftRadius"/>
+        <attr name="bottomRightRadius"/>
         <!--gradient-->
-        <attr name="gradientAngle" />
-        <attr name="gradientCenterX" />
-        <attr name="gradientCenterY" />
-        <attr name="gradientStartColor" />
-        <attr name="gradientCenterColor" />
-        <attr name="gradientEndColor" />
-        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用。-->
-        <attr name="gradientType" />
+        <attr name="gradientAngle"/>
+        <attr name="gradientCenterX"/>
+        <attr name="gradientCenterY"/>
+        <attr name="gradientStartColor"/>
+        <attr name="gradientCenterColor"/>
+        <attr name="gradientEndColor"/>
+        <attr name="gradientRadius"/><!--渐变的半径。仅在 android:type="radial" 时适用。-->
+        <attr name="gradientType"/>
 
 
-        <attr name="left_width" />
-        <attr name="left_height" />
+        <attr name="left_width"/>
+        <attr name="left_height"/>
 
-        <attr name="top_width" />
-        <attr name="top_height" />
+        <attr name="top_width"/>
+        <attr name="top_height"/>
 
-        <attr name="right_width" />
-        <attr name="right_height" />
+        <attr name="right_width"/>
+        <attr name="right_height"/>
 
 
-        <attr name="bottom_width" />
-        <attr name="bottom_height" />
+        <attr name="bottom_width"/>
+        <attr name="bottom_height"/>
 
     </declare-styleable>
     <declare-styleable name="MyRadioButton">
-        <attr name="normal_drawable_left" />
-        <attr name="checked_drawable_left" />
+        <attr name="normal_drawable_left"/>
+        <attr name="checked_drawable_left"/>
 
-        <attr name="normal_drawable_top"   />
-        <attr name="checked_drawable_top"   />
+        <attr name="normal_drawable_top"/>
+        <attr name="checked_drawable_top"/>
 
-        <attr name="normal_drawable_right"  />
-        <attr name="checked_drawable_right"  />
+        <attr name="normal_drawable_right"/>
+        <attr name="checked_drawable_right"/>
 
-        <attr name="normal_drawable_bottom"  />
-        <attr name="checked_drawable_bottom"  />
-        <attr name="normal_textColor" />
-        <attr name="checked_textColor" />
+        <attr name="normal_drawable_bottom"/>
+        <attr name="checked_drawable_bottom"/>
+        <attr name="normal_textColor"/>
+        <attr name="checked_textColor"/>
 
-        <attr name="padding_left"  />
-        <attr name="padding_top"   />
-        <attr name="padding_right"  />
-        <attr name="padding_bottom"   />
+        <attr name="padding_left"/>
+        <attr name="padding_top"/>
+        <attr name="padding_right"/>
+        <attr name="padding_bottom"/>
 
 
-        <attr name="drawable_normal" />
-        <attr name="drawable_press" />
+        <attr name="drawable_normal"/>
+        <attr name="drawable_press"/>
 
-        <attr name="pressColor" />
+        <attr name="pressColor"/>
 
-        <attr name="left_line" />
-        <attr name="top_line" />
-        <attr name="right_line" />
-        <attr name="bottom_line" />
+        <attr name="left_line"/>
+        <attr name="top_line"/>
+        <attr name="right_line"/>
+        <attr name="bottom_line"/>
         <!--shapeType-->
-        <attr name="shapeType" />
+        <attr name="shapeType"/>
         <!--stroke-->
-        <attr name="borderWidth" />
-        <attr name="borderColor" />
-        <attr name="borderDashWidth" />
-        <attr name="borderDashGap" />
+        <attr name="borderWidth"/>
+        <attr name="borderColor"/>
+        <attr name="borderDashWidth"/>
+        <attr name="borderDashGap"/>
         <!--solid-->
-        <attr name="solidColor" />
+        <attr name="solidColor"/>
         <!--corners-->
-        <attr name="radius" />
-        <attr name="topLeftRadius" />
-        <attr name="topRightRadius" />
-        <attr name="bottomLeftRadius" />
-        <attr name="bottomRightRadius" />
+        <attr name="radius"/>
+        <attr name="topLeftRadius"/>
+        <attr name="topRightRadius"/>
+        <attr name="bottomLeftRadius"/>
+        <attr name="bottomRightRadius"/>
         <!--gradient-->
-        <attr name="gradientAngle" />
-        <attr name="gradientCenterX" />
-        <attr name="gradientCenterY" />
-        <attr name="gradientStartColor" />
-        <attr name="gradientCenterColor" />
-        <attr name="gradientEndColor" />
-        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用。-->
-        <attr name="gradientType" />
+        <attr name="gradientAngle"/>
+        <attr name="gradientCenterX"/>
+        <attr name="gradientCenterY"/>
+        <attr name="gradientStartColor"/>
+        <attr name="gradientCenterColor"/>
+        <attr name="gradientEndColor"/>
+        <attr name="gradientRadius"/><!--渐变的半径。仅在 android:type="radial" 时适用。-->
+        <attr name="gradientType"/>
 
 
-        <attr name="left_width" />
-        <attr name="left_height" />
+        <attr name="left_width"/>
+        <attr name="left_height"/>
 
-        <attr name="top_width" />
-        <attr name="top_height" />
+        <attr name="top_width"/>
+        <attr name="top_height"/>
 
-        <attr name="right_width" />
-        <attr name="right_height" />
+        <attr name="right_width"/>
+        <attr name="right_height"/>
 
 
-        <attr name="bottom_width" />
-        <attr name="bottom_height" />
+        <attr name="bottom_width"/>
+        <attr name="bottom_height"/>
     </declare-styleable>
 
 
     <!--******************************MyButton*************************************-->
     <declare-styleable name="MyButton">
-        <attr name="drawable_normal" />
-        <attr name="drawable_press" />
+        <attr name="drawable_normal"/>
+        <attr name="drawable_press"/>
 
-        <attr name="pressColor" />
+        <attr name="pressColor"/>
 
-        <attr name="left_line" />
-        <attr name="top_line" />
-        <attr name="right_line" />
-        <attr name="bottom_line" />
+        <attr name="left_line"/>
+        <attr name="top_line"/>
+        <attr name="right_line"/>
+        <attr name="bottom_line"/>
         <!--shapeType-->
-        <attr name="shapeType" />
+        <attr name="shapeType"/>
         <!--stroke-->
-        <attr name="borderWidth" />
-        <attr name="borderColor" />
-        <attr name="borderDashWidth" />
-        <attr name="borderDashGap" />
+        <attr name="borderWidth"/>
+        <attr name="borderColor"/>
+        <attr name="borderDashWidth"/>
+        <attr name="borderDashGap"/>
         <!--solid-->
-        <attr name="solidColor" />
+        <attr name="solidColor"/>
         <!--corners-->
-        <attr name="radius" />
-        <attr name="topLeftRadius" />
-        <attr name="topRightRadius" />
-        <attr name="bottomLeftRadius" />
-        <attr name="bottomRightRadius" />
+        <attr name="radius"/>
+        <attr name="topLeftRadius"/>
+        <attr name="topRightRadius"/>
+        <attr name="bottomLeftRadius"/>
+        <attr name="bottomRightRadius"/>
         <!--gradient-->
-        <attr name="gradientAngle" />
-        <attr name="gradientCenterX" />
-        <attr name="gradientCenterY" />
-        <attr name="gradientStartColor" />
-        <attr name="gradientCenterColor" />
-        <attr name="gradientEndColor" />
-        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用。-->
-        <attr name="gradientType" />
+        <attr name="gradientAngle"/>
+        <attr name="gradientCenterX"/>
+        <attr name="gradientCenterY"/>
+        <attr name="gradientStartColor"/>
+        <attr name="gradientCenterColor"/>
+        <attr name="gradientEndColor"/>
+        <attr name="gradientRadius"/><!--渐变的半径。仅在 android:type="radial" 时适用。-->
+        <attr name="gradientType"/>
 
 
-        <attr name="left_width" />
-        <attr name="left_height" />
+        <attr name="left_width"/>
+        <attr name="left_height"/>
 
-        <attr name="top_width" />
-        <attr name="top_height" />
+        <attr name="top_width"/>
+        <attr name="top_height"/>
 
-        <attr name="right_width" />
-        <attr name="right_height" />
+        <attr name="right_width"/>
+        <attr name="right_height"/>
 
 
-        <attr name="bottom_width" />
-        <attr name="bottom_height" />
+        <attr name="bottom_width"/>
+        <attr name="bottom_height"/>
 
     </declare-styleable>
 
     <!--******************************MyRelativeLayout*************************************-->
     <declare-styleable name="MyRelativeLayout">
         <!--裁剪是否启用-->
-        <attr name="clipSwitch"  />
+        <attr name="clipSwitch"/>
         <!--是否裁剪自身背景-->
         <attr name="clipBg"/>
         <!--裁剪属性-->
-        <attr name="clipIsCircle"  />
-        <attr name="clipIsAreaClick"  />
-        <attr name="clipIgnorePadding"  />
+        <attr name="clipIsCircle"/>
+        <attr name="clipIsAreaClick"/>
+        <attr name="clipIgnorePadding"/>
 
-        <attr name="clipRadius"  />
-        <attr name="clipTopLeftRadius"  />
-        <attr name="clipTopRightRadius"  />
-        <attr name="clipBottomLeftRadius"  />
-        <attr name="clipBottomRightRadius"  />
+        <attr name="clipRadius"/>
+        <attr name="clipTopLeftRadius"/>
+        <attr name="clipTopRightRadius"/>
+        <attr name="clipBottomLeftRadius"/>
+        <attr name="clipBottomRightRadius"/>
 
-        <attr name="clipBorderWidth"  />
-        <attr name="clipBorderColor" />
-        <attr name="clipBorderDashWidth"  />
-        <attr name="clipBorderDashGap"  />
-        <attr name="clipBorderDashBgColor"  />`
-        <attr name="clipBorderPhase"  />
+        <attr name="clipBorderWidth"/>
+        <attr name="clipBorderColor"/>
+        <attr name="clipBorderDashWidth"/>
+        <attr name="clipBorderDashGap"/>
+        <attr name="clipBorderDashBgColor"/>`
+        <attr name="clipBorderPhase"/>
 
         <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
-        <attr name="drawable_normal" />
-        <attr name="drawable_press" />
+        <attr name="drawable_normal"/>
+        <attr name="drawable_press"/>
 
-        <attr name="pressColor" />
+        <attr name="pressColor"/>
 
-        <attr name="left_line" />
-        <attr name="top_line" />
-        <attr name="right_line" />
-        <attr name="bottom_line" />
+        <attr name="left_line"/>
+        <attr name="top_line"/>
+        <attr name="right_line"/>
+        <attr name="bottom_line"/>
         <!--shapeType-->
-        <attr name="shapeType" />
+        <attr name="shapeType"/>
         <!--stroke-->
-        <attr name="borderWidth" />
-        <attr name="borderColor" />
-        <attr name="borderDashWidth" />
-        <attr name="borderDashGap" />
+        <attr name="borderWidth"/>
+        <attr name="borderColor"/>
+        <attr name="borderDashWidth"/>
+        <attr name="borderDashGap"/>
         <!--solid-->
-        <attr name="solidColor" />
+        <attr name="solidColor"/>
         <!--corners-->
-        <attr name="radius" />
-        <attr name="topLeftRadius" />
-        <attr name="topRightRadius" />
-        <attr name="bottomLeftRadius" />
-        <attr name="bottomRightRadius" />
+        <attr name="radius"/>
+        <attr name="topLeftRadius"/>
+        <attr name="topRightRadius"/>
+        <attr name="bottomLeftRadius"/>
+        <attr name="bottomRightRadius"/>
         <!--gradient-->
-        <attr name="gradientAngle" />
-        <attr name="gradientCenterX" />
-        <attr name="gradientCenterY" />
-        <attr name="gradientStartColor" />
-        <attr name="gradientCenterColor" />
-        <attr name="gradientEndColor" />
-        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用-->
-        <attr name="gradientType" />
+        <attr name="gradientAngle"/>
+        <attr name="gradientCenterX"/>
+        <attr name="gradientCenterY"/>
+        <attr name="gradientStartColor"/>
+        <attr name="gradientCenterColor"/>
+        <attr name="gradientEndColor"/>
+        <attr name="gradientRadius"/><!--渐变的半径。仅在 android:type="radial" 时适用-->
+        <attr name="gradientType"/>
         <!--end MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
     </declare-styleable>
     <!--******************************MyLinearLayout*************************************-->
     <declare-styleable name="MyLinearLayout">
         <!--裁剪是否启用-->
-        <attr name="clipSwitch"  />
+        <attr name="clipSwitch"/>
         <!--是否裁剪自身背景-->
         <attr name="clipBg"/>
         <!--裁剪属性-->
-        <attr name="clipIsCircle"  />
-        <attr name="clipIsAreaClick"  />
-        <attr name="clipIgnorePadding"  />
+        <attr name="clipIsCircle"/>
+        <attr name="clipIsAreaClick"/>
+        <attr name="clipIgnorePadding"/>
 
-        <attr name="clipRadius"  />
-        <attr name="clipTopLeftRadius"  />
-        <attr name="clipTopRightRadius"  />
-        <attr name="clipBottomLeftRadius"  />
-        <attr name="clipBottomRightRadius"  />
+        <attr name="clipRadius"/>
+        <attr name="clipTopLeftRadius"/>
+        <attr name="clipTopRightRadius"/>
+        <attr name="clipBottomLeftRadius"/>
+        <attr name="clipBottomRightRadius"/>
 
-        <attr name="clipBorderWidth"  />
-        <attr name="clipBorderColor" />
-        <attr name="clipBorderDashWidth"  />
-        <attr name="clipBorderDashGap"  />
-        <attr name="clipBorderDashBgColor"  />`
-        <attr name="clipBorderPhase"  />
+        <attr name="clipBorderWidth"/>
+        <attr name="clipBorderColor"/>
+        <attr name="clipBorderDashWidth"/>
+        <attr name="clipBorderDashGap"/>
+        <attr name="clipBorderDashBgColor"/>`
+        <attr name="clipBorderPhase"/>
 
         <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
-        <attr name="drawable_normal" />
-        <attr name="drawable_press" />
+        <attr name="drawable_normal"/>
+        <attr name="drawable_press"/>
 
-        <attr name="pressColor" />
+        <attr name="pressColor"/>
 
-        <attr name="left_line" />
-        <attr name="top_line" />
-        <attr name="right_line" />
-        <attr name="bottom_line" />
+        <attr name="left_line"/>
+        <attr name="top_line"/>
+        <attr name="right_line"/>
+        <attr name="bottom_line"/>
         <!--shapeType-->
-        <attr name="shapeType" />
+        <attr name="shapeType"/>
         <!--stroke-->
-        <attr name="borderWidth" />
-        <attr name="borderColor" />
-        <attr name="borderDashWidth" />
-        <attr name="borderDashGap" />
+        <attr name="borderWidth"/>
+        <attr name="borderColor"/>
+        <attr name="borderDashWidth"/>
+        <attr name="borderDashGap"/>
         <!--solid-->
-        <attr name="solidColor" />
+        <attr name="solidColor"/>
         <!--corners-->
-        <attr name="radius" />
-        <attr name="topLeftRadius" />
-        <attr name="topRightRadius" />
-        <attr name="bottomLeftRadius" />
-        <attr name="bottomRightRadius" />
+        <attr name="radius"/>
+        <attr name="topLeftRadius"/>
+        <attr name="topRightRadius"/>
+        <attr name="bottomLeftRadius"/>
+        <attr name="bottomRightRadius"/>
         <!--gradient-->
-        <attr name="gradientAngle" />
-        <attr name="gradientCenterX" />
-        <attr name="gradientCenterY" />
-        <attr name="gradientStartColor" />
-        <attr name="gradientCenterColor" />
-        <attr name="gradientEndColor" />
-        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用-->
-        <attr name="gradientType" />
+        <attr name="gradientAngle"/>
+        <attr name="gradientCenterX"/>
+        <attr name="gradientCenterY"/>
+        <attr name="gradientStartColor"/>
+        <attr name="gradientCenterColor"/>
+        <attr name="gradientEndColor"/>
+        <attr name="gradientRadius"/><!--渐变的半径。仅在 android:type="radial" 时适用-->
+        <attr name="gradientType"/>
         <!--end MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
     </declare-styleable>
 
@@ -391,192 +407,192 @@
     <declare-styleable name="MyFrameLayout">
 
         <!--裁剪是否启用-->
-        <attr name="clipSwitch"  />
+        <attr name="clipSwitch"/>
         <!--是否裁剪自身背景-->
         <attr name="clipBg"/>
         <!--裁剪属性-->
-        <attr name="clipIsCircle"  />
-        <attr name="clipIsAreaClick"  />
-        <attr name="clipIgnorePadding"  />
+        <attr name="clipIsCircle"/>
+        <attr name="clipIsAreaClick"/>
+        <attr name="clipIgnorePadding"/>
 
-        <attr name="clipRadius"  />
-        <attr name="clipTopLeftRadius"  />
-        <attr name="clipTopRightRadius"  />
-        <attr name="clipBottomLeftRadius"  />
-        <attr name="clipBottomRightRadius"  />
+        <attr name="clipRadius"/>
+        <attr name="clipTopLeftRadius"/>
+        <attr name="clipTopRightRadius"/>
+        <attr name="clipBottomLeftRadius"/>
+        <attr name="clipBottomRightRadius"/>
 
-        <attr name="clipBorderWidth"  />
-        <attr name="clipBorderColor" />
-        <attr name="clipBorderDashWidth"  />
-        <attr name="clipBorderDashGap"  />
-        <attr name="clipBorderDashBgColor" />`
-        <attr name="clipBorderPhase"  />
+        <attr name="clipBorderWidth"/>
+        <attr name="clipBorderColor"/>
+        <attr name="clipBorderDashWidth"/>
+        <attr name="clipBorderDashGap"/>
+        <attr name="clipBorderDashBgColor"/>`
+        <attr name="clipBorderPhase"/>
 
         <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
-        <attr name="drawable_normal" />
-        <attr name="drawable_press" />
+        <attr name="drawable_normal"/>
+        <attr name="drawable_press"/>
 
-        <attr name="pressColor" />
+        <attr name="pressColor"/>
 
-        <attr name="left_line" />
-        <attr name="top_line" />
-        <attr name="right_line" />
-        <attr name="bottom_line" />
+        <attr name="left_line"/>
+        <attr name="top_line"/>
+        <attr name="right_line"/>
+        <attr name="bottom_line"/>
         <!--shapeType-->
-        <attr name="shapeType" />
+        <attr name="shapeType"/>
         <!--stroke-->
-        <attr name="borderWidth" />
-        <attr name="borderColor" />
-        <attr name="borderDashWidth" />
-        <attr name="borderDashGap" />
+        <attr name="borderWidth"/>
+        <attr name="borderColor"/>
+        <attr name="borderDashWidth"/>
+        <attr name="borderDashGap"/>
         <!--solid-->
-        <attr name="solidColor" />
+        <attr name="solidColor"/>
         <!--corners-->
-        <attr name="radius" />
-        <attr name="topLeftRadius" />
-        <attr name="topRightRadius" />
-        <attr name="bottomLeftRadius" />
-        <attr name="bottomRightRadius" />
+        <attr name="radius"/>
+        <attr name="topLeftRadius"/>
+        <attr name="topRightRadius"/>
+        <attr name="bottomLeftRadius"/>
+        <attr name="bottomRightRadius"/>
         <!--gradient-->
-        <attr name="gradientAngle" />
-        <attr name="gradientCenterX" />
-        <attr name="gradientCenterY" />
-        <attr name="gradientStartColor" />
-        <attr name="gradientCenterColor" />
-        <attr name="gradientEndColor" />
-        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用-->
-        <attr name="gradientType" />
+        <attr name="gradientAngle"/>
+        <attr name="gradientCenterX"/>
+        <attr name="gradientCenterY"/>
+        <attr name="gradientStartColor"/>
+        <attr name="gradientCenterColor"/>
+        <attr name="gradientEndColor"/>
+        <attr name="gradientRadius"/><!--渐变的半径。仅在 android:type="radial" 时适用-->
+        <attr name="gradientType"/>
         <!--end MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
     </declare-styleable>
 
 
     <!--******************************MyEditText*************************************-->
     <declare-styleable name="MyEditText">
-        <attr name="hiddenClearIcon" format="boolean" />
-        <attr name="clearIconDrawable" format="reference" />
+        <attr name="hiddenClearIcon"/>
+        <attr name="clearIconDrawable"/>
 
-        <attr name="clearIcon_width" format="dimension" />
-        <attr name="clearIcon_height" format="dimension" />
+        <attr name="clearIcon_width"/>
+        <attr name="clearIcon_height"/>
 
-        <attr name="drawable_normal" />
-        <attr name="drawable_press" />
+        <attr name="drawable_normal"/>
+        <attr name="drawable_press"/>
 
-        <attr name="pressColor" />
+        <attr name="pressColor"/>
 
-        <attr name="left_line" />
-        <attr name="top_line" />
-        <attr name="right_line" />
-        <attr name="bottom_line" />
+        <attr name="left_line"/>
+        <attr name="top_line"/>
+        <attr name="right_line"/>
+        <attr name="bottom_line"/>
         <!--shapeType-->
-        <attr name="shapeType" />
+        <attr name="shapeType"/>
         <!--stroke-->
-        <attr name="borderWidth" />
-        <attr name="borderColor" />
-        <attr name="borderDashWidth" />
-        <attr name="borderDashGap" />
+        <attr name="borderWidth"/>
+        <attr name="borderColor"/>
+        <attr name="borderDashWidth"/>
+        <attr name="borderDashGap"/>
         <!--solid-->
-        <attr name="solidColor" />
+        <attr name="solidColor"/>
         <!--corners-->
-        <attr name="radius" />
-        <attr name="topLeftRadius" />
-        <attr name="topRightRadius" />
-        <attr name="bottomLeftRadius" />
-        <attr name="bottomRightRadius" />
+        <attr name="radius"/>
+        <attr name="topLeftRadius"/>
+        <attr name="topRightRadius"/>
+        <attr name="bottomLeftRadius"/>
+        <attr name="bottomRightRadius"/>
         <!--gradient-->
-        <attr name="gradientAngle" />
-        <attr name="gradientCenterX" />
-        <attr name="gradientCenterY" />
-        <attr name="gradientStartColor" />
-        <attr name="gradientCenterColor" />
-        <attr name="gradientEndColor" />
-        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用。-->
-        <attr name="gradientType" />
+        <attr name="gradientAngle"/>
+        <attr name="gradientCenterX"/>
+        <attr name="gradientCenterY"/>
+        <attr name="gradientStartColor"/>
+        <attr name="gradientCenterColor"/>
+        <attr name="gradientEndColor"/>
+        <attr name="gradientRadius"/><!--渐变的半径。仅在 android:type="radial" 时适用。-->
+        <attr name="gradientType"/>
     </declare-styleable>
 
 
     <!--******************************MyTextView*************************************-->
     <declare-styleable name="MyTextView">
 
-        <attr name="drawable_normal" />
-        <attr name="drawable_press" />
 
-        <attr name="pressColor" />
+        <attr name="drawable_normal"/>
+        <attr name="drawable_press"/>
 
-        <attr name="left_line" />
-        <attr name="top_line" />
-        <attr name="right_line" />
-        <attr name="bottom_line" />
+        <attr name="pressColor"/>
+
+        <attr name="left_line"/>
+        <attr name="top_line"/>
+        <attr name="right_line"/>
+        <attr name="bottom_line"/>
         <!--shapeType-->
-        <attr name="shapeType" />
+        <attr name="shapeType"/>
         <!--stroke-->
-        <attr name="borderWidth" />
-        <attr name="borderColor" />
-        <attr name="borderDashWidth" />
-        <attr name="borderDashGap" />
+        <attr name="borderWidth"/>
+        <attr name="borderColor"/>
+        <attr name="borderDashWidth"/>
+        <attr name="borderDashGap"/>
         <!--solid-->
-        <attr name="solidColor" />
+        <attr name="solidColor"/>
         <!--corners-->
-        <attr name="radius" />
-        <attr name="topLeftRadius" />
-        <attr name="topRightRadius" />
-        <attr name="bottomLeftRadius" />
-        <attr name="bottomRightRadius" />
+        <attr name="radius"/>
+        <attr name="topLeftRadius"/>
+        <attr name="topRightRadius"/>
+        <attr name="bottomLeftRadius"/>
+        <attr name="bottomRightRadius"/>
         <!--gradient-->
-        <attr name="gradientAngle" />
-        <attr name="gradientCenterX" />
-        <attr name="gradientCenterY" />
-        <attr name="gradientStartColor" />
-        <attr name="gradientCenterColor" />
-        <attr name="gradientEndColor" />
-        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用。-->
-        <attr name="gradientType" />
+        <attr name="gradientAngle"/>
+        <attr name="gradientCenterX"/>
+        <attr name="gradientCenterY"/>
+        <attr name="gradientStartColor"/>
+        <attr name="gradientCenterColor"/>
+        <attr name="gradientEndColor"/>
+        <attr name="gradientRadius"/><!--渐变的半径。仅在 android:type="radial" 时适用。-->
+        <attr name="gradientType"/>
 
 
-        <attr name="left_width" />
-        <attr name="left_height" />
+        <attr name="left_width"/>
+        <attr name="left_height"/>
 
-        <attr name="top_width" />
-        <attr name="top_height" />
+        <attr name="top_width"/>
+        <attr name="top_height"/>
 
-        <attr name="right_width" />
-        <attr name="right_height" />
+        <attr name="right_width"/>
+        <attr name="right_height"/>
 
 
-        <attr name="bottom_width" />
-        <attr name="bottom_height" />
+        <attr name="bottom_width"/>
+        <attr name="bottom_height"/>
     </declare-styleable>
 
     <!--start******************************所有属性*************************************-->
-    <attr name="clipSwitch" format="boolean" />
-    <attr name="clipBg" format="boolean" />
-    <attr name="clipIsCircle" format="boolean" />
-    <attr name="clipIsAreaClick" format="boolean" />
-    <attr name="clipIgnorePadding" format="boolean" />
+    <attr name="clipSwitch" format="boolean"/>
+    <attr name="clipBg" format="boolean"/>
+    <attr name="clipIsCircle" format="boolean"/>
+    <attr name="clipIsAreaClick" format="boolean"/>
+    <attr name="clipIgnorePadding" format="boolean"/>
 
-    <attr name="clipRadius" format="dimension" />
-    <attr name="clipTopLeftRadius" format="dimension" />
-    <attr name="clipTopRightRadius" format="dimension" />
-    <attr name="clipBottomLeftRadius" format="dimension" />
-    <attr name="clipBottomRightRadius" format="dimension" />
+    <attr name="clipRadius" format="dimension"/>
+    <attr name="clipTopLeftRadius" format="dimension"/>
+    <attr name="clipTopRightRadius" format="dimension"/>
+    <attr name="clipBottomLeftRadius" format="dimension"/>
+    <attr name="clipBottomRightRadius" format="dimension"/>
 
-    <attr name="clipBorderWidth" format="dimension" />
-    <attr name="clipBorderColor" format="color" />
-    <attr name="clipBorderDashWidth" format="dimension" />
-    <attr name="clipBorderDashGap" format="dimension" />
-    <attr name="clipBorderDashBgColor" format="color" />`
-    <attr name="clipBorderPhase" format="integer" />
+    <attr name="clipBorderWidth" format="dimension"/>
+    <attr name="clipBorderColor" format="color"/>
+    <attr name="clipBorderDashWidth" format="dimension"/>
+    <attr name="clipBorderDashGap" format="dimension"/>
+    <attr name="clipBorderDashBgColor" format="color"/>`
+    <attr name="clipBorderPhase" format="integer"/>
 
 
+    <attr name="drawable_normal" format="reference"/>
+    <attr name="drawable_press" format="reference"/>
 
-    <attr name="drawable_normal" format="reference" />
-    <attr name="drawable_press" format="reference" />
+    <attr name="pressColor" format="color"/>
 
-    <attr name="pressColor" format="color" />
-
-    <attr name="left_line" format="boolean" />
-    <attr name="top_line" format="boolean" />
-    <attr name="right_line" format="boolean" />
-    <attr name="bottom_line" format="boolean" />
+    <attr name="left_line" format="boolean"/>
+    <attr name="top_line" format="boolean"/>
+    <attr name="right_line" format="boolean"/>
+    <attr name="bottom_line" format="boolean"/>
     <!--shapeType-->
     <attr name="shapeType" format="enum">
         <enum name="rectangle" value="0"></enum>
@@ -585,18 +601,18 @@
         <!--<enum name="ring" value="3"></enum>-->
     </attr>
     <!--stroke-->
-    <attr name="borderWidth" format="dimension" />
-    <attr name="borderColor" format="color" />
-    <attr name="borderDashWidth" format="dimension" />
-    <attr name="borderDashGap" format="dimension" />
+    <attr name="borderWidth" format="dimension"/>
+    <attr name="borderColor" format="color"/>
+    <attr name="borderDashWidth" format="dimension"/>
+    <attr name="borderDashGap" format="dimension"/>
     <!--solid-->
-    <attr name="solidColor" format="color" />
+    <attr name="solidColor" format="color"/>
     <!--corners-->
-    <attr name="radius" format="dimension" />
-    <attr name="topLeftRadius" format="dimension" />
-    <attr name="topRightRadius" format="dimension" />
-    <attr name="bottomLeftRadius" format="dimension" />
-    <attr name="bottomRightRadius" format="dimension" />
+    <attr name="radius" format="dimension"/>
+    <attr name="topLeftRadius" format="dimension"/>
+    <attr name="topRightRadius" format="dimension"/>
+    <attr name="bottomLeftRadius" format="dimension"/>
+    <attr name="bottomRightRadius" format="dimension"/>
     <!--gradient-->
     <attr name="gradientAngle" format="enum">
         <enum name="a0" value="0"></enum>
@@ -608,171 +624,170 @@
         <enum name="a270" value="270"></enum>
         <enum name="a315" value="315"></enum>
     </attr>
-    <attr name="gradientCenterX" format="float" />
-    <attr name="gradientCenterY" format="float" />
-    <attr name="gradientStartColor" format="color" />
-    <attr name="gradientCenterColor" format="color" />
-    <attr name="gradientEndColor" format="color" />
-    <attr name="gradientRadius" format="dimension" /><!--渐变的半径。仅在 android:type="radial" 时适用。-->
+    <attr name="gradientCenterX" format="float"/>
+    <attr name="gradientCenterY" format="float"/>
+    <attr name="gradientStartColor" format="color"/>
+    <attr name="gradientCenterColor" format="color"/>
+    <attr name="gradientEndColor" format="color"/>
+    <attr name="gradientRadius" format="dimension"/><!--渐变的半径。仅在 android:type="radial" 时适用。-->
     <attr name="gradientType" format="enum">
-        <enum name="linear" value="0" />
-        <enum name="radial" value="1" />
-        <enum name="sweep" value="2" />
+        <enum name="linear" value="0"/>
+        <enum name="radial" value="1"/>
+        <enum name="sweep" value="2"/>
     </attr>
     <!--MyCheckBox和MyRadioButton自定义属性-->
-    <attr name="normal_drawable_left" format="reference" />
-    <attr name="checked_drawable_left" format="reference" />
+    <attr name="normal_drawable_left" format="reference"/>
+    <attr name="checked_drawable_left" format="reference"/>
 
-    <attr name="normal_drawable_top" format="reference" />
-    <attr name="checked_drawable_top" format="reference" />
+    <attr name="normal_drawable_top" format="reference"/>
+    <attr name="checked_drawable_top" format="reference"/>
 
-    <attr name="normal_drawable_right" format="reference" />
-    <attr name="checked_drawable_right" format="reference" />
+    <attr name="normal_drawable_right" format="reference"/>
+    <attr name="checked_drawable_right" format="reference"/>
 
-    <attr name="normal_drawable_bottom" format="reference" />
-    <attr name="checked_drawable_bottom" format="reference" />
+    <attr name="normal_drawable_bottom" format="reference"/>
+    <attr name="checked_drawable_bottom" format="reference"/>
 
-    <attr name="normal_textColor" format="color" />
-    <attr name="checked_textColor" format="color" />
-
-
-    <attr name="padding_left" format="dimension" />
-    <attr name="padding_top" format="dimension" />
-    <attr name="padding_right" format="dimension" />
-    <attr name="padding_bottom" format="dimension" />
-
-    <attr name="left_width" format="dimension" />
-    <attr name="left_height" format="dimension" />
-
-    <attr name="top_width" format="dimension" />
-    <attr name="top_height" format="dimension" />
-
-    <attr name="right_width" format="dimension" />
-    <attr name="right_height" format="dimension" />
+    <attr name="normal_textColor" format="color"/>
+    <attr name="checked_textColor" format="color"/>
 
 
-    <attr name="bottom_width" format="dimension" />
-    <attr name="bottom_height" format="dimension" />
+    <attr name="padding_left" format="dimension"/>
+    <attr name="padding_top" format="dimension"/>
+    <attr name="padding_right" format="dimension"/>
+    <attr name="padding_bottom" format="dimension"/>
+
+    <attr name="left_width" format="dimension"/>
+    <attr name="left_height" format="dimension"/>
+
+    <attr name="top_width" format="dimension"/>
+    <attr name="top_height" format="dimension"/>
+
+    <attr name="right_width" format="dimension"/>
+    <attr name="right_height" format="dimension"/>
+
+
+    <attr name="bottom_width" format="dimension"/>
+    <attr name="bottom_height" format="dimension"/>
+
+
+    <!--MyEditText-->
+    <attr name="hiddenClearIcon" format="boolean"/>
+    <attr name="clearIconDrawable" format="reference"/>
+
+    <attr name="clearIcon_width" format="dimension"/>
+    <attr name="clearIcon_height" format="dimension"/>
 
     <!--end******************************所有属性*************************************-->
 
 
-    <attr name="MyTextViewStyle" format="reference"></attr>
-    <attr name="MyRelativeLayoutStyle" format="reference"></attr>
-    <attr name="MyRadioButtonStyle" format="reference"></attr>
-    <attr name="MyLinearLayoutStyle" format="reference"></attr>
-    <attr name="MyImageViewStyle" format="reference"></attr>
-    <attr name="MyFrameLayoutStyle" format="reference"></attr>
-    <attr name="MyEditTextStyle" format="reference"></attr>
-    <attr name="MyCheckBoxStyle" format="reference"></attr>
-    <attr name="MyButtonStyle" format="reference"></attr>
-
-
     <declare-styleable name="FastShapeAttr">
         <!--裁剪是否启用-->
-        <attr name="clipSwitch"  />
+        <attr name="clipSwitch"/>
         <!--是否裁剪自身背景-->
         <attr name="clipBg"/>
         <!--裁剪属性-->
-        <attr name="clipIsCircle"  />
-        <attr name="clipIsAreaClick"  />
-        <attr name="clipIgnorePadding"  />
+        <attr name="clipIsCircle"/>
+        <attr name="clipIsAreaClick"/>
+        <attr name="clipIgnorePadding"/>
 
-        <attr name="clipRadius"  />
-        <attr name="clipTopLeftRadius"  />
-        <attr name="clipTopRightRadius"  />
-        <attr name="clipBottomLeftRadius"  />
-        <attr name="clipBottomRightRadius"  />
+        <attr name="clipRadius"/>
+        <attr name="clipTopLeftRadius"/>
+        <attr name="clipTopRightRadius"/>
+        <attr name="clipBottomLeftRadius"/>
+        <attr name="clipBottomRightRadius"/>
 
-        <attr name="clipBorderWidth"  />
-        <attr name="clipBorderColor" />
-        <attr name="clipBorderDashWidth"  />
-        <attr name="clipBorderDashGap"  />
-        <attr name="clipBorderDashBgColor"  />`
-        <attr name="clipBorderPhase"  />
+        <attr name="clipBorderWidth"/>
+        <attr name="clipBorderColor"/>
+        <attr name="clipBorderDashWidth"/>
+        <attr name="clipBorderDashGap"/>
+        <attr name="clipBorderDashBgColor"/>`
+        <attr name="clipBorderPhase"/>
 
         <!--start MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
-        <attr name="drawable_normal" />
-        <attr name="drawable_press" />
+        <attr name="drawable_normal"/>
+        <attr name="drawable_press"/>
 
-        <attr name="pressColor" />
+        <attr name="pressColor"/>
 
-        <attr name="left_line" />
-        <attr name="top_line" />
-        <attr name="right_line" />
-        <attr name="bottom_line" />
+        <attr name="left_line"/>
+        <attr name="top_line"/>
+        <attr name="right_line"/>
+        <attr name="bottom_line"/>
         <!--shapeType-->
-        <attr name="shapeType" />
+        <attr name="shapeType"/>
         <!--stroke-->
-        <attr name="borderWidth" />
-        <attr name="borderColor" />
-        <attr name="borderDashWidth" />
-        <attr name="borderDashGap" />
+        <attr name="borderWidth"/>
+        <attr name="borderColor"/>
+        <attr name="borderDashWidth"/>
+        <attr name="borderDashGap"/>
         <!--solid-->
-        <attr name="solidColor" />
+        <attr name="solidColor"/>
         <!--corners-->
-        <attr name="radius" />
-        <attr name="topLeftRadius" />
-        <attr name="topRightRadius" />
-        <attr name="bottomLeftRadius" />
-        <attr name="bottomRightRadius" />
+        <attr name="radius"/>
+        <attr name="topLeftRadius"/>
+        <attr name="topRightRadius"/>
+        <attr name="bottomLeftRadius"/>
+        <attr name="bottomRightRadius"/>
         <!--gradient-->
-        <attr name="gradientAngle" />
-        <attr name="gradientCenterX" />
-        <attr name="gradientCenterY" />
-        <attr name="gradientStartColor" />
-        <attr name="gradientCenterColor" />
-        <attr name="gradientEndColor" />
-        <attr name="gradientRadius" /><!--渐变的半径。仅在 android:type="radial" 时适用-->
-        <attr name="gradientType" />
+        <attr name="gradientAngle"/>
+        <attr name="gradientCenterX"/>
+        <attr name="gradientCenterY"/>
+        <attr name="gradientStartColor"/>
+        <attr name="gradientCenterColor"/>
+        <attr name="gradientEndColor"/>
+        <attr name="gradientRadius"/><!--渐变的半径。仅在 android:type="radial" 时适用-->
+        <attr name="gradientType"/>
         <!--end MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性-->
 
 
         <!--start  MyTextView，MyButton，MyCheckBox，MyRadioButton公共属性-->
-        <attr name="left_width" />
-        <attr name="left_height" />
+        <attr name="left_width"/>
+        <attr name="left_height"/>
 
-        <attr name="top_width" />
-        <attr name="top_height" />
+        <attr name="top_width"/>
+        <attr name="top_height"/>
 
-        <attr name="right_width" />
-        <attr name="right_height" />
+        <attr name="right_width"/>
+        <attr name="right_height"/>
 
 
-        <attr name="bottom_width" />
-        <attr name="bottom_height" />
+        <attr name="bottom_width"/>
+        <attr name="bottom_height"/>
         <!--end  MyTextView，MyButton，MyCheckBox，MyRadioButton公共属性-->
 
 
         <!--start MyCheckBox,MyRadioButton公共属性-->
-        <attr name="normal_drawable_left" />
-        <attr name="checked_drawable_left" />
+        <attr name="normal_drawable_left"/>
+        <attr name="checked_drawable_left"/>
 
-        <attr name="normal_drawable_top"   />
-        <attr name="checked_drawable_top"   />
+        <attr name="normal_drawable_top"/>
+        <attr name="checked_drawable_top"/>
 
-        <attr name="normal_drawable_right"  />
-        <attr name="checked_drawable_right"  />
+        <attr name="normal_drawable_right"/>
+        <attr name="checked_drawable_right"/>
 
-        <attr name="normal_drawable_bottom"  />
-        <attr name="checked_drawable_bottom"  />
-        <attr name="normal_textColor" />
-        <attr name="checked_textColor" />
+        <attr name="normal_drawable_bottom"/>
+        <attr name="checked_drawable_bottom"/>
+        <attr name="normal_textColor"/>
+        <attr name="checked_textColor"/>
 
-        <attr name="padding_left"  />
-        <attr name="padding_top"   />
-        <attr name="padding_right"  />
-        <attr name="padding_bottom"   />
+        <attr name="padding_left"/>
+        <attr name="padding_top"/>
+        <attr name="padding_right"/>
+        <attr name="padding_bottom"/>
         <!--end MyCheckBox,MyRadioButton公共属性-->
 
 
         <!--start MyEditText-->
-        <attr name="clearIconDrawable"  />
-        <attr name="hiddenClearIcon"    />
-        <attr name="clearIcon_width"    />
-        <attr name="clearIcon_height"   />
+        <attr name="clearIconDrawable"/>
+        <attr name="hiddenClearIcon"/>
+        <attr name="clearIcon_width"/>
+        <attr name="clearIcon_height"/>
         <!--end MyEditText-->
+
     </declare-styleable>
+
 
 
 </resources>

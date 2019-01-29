@@ -411,7 +411,7 @@
 
         <com.github.fastshape.MyLinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:orientation="horizontal"
             android:focusableInTouchMode="true"
             android:focusable="true"
@@ -430,6 +430,7 @@
                 app:borderWidth="1px"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:background="@null"
                 />
 
             <com.github.fastshape.MyEditText
@@ -445,6 +446,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 app:hiddenClearIcon="true"
+                android:background="@null"
                 />
         </com.github.fastshape.MyLinearLayout>
 

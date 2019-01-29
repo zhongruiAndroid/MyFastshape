@@ -58,6 +58,8 @@ public class MyButton extends AppCompatButton  {
 
         if (getBackground() == null) {
             complete();
+        }else{
+            SetBackgroundUtil.setCompoundDrawables(this,viewHelper);
         }
     }
 

@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatSeekBar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -457,10 +458,10 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(isChecked){
-                        fourthHelper.setClearIconDrawable(ContextCompat.getDrawable(getActivity(),R.drawable.select));
+                        et.setClearIconDrawable(ContextCompat.getDrawable(getActivity(),R.drawable.select));
 //                        fourthHelper.getClearIconDrawable().setBounds(0, 0, 50, 50);
                     }else{
-                        fourthHelper.setClearIconDrawable(null);
+                        et.setClearIconDrawable(null);
                     }
                 }
             });

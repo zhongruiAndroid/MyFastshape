@@ -16,13 +16,37 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:editTextStyle">@style/testEditStyle</item>
         <item name="editTextStyle">@style/testEditStyle</item>
+        <item name="MyEditTextStyle">@style/testEditStyle2</item>
+        <item name="MyTextViewStyle">@style/testEditStyle2</item>
         <item name="android:checkboxStyle">@style/customfontstyle</item>
     </style>
 
 
+    <style name="testEditStyle2"  >
+        <!--
+        android:textSize="19sp"
+        android:textColor="#333333"
+        app:borderColor="@color/fenhong"
+        app:borderDashGap="2dp"
+        app:borderDashWidth="4dp"
+        app:borderWidth="2px"
+        app:gradientCenterColor="@color/colorPrimary"
+        app:gradientStartColor="@color/fenhong"
+        app:gradientEndColor="@color/c_press"
+        app:gradientType="linear"
+        app:radius="16dp"
+        app:solidColor="@color/palevioletred"
+        android:background="@null"-->
+        <item name="borderColor">@color/c_press_bt</item>
+        <item name="borderDashGap">26sp</item>
+        <item name="borderDashWidth">6sp</item>
+        <item name="borderWidth">6sp</item>
+        <item name="radius">26dp</item>
+        <item name="solidColor">@color/red_point1</item>
+    </style>
     <style name="testEditStyle" parent="@style/Base.Widget.AppCompat.EditText">
         <item name="android:textSize">26sp</item>
-        <item name="android:background">@color/c_press_bt</item>
+        <!--<item name="android:background">@color/c_press_bt</item>-->
         <item name="android:paddingLeft">20dp</item>
         <item name="android:textColor">@color/red_point1</item>
     </style>
