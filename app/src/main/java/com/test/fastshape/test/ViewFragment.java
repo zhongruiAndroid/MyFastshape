@@ -22,6 +22,7 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.github.fastshape.MyButton;
 import com.github.fastshape.MyCheckBox;
 import com.github.fastshape.MyEditText;
 import com.github.fastshape.MyFrameLayout;
@@ -50,6 +51,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     public static final int type_radioview = 6;
     public static final int type_imageview = 7;
     public static final int type_edittext = 8;
+    public static final int type_button = 9;
     private int type;
 
     LinearLayout ll_content;
@@ -101,6 +103,7 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
     private MyTextView tv;
     private MyEditText et;
     private MyCheckBox cb;
+    private MyButton bt;
     private MyRadioButton rb;
     private MyImageView iv;
     FirstHelper firstHelper;
@@ -405,6 +408,17 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
             llTextView.setVisibility(View.VISIBLE);
             llCheckBox.setVisibility(View.GONE);
             cbSetClearIcon.setVisibility(View.GONE);
+        }  else if (type == type_button) {
+            getTextViewId(view);
+            itemView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_button_item, null);
+            bt = itemView.findViewById(R.id.bt);
+            firstHelper = bt.getViewHelper();
+            secondHelper = bt.getViewHelper();
+            getViewData();
+            llClip.setVisibility(View.GONE);
+            llTextView.setVisibility(View.VISIBLE);
+            llCheckBox.setVisibility(View.GONE);
+            cbSetClearIcon.setVisibility(View.GONE);
         } else if (type == type_checkview) {
             getTextViewId(view);
             getCheckBoxId(view);
@@ -546,12 +560,16 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
                         tv.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable1, drawable2, drawable3, drawable4);
                     }else if(type==type_edittext){
                         et.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable1, drawable2, drawable3, drawable4);
+                    }else if(type==type_button){
+                        bt.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable1, drawable2, drawable3, drawable4);
                     }
                 } else {
                     if(type==type_textview){
                         tv.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null);
                     }else if(type==type_edittext){
                         et.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null);
+                    }else if(type==type_button){
+                        bt.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null);
                     }
                 }
             }
@@ -791,6 +809,8 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
                     rl.setPadding(progress, progress, progress, progress);
                 }else if(type==type_textview){
                     tv.setPadding(progress, progress, progress, progress);
+                }else if(type==type_button){
+                    bt.setPadding(progress, progress, progress, progress);
                 }else if(type==type_checkview){
                     cb.setPadding(progress, progress, progress, progress);
                 }else if(type==type_radioview){

@@ -7,14 +7,15 @@
     android:layout_height="wrap_content"
     tools:context=".test.LinearLayoutActivity"
     android:orientation="horizontal">
-    <com.github.fastshape.MyLinearLayout
-        android:id="@+id/ll"
+    <com.github.fastshape.MyButton
+        android:id="@+id/bt"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_margin="10dp"
         android:clickable="true"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:orientation="vertical"
+        android:text="Android"
         app:borderColor="@color/fenhong"
         app:borderDashGap="2dp"
         app:borderDashWidth="4dp"
@@ -26,29 +27,10 @@
         app:radius="6dp"
         app:solidColor="@color/c_press"
         app:clipSwitch="true"
-        app:clipBorderDashWidth="15dp"
+        app:clipBorderDashWidth="5dp"
         app:clipBorderDashGap="5dp"
-        app:clipBorderWidth="3dp"
+        app:clipBorderWidth="10dp"
         app:clipBorderColor="@color/black"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MyLinearLayout"
-            />
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/bird"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MyLinearLayout"
-            />
-    </com.github.fastshape.MyLinearLayout>
-
+        android:background="@null"
+        />
 </LinearLayout>

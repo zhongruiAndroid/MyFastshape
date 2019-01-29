@@ -11,5 +11,8 @@ public class ButtonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewgroup);
+
+        ViewFragment fragment = ViewFragment.newInstance(ViewFragment.type_button);
+        getSupportFragmentManager().beginTransaction().add(R.id.fl_fragment,fragment).commitAllowingStateLoss();
     }
 }
