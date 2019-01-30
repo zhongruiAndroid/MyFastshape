@@ -123,10 +123,11 @@ public class FirstHelper extends ClipHelper{
     protected boolean isPartBorder;
 
 
-    public void complete() {
+    public FirstHelper complete() {
         if(completeInter!=null){
             completeInter.complete();
         }
+        return this;
     }
     public FirstHelper(CompleteInter completeInter) {
         this.completeInter = completeInter;
