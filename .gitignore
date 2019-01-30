@@ -12,3 +12,4 @@ gradle.properties
 *.apk
 .svn
 build/
+!demo.apk
