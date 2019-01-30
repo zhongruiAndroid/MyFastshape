@@ -1,7 +1,10 @@
 ### 主要功能：通过自定义属性或者代码实现shape效果  
 
 [//]: >![github](https://github.com/zhongruiAndroid/MyFastshape/blob/master/app/src/main/res/drawable/demo.png=320x640)  
-<img src="https://github.com/zhongruiAndroid/MyFastshape/blob/newViewHelper/app/src/main/res/drawable/demo.png" alt="image"  width="auto" height="640">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/zhongruiAndroid/MyFastshape/blob/newViewHelper/app/src/main/res/drawable/demoimage.jpg" alt="image"  width="auto" height="640">
+<img src="https://github.com/zhongruiAndroid/MyFastshape/blob/newViewHelper/app/src/main/res/drawable/demo.png" alt="image"  width="auto" height="640">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/zhongruiAndroid/MyFastshape/blob/newViewHelper/app/src/main/res/drawable/demoimage.jpg" alt="image"  width="auto" height="640">  
+  
+  
+## [Demo.apk下载](https://github.com/zhongruiAndroid/MyFastshape/blob/newViewHelper/app/release/demo.apk "apk文件")
   
   
 **不能有android:background属性,否则自定义属性不生效**  
