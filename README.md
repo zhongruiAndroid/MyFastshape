@@ -14,7 +14,8 @@
 ```xml
 compile 'com.github:fastshape:版本号看上面'
 ```
-<br/>
+<br/>  
+
 ## [Demo.apk下载](https://raw.githubusercontent.com/zhongruiAndroid/MyFastshape/newViewHelper/app/release/demo.apk "apk文件")
   
 #### XML设置  
