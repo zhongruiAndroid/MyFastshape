@@ -1,4 +1,4 @@
-package com.github.fastshape.newbean;
+package com.github.fastshape.viewhelper;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import java.math.BigDecimal;
 
-import static com.github.fastshape.newbean.FirstHelper.gradientType_radial;
+import static com.github.fastshape.viewhelper.FirstHelper.gradientType_radial;
 
 /***
  *   created by zhongrui on 2018/12/31

@@ -16,8 +16,8 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.github.fastshape.inter.CompleteInter;
-import com.github.fastshape.newbean.FourthHelper;
-import com.github.fastshape.newbean.SetBackgroundUtil;
+import com.github.fastshape.viewhelper.FourthHelper;
+import com.github.fastshape.viewhelper.SetBackgroundUtil;
 
 /**
  * Created by Administrator on 2016/9/6.

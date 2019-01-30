@@ -8,8 +8,8 @@ import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 
 import com.github.fastshape.inter.CompleteInter;
-import com.github.fastshape.newbean.FirstHelper;
-import com.github.fastshape.newbean.SetBackgroundUtil;
+import com.github.fastshape.viewhelper.FirstHelper;
+import com.github.fastshape.viewhelper.SetBackgroundUtil;
 
 
 /**

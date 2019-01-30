@@ -1,21 +1,15 @@
 package com.github.fastshape;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Matrix;
 import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import com.github.fastshape.inter.CompleteInter;
-import com.github.fastshape.newbean.FirstHelper;
-import com.github.fastshape.newbean.SetBackgroundUtil;
+import com.github.fastshape.viewhelper.FirstHelper;
+import com.github.fastshape.viewhelper.SetBackgroundUtil;
 
 /**
  * Created by Administrator on 2017/7/24.

@@ -1,11 +1,8 @@
-package com.github.fastshape.newbean;
+package com.github.fastshape.viewhelper;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.util.AttributeSet;
-import android.util.Log;
 
 import com.github.fastshape.R;
 import com.github.fastshape.inter.CompleteInter;

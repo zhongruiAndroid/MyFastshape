@@ -1,4 +1,4 @@
-package com.github.fastshape.newbean;
+package com.github.fastshape.viewhelper;
 
 import android.content.Context;
 import android.content.res.TypedArray;

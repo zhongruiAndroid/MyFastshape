@@ -5,8 +5,8 @@ import android.support.v7.widget.AppCompatRadioButton;
 import android.util.AttributeSet;
 
 import com.github.fastshape.inter.CompleteInter;
-import com.github.fastshape.newbean.SetBackgroundUtil;
-import com.github.fastshape.newbean.ThirdHelper;
+import com.github.fastshape.viewhelper.SetBackgroundUtil;
+import com.github.fastshape.viewhelper.ThirdHelper;
 
 /**
  * Created by Administrator on 2016/8/29.

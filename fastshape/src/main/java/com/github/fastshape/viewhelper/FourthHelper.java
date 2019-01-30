@@ -1,8 +1,7 @@
-package com.github.fastshape.newbean;
+package com.github.fastshape.viewhelper;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
 import com.github.fastshape.R;

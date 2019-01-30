@@ -5,8 +5,8 @@ import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
 import com.github.fastshape.inter.CompleteInter;
-import com.github.fastshape.newbean.SecondHelper;
-import com.github.fastshape.newbean.SetBackgroundUtil;
+import com.github.fastshape.viewhelper.SecondHelper;
+import com.github.fastshape.viewhelper.SetBackgroundUtil;
 
 /**
  * Created by Administrator on 2016/9/6.

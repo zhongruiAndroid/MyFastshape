@@ -1,4 +1,4 @@
-package com.github.fastshape.newbean;
+package com.github.fastshape.viewhelper;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,13 +9,12 @@ import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 
 import com.github.fastshape.R;
-import com.github.fastshape.bean.ClipHelper;
 import com.github.fastshape.inter.CompleteInter;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import static com.github.fastshape.newbean.SetBackgroundUtil.getTransparentColor;
+import static com.github.fastshape.viewhelper.SetBackgroundUtil.getTransparentColor;
 
 /***
  *   created by zhongrui on 2018/12/31

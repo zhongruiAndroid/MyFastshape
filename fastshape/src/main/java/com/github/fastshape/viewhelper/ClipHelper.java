@@ -1,4 +1,4 @@
-package com.github.fastshape.bean;
+package com.github.fastshape.viewhelper;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
