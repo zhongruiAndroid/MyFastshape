@@ -4,7 +4,7 @@
 <img src="https://github.com/zhongruiAndroid/MyFastshape/blob/newViewHelper/app/src/main/res/drawable/demo.png" alt="image"  width="auto" height="640">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/zhongruiAndroid/MyFastshape/blob/newViewHelper/app/src/main/res/drawable/demoimage.jpg" alt="image"  width="auto" height="640">  
   
   
-## [Demo.apk下载](https://github.com/zhongruiAndroid/MyFastshape/blob/newViewHelper/app/release/demo.apk "apk文件")
+## [Demo.apk下载](https://raw.githubusercontent.com/zhongruiAndroid/MyFastshape/newViewHelper/app/release/demo.apk "apk文件")
   
   
 **不能有android:background属性,否则自定义属性不生效**  
