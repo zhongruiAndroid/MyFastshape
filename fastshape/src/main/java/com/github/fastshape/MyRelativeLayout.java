@@ -109,10 +109,11 @@ public class MyRelativeLayout extends RelativeLayout {
     @Override
     public void draw(Canvas canvas) {
         if (viewHelper != null && viewHelper.isClipBg() && viewHelper.getClipSwitch()) {
+            canvas.save();
             int count = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
             super.draw(canvas);
             viewHelper.clipBg(canvas);
-            canvas.restoreToCount(count);
+            canvas.restore();
         } else {
             super.draw(canvas);
         }
