@@ -1,19 +1,20 @@
 ### 主要功能：通过自定义属性或者代码实现shape效果和裁剪效果  
 
 
+[//]: >![github](https://github.com/zhongruiAndroid/MyFastshape/blob/master/app/src/main/res/drawable/demo.png=320x640)  
+<img src="https://github.com/zhongruiAndroid/MyFastshape/blob/newViewHelper/app/src/main/res/drawable/demo.png" alt="image"  width="auto" height="640">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/zhongruiAndroid/MyFastshape/blob/newViewHelper/app/src/main/res/drawable/demoimage.jpg" alt="image"  width="auto" height="640">  
+  
+    
+    
 |   [ ![Download](https://api.bintray.com/packages/zhongrui/mylibrary/fastshape/images/download.svg) ](https://bintray.com/zhongrui/mylibrary/fastshape/_latestVersion) |  最新版本号 |
 |--------|----|
-  
+    
+    
 
 ```xml
 compile 'com.github:fastshape:版本号看上面'
 ```
-
-
-[//]: >![github](https://github.com/zhongruiAndroid/MyFastshape/blob/master/app/src/main/res/drawable/demo.png=320x640)  
-<img src="https://github.com/zhongruiAndroid/MyFastshape/blob/newViewHelper/app/src/main/res/drawable/demo.png" alt="image"  width="auto" height="640">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/zhongruiAndroid/MyFastshape/blob/newViewHelper/app/src/main/res/drawable/demoimage.jpg" alt="image"  width="auto" height="640">  
-  
-  
+<br/>
 ## [Demo.apk下载](https://raw.githubusercontent.com/zhongruiAndroid/MyFastshape/newViewHelper/app/release/demo.apk "apk文件")
   
 #### XML设置  
