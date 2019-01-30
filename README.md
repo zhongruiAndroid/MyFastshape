@@ -109,7 +109,7 @@ editText.setHiddenClearIcon(true);
 editText.setOnRightListener(new MyEditText.OnRightListener() {
     @Override
     public boolean clickRight() {
-		//此处自行处理icon点击事件
+	//此处自行处理icon点击事件
 		
         //返回值：false:事件继续传递清除text,true:消费事件,不清除text
         return false;
@@ -174,9 +174,7 @@ editText.setOnRightListener(new MyEditText.OnRightListener() {
 <br/>  
 
 ## ClipHelper属性
-**MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyImageView公共属性**  
-
-<br/>    
+**MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyImageView公共属性**
 
 | 属性名                | 说明                     | 属性类型  |                          |
 |-----------------------|--------------------------|-----------|--------------------------|
@@ -202,7 +200,6 @@ editText.setOnRightListener(new MyEditText.OnRightListener() {
 ## FirstHelper属性
 **MyRelativeLayout，MyLinearLayout，MyFrameLayout，MyTextView，MyEditText，MyButton公共属性**
 
-
 |属性名                         | 说明                               |                     属性类型                     |                  |
 |--------------------------------|------------------------------------|:------------------------------------------------:|------------------|
 | drawable_normal<br/>drawable_press | 设置正常状态背景和press状态背景    |                     drawable                     | 覆盖以下所有属性 |
@@ -211,7 +208,6 @@ editText.setOnRightListener(new MyEditText.OnRightListener() {
 | top_line                       | 显示上边框                         |                      boolean                     |                  |
 | right_line                     | 显示右边框                         |                      boolean                     |                  |
 | bottom_line                    | 显示底边框                         |                      boolean                     |                  |
-| all_line                       | 显示所有边框                       |                      boolean                     | 覆盖上面4个属性  |
 | shapeType                      | 设置shape类型,默认rectangle        |      rectangle(默认):矩形<br/>oval:椭圆<br/>line:线      |                  |
 | borderWidth                    | 边框宽度                           |                     dimension                    |                  |
 | borderColor                    | 边框颜色                           |                       color                      |                  |
@@ -223,7 +219,7 @@ editText.setOnRightListener(new MyEditText.OnRightListener() {
 | bottomLeftRadius               | 左下方圆角                         |                     dimension                    |                  |
 | bottomRightRadius              | 右下方圆角                         |                     dimension                    |                  |
 | radius                         | view圆角                           |                     dimension                    | 覆盖上面4个属性  |
-| gradientType                   | 渐变类型                           | linear:线性渐变<br/>radial:放射渐变<br/>sweep:扫描性渐变 |                  |
+| gradientType                   |       设置该属性<br/>以下属性才可生效                           | linear:线性渐变<br/>radial:放射渐变<br/>sweep:扫描性渐变 | 渐变类型           |
 | gradientAngle                  | 渐变角度                           |        a0,a45,a90,a135<br/>a180,a225,a270,a315       |                  |
 | gradientCenterX                | 渐变的X轴起始位置                  |                  范围0~1,默认0.5                 |                  |
 | gradientCenterY                | 渐变的Y轴起始位置                  |                  范围0~1,默认0.5                 |                  |
@@ -232,7 +228,7 @@ editText.setOnRightListener(new MyEditText.OnRightListener() {
 | gradientEndColor               | 渐变结束颜色                       |                       color                      |                  |
 | gradientRadius                 | 渐变半径                           |         gradientType="radial"适用<br/>默认40         |                  |
 
-
+<br/>  
   
 ## SecondHelper属性
 **MyTextView，MyButton，MyCheckBox，MyRadioButton公共属性**  
@@ -244,15 +240,23 @@ editText.setOnRightListener(new MyEditText.OnRightListener() {
 | right_width<br/>right_height   | 设置drawableRight宽高,只设置其中一个属性自动适配另外一个属性  | dimension  |
 | bottom_width<br/>bottom_height | 设置drawableBottom宽高,只设置其中一个属性自动适配另外一个属性 | dimension  |
 
-
+<br/>  
 
 ## ThirdHelper属性
-| MyCheckBox,MyRadioButton           | 说明                                                                          | 属性类型 |
-|------------------------------------|-------------------------------------------------------------------------------|----------|
-| normal_drawable checked_drawable   | 设置normal和check状态的drawable                                               | drawable |
-| normal_textColor checked_textColor | 设置normal和check状态的文字颜色                                               | color    |
-| drawable_direction                 | 设置button所在方向left,top,right,bottom<br/>设置此属性需要:android:button="@null" |          |
+| MyCheckBox,MyRadioButton                           | 说明                                | 属性类型  |
+|----------------------------------------------------|-------------------------------------|-----------|
+| normal_drawable_left<br/>checked_drawable_left     | 设置左边normal和check状态的drawable | drawable  |
+| normal_drawable_top<br/>checked_drawable_top       | 设置上面normal和check状态的drawable | drawable  |
+| normal_drawable_right<br/>checked_drawable_right   | 设置右边normal和check状态的drawable | drawable  |
+| normal_drawable_bottom<br/>checked_drawable_bottom | 设置下面normal和check状态的drawable | drawable  |
+| normal_textColor<br/>checked_textColor             | 设置normal和check状态的文字颜色     | color     |
+| padding_left                                       | 左边drawable距离边框距离,正负数都行 | dimension |
+| padding_top                                        | 上面drawable距离边框距离,正负数都行 | dimension |
+| padding_right                                      | 右边drawable距离边框距离,正负数都行 | dimension |
+| padding_bottom                                     | 下面drawable距离边框距离,正负数都行 | dimension |
+|  设置android:button="@null" |             隐藏自带button                                 |           |
 
+<br/>  
 
 ## MyEditText属性
 | MyEditText                       | 说明                                                    | 属性类型  |
