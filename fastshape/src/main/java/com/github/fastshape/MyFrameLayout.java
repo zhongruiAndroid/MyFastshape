@@ -93,7 +93,7 @@ public class MyFrameLayout extends FrameLayout {
         }
     }
 
-    @Override
+    /*@Override
     public void draw(Canvas canvas) {
         if (viewHelper != null&& viewHelper.isClipBg()&& viewHelper.getClipSwitch()) {
             canvas.save();
@@ -103,7 +103,20 @@ public class MyFrameLayout extends FrameLayout {
         } else {
             super.draw(canvas);
         }
+    }*/
+
+    @Override
+    public void draw(Canvas canvas) {
+        if (viewHelper != null && viewHelper.isClipBg() && viewHelper.getClipSwitch()) {
+            int count = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
+            super.draw(canvas);
+            viewHelper.clipBg(canvas);
+            canvas.restoreToCount(count);
+        } else {
+            super.draw(canvas);
+        }
     }
+
 
     @Override
     protected void dispatchDraw(Canvas canvas) {

@@ -15,27 +15,32 @@ import com.github.fastshape.newbean.SetBackgroundUtil;
 /**
  * Created by Administrator on 2016/9/6.
  */
-public class MyLinearLayout extends LinearLayout   {
+public class MyLinearLayout extends LinearLayout {
     private FirstHelper viewHelper;
     private int saveLayerCount;
+
     public MyLinearLayout(Context context) {
         super(context);
         initHelper(null);
     }
+
     public MyLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         initHelper(attrs);
     }
+
     public MyLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initHelper(attrs);
     }
-    private void initHelper(AttributeSet attrs ) {
+
+    private void initHelper(AttributeSet attrs) {
         viewHelper = new FirstHelper(new CompleteInter() {
             @Override
             public void complete() {
                 MyLinearLayout.this.complete();
             }
+
             @Override
             public void completeClip() {
                 MyLinearLayout.this.completeClip();
@@ -46,7 +51,7 @@ public class MyLinearLayout extends LinearLayout   {
                 MyLinearLayout.this.resetClip();
             }
         });
-        init(attrs );
+        init(attrs);
     }
 
     public FirstHelper getViewHelper() {
@@ -57,8 +62,8 @@ public class MyLinearLayout extends LinearLayout   {
         this.viewHelper = baseHelper;
     }*/
 
-    public void init(AttributeSet attrs ) {
-        viewHelper.init(getContext(), attrs ,R.attr.MyLinearLayoutStyle);
+    public void init(AttributeSet attrs) {
+        viewHelper.init(getContext(), attrs, R.attr.MyLinearLayoutStyle);
 
         if (getBackground() == null) {
             complete();
@@ -75,10 +80,11 @@ public class MyLinearLayout extends LinearLayout   {
             SetBackgroundUtil.viewComplete(this, viewHelper);
         }
     }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        if (viewHelper != null&& viewHelper.getClipSwitch()) {
+        if (viewHelper != null && viewHelper.getClipSwitch()) {
             viewHelper.onSizeChanged();
             viewHelper.onRefreshPaint(getPaddingLeft(),
                     getPaddingTop(),
@@ -87,13 +93,24 @@ public class MyLinearLayout extends LinearLayout   {
         }
     }
 
+    /* @Override
+     public void draw(Canvas canvas) {
+         if (viewHelper != null && viewHelper.isClipBg() && viewHelper.getClipSwitch()) {
+             canvas.save();
+             canvas.clipPath(viewHelper.clipPath);
+             super.draw(canvas);
+             canvas.restore();
+         } else {
+             super.draw(canvas);
+         }
+     }*/
     @Override
     public void draw(Canvas canvas) {
-        if (viewHelper != null&& viewHelper.isClipBg()&& viewHelper.getClipSwitch()) {
-            canvas.save();
-            canvas.clipPath(viewHelper.clipPath);
+        if (viewHelper != null && viewHelper.isClipBg() && viewHelper.getClipSwitch()) {
+            int count = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
             super.draw(canvas);
-            canvas.restore();
+            viewHelper.clipBg(canvas);
+            canvas.restoreToCount(count);
         } else {
             super.draw(canvas);
         }
@@ -101,12 +118,12 @@ public class MyLinearLayout extends LinearLayout   {
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        if (viewHelper != null&& viewHelper.getClipSwitch()) {
+        if (viewHelper != null && viewHelper.getClipSwitch()) {
             saveLayerCount = canvas.saveLayer(new RectF(0, 0, canvas.getWidth(), canvas.getHeight()), null, Canvas.ALL_SAVE_FLAG);
         }
         super.dispatchDraw(canvas);
 
-        if (viewHelper != null&& viewHelper.getClipSwitch()) {
+        if (viewHelper != null && viewHelper.getClipSwitch()) {
             viewHelper.dispatchDrawEnd(saveLayerCount, canvas);
         }
     }
@@ -114,7 +131,7 @@ public class MyLinearLayout extends LinearLayout   {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_UP) {
-            if (viewHelper != null && viewHelper.getClipIsAreaClick()&& viewHelper.getClipSwitch()) {
+            if (viewHelper != null && viewHelper.getClipIsAreaClick() && viewHelper.getClipSwitch()) {
                 if (viewHelper.onTouchEvent(ev) == false) {//如果这个地方返回true会导致点击事件失效
                     return false;
                 }
@@ -124,11 +141,10 @@ public class MyLinearLayout extends LinearLayout   {
     }
 
 
-
     /*******************************************clip*********************************************/
     public void completeClip() {
-        if (viewHelper != null&& viewHelper.getClipSwitch()) {
-            if(viewHelper.clipPaint==null){
+        if (viewHelper != null && viewHelper.getClipSwitch()) {
+            if (viewHelper.clipPaint == null) {
                 viewHelper.onSizeChanged();
             }
             viewHelper.onRefreshPaint(getPaddingLeft(),
@@ -138,6 +154,7 @@ public class MyLinearLayout extends LinearLayout   {
             invalidate();
         }
     }
+
     public void resetClip() {
         if (viewHelper != null) {
             viewHelper.clearClipAttr();

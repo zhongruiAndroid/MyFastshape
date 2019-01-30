@@ -156,6 +156,12 @@ public class ClipHelper implements ClipInter<ClipHelper> {
         clipPath.moveTo(w, h);
     }
 
+    /*裁剪背景*/
+    public void clipBg( Canvas canvas) {
+        //通过setXfermode裁剪出需要显示部分区域
+        canvas.drawPath(clipPath, clipPaint);
+    }
+    /*裁剪内容*/
     public void dispatchDrawEnd(int saveLayerCount, Canvas canvas) {
         if (clipBorderWidth > 0) {
 
