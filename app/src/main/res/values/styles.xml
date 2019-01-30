@@ -12,8 +12,29 @@
         <item name="MyRelativeLayoutStyle">@style/RelativeLayout</item>-->
     </style>
 
+    <style name="AppTheme2" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+          <!--<item name="MyTextViewStyle">@style/TextView</item>-->
+        <!--   <item name="MyEditTextStyle">@style/EditText</item>
+          <item name="MyLinearLayoutStyle">@style/LinearLayout</item>
+          <item name="MyRelativeLayoutStyle">@style/RelativeLayout</item>-->
+    </style>
+    <style name="AppTheme2.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:editTextStyle">@style/testEditStyle</item>
+        <item name="editTextStyle">@style/testEditStyle</item>
+        <item name="android:checkboxStyle">@style/customfontstyle</item>
+        <item name="MyLinearLayoutStyle">@style/TextView</item>
+        <!--<item name="MyEditTextStyle">@style/testEditStyle2</item>-->
+    </style>
+
+
     <style name="TextView">
-        <item name="solidColor">@color/white</item>
+        <item name="solidColor">@color/yellow</item>
     </style>
     <style name="EditText">
         <item name="solidColor">@color/white</item>
@@ -81,14 +102,7 @@
         <item name="radius">56dp</item>
         <item name="solidColor">@color/c_press_bt</item>
     </style>
-    <style name="AppTheme.NoActionBar" parent="AppTheme">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:editTextStyle">@style/testEditStyle</item>
-        <item name="editTextStyle">@style/testEditStyle</item>
-        <item name="android:checkboxStyle">@style/customfontstyle</item>
-        <!--<item name="MyEditTextStyle">@style/testEditStyle2</item>-->
-    </style>
+
     <style name="customfontstyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
     </style>
     <style name="testBoxStyle"   >
