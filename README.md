@@ -13,7 +13,10 @@
 
 ```xml
 compile 'com.github:fastshape:版本号看上面'
-```
+```  
+ 
+ #### 历史版本
+ - [1.0.4版本说明文档](https://github.com/zhongruiAndroid/MyFastshape/edit/newViewHelper/README_1.0.4.md)
 
 ## [Demo.apk下载](https://raw.githubusercontent.com/zhongruiAndroid/MyFastshape/newViewHelper/app/release/demo.apk "apk文件")
   
