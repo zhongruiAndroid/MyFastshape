@@ -252,6 +252,11 @@ editText.setOnRightListener(new MyEditText.OnRightListener() {
 | normal_drawable_top<br/>checked_drawable_top       | 设置上面normal和check状态的drawable | drawable  |
 | normal_drawable_right<br/>checked_drawable_right   | 设置右边normal和check状态的drawable | drawable  |
 | normal_drawable_bottom<br/>checked_drawable_bottom | 设置下面normal和check状态的drawable | drawable  |
+| colorFilter| 渲染类型(默认SRC_ATOP)<br/>CLEAR,SRC,DST,SRC_OVER,DST_OVER,SRC_IN,DST_IN,<br/>SRC_OUT,DST_OUT,SRC_ATOP,DST_ATOP,<br/>XOR,DARKEN,LIGHTEN,MULTIPLY,SCREEN,ADD,OVERLAY      | |
+| normal_drawable_left_color<br/>checked_drawable_left_color| 设置左边drawable的渲染色      | color  |
+| normal_drawable_top_color<br/>checked_drawable_top_color| 设置上面drawable的渲染色      | color  |
+| normal_drawable_right_color<br/>checked_drawable_right_color| 设置右边drawable的渲染色      | color  |
+| normal_drawable_bottom_color<br/>checked_drawable_bottom_color| 设置下面drawable的渲染色      | color  |
 | normal_textColor<br/>checked_textColor             | 设置normal和check状态的文字颜色     | color     |
 | padding_left                                       | 左边drawable距离边框距离,正负数都行 | dimension |
 | padding_top                                        | 上面drawable距离边框距离,正负数都行 | dimension |
