@@ -6,59 +6,54 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
               tools:context=".TestLinearlayoutActivity">
+<com.github.fastshape.MyCheckBox
+    android:id="@+id/cb"
+    android:layout_width="300dp"
+    android:layout_height="100dp"
+    android:text="MyCheckBox"
+    app:checked_drawable_left="@drawable/check_select"
+    app:normal_drawable_left="@drawable/check_normal"
+    app:checked_drawable_left_color="@color/fenhong"
+    app:normal_drawable_left_color="@color/top_color"
+    android:checked="true"
+    />
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.github.fastshape.MyRadioButton
+            android:id="@+id/rb"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:text="MyRadioButton"
+            app:checked_drawable_left="@drawable/check_select"
+            app:normal_drawable_left="@drawable/check_normal"
+            app:checked_drawable_left_color="@color/fenhong"
+            app:normal_drawable_left_color="@color/top_color"
+            android:checked="true"
 
-    <com.github.fastshape.MyTextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="Android"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        />
-    <com.github.fastshape.MyEditText
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="Android"
-        android:gravity="center_vertical"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="13sp"
-        style="@style/LinearLayout"
-        />
-    <com.github.fastshape.MyLinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        app:solidColor="@color/white"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MyLinearLayout"
-            android:gravity="center"
+            app:checked_drawable_top="@drawable/check_select"
+            app:normal_drawable_top="@drawable/check_normal"
+
+            app:checked_drawable_top_color="@color/yellow"
+            app:normal_drawable_top_color="@color/fuchsia"
             />
-    </com.github.fastshape.MyLinearLayout>
-    <com.github.fastshape.MyRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        app:solidColor="@color/c_press"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MyRelativeLayout"
-            android:layout_centerInParent="true"
+        <com.github.fastshape.MyRadioButton
+            android:id="@+id/rb2"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:text="MyRadioButton"
+            app:checked_drawable_left="@drawable/check_select"
+            app:normal_drawable_left="@drawable/check_normal"
+            app:checked_drawable_left_color="@color/fenhong"
+            app:normal_drawable_left_color="@color/top_color"
+
+            app:checked_drawable_top="@drawable/check_select"
+            app:normal_drawable_top="@drawable/check_normal"
+
+            app:checked_drawable_top_color="@color/yellow"
+            app:normal_drawable_top_color="@color/fuchsia"
             />
-    </com.github.fastshape.MyRelativeLayout>
+
+    </RadioGroup>
+
 </LinearLayout>

@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
              /*   Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
                 startActivity(new Intent(MainActivity.this, ShapeTestListActivity.class));
+//                startActivity(new Intent(MainActivity.this, TestLinearlayoutActivity.class));
+
+
             }
         });
     }

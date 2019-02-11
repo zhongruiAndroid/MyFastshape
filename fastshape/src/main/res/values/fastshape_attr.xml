@@ -14,7 +14,6 @@
     <attr name="MyTextViewStyle" format="reference"></attr>
 
 
-
     <declare-styleable name="FlowLayout_LayoutParams">
         <attr name="layout_newLine" format="boolean"/>
         <attr name="layout_horizontalSpacing" format="dimension"/>
@@ -89,17 +88,26 @@
 
     </declare-styleable>
     <declare-styleable name="MyCheckBox">
+        <attr name="colorFilter" />
         <attr name="normal_drawable_left"/>
         <attr name="checked_drawable_left"/>
+        <attr name="normal_drawable_left_color"/>
+        <attr name="checked_drawable_left_color"/>
 
         <attr name="normal_drawable_top"/>
         <attr name="checked_drawable_top"/>
+        <attr name="normal_drawable_top_color"/>
+        <attr name="checked_drawable_top_color"/>
 
         <attr name="normal_drawable_right"/>
         <attr name="checked_drawable_right"/>
+        <attr name="normal_drawable_right_color"/>
+        <attr name="checked_drawable_right_color"/>
 
         <attr name="normal_drawable_bottom"/>
         <attr name="checked_drawable_bottom"/>
+        <attr name="normal_drawable_bottom_color"/>
+        <attr name="checked_drawable_bottom_color"/>
         <attr name="normal_textColor"/>
         <attr name="checked_textColor"/>
 
@@ -159,17 +167,26 @@
 
     </declare-styleable>
     <declare-styleable name="MyRadioButton">
+        <attr name="colorFilter" />
         <attr name="normal_drawable_left"/>
         <attr name="checked_drawable_left"/>
+        <attr name="normal_drawable_left_color"/>
+        <attr name="checked_drawable_left_color"/>
 
         <attr name="normal_drawable_top"/>
         <attr name="checked_drawable_top"/>
+        <attr name="normal_drawable_top_color"/>
+        <attr name="checked_drawable_top_color"/>
 
         <attr name="normal_drawable_right"/>
         <attr name="checked_drawable_right"/>
+        <attr name="normal_drawable_right_color"/>
+        <attr name="checked_drawable_right_color"/>
 
         <attr name="normal_drawable_bottom"/>
         <attr name="checked_drawable_bottom"/>
+        <attr name="normal_drawable_bottom_color"/>
+        <attr name="checked_drawable_bottom_color"/>
         <attr name="normal_textColor"/>
         <attr name="checked_textColor"/>
 
@@ -635,17 +652,45 @@
         <enum name="sweep" value="2"/>
     </attr>
     <!--MyCheckBox和MyRadioButton自定义属性-->
+    <attr name="colorFilter" format="enum">
+        <enum name="CLEAR"      value="0"/>
+        <enum name="SRC"        value="1"/>
+        <enum name="DST"        value="2"/>
+        <enum name="SRC_OVER"  value="3"/>
+        <enum name="DST_OVER"  value="4"/>
+        <enum name="SRC_IN"    value="5"/>
+        <enum name="DST_IN"    value="6"/>
+        <enum name="SRC_OUT"   value="7"/>
+        <enum name="DST_OUT"   value="8"/>
+        <enum name="SRC_ATOP"  value="9"/>
+        <enum name="DST_ATOP"  value="10"/>
+        <enum name="XOR"        value="11"/>
+        <enum name="DARKEN"    value="16"/>
+        <enum name="LIGHTEN"   value="17"/>
+        <enum name="MULTIPLY"  value="13"/>
+        <enum name="SCREEN"    value="14"/>
+        <enum name="ADD"        value="12"/>
+        <enum name="OVERLAY"    value="15"/>
+    </attr>
     <attr name="normal_drawable_left" format="reference"/>
     <attr name="checked_drawable_left" format="reference"/>
+    <attr name="normal_drawable_left_color" format="color"/>
+    <attr name="checked_drawable_left_color" format="color"/>
 
     <attr name="normal_drawable_top" format="reference"/>
     <attr name="checked_drawable_top" format="reference"/>
+    <attr name="normal_drawable_top_color" format="color"/>
+    <attr name="checked_drawable_top_color" format="color"/>
 
     <attr name="normal_drawable_right" format="reference"/>
     <attr name="checked_drawable_right" format="reference"/>
+    <attr name="normal_drawable_right_color" format="color"/>
+    <attr name="checked_drawable_right_color" format="color"/>
 
     <attr name="normal_drawable_bottom" format="reference"/>
     <attr name="checked_drawable_bottom" format="reference"/>
+    <attr name="normal_drawable_bottom_color" format="color"/>
+    <attr name="checked_drawable_bottom_color" format="color"/>
 
     <attr name="normal_textColor" format="color"/>
     <attr name="checked_textColor" format="color"/>
@@ -757,17 +802,26 @@
 
 
         <!--start MyCheckBox,MyRadioButton公共属性-->
+        <attr name="colorFilter" />
         <attr name="normal_drawable_left"/>
         <attr name="checked_drawable_left"/>
+        <attr name="normal_drawable_left_color"/>
+        <attr name="checked_drawable_left_color"/>
 
         <attr name="normal_drawable_top"/>
         <attr name="checked_drawable_top"/>
+        <attr name="normal_drawable_top_color"/>
+        <attr name="checked_drawable_top_color"/>
 
         <attr name="normal_drawable_right"/>
         <attr name="checked_drawable_right"/>
+        <attr name="normal_drawable_right_color"/>
+        <attr name="checked_drawable_right_color"/>
 
         <attr name="normal_drawable_bottom"/>
         <attr name="checked_drawable_bottom"/>
+        <attr name="normal_drawable_bottom_color"/>
+        <attr name="checked_drawable_bottom_color"/>
         <attr name="normal_textColor"/>
         <attr name="checked_textColor"/>
 
@@ -786,7 +840,6 @@
         <!--end MyEditText-->
 
     </declare-styleable>
-
 
 
 </resources>

@@ -199,10 +199,29 @@ public class SetBackgroundUtil {
 
     private static <T extends ThirdHelper> void setBottomDrawable(CompoundButton myView, T thirdHelper) {
         Drawable drawable0 = myView.getCompoundDrawables()[0];
+        setNullColorFilter(drawable0);
+
         Drawable drawable1 = myView.getCompoundDrawables()[1];
+        setNullColorFilter(drawable1);
+
         Drawable drawable2 = myView.getCompoundDrawables()[2];
+        setNullColorFilter(drawable2);
+
 //            Drawable drawable3 = myView.getCompoundDrawables()[3];
         if(thirdHelper.normal_drawable_bottom !=null&& thirdHelper.checked_drawable_bottom !=null){
+            /*设置颜色过滤*/
+            if(thirdHelper.checked_drawable_bottom_color!=-1){
+                thirdHelper.checked_drawable_bottom.mutate().setColorFilter(thirdHelper.checked_drawable_bottom_color,thirdHelper.colorFilter);
+            }else{
+                thirdHelper.checked_drawable_bottom.mutate().clearColorFilter();
+            }
+            if(thirdHelper.normal_drawable_bottom_color!=-1){
+                thirdHelper.normal_drawable_bottom.mutate().setColorFilter(thirdHelper.normal_drawable_bottom_color,thirdHelper.colorFilter);
+            }else{
+                thirdHelper.normal_drawable_bottom.mutate().clearColorFilter();
+            }
+
+
             StateListDrawable stateListDrawable = new StateListDrawable();
             stateListDrawable.addState(new int[]{android.R.attr.state_checked}, thirdHelper.checked_drawable_bottom);
             stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable_bottom);
@@ -220,10 +239,29 @@ public class SetBackgroundUtil {
 
     private static <T extends ThirdHelper> void setRightDrawable(CompoundButton myView, T thirdHelper) {
         Drawable drawable0 = myView.getCompoundDrawables()[0];
+        setNullColorFilter(drawable0);
+
         Drawable drawable1 = myView.getCompoundDrawables()[1];
+        setNullColorFilter(drawable1);
+
 //            Drawable drawable2 = myView.getCompoundDrawables()[2];
         Drawable drawable3 = myView.getCompoundDrawables()[3];
+        setNullColorFilter(drawable3);
+
         if(thirdHelper.normal_drawable_right !=null&& thirdHelper.checked_drawable_right !=null){
+            /*设置颜色过滤*/
+            if(thirdHelper.checked_drawable_right_color!=-1){
+                thirdHelper.checked_drawable_right.mutate().setColorFilter(thirdHelper.checked_drawable_right_color,thirdHelper.colorFilter);
+            }else{
+                thirdHelper.checked_drawable_right.mutate().clearColorFilter();
+            }
+            if(thirdHelper.normal_drawable_right_color!=-1){
+                thirdHelper.normal_drawable_right.mutate().setColorFilter(thirdHelper.normal_drawable_right_color,thirdHelper.colorFilter);
+            }else{
+                thirdHelper.normal_drawable_right.mutate().clearColorFilter();
+            }
+
+
             StateListDrawable stateListDrawable = new StateListDrawable();
             stateListDrawable.addState(new int[]{android.R.attr.state_checked}, thirdHelper.checked_drawable_right);
             stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable_right);
@@ -241,10 +279,28 @@ public class SetBackgroundUtil {
 
     private static <T extends ThirdHelper> void setTopDrawable(CompoundButton myView, T thirdHelper) {
         Drawable drawable0 = myView.getCompoundDrawables()[0];
+        setNullColorFilter(drawable0);
+
 //            Drawable drawable1 = myView.getCompoundDrawables()[1];
         Drawable drawable2 = myView.getCompoundDrawables()[2];
+        setNullColorFilter(drawable2);
+
         Drawable drawable3 = myView.getCompoundDrawables()[3];
+        setNullColorFilter(drawable3);
+
         if(thirdHelper.normal_drawable_top !=null&& thirdHelper.checked_drawable_top !=null){
+            /*设置颜色过滤*/
+            if(thirdHelper.checked_drawable_top_color!=-1){
+                thirdHelper.checked_drawable_top.mutate().setColorFilter(thirdHelper.checked_drawable_top_color,thirdHelper.colorFilter);
+            }else{
+                thirdHelper.checked_drawable_top.mutate().clearColorFilter();
+            }
+            if(thirdHelper.normal_drawable_top_color!=-1){
+                thirdHelper.normal_drawable_top.mutate().setColorFilter(thirdHelper.normal_drawable_top_color,thirdHelper.colorFilter);
+            }else{
+                thirdHelper.normal_drawable_top.mutate().clearColorFilter();
+            }
+
             StateListDrawable stateListDrawable = new StateListDrawable();
             stateListDrawable.addState(new int[]{android.R.attr.state_checked}, thirdHelper.checked_drawable_top);
             stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable_top);
@@ -262,9 +318,25 @@ public class SetBackgroundUtil {
 
     private static <T extends ThirdHelper> void setLeftDrawable(CompoundButton myView, T thirdHelper) {
         Drawable drawable1 = myView.getCompoundDrawables()[1];
+        setNullColorFilter(drawable1);
+
         Drawable drawable2 = myView.getCompoundDrawables()[2];
+        setNullColorFilter(drawable2);
+
         Drawable drawable3 = myView.getCompoundDrawables()[3];
+        setNullColorFilter(drawable3);
+
         if(thirdHelper.normal_drawable_left !=null&& thirdHelper.checked_drawable_left !=null){
+            if(thirdHelper.checked_drawable_left_color!=-1){
+                thirdHelper.checked_drawable_left.mutate().setColorFilter(thirdHelper.checked_drawable_left_color,thirdHelper.colorFilter);
+            }else{
+                thirdHelper.checked_drawable_left.mutate().clearColorFilter();
+            }
+            if(thirdHelper.normal_drawable_left_color!=-1){
+                thirdHelper.normal_drawable_left.mutate().setColorFilter(thirdHelper.normal_drawable_left_color,thirdHelper.colorFilter);
+            }else{
+                thirdHelper.normal_drawable_left.mutate().clearColorFilter();
+            }
             StateListDrawable stateListDrawable = new StateListDrawable();
             stateListDrawable.addState(new int[]{android.R.attr.state_checked}, thirdHelper.checked_drawable_left);
             stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable_left);
@@ -280,7 +352,11 @@ public class SetBackgroundUtil {
             myView.setCompoundDrawables(null,drawable1,drawable2,drawable3);
         }
     }
-
+    private static void setNullColorFilter(Drawable drawable){
+        if (drawable != null) {
+//            drawable.setColorFilter(null);
+        }
+    }
     public static<T extends FirstHelper>void noPartBorderNoPressColor(View myView,T firstHelper) {
         GradientDrawable gradientDrawableNormal = getNoPartBorderNoPressColorGradientDrawable(true,firstHelper);
 

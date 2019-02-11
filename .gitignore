@@ -13,3 +13,4 @@ gradle.properties
 .svn
 build/
 !demo.apk
+fastshape.gradle

@@ -3,6 +3,7 @@ package com.github.fastshape.viewhelper;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
@@ -14,18 +15,27 @@ import com.github.fastshape.inter.CompleteInter;
  *   MyCheckBox,MyRadioButton
  */
 public class ThirdHelper extends SecondHelper {
+    protected PorterDuff.Mode colorFilter=PorterDuff.Mode.SRC_ATOP;
     /*设置normal和check状态的drawable*/
     protected Drawable normal_drawable_left;
     protected Drawable checked_drawable_left;
+    protected int normal_drawable_left_color;
+    protected int checked_drawable_left_color;
 
     protected Drawable normal_drawable_top;
     protected Drawable checked_drawable_top;
+    protected int normal_drawable_top_color;
+    protected int checked_drawable_top_color;
 
     protected Drawable normal_drawable_right;
     protected Drawable checked_drawable_right;
+    protected int normal_drawable_right_color;
+    protected int checked_drawable_right_color;
 
     protected Drawable normal_drawable_bottom;
     protected Drawable checked_drawable_bottom;
+    protected int normal_drawable_bottom_color;
+    protected int checked_drawable_bottom_color;
 
     /*设置normal和check状态的文字颜色*/
     protected int normal_textColor;
@@ -81,6 +91,22 @@ public class ThirdHelper extends SecondHelper {
 
 
 
+        normal_drawable_left_color =  viewNormal.getColor(R.styleable.FastShapeAttr_normal_drawable_left_color,-1);
+        checked_drawable_left_color =  viewNormal.getColor(R.styleable.FastShapeAttr_checked_drawable_left_color,-1);
+
+        normal_drawable_top_color =  viewNormal.getColor(R.styleable.FastShapeAttr_normal_drawable_top_color,-1);
+        checked_drawable_top_color =  viewNormal.getColor(R.styleable.FastShapeAttr_checked_drawable_top_color,-1);
+
+        normal_drawable_right_color =  viewNormal.getColor(R.styleable.FastShapeAttr_normal_drawable_right_color,-1);
+        checked_drawable_right_color =  viewNormal.getColor(R.styleable.FastShapeAttr_checked_drawable_right_color,-1);
+
+        normal_drawable_bottom_color =  viewNormal.getColor(R.styleable.FastShapeAttr_normal_drawable_bottom_color,-1);
+        checked_drawable_bottom_color =  viewNormal.getColor(R.styleable.FastShapeAttr_checked_drawable_bottom_color,-1);
+
+        int filter =  viewNormal.getInt(R.styleable.FastShapeAttr_colorFilter,-1);
+        this.colorFilter=setPorterDuff(filter);
+
+
         normal_textColor =  viewNormal.getColor(R.styleable.FastShapeAttr_normal_textColor,textDefaultColor);//this.getTextColors().getDefaultColor()
         checked_textColor =  viewNormal.getColor(R.styleable.FastShapeAttr_checked_textColor,textDefaultColor);
 
@@ -91,6 +117,31 @@ public class ThirdHelper extends SecondHelper {
         padding_bottom =  (int) viewNormal.getDimension(R.styleable.FastShapeAttr_padding_bottom,0);
 
 
+    }
+
+    private PorterDuff.Mode setPorterDuff(int colorFilter) {
+        switch (colorFilter) {
+            default:
+            case  -1: return PorterDuff.Mode.SRC_ATOP;
+            case  0: return PorterDuff.Mode.CLEAR;
+            case  1: return PorterDuff.Mode.SRC;
+            case  2: return PorterDuff.Mode.DST;
+            case  3: return PorterDuff.Mode.SRC_OVER;
+            case  4: return PorterDuff.Mode.DST_OVER;
+            case  5: return PorterDuff.Mode.SRC_IN;
+            case  6: return PorterDuff.Mode.DST_IN;
+            case  7: return PorterDuff.Mode.SRC_OUT;
+            case  8: return PorterDuff.Mode.DST_OUT;
+            case  9: return PorterDuff.Mode.SRC_ATOP;
+            case 10: return PorterDuff.Mode.DST_ATOP;
+            case 11: return PorterDuff.Mode.XOR;
+            case 16: return PorterDuff.Mode.DARKEN;
+            case 17: return PorterDuff.Mode.LIGHTEN;
+            case 13: return PorterDuff.Mode.MULTIPLY;
+            case 14: return PorterDuff.Mode.SCREEN;
+            case 12: return PorterDuff.Mode.ADD;
+            case 15: return PorterDuff.Mode.OVERLAY;
+        }
     }
 
     public Drawable getNormal_drawable_left() {
@@ -181,5 +232,85 @@ public class ThirdHelper extends SecondHelper {
     public ThirdHelper setChecked_textColor(int checked_textColor) {
         this.checked_textColor = checked_textColor;
         return this;
+    }
+
+    public int getNormal_drawable_left_color() {
+        return normal_drawable_left_color;
+    }
+
+    public ThirdHelper setNormal_drawable_left_color(int normal_drawable_left_color) {
+        this.normal_drawable_left_color = normal_drawable_left_color;
+        return this;
+    }
+
+    public int getChecked_drawable_left_color() {
+        return checked_drawable_left_color;
+    }
+
+    public ThirdHelper setChecked_drawable_left_color(int checked_drawable_left_color) {
+        this.checked_drawable_left_color = checked_drawable_left_color;
+        return this;
+    }
+
+    public int getNormal_drawable_top_color() {
+        return normal_drawable_top_color;
+    }
+
+    public ThirdHelper setNormal_drawable_top_color(int normal_drawable_top_color) {
+        this.normal_drawable_top_color = normal_drawable_top_color;
+        return this;
+    }
+
+    public int getChecked_drawable_top_color() {
+        return checked_drawable_top_color;
+    }
+
+    public ThirdHelper setChecked_drawable_top_color(int checked_drawable_top_color) {
+        this.checked_drawable_top_color = checked_drawable_top_color;
+        return this;
+    }
+
+    public int getNormal_drawable_right_color() {
+        return normal_drawable_right_color;
+    }
+
+    public ThirdHelper setNormal_drawable_right_color(int normal_drawable_right_color) {
+        this.normal_drawable_right_color = normal_drawable_right_color;
+        return this;
+    }
+
+    public int getChecked_drawable_right_color() {
+        return checked_drawable_right_color;
+    }
+
+    public ThirdHelper setChecked_drawable_right_color(int checked_drawable_right_color) {
+        this.checked_drawable_right_color = checked_drawable_right_color;
+        return this;
+    }
+
+    public int getNormal_drawable_bottom_color() {
+        return normal_drawable_bottom_color;
+    }
+
+    public ThirdHelper setNormal_drawable_bottom_color(int normal_drawable_bottom_color) {
+        this.normal_drawable_bottom_color = normal_drawable_bottom_color;
+        return this;
+    }
+
+    public int getChecked_drawable_bottom_color() {
+        return checked_drawable_bottom_color;
+    }
+
+    public ThirdHelper setChecked_drawable_bottom_color(int checked_drawable_bottom_color) {
+        this.checked_drawable_bottom_color = checked_drawable_bottom_color;
+        return this;
+    }
+
+    public PorterDuff.Mode getColorFilter() {
+        return colorFilter;
+    }
+
+    public void setColorFilter(PorterDuff.Mode colorFilter) {
+        this.colorFilter = colorFilter;
     }
 }
