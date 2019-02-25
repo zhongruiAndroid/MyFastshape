@@ -41,7 +41,7 @@ compile 'com.github:fastshape:版本号看上面'
 <com.github.fastshape.MyCheckBox
         android:layout_width="120dp"
         android:layout_height="50dp"
-        android:text="Box"
+        android:text="MyCheckBox"
         android:gravity="center"
         
         android:background="@null"
@@ -54,7 +54,7 @@ compile 'com.github:fastshape:版本号看上面'
         app:gradientCenterColor="#18B4ED"
         app:gradientStartColor="@color/fenhong"
         app:gradientEndColor="@color/c_press"
-        app:gradientType="sweep"
+        app:gradientType="linear"
         app:radius="10dp"
         app:solidColor="@color/c_press"
         android:checked="true"

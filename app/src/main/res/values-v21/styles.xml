@@ -7,7 +7,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:editTextStyle">@style/testEditStyle</item>
         <item name="editTextStyle">@style/testEditStyle</item>
-        <item name="android:checkboxStyle">@style/customfontstyle</item>
+        <!--<item name="android:checkboxStyle">@style/customfontstyle</item>-->
     </style>
     <style name="AppTheme.NoActionBar2">
         <item name="windowActionBar">false</item>
@@ -16,7 +16,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:editTextStyle">@style/testEditStyle</item>
         <item name="editTextStyle">@style/testEditStyle</item>
-        <item name="android:checkboxStyle">@style/customfontstyle</item>
+        <!--<item name="android:checkboxStyle">@style/customfontstyle</item>-->
     </style>
 
 

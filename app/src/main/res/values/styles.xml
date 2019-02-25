@@ -27,7 +27,7 @@
         <item name="windowNoTitle">true</item>
         <item name="android:editTextStyle">@style/testEditStyle</item>
         <item name="editTextStyle">@style/testEditStyle</item>
-        <item name="android:checkboxStyle">@style/customfontstyle</item>
+        <!--<item name="android:checkboxStyle">@style/customfontstyle</item>-->
         <item name="MyLinearLayoutStyle">@style/TextView</item>
         <!--<item name="MyEditTextStyle">@style/testEditStyle2</item>-->
     </style>
