@@ -11,6 +11,7 @@
         <item name="MyLinearLayoutStyle">@style/LinearLayout</item>
         <item name="MyRelativeLayoutStyle">@style/RelativeLayout</item>-->
         <!--<item name="MyCheckBoxStyle">@style/checkStyle</item>-->
+        <!--<item name="MyRelativeLayoutStyle">@style/checkStyle</item>-->
     </style>
 
 
