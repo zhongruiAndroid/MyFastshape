@@ -81,7 +81,7 @@ compile 'com.github:fastshape:版本号看上面'
 
 
 # 注意 注意 注意
-**不能有android:background属性,否则部分自定义属性不生效**  
+**不能有android:background属性(包括theme和style配置),否则部分自定义属性不生效**
 
 **MyButton,MyCheckBox,MyRadioButton需要手动设置android:background="@null",否则部分自定义属性会被覆盖**    
 
