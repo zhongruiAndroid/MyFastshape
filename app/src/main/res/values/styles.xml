@@ -10,26 +10,7 @@
         <item name="MyEditTextStyle">@style/EditText</item>
         <item name="MyLinearLayoutStyle">@style/LinearLayout</item>
         <item name="MyRelativeLayoutStyle">@style/RelativeLayout</item>-->
-    </style>
-
-    <style name="AppTheme2" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-          <!--<item name="MyTextViewStyle">@style/TextView</item>-->
-        <!--   <item name="MyEditTextStyle">@style/EditText</item>
-          <item name="MyLinearLayoutStyle">@style/LinearLayout</item>
-          <item name="MyRelativeLayoutStyle">@style/RelativeLayout</item>-->
-    </style>
-    <style name="AppTheme2.NoActionBar" parent="AppTheme">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:editTextStyle">@style/testEditStyle</item>
-        <item name="editTextStyle">@style/testEditStyle</item>
-        <!--<item name="android:checkboxStyle">@style/customfontstyle</item>-->
-        <item name="MyLinearLayoutStyle">@style/TextView</item>
-        <!--<item name="MyEditTextStyle">@style/testEditStyle2</item>-->
+        <!--<item name="MyCheckBoxStyle">@style/checkStyle</item>-->
     </style>
 
 
@@ -103,10 +84,6 @@
         <item name="solidColor">@color/c_press_bt</item>
     </style>
 
-    <style name="customfontstyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
-    </style>
-    <style name="testBoxStyle"   >
-    </style>
     <style name="testEditStyle"  parent="@style/Base.Widget.AppCompat.EditText">
         <item name="android:textSize">26sp</item>
         <!--<item name="android:background">@color/c_press_bt</item>-->
