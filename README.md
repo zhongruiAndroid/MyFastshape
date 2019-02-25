@@ -122,6 +122,8 @@ editText.setOnRightListener(new MyEditText.OnRightListener() {
 ```
 <br/>  
 
+#### 如果xml preview 提示Failed to find style 'MyLinearLayoutStyle' in current theme直接无视
+#### 或者在theme设置MyLinearLayoutStyle等style属性(如下所示,全局控制自定义属性)
 #### 如果每个view有公共属性想统一控制，可以在Theme里面设置
 ##### 优先级 xml > style > theme
 ```xml
