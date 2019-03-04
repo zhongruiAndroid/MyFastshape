@@ -41,7 +41,7 @@ compile 'com.github:fastshape:版本号看上面'
 <com.github.fastshape.MyCheckBox
         android:layout_width="120dp"
         android:layout_height="50dp"
-        android:text="Box"
+        android:text="MyCheckBox"
         android:gravity="center"
         
         android:background="@null"
@@ -54,7 +54,7 @@ compile 'com.github:fastshape:版本号看上面'
         app:gradientCenterColor="#18B4ED"
         app:gradientStartColor="@color/fenhong"
         app:gradientEndColor="@color/c_press"
-        app:gradientType="sweep"
+        app:gradientType="linear"
         app:radius="10dp"
         app:solidColor="@color/c_press"
         android:checked="true"
@@ -81,7 +81,7 @@ compile 'com.github:fastshape:版本号看上面'
 
 
 # 注意 注意 注意
-**不能有android:background属性,否则部分自定义属性不生效**  
+**不能有android:background属性(包括theme和style配置),否则部分自定义属性不生效**
 
 **MyButton,MyCheckBox,MyRadioButton需要手动设置android:background="@null",否则部分自定义属性会被覆盖**    
 
@@ -122,6 +122,8 @@ editText.setOnRightListener(new MyEditText.OnRightListener() {
 ```
 <br/>  
 
+#### 如果xml preview 提示Failed to find style 'MyLinearLayoutStyle' in current theme直接无视
+#### 或者在theme设置MyLinearLayoutStyle等style属性(如下所示,全局控制自定义属性)
 #### 如果每个view有公共属性想统一控制，可以在Theme里面设置
 ##### 优先级 xml > style > theme
 ```xml
