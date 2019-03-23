@@ -31,11 +31,12 @@ public class SetBackgroundUtil {
             stateListDrawableForLayer.addState(new int[]{android.R.attr.state_pressed}, firstHelper.drawable_press);
             stateListDrawableForLayer.addState(new int[]{}, firstHelper.drawable_normal);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 myView.setBackground(stateListDrawableForLayer);
             } else {
                 myView.setBackgroundDrawable(stateListDrawableForLayer);
-            }
+            }*/
+            myView.setBackground(stateListDrawableForLayer);
             return;
         }
         if (firstHelper.left_line && firstHelper.top_line && firstHelper.right_line && firstHelper.bottom_line) {
@@ -360,11 +361,14 @@ public class SetBackgroundUtil {
     public static<T extends FirstHelper>void noPartBorderNoPressColor(View myView,T firstHelper) {
         GradientDrawable gradientDrawableNormal = getNoPartBorderNoPressColorGradientDrawable(true,firstHelper);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             myView.setBackground(gradientDrawableNormal);
         } else {
             myView.setBackgroundDrawable(gradientDrawableNormal);
-        }
+        }*/
+
+
+        myView.setBackground(gradientDrawableNormal);
     }
 
     public static<T extends FirstHelper>void noPartBorderHasPressColor(View myView,T firstHelper) {
@@ -379,21 +383,23 @@ public class SetBackgroundUtil {
         stateListDrawableForShape.addState(new int[]{android.R.attr.state_pressed}, gradientDrawablePress);
         stateListDrawableForShape.addState(new int[]{}, gradientDrawableNormal);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             myView.setBackground(stateListDrawableForShape);
         } else {
             myView.setBackgroundDrawable(stateListDrawableForShape);
-        }
+        }*/
+        myView.setBackground(stateListDrawableForShape);
     }
 
     public static<T extends FirstHelper>void hasPartBorderNoPressColor(View myView,T firstHelper) {
         setBorderWidthForPartBorder(firstHelper);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             myView.setBackground(getHasPartBorderNoPressColorLayerDrawableNormal(firstHelper));
         } else {
             myView.setBackgroundDrawable(getHasPartBorderNoPressColorLayerDrawableNormal(firstHelper));
-        }
+        }*/
+        myView.setBackground(getHasPartBorderNoPressColorLayerDrawableNormal(firstHelper));
 
     }
 
@@ -422,11 +428,12 @@ public class SetBackgroundUtil {
         stateListDrawableForLayer.addState(new int[]{}, layerDrawableNormal);
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             myView.setBackground(stateListDrawableForLayer);
         } else {
             myView.setBackgroundDrawable(stateListDrawableForLayer);
-        }
+        }*/
+        myView.setBackground(stateListDrawableForLayer);
     }
 
     public static <T extends FirstHelper>GradientDrawable getHasPartBorderNoPressColorGradientDrawable(T firstHelper) {
