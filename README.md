@@ -6,14 +6,11 @@
   
     
     
-|   [ ![Download](https://api.bintray.com/packages/zhongrui/mylibrary/fastshape/images/download.svg) ](https://bintray.com/zhongrui/mylibrary/fastshape/_latestVersion) |  最新版本号 |
+|   [ ![Download](https://api.bintray.com/packages/zhongrui/mylibrary/fastshape/images/download.svg) ](https://bintray.com/zhongrui/mylibrary/fastshape/_latestVersion) |  [点击查看最新版本号和gradle依赖方式](#version) |
 |--------|----|
     
     
 
-```xml
-compile 'com.github:fastshape:版本号看上面'
-```  
 
 ## [Demo.apk下载](https://raw.githubusercontent.com/zhongruiAndroid/MyFastshape/newViewHelper/app/release/demo.apk "apk文件")
   
@@ -274,13 +271,18 @@ editText.setOnRightListener(new MyEditText.OnRightListener() {
 
 
 <br/>  
+<h2 id="version"></h2>  
+
+### 如果本库对您有帮助,还希望支付宝扫一扫下面二维码,你我同时免费获取奖励金(非常感谢 Y(^-^)Y)
+![github](https://github.com/zhongruiAndroid/SomeImage/blob/master/image/small_ali.jpg?raw=true "github")  
+
 
 |   [ ![Download](https://api.bintray.com/packages/zhongrui/mylibrary/fastshape/images/download.svg) ](https://bintray.com/zhongrui/mylibrary/fastshape/_latestVersion) |  最新版本号 |
 |--------|----|
   
 
 ```xml
-compile 'com.github:fastshape:版本号看上面'
+compile 'com.github:fastshape:版本号'
 ```  
  
  #### 历史版本
