@@ -56,6 +56,7 @@ public class ClipHelper implements ClipInter<ClipHelper> {
     protected Paint clipClearPaint;
 
     public Path clipPath;
+    private Path tempPath;
     protected Path clipBorderPath;
     protected Region viewRegion;
     protected Region clickRegion;
@@ -99,7 +100,7 @@ public class ClipHelper implements ClipInter<ClipHelper> {
 
         clipPaint.setColor(Color.WHITE);
 //        clipPaint.setFilterBitmap(false);
-        clipPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+        clipPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
 
         clipBorderPaint.setColor(clipBorderColor);
         clipBorderPaint.setStrokeWidth(clipBorderWidth * 2);
@@ -154,6 +155,14 @@ public class ClipHelper implements ClipInter<ClipHelper> {
         clickRegion.setPath(clipPath, viewRegion);
         clipPath.moveTo(0, 0);
         clipPath.moveTo(w, h);
+
+        if(tempPath==null){
+            tempPath = new Path();
+        }else{
+            tempPath.reset();
+        }
+        tempPath.addRect(new RectF(0,0,w,h),Path.Direction.CW);
+        clipPath.op(tempPath, Path.Op.XOR);
     }
 
     /*裁剪背景*/
