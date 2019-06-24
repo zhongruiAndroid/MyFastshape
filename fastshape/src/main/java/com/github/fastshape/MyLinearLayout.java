@@ -50,6 +50,10 @@ public class MyLinearLayout extends LinearLayout {
             public void resetClip() {
                 MyLinearLayout.this.resetClip();
             }
+            @Override
+            public boolean isEditMode() {
+                return isInEditMode();
+            }
         });
         init(attrs);
     }

@@ -40,6 +40,10 @@ public class MyRadioButton extends AppCompatRadioButton {
             @Override
             public void resetClip() {
             }
+            @Override
+            public boolean isEditMode() {
+                return isInEditMode();
+            }
         });
         init(attrs);
     }

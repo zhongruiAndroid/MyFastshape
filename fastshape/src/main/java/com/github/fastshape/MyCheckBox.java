@@ -40,6 +40,11 @@ public class MyCheckBox extends AppCompatCheckBox   {
             @Override
             public void resetClip() {
             }
+
+            @Override
+            public boolean isEditMode() {
+                return isInEditMode();
+            }
         });
         init(attrs);
     }

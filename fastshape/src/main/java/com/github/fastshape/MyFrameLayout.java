@@ -48,6 +48,10 @@ public class MyFrameLayout extends FrameLayout {
             public void resetClip() {
                 MyFrameLayout.this.resetClip();
             }
+            @Override
+            public boolean isEditMode() {
+                return isInEditMode();
+            }
         });
         init(attrs );
     }

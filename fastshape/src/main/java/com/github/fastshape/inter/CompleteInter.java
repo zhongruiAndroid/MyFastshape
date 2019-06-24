@@ -7,4 +7,5 @@ public interface CompleteInter {
     void complete();
     void completeClip();
     void resetClip();
+    boolean isEditMode();
 }

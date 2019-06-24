@@ -48,6 +48,10 @@ public class MyRelativeLayout extends RelativeLayout {
             public void resetClip() {
                 MyRelativeLayout.this.resetClip();
             }
+            @Override
+            public boolean isEditMode() {
+                return isInEditMode();
+            }
         });
         init(attrs );
     }

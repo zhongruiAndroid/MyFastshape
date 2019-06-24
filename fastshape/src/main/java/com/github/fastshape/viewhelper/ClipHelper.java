@@ -11,6 +11,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Region;
 import android.graphics.Shader;
+import android.os.Build;
 import android.view.MotionEvent;
 
 import com.github.fastshape.inter.ClipInter;
@@ -100,7 +101,13 @@ public class ClipHelper implements ClipInter<ClipHelper> {
 
         clipPaint.setColor(Color.WHITE);
 //        clipPaint.setFilterBitmap(false);
-        clipPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+//        completeInter!=null;
+        if((completeInter!=null&&completeInter.isEditMode())||Build.VERSION.SDK_INT<=Build.VERSION_CODES.O_MR1){
+            clipPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+        }else{
+            clipPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+        }
+
 
         clipBorderPaint.setColor(clipBorderColor);
         clipBorderPaint.setStrokeWidth(clipBorderWidth * 2);
@@ -156,13 +163,21 @@ public class ClipHelper implements ClipInter<ClipHelper> {
         clipPath.moveTo(0, 0);
         clipPath.moveTo(w, h);
 
-        if(tempPath==null){
-            tempPath = new Path();
+
+        if((completeInter!=null&&completeInter.isEditMode())||Build.VERSION.SDK_INT<=Build.VERSION_CODES.O_MR1) {
+
         }else{
-            tempPath.reset();
+            //Build.VERSION.SDK_INT>=28
+            if (tempPath == null) {
+                tempPath = new Path();
+            } else {
+                tempPath.reset();
+            }
+            tempPath.addRect(new RectF(0, 0, w, h), Path.Direction.CW);
+            clipPath.op(tempPath, Path.Op.XOR);
         }
-        tempPath.addRect(new RectF(0,0,w,h),Path.Direction.CW);
-        clipPath.op(tempPath, Path.Op.XOR);
+
+
     }
 
     /*裁剪背景*/

@@ -45,6 +45,11 @@ public class MyImageView extends AppCompatImageView   {
             public void resetClip() {
                 MyImageView.this.resetClip();
             }
+
+            @Override
+            public boolean isEditMode() {
+                return isInEditMode();
+            }
         });
         init(attrs );
     }
