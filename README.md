@@ -286,5 +286,6 @@ compile 'com.github:fastshape:版本号'
 ```  
  
  #### 历史版本
+ - 1.0.9移除all_line属性
  - [1.0.4版本说明文档](https://github.com/zhongruiAndroid/MyFastshape/blob/newViewHelper/README_1.0.4.md)
 
