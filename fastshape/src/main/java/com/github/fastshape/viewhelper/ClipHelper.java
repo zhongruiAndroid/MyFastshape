@@ -51,14 +51,14 @@ public class ClipHelper implements ClipInter<ClipHelper> {
     protected int clipBorderPhase;
 
 
-    public Paint clipPaint;
-    protected Paint clipBorderPaint;
-    protected Paint clipBorderDashBgPaint;
-    protected Paint clipClearPaint;
+    public Paint clipPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
+    protected Paint clipBorderPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
+    protected Paint clipBorderDashBgPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
+    protected Paint clipClearPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
 
-    public Path clipPath;
-    private Path tempPath;
-    protected Path clipBorderPath;
+    public Path clipPath=new Path();
+    private Path tempPath=new Path();
+    protected Path clipBorderPath=new Path();
     protected Region viewRegion;
     protected Region clickRegion;
 
