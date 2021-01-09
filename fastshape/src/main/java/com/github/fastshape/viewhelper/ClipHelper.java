@@ -59,15 +59,17 @@ public class ClipHelper implements ClipInter<ClipHelper> {
     public Path clipPath=new Path();
     private Path tempPath=new Path();
     protected Path clipBorderPath=new Path();
-    protected Region viewRegion;
-    protected Region clickRegion;
+    protected Region viewRegion= new Region();
+    protected Region clickRegion= new Region();
 
     protected Shader shader;
     protected PathEffect pathEffect;
 
 
     public void onSizeChanged() {
-        clickRegion = new Region();
+        if(clickRegion==null){
+            clickRegion = new Region();
+        }
 
         clipPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         clipPaint.setStyle(Paint.Style.FILL);
@@ -97,7 +99,9 @@ public class ClipHelper implements ClipInter<ClipHelper> {
             bottom = 0;
         }
 
-        viewRegion = new Region(0, 0, w, h);
+        if (viewRegion == null) {
+            viewRegion = new Region(0, 0, w, h);
+        }
 
         clipPaint.setColor(Color.WHITE);
 //        clipPaint.setFilterBitmap(false);
