@@ -16,7 +16,7 @@
         >
     </LinearLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
@@ -45,7 +45,7 @@
                     android:text="左上圆角"
                     />
 
-                <android.support.v7.widget.AppCompatSeekBar
+                <androidx.appcompat.widget.AppCompatSeekBar
                     android:id="@+id/sbRadiusTopLeft"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                     android:text="右上圆角"
                     />
 
-                <android.support.v7.widget.AppCompatSeekBar
+                <androidx.appcompat.widget.AppCompatSeekBar
                     android:id="@+id/sbRadiusTopRight"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                     android:text="左下圆角"
                     />
 
-                <android.support.v7.widget.AppCompatSeekBar
+                <androidx.appcompat.widget.AppCompatSeekBar
                     android:id="@+id/sbRadiusBottomLeft"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                     android:text="右下圆角"
                     />
 
-                <android.support.v7.widget.AppCompatSeekBar
+                <androidx.appcompat.widget.AppCompatSeekBar
                     android:id="@+id/sbRadiusBottomRight"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
                     android:text="全部圆角"
                     />
 
-                <android.support.v7.widget.AppCompatSeekBar
+                <androidx.appcompat.widget.AppCompatSeekBar
                     android:id="@+id/sbAllRadius"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
                     android:text="borderWidth"
                     />
 
-                <android.support.v7.widget.AppCompatSeekBar
+                <androidx.appcompat.widget.AppCompatSeekBar
                     android:id="@+id/sbBorderWidth"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -157,7 +157,7 @@
                     android:text="DashWidth "
                     />
 
-                <android.support.v7.widget.AppCompatSeekBar
+                <androidx.appcompat.widget.AppCompatSeekBar
                     android:id="@+id/sbBorderDashWidth"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
                     android:text="DashGap"
                     />
 
-                <android.support.v7.widget.AppCompatSeekBar
+                <androidx.appcompat.widget.AppCompatSeekBar
                     android:id="@+id/sbBorderDashGap"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -563,7 +563,7 @@
                     android:text="gradientCenterX"
                     />
 
-                <android.support.v7.widget.AppCompatSeekBar
+                <androidx.appcompat.widget.AppCompatSeekBar
                     android:id="@+id/sbGradientCenterX"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -585,7 +585,7 @@
                     android:text="gradientCenterY"
                     />
 
-                <android.support.v7.widget.AppCompatSeekBar
+                <androidx.appcompat.widget.AppCompatSeekBar
                     android:id="@+id/sbGradientCenterY"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -607,7 +607,7 @@
                     android:text="gradientRadius  "
                     />
 
-                <android.support.v7.widget.AppCompatSeekBar
+                <androidx.appcompat.widget.AppCompatSeekBar
                     android:id="@+id/sbGradientRadius"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -629,7 +629,7 @@
                     android:text="padding               "
                     />
 
-                <android.support.v7.widget.AppCompatSeekBar
+                <androidx.appcompat.widget.AppCompatSeekBar
                     android:id="@+id/sbPadding"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -655,7 +655,7 @@
                     android:textColor="@color/black"
                     />
                 <!--clip-->
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp">
 
@@ -716,7 +716,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/cbClipIsCircle"
                         />
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -735,7 +735,7 @@
                         android:text="左上圆角"
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbClipRadiusTopLeft"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -748,7 +748,7 @@
                         android:text="右上圆角"
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbClipRadiusTopRight"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -773,7 +773,7 @@
                         android:text="左下圆角"
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbClipRadiusBottomLeft"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -786,7 +786,7 @@
                         android:text="右下圆角"
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbClipRadiusBottomRight"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -811,7 +811,7 @@
                         android:text="全部圆角"
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbClipAllRadius"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -824,7 +824,7 @@
                         android:text="borderWidth"
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbClipBorderWidth"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -847,7 +847,7 @@
                         android:text="DashWidth "
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbClipBorderDashWidth"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -860,7 +860,7 @@
                         android:text="DashGap"
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbClipBorderDashGap"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -923,7 +923,7 @@
                         android:text="clipBorderPhase "
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbClipBorderPhase"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -971,7 +971,7 @@
                         android:text="left_width"
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbLeftWidth"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -985,7 +985,7 @@
                         android:text="left_height"
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbLeftHeight"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -1008,7 +1008,7 @@
                         android:text="top_width"
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbTopWidth"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -1022,7 +1022,7 @@
                         android:text="top_height"
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbTopHeight"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -1045,7 +1045,7 @@
                         android:text="right_width"
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbRightWidth"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -1059,7 +1059,7 @@
                         android:text="right_height"
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbRightHeight"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -1082,7 +1082,7 @@
                         android:text="bottom_w"
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbBottomWidth"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -1096,7 +1096,7 @@
                         android:text="bottom_h"
                         />
 
-                    <android.support.v7.widget.AppCompatSeekBar
+                    <androidx.appcompat.widget.AppCompatSeekBar
                         android:id="@+id/sbBottomHeight"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -1145,6 +1145,6 @@
             </LinearLayout>
 
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

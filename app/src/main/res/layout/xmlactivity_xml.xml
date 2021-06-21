@@ -10,7 +10,7 @@
     android:orientation="vertical"
     android:padding="10dp"
     >
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
@@ -96,13 +96,13 @@
             android:textColor="@color/blue"
             android:checked="true"
             />
-        <android.support.v7.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="是否为圆2形"/>
 
     </LinearLayout>
-    <android.support.v7.widget.AppCompatCheckBox
+    <androidx.appcompat.widget.AppCompatCheckBox
         android:id="@+id/cb_isCircle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
             android:textColor="@color/blue"
             />
     </LinearLayout>
-    <android.support.v7.widget.AppCompatCheckBox
+    <androidx.appcompat.widget.AppCompatCheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="边框颜色(黑蓝)3"
@@ -252,5 +252,5 @@
             />
     </LinearLayout>
 </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>
