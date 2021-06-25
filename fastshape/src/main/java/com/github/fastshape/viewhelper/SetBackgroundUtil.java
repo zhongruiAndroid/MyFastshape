@@ -23,7 +23,7 @@ import static com.github.fastshape.viewhelper.FirstHelper.gradientType_radial;
 public class SetBackgroundUtil {
 
 
-    public static<T extends FirstHelper>void viewComplete(View myView,T firstHelper) {
+    public static <T extends FirstHelper> void viewComplete(View myView, T firstHelper) {
 
         if (firstHelper.drawable_normal != null) {
             StateListDrawable stateListDrawableForLayer = new StateListDrawable();
@@ -41,22 +41,21 @@ public class SetBackgroundUtil {
         }
         if (firstHelper.left_line && firstHelper.top_line && firstHelper.right_line && firstHelper.bottom_line) {
             firstHelper.isPartBorder = false;
-        }else if(firstHelper.left_line==false && firstHelper.top_line==false && firstHelper.right_line==false && firstHelper.bottom_line==false){
+        } else if (firstHelper.left_line == false && firstHelper.top_line == false && firstHelper.right_line == false && firstHelper.bottom_line == false) {
             firstHelper.isPartBorder = false;
-        }else {
+        } else {
             firstHelper.isPartBorder = true;
         }
 
 
-
         //设置虚线需要设置layertype
         if (firstHelper.shapeType == firstHelper.shapeType_line && myView.getLayerType() == View.LAYER_TYPE_NONE) {
-            if(myView instanceof ImageView){
+            if (myView instanceof ImageView) {
                 //ImageView不做处理
-            }else{
+            } else {
                 myView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
             }
-        }else{
+        } else {
             myView.setLayerType(View.LAYER_TYPE_NONE, null);
         }
         //是否是全边框
@@ -64,19 +63,19 @@ public class SetBackgroundUtil {
             //是否设置pressColor
             if (firstHelper.pressColor == Color.TRANSPARENT) {
                 //无部分边框，无presscolor
-                noPartBorderNoPressColor(myView,firstHelper);
+                noPartBorderNoPressColor(myView, firstHelper);
             } else {
                 //无部分边框，有presscolor
-                noPartBorderHasPressColor(myView,firstHelper);
+                noPartBorderHasPressColor(myView, firstHelper);
             }
         } else {
             //是否设置pressColor
             if (firstHelper.pressColor == Color.TRANSPARENT) {
                 //有部分边框，无presscolor
-                hasPartBorderNoPressColor(myView,firstHelper);
+                hasPartBorderNoPressColor(myView, firstHelper);
             } else {
                 //有部分边框，有presscolor
-                hasPartBorderHasPressColor(myView,firstHelper);
+                hasPartBorderHasPressColor(myView, firstHelper);
             }
         }
         /*if (myView instanceof MyButton) {
@@ -90,13 +89,13 @@ public class SetBackgroundUtil {
         }*/
     }
 
-    public static <T extends SecondHelper>void setCompoundDrawables(TextView myView,T secondHelper) {
-        boolean leftFlag=secondHelper.getLeft_width()>0||secondHelper.getLeft_height()>0;
-        boolean topFlag=secondHelper.getTop_width()>0||secondHelper.getTop_height()>0;
-        boolean rightFlag=secondHelper.getRight_width()>0||secondHelper.getRight_height()>0;
-        boolean bottomFlag=secondHelper.getBottom_width()>0||secondHelper.getBottom_height()>0;
+    public static <T extends SecondHelper> void setCompoundDrawables(TextView myView, T secondHelper) {
+        boolean leftFlag = secondHelper.getLeft_width() > 0 || secondHelper.getLeft_height() > 0;
+        boolean topFlag = secondHelper.getTop_width() > 0 || secondHelper.getTop_height() > 0;
+        boolean rightFlag = secondHelper.getRight_width() > 0 || secondHelper.getRight_height() > 0;
+        boolean bottomFlag = secondHelper.getBottom_width() > 0 || secondHelper.getBottom_height() > 0;
 
-        if(leftFlag==false&&topFlag==false&&rightFlag==false&&bottomFlag==false){
+        if (leftFlag == false && topFlag == false && rightFlag == false && bottomFlag == false) {
             return;
         }
 
@@ -108,31 +107,33 @@ public class SetBackgroundUtil {
         if (drawable0 != null) {
             int width = drawable0.getIntrinsicWidth();
             int height = drawable0.getIntrinsicHeight();
-            drawable0.setBounds(0, 0, getLeftWH(width, height,secondHelper)[0], getLeftWH(width, height,secondHelper)[1]);
+            drawable0.setBounds(0, 0, getLeftWH(width, height, secondHelper)[0], getLeftWH(width, height, secondHelper)[1]);
         }
         if (drawable1 != null) {
             int width = drawable1.getIntrinsicWidth();
             int height = drawable1.getIntrinsicHeight();
-            drawable1.setBounds(0, 0, getTopWH(width, height,secondHelper)[0], getTopWH(width, height,secondHelper)[1]);
+            drawable1.setBounds(0, 0, getTopWH(width, height, secondHelper)[0], getTopWH(width, height, secondHelper)[1]);
         }
         if (drawable2 != null) {
             int width = drawable2.getIntrinsicWidth();
             int height = drawable2.getIntrinsicHeight();
-            drawable2.setBounds(0, 0, getRightWH(width, height,secondHelper)[0], getRightWH(width, height,secondHelper)[1]);
+            drawable2.setBounds(0, 0, getRightWH(width, height, secondHelper)[0], getRightWH(width, height, secondHelper)[1]);
         }
         if (drawable3 != null) {
             int width = drawable3.getIntrinsicWidth();
             int height = drawable3.getIntrinsicHeight();
-            drawable3.setBounds(0, 0, getBottomWH(width, height,secondHelper)[0], getBottomWH(width, height,secondHelper)[1]);
+            drawable3.setBounds(0, 0, getBottomWH(width, height, secondHelper)[0], getBottomWH(width, height, secondHelper)[1]);
         }
 
         myView.setCompoundDrawables(drawable0, drawable1, drawable2, drawable3);
     }
-    public static <T extends ThirdHelper>void setCompoundDrawables(CompoundButton myView,T thirdHelper) {
-        setLeftDrawable(myView,thirdHelper);
-        setTopDrawable(myView,thirdHelper);
-        setRightDrawable(myView,thirdHelper);
-        setBottomDrawable(myView,thirdHelper);
+
+    public static <T extends ThirdHelper> void setCompoundDrawables(CompoundButton myView, T thirdHelper) {
+        setButtonDrawable(myView,thirdHelper);
+        setLeftDrawable(myView, thirdHelper);
+        setTopDrawable(myView, thirdHelper);
+        setRightDrawable(myView, thirdHelper);
+        setBottomDrawable(myView, thirdHelper);
 
         /*if(thirdHelper.normal_drawable !=null&& thirdHelper.checked_drawable !=null){
             StateListDrawable stateListDrawable = new StateListDrawable();
@@ -190,11 +191,11 @@ public class SetBackgroundUtil {
             }
         }*/
 
-        int [][]colorState=new int[2][];
-        int []myColor=new int[]{thirdHelper.checked_textColor, thirdHelper.normal_textColor};
-        colorState[0]=new int[]{android.R.attr.state_checked};
-        colorState[1]=new int[]{};
-        ColorStateList colorStateList=new ColorStateList(colorState,myColor);
+        int[][] colorState = new int[2][];
+        int[] myColor = new int[]{thirdHelper.checked_textColor, thirdHelper.normal_textColor};
+        colorState[0] = new int[]{android.R.attr.state_checked};
+        colorState[1] = new int[]{};
+        ColorStateList colorStateList = new ColorStateList(colorState, myColor);
         myView.setTextColor(colorStateList);
     }
 
@@ -209,16 +210,16 @@ public class SetBackgroundUtil {
         setNullColorFilter(drawable2);
 
 //            Drawable drawable3 = myView.getCompoundDrawables()[3];
-        if(thirdHelper.normal_drawable_bottom !=null&& thirdHelper.checked_drawable_bottom !=null){
+        if (thirdHelper.normal_drawable_bottom != null && thirdHelper.checked_drawable_bottom != null) {
             /*设置颜色过滤*/
-            if(thirdHelper.checked_drawable_bottom_color!=thirdHelper.def_color){
-                thirdHelper.checked_drawable_bottom.mutate().setColorFilter(thirdHelper.checked_drawable_bottom_color,thirdHelper.colorFilter);
-            }else{
+            if (thirdHelper.checked_drawable_bottom_color != thirdHelper.def_color) {
+                thirdHelper.checked_drawable_bottom.mutate().setColorFilter(thirdHelper.checked_drawable_bottom_color, thirdHelper.colorFilter);
+            } else {
                 thirdHelper.checked_drawable_bottom.mutate().clearColorFilter();
             }
-            if(thirdHelper.normal_drawable_bottom_color!=thirdHelper.def_color){
-                thirdHelper.normal_drawable_bottom.mutate().setColorFilter(thirdHelper.normal_drawable_bottom_color,thirdHelper.colorFilter);
-            }else{
+            if (thirdHelper.normal_drawable_bottom_color != thirdHelper.def_color) {
+                thirdHelper.normal_drawable_bottom.mutate().setColorFilter(thirdHelper.normal_drawable_bottom_color, thirdHelper.colorFilter);
+            } else {
                 thirdHelper.normal_drawable_bottom.mutate().clearColorFilter();
             }
 
@@ -228,13 +229,12 @@ public class SetBackgroundUtil {
             stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable_bottom);
 
 
-
-            int w=stateListDrawable.getIntrinsicWidth();
-            int h=stateListDrawable.getIntrinsicHeight();
-            stateListDrawable.setBounds(0,0-thirdHelper.padding_bottom,getBottomWH(w,h,thirdHelper)[0],getBottomWH(w,h,thirdHelper)[1]-thirdHelper.padding_bottom);
-            myView.setCompoundDrawables(drawable0,drawable1,drawable2,stateListDrawable);
-        }else{
-            myView.setCompoundDrawables(drawable0,drawable1,drawable2,null);
+            int w = stateListDrawable.getIntrinsicWidth();
+            int h = stateListDrawable.getIntrinsicHeight();
+            stateListDrawable.setBounds(0, 0 - thirdHelper.padding_bottom, getBottomWH(w, h, thirdHelper)[0], getBottomWH(w, h, thirdHelper)[1] - thirdHelper.padding_bottom);
+            myView.setCompoundDrawables(drawable0, drawable1, drawable2, stateListDrawable);
+        } else {
+            myView.setCompoundDrawables(drawable0, drawable1, drawable2, null);
         }
     }
 
@@ -249,16 +249,16 @@ public class SetBackgroundUtil {
         Drawable drawable3 = myView.getCompoundDrawables()[3];
         setNullColorFilter(drawable3);
 
-        if(thirdHelper.normal_drawable_right !=null&& thirdHelper.checked_drawable_right !=null){
+        if (thirdHelper.normal_drawable_right != null && thirdHelper.checked_drawable_right != null) {
             /*设置颜色过滤*/
-            if(thirdHelper.checked_drawable_right_color!=thirdHelper.def_color){
-                thirdHelper.checked_drawable_right.mutate().setColorFilter(thirdHelper.checked_drawable_right_color,thirdHelper.colorFilter);
-            }else{
+            if (thirdHelper.checked_drawable_right_color != thirdHelper.def_color) {
+                thirdHelper.checked_drawable_right.mutate().setColorFilter(thirdHelper.checked_drawable_right_color, thirdHelper.colorFilter);
+            } else {
                 thirdHelper.checked_drawable_right.mutate().clearColorFilter();
             }
-            if(thirdHelper.normal_drawable_right_color!=thirdHelper.def_color){
-                thirdHelper.normal_drawable_right.mutate().setColorFilter(thirdHelper.normal_drawable_right_color,thirdHelper.colorFilter);
-            }else{
+            if (thirdHelper.normal_drawable_right_color != thirdHelper.def_color) {
+                thirdHelper.normal_drawable_right.mutate().setColorFilter(thirdHelper.normal_drawable_right_color, thirdHelper.colorFilter);
+            } else {
                 thirdHelper.normal_drawable_right.mutate().clearColorFilter();
             }
 
@@ -268,13 +268,12 @@ public class SetBackgroundUtil {
             stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable_right);
 
 
-
-            int w=stateListDrawable.getIntrinsicWidth();
-            int h=stateListDrawable.getIntrinsicHeight();
-            stateListDrawable.setBounds(0-thirdHelper.padding_right,0,getRightWH(w,h,thirdHelper)[0]-thirdHelper.padding_right,getRightWH(w,h,thirdHelper)[1]);
-            myView.setCompoundDrawables(drawable0,drawable1,stateListDrawable,drawable3);
-        }else{
-            myView.setCompoundDrawables(drawable0,drawable1,null,drawable3);
+            int w = stateListDrawable.getIntrinsicWidth();
+            int h = stateListDrawable.getIntrinsicHeight();
+            stateListDrawable.setBounds(0 - thirdHelper.padding_right, 0, getRightWH(w, h, thirdHelper)[0] - thirdHelper.padding_right, getRightWH(w, h, thirdHelper)[1]);
+            myView.setCompoundDrawables(drawable0, drawable1, stateListDrawable, drawable3);
+        } else {
+            myView.setCompoundDrawables(drawable0, drawable1, null, drawable3);
         }
     }
 
@@ -289,16 +288,16 @@ public class SetBackgroundUtil {
         Drawable drawable3 = myView.getCompoundDrawables()[3];
         setNullColorFilter(drawable3);
 
-        if(thirdHelper.normal_drawable_top !=null&& thirdHelper.checked_drawable_top !=null){
+        if (thirdHelper.normal_drawable_top != null && thirdHelper.checked_drawable_top != null) {
             /*设置颜色过滤*/
-            if(thirdHelper.checked_drawable_top_color!=thirdHelper.def_color){
-                thirdHelper.checked_drawable_top.mutate().setColorFilter(thirdHelper.checked_drawable_top_color,thirdHelper.colorFilter);
-            }else{
+            if (thirdHelper.checked_drawable_top_color != thirdHelper.def_color) {
+                thirdHelper.checked_drawable_top.mutate().setColorFilter(thirdHelper.checked_drawable_top_color, thirdHelper.colorFilter);
+            } else {
                 thirdHelper.checked_drawable_top.mutate().clearColorFilter();
             }
-            if(thirdHelper.normal_drawable_top_color!=thirdHelper.def_color){
-                thirdHelper.normal_drawable_top.mutate().setColorFilter(thirdHelper.normal_drawable_top_color,thirdHelper.colorFilter);
-            }else{
+            if (thirdHelper.normal_drawable_top_color != thirdHelper.def_color) {
+                thirdHelper.normal_drawable_top.mutate().setColorFilter(thirdHelper.normal_drawable_top_color, thirdHelper.colorFilter);
+            } else {
                 thirdHelper.normal_drawable_top.mutate().clearColorFilter();
             }
 
@@ -307,13 +306,12 @@ public class SetBackgroundUtil {
             stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable_top);
 
 
-
-            int w=stateListDrawable.getIntrinsicWidth();
-            int h=stateListDrawable.getIntrinsicHeight();
-            stateListDrawable.setBounds(0,thirdHelper.padding_top+0,getTopWH(w,h,thirdHelper)[0],thirdHelper.padding_top+getTopWH(w,h,thirdHelper)[1]);
-            myView.setCompoundDrawables(drawable0,stateListDrawable,drawable2,drawable3);
-        }else{
-            myView.setCompoundDrawables(drawable0,null,drawable2,drawable3);
+            int w = stateListDrawable.getIntrinsicWidth();
+            int h = stateListDrawable.getIntrinsicHeight();
+            stateListDrawable.setBounds(0, thirdHelper.padding_top + 0, getTopWH(w, h, thirdHelper)[0], thirdHelper.padding_top + getTopWH(w, h, thirdHelper)[1]);
+            myView.setCompoundDrawables(drawable0, stateListDrawable, drawable2, drawable3);
+        } else {
+            myView.setCompoundDrawables(drawable0, null, drawable2, drawable3);
         }
     }
 
@@ -327,15 +325,15 @@ public class SetBackgroundUtil {
         Drawable drawable3 = myView.getCompoundDrawables()[3];
         setNullColorFilter(drawable3);
 
-        if(thirdHelper.normal_drawable_left !=null&& thirdHelper.checked_drawable_left !=null){
-            if(thirdHelper.checked_drawable_left_color!=thirdHelper.def_color){
-                thirdHelper.checked_drawable_left.mutate().setColorFilter(thirdHelper.checked_drawable_left_color,thirdHelper.colorFilter);
-            }else{
+        if (thirdHelper.normal_drawable_left != null && thirdHelper.checked_drawable_left != null) {
+            if (thirdHelper.checked_drawable_left_color != thirdHelper.def_color) {
+                thirdHelper.checked_drawable_left.mutate().setColorFilter(thirdHelper.checked_drawable_left_color, thirdHelper.colorFilter);
+            } else {
                 thirdHelper.checked_drawable_left.mutate().clearColorFilter();
             }
-            if(thirdHelper.normal_drawable_left_color!=thirdHelper.def_color){
-                thirdHelper.normal_drawable_left.mutate().setColorFilter(thirdHelper.normal_drawable_left_color,thirdHelper.colorFilter);
-            }else{
+            if (thirdHelper.normal_drawable_left_color != thirdHelper.def_color) {
+                thirdHelper.normal_drawable_left.mutate().setColorFilter(thirdHelper.normal_drawable_left_color, thirdHelper.colorFilter);
+            } else {
                 thirdHelper.normal_drawable_left.mutate().clearColorFilter();
             }
             StateListDrawable stateListDrawable = new StateListDrawable();
@@ -345,57 +343,50 @@ public class SetBackgroundUtil {
 //            Drawable drawable0 = myView.getCompoundDrawables()[0];
 
 
-            int w=stateListDrawable.getIntrinsicWidth();
-            int h=stateListDrawable.getIntrinsicHeight();
-            stateListDrawable.setBounds(thirdHelper.padding_left+0,0,thirdHelper.padding_left+getLeftWH(w,h,thirdHelper)[0],getLeftWH(w,h,thirdHelper)[1]);
-            myView.setCompoundDrawables(stateListDrawable,drawable1,drawable2,drawable3);
-        }else{
-            myView.setCompoundDrawables(null,drawable1,drawable2,drawable3);
+            int w = stateListDrawable.getIntrinsicWidth();
+            int h = stateListDrawable.getIntrinsicHeight();
+            stateListDrawable.setBounds(thirdHelper.padding_left + 0, 0, thirdHelper.padding_left + getLeftWH(w, h, thirdHelper)[0], getLeftWH(w, h, thirdHelper)[1]);
+            myView.setCompoundDrawables(stateListDrawable, drawable1, drawable2, drawable3);
+        } else {
+            myView.setCompoundDrawables(null, drawable1, drawable2, drawable3);
         }
     }
+
     private static <T extends ThirdHelper> void setButtonDrawable(CompoundButton myView, T thirdHelper) {
-        Drawable drawable1 = myView.getCompoundDrawables()[1];
-        setNullColorFilter(drawable1);
 
-        Drawable drawable2 = myView.getCompoundDrawables()[2];
-        setNullColorFilter(drawable2);
-
-        Drawable drawable3 = myView.getCompoundDrawables()[3];
-        setNullColorFilter(drawable3);
-
-        if(thirdHelper.normal_drawable_left !=null&& thirdHelper.checked_drawable_left !=null){
-            if(thirdHelper.checked_drawable_left_color!=thirdHelper.def_color){
-                thirdHelper.checked_drawable_left.mutate().setColorFilter(thirdHelper.checked_drawable_left_color,thirdHelper.colorFilter);
-            }else{
-                thirdHelper.checked_drawable_left.mutate().clearColorFilter();
+        if (thirdHelper.normal_drawable != null && thirdHelper.checked_drawable != null) {
+            if (thirdHelper.checked_drawable_color != thirdHelper.def_color) {
+                thirdHelper.checked_drawable.mutate().setColorFilter(thirdHelper.checked_drawable_color, thirdHelper.colorFilter);
+            } else {
+                thirdHelper.checked_drawable.mutate().clearColorFilter();
             }
-            if(thirdHelper.normal_drawable_left_color!=thirdHelper.def_color){
-                thirdHelper.normal_drawable_left.mutate().setColorFilter(thirdHelper.normal_drawable_left_color,thirdHelper.colorFilter);
-            }else{
-                thirdHelper.normal_drawable_left.mutate().clearColorFilter();
+            if (thirdHelper.normal_drawable_color != thirdHelper.def_color) {
+                thirdHelper.normal_drawable.mutate().setColorFilter(thirdHelper.normal_drawable_color, thirdHelper.colorFilter);
+            } else {
+                thirdHelper.normal_drawable.mutate().clearColorFilter();
             }
             StateListDrawable stateListDrawable = new StateListDrawable();
-            stateListDrawable.addState(new int[]{android.R.attr.state_checked}, thirdHelper.checked_drawable_left);
-            stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable_left);
+            stateListDrawable.addState(new int[]{android.R.attr.state_checked}, thirdHelper.checked_drawable);
+            stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable);
 
 //            Drawable drawable0 = myView.getCompoundDrawables()[0];
 
 
-            int w=stateListDrawable.getIntrinsicWidth();
-            int h=stateListDrawable.getIntrinsicHeight();
-            stateListDrawable.setBounds(thirdHelper.padding_left+0,0,thirdHelper.padding_left+getLeftWH(w,h,thirdHelper)[0],getLeftWH(w,h,thirdHelper)[1]);
-            myView.setCompoundDrawables(stateListDrawable,drawable1,drawable2,drawable3);
-        }else{
-            myView.setCompoundDrawables(null,drawable1,drawable2,drawable3);
+//            int w = stateListDrawable.getIntrinsicWidth();
+//            int h = stateListDrawable.getIntrinsicHeight();
+//            stateListDrawable.setBounds( 0, 0,   getLeftWH(w, h, thirdHelper)[0], getLeftWH(w, h, thirdHelper)[1]);
+            myView.setButtonDrawable(stateListDrawable);
         }
     }
-    private static void setNullColorFilter(Drawable drawable){
+
+    private static void setNullColorFilter(Drawable drawable) {
         if (drawable != null) {
 //            drawable.setColorFilter(null);
         }
     }
-    public static<T extends FirstHelper>void noPartBorderNoPressColor(View myView,T firstHelper) {
-        GradientDrawable gradientDrawableNormal = getNoPartBorderNoPressColorGradientDrawable(true,firstHelper);
+
+    public static <T extends FirstHelper> void noPartBorderNoPressColor(View myView, T firstHelper) {
+        GradientDrawable gradientDrawableNormal = getNoPartBorderNoPressColorGradientDrawable(true, firstHelper);
 
         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             myView.setBackground(gradientDrawableNormal);
@@ -407,10 +398,10 @@ public class SetBackgroundUtil {
         myView.setBackground(gradientDrawableNormal);
     }
 
-    public static<T extends FirstHelper>void noPartBorderHasPressColor(View myView,T firstHelper) {
+    public static <T extends FirstHelper> void noPartBorderHasPressColor(View myView, T firstHelper) {
 
-        GradientDrawable gradientDrawableNormal = getNoPartBorderNoPressColorGradientDrawable(false,firstHelper);
-        GradientDrawable gradientDrawablePress = getNoPartBorderNoPressColorGradientDrawable(false,firstHelper);
+        GradientDrawable gradientDrawableNormal = getNoPartBorderNoPressColorGradientDrawable(false, firstHelper);
+        GradientDrawable gradientDrawablePress = getNoPartBorderNoPressColorGradientDrawable(false, firstHelper);
         gradientDrawablePress.setColor(firstHelper.pressColor);
 
 
@@ -427,7 +418,7 @@ public class SetBackgroundUtil {
         myView.setBackground(stateListDrawableForShape);
     }
 
-    public static<T extends FirstHelper>void hasPartBorderNoPressColor(View myView,T firstHelper) {
+    public static <T extends FirstHelper> void hasPartBorderNoPressColor(View myView, T firstHelper) {
         setBorderWidthForPartBorder(firstHelper);
 
         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -439,7 +430,7 @@ public class SetBackgroundUtil {
 
     }
 
-    public static<T extends FirstHelper>void hasPartBorderHasPressColor(View myView,T firstHelper) {
+    public static <T extends FirstHelper> void hasPartBorderHasPressColor(View myView, T firstHelper) {
         setBorderWidthForPartBorder(firstHelper);
 
 
@@ -472,7 +463,7 @@ public class SetBackgroundUtil {
         myView.setBackground(stateListDrawableForLayer);
     }
 
-    public static <T extends FirstHelper>GradientDrawable getHasPartBorderNoPressColorGradientDrawable(T firstHelper) {
+    public static <T extends FirstHelper> GradientDrawable getHasPartBorderNoPressColorGradientDrawable(T firstHelper) {
         //底层
         GradientDrawable layerDrawable = new GradientDrawable();
         layerDrawable.setShape(firstHelper.shapeType);
@@ -481,13 +472,13 @@ public class SetBackgroundUtil {
         layerDrawable.setColor(firstHelper.solidColor);
 
 
-        float[] fourRadius = new float[]{firstHelper.topLeftRadius, firstHelper.topLeftRadius, firstHelper.topRightRadius, firstHelper.topRightRadius, firstHelper.bottomRightRadius , firstHelper.bottomRightRadius , firstHelper.bottomLeftRadius , firstHelper.bottomLeftRadius};
+        float[] fourRadius = new float[]{firstHelper.topLeftRadius, firstHelper.topLeftRadius, firstHelper.topRightRadius, firstHelper.topRightRadius, firstHelper.bottomRightRadius, firstHelper.bottomRightRadius, firstHelper.bottomLeftRadius, firstHelper.bottomLeftRadius};
         layerDrawable.setCornerRadii(fourRadius);
 
         return layerDrawable;
     }
 
-    public static<T extends FirstHelper> GradientDrawable getHasPartBorderNoPressColorGradientDrawableNormal(T firstHelper) {
+    public static <T extends FirstHelper> GradientDrawable getHasPartBorderNoPressColorGradientDrawableNormal(T firstHelper) {
         //顶层
         GradientDrawable layerGradientDrawableNormal = new GradientDrawable();
         layerGradientDrawableNormal.setShape(firstHelper.shapeType);
@@ -505,7 +496,7 @@ public class SetBackgroundUtil {
         return layerGradientDrawableNormal;
     }
 
-    public static<T extends FirstHelper> LayerDrawable getHasPartBorderNoPressColorLayerDrawableNormal(T firstHelper) {
+    public static <T extends FirstHelper> LayerDrawable getHasPartBorderNoPressColorLayerDrawableNormal(T firstHelper) {
         GradientDrawable layerDrawable = getHasPartBorderNoPressColorGradientDrawable(firstHelper);
         GradientDrawable layerGradientDrawableNormal = getHasPartBorderNoPressColorGradientDrawableNormal(firstHelper);
 
@@ -519,7 +510,7 @@ public class SetBackgroundUtil {
         return layerDrawableNormal;
     }
 
-    protected static<T extends FirstHelper> void setBorderWidthForPartBorder(T firstHelper) {
+    protected static <T extends FirstHelper> void setBorderWidthForPartBorder(T firstHelper) {
         int[] partBorderWidth = new int[]{0, 0, 0, 0};
         if (firstHelper.left_line) {
             if (firstHelper.borderWidth == 0) {
@@ -557,15 +548,15 @@ public class SetBackgroundUtil {
                 firstHelper.borderColor = getDefBorderColor();
             }
         }
-        firstHelper.partBorderWidth=partBorderWidth;
+        firstHelper.partBorderWidth = partBorderWidth;
     }
 
-    public static<T extends FirstHelper>GradientDrawable getNoPartBorderNoPressColorGradientDrawable(boolean isSetGradientType,T firstHelper) {
+    public static <T extends FirstHelper> GradientDrawable getNoPartBorderNoPressColorGradientDrawable(boolean isSetGradientType, T firstHelper) {
         GradientDrawable gradientDrawableNormal = new GradientDrawable();
 
         gradientDrawableNormal.setShape(firstHelper.shapeType);
 
-        if (firstHelper.borderWidth >0) {
+        if (firstHelper.borderWidth > 0) {
             if (firstHelper.borderColor == Color.TRANSPARENT) {
                 firstHelper.borderColor = getDefBorderColor();
             }
@@ -582,13 +573,13 @@ public class SetBackgroundUtil {
                 firstHelper.bottomLeftRadius, firstHelper.bottomLeftRadius};
         gradientDrawableNormal.setCornerRadii(fourRadius);
         if (isSetGradientType) {
-            setDrawableGradientType(gradientDrawableNormal,firstHelper);
+            setDrawableGradientType(gradientDrawableNormal, firstHelper);
         }
 
         return gradientDrawableNormal;
     }
 
-    public static<T extends FirstHelper>void setDrawableGradientType(GradientDrawable gradientDrawableNormal,T firstHelper) {
+    public static <T extends FirstHelper> void setDrawableGradientType(GradientDrawable gradientDrawableNormal, T firstHelper) {
         if (firstHelper.gradientType != -1) {
             /*gradient属性*/
             gradientDrawableNormal.setGradientCenter(firstHelper.gradientCenterX, firstHelper.gradientCenterY);
@@ -646,59 +637,63 @@ public class SetBackgroundUtil {
     }
 
 
-    protected static<T extends SecondHelper>int[] getLeftWH(int width,int height,T secondHelper){
-        if(secondHelper.left_width>0&&secondHelper.left_height>0){
-            return new int[]{secondHelper.left_width,secondHelper.left_height};
-        }else if(secondHelper.left_width>0){
-            return new int[]{secondHelper.left_width, (int) chuFa(chengFa(secondHelper.left_width,height),width)};
-        }else if(secondHelper.left_height>0){
-            return new int[]{secondHelper.left_height, (int) chuFa(chengFa(secondHelper.left_height,width),height)};
-        }else{
-            return new int[]{width,height};
-        }
-    }
-    protected static<T extends SecondHelper>int[] getTopWH(int width,int height,T secondHelper){
-        if(secondHelper.top_width>0&&secondHelper.top_height>0){
-            return new int[]{secondHelper.top_width,secondHelper.top_height};
-        }else if(secondHelper.top_width>0){
-            return new int[]{secondHelper.top_width, (int) chuFa(chengFa(secondHelper.top_width,height),width)};
-        }else if(secondHelper.top_height>0){
-            return new int[]{secondHelper.top_height, (int) chuFa(chengFa(secondHelper.top_height,width),height)};
-        }else{
-            return new int[]{width,height};
-        }
-    }
-    protected static<T extends SecondHelper>int[] getRightWH(int width,int height,T secondHelper){
-        if(secondHelper.right_width>0&&secondHelper.right_height>0){
-            return new int[]{secondHelper.right_width,secondHelper.right_height};
-        }else if(secondHelper.right_width>0){
-            return new int[]{secondHelper.right_width, (int) chuFa(chengFa(secondHelper.right_width,height),width)};
-        }else if(secondHelper.right_height>0){
-            return new int[]{secondHelper.right_height, (int) chuFa(chengFa(secondHelper.right_height,width),height)};
-        }else{
-            return new int[]{width,height};
-        }
-    }
-    protected static<T extends SecondHelper>int[] getBottomWH(int width,int height,T secondHelper){
-        if(secondHelper.bottom_width>0&&secondHelper.bottom_height>0){
-            return new int[]{secondHelper.bottom_width,secondHelper.bottom_height};
-        }else if(secondHelper.bottom_width>0){
-            return new int[]{secondHelper.bottom_width, (int) chuFa(chengFa(secondHelper.bottom_width,height),width)};
-        }else if(secondHelper.bottom_height>0){
-            return new int[]{secondHelper.bottom_height, (int) chuFa(chengFa(secondHelper.bottom_height,width),height)};
-        }else{
-            return new int[]{width,height};
+    protected static <T extends SecondHelper> int[] getLeftWH(int width, int height, T secondHelper) {
+        if (secondHelper.left_width > 0 && secondHelper.left_height > 0) {
+            return new int[]{secondHelper.left_width, secondHelper.left_height};
+        } else if (secondHelper.left_width > 0) {
+            return new int[]{secondHelper.left_width, (int) chuFa(chengFa(secondHelper.left_width, height), width)};
+        } else if (secondHelper.left_height > 0) {
+            return new int[]{secondHelper.left_height, (int) chuFa(chengFa(secondHelper.left_height, width), height)};
+        } else {
+            return new int[]{width, height};
         }
     }
 
-    public static double chuFa(double d1,double d2) {
-        return chuFa(d1,d2,2);
+    protected static <T extends SecondHelper> int[] getTopWH(int width, int height, T secondHelper) {
+        if (secondHelper.top_width > 0 && secondHelper.top_height > 0) {
+            return new int[]{secondHelper.top_width, secondHelper.top_height};
+        } else if (secondHelper.top_width > 0) {
+            return new int[]{secondHelper.top_width, (int) chuFa(chengFa(secondHelper.top_width, height), width)};
+        } else if (secondHelper.top_height > 0) {
+            return new int[]{secondHelper.top_height, (int) chuFa(chengFa(secondHelper.top_height, width), height)};
+        } else {
+            return new int[]{width, height};
+        }
     }
-    private static double chuFa(double d1,double d2,int scale) {
+
+    protected static <T extends SecondHelper> int[] getRightWH(int width, int height, T secondHelper) {
+        if (secondHelper.right_width > 0 && secondHelper.right_height > 0) {
+            return new int[]{secondHelper.right_width, secondHelper.right_height};
+        } else if (secondHelper.right_width > 0) {
+            return new int[]{secondHelper.right_width, (int) chuFa(chengFa(secondHelper.right_width, height), width)};
+        } else if (secondHelper.right_height > 0) {
+            return new int[]{secondHelper.right_height, (int) chuFa(chengFa(secondHelper.right_height, width), height)};
+        } else {
+            return new int[]{width, height};
+        }
+    }
+
+    protected static <T extends SecondHelper> int[] getBottomWH(int width, int height, T secondHelper) {
+        if (secondHelper.bottom_width > 0 && secondHelper.bottom_height > 0) {
+            return new int[]{secondHelper.bottom_width, secondHelper.bottom_height};
+        } else if (secondHelper.bottom_width > 0) {
+            return new int[]{secondHelper.bottom_width, (int) chuFa(chengFa(secondHelper.bottom_width, height), width)};
+        } else if (secondHelper.bottom_height > 0) {
+            return new int[]{secondHelper.bottom_height, (int) chuFa(chengFa(secondHelper.bottom_height, width), height)};
+        } else {
+            return new int[]{width, height};
+        }
+    }
+
+    public static double chuFa(double d1, double d2) {
+        return chuFa(d1, d2, 2);
+    }
+
+    private static double chuFa(double d1, double d2, int scale) {
         //  当然在此之前，你要判断分母是否为0，
         //  为0你可以根据实际需求做相应的处理
         try {
-            if(d2==0){
+            if (d2 == 0) {
                 throw new Exception("分母不能为0");
             }
         } catch (Exception e) {
@@ -709,15 +704,18 @@ public class SetBackgroundUtil {
         return bd1.divide
                 (bd2, scale, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
-    public static double chengFa(double d1,double d2){
+
+    public static double chengFa(double d1, double d2) {
         BigDecimal bd1 = new BigDecimal(d1);
         BigDecimal bd2 = new BigDecimal(d2);
         return round(bd1.multiply(bd2).doubleValue());
     }
+
     protected static double round(double value) {
-        return round(value,2, BigDecimal.ROUND_HALF_UP);
+        return round(value, 2, BigDecimal.ROUND_HALF_UP);
     }
-    protected static double round(double value, int scale,int roundingMode) {
+
+    protected static double round(double value, int scale, int roundingMode) {
         BigDecimal bd = new BigDecimal(value);
         bd = bd.setScale(scale, roundingMode);
         double d = bd.doubleValue();
