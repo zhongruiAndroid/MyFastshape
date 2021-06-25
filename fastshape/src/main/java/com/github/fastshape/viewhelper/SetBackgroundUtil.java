@@ -211,12 +211,12 @@ public class SetBackgroundUtil {
 //            Drawable drawable3 = myView.getCompoundDrawables()[3];
         if(thirdHelper.normal_drawable_bottom !=null&& thirdHelper.checked_drawable_bottom !=null){
             /*设置颜色过滤*/
-            if(thirdHelper.checked_drawable_bottom_color!=-1){
+            if(thirdHelper.checked_drawable_bottom_color!=thirdHelper.def_color){
                 thirdHelper.checked_drawable_bottom.mutate().setColorFilter(thirdHelper.checked_drawable_bottom_color,thirdHelper.colorFilter);
             }else{
                 thirdHelper.checked_drawable_bottom.mutate().clearColorFilter();
             }
-            if(thirdHelper.normal_drawable_bottom_color!=-1){
+            if(thirdHelper.normal_drawable_bottom_color!=thirdHelper.def_color){
                 thirdHelper.normal_drawable_bottom.mutate().setColorFilter(thirdHelper.normal_drawable_bottom_color,thirdHelper.colorFilter);
             }else{
                 thirdHelper.normal_drawable_bottom.mutate().clearColorFilter();
@@ -251,12 +251,12 @@ public class SetBackgroundUtil {
 
         if(thirdHelper.normal_drawable_right !=null&& thirdHelper.checked_drawable_right !=null){
             /*设置颜色过滤*/
-            if(thirdHelper.checked_drawable_right_color!=-1){
+            if(thirdHelper.checked_drawable_right_color!=thirdHelper.def_color){
                 thirdHelper.checked_drawable_right.mutate().setColorFilter(thirdHelper.checked_drawable_right_color,thirdHelper.colorFilter);
             }else{
                 thirdHelper.checked_drawable_right.mutate().clearColorFilter();
             }
-            if(thirdHelper.normal_drawable_right_color!=-1){
+            if(thirdHelper.normal_drawable_right_color!=thirdHelper.def_color){
                 thirdHelper.normal_drawable_right.mutate().setColorFilter(thirdHelper.normal_drawable_right_color,thirdHelper.colorFilter);
             }else{
                 thirdHelper.normal_drawable_right.mutate().clearColorFilter();
@@ -291,12 +291,12 @@ public class SetBackgroundUtil {
 
         if(thirdHelper.normal_drawable_top !=null&& thirdHelper.checked_drawable_top !=null){
             /*设置颜色过滤*/
-            if(thirdHelper.checked_drawable_top_color!=-1){
+            if(thirdHelper.checked_drawable_top_color!=thirdHelper.def_color){
                 thirdHelper.checked_drawable_top.mutate().setColorFilter(thirdHelper.checked_drawable_top_color,thirdHelper.colorFilter);
             }else{
                 thirdHelper.checked_drawable_top.mutate().clearColorFilter();
             }
-            if(thirdHelper.normal_drawable_top_color!=-1){
+            if(thirdHelper.normal_drawable_top_color!=thirdHelper.def_color){
                 thirdHelper.normal_drawable_top.mutate().setColorFilter(thirdHelper.normal_drawable_top_color,thirdHelper.colorFilter);
             }else{
                 thirdHelper.normal_drawable_top.mutate().clearColorFilter();
@@ -328,12 +328,48 @@ public class SetBackgroundUtil {
         setNullColorFilter(drawable3);
 
         if(thirdHelper.normal_drawable_left !=null&& thirdHelper.checked_drawable_left !=null){
-            if(thirdHelper.checked_drawable_left_color!=-1){
+            if(thirdHelper.checked_drawable_left_color!=thirdHelper.def_color){
                 thirdHelper.checked_drawable_left.mutate().setColorFilter(thirdHelper.checked_drawable_left_color,thirdHelper.colorFilter);
             }else{
                 thirdHelper.checked_drawable_left.mutate().clearColorFilter();
             }
-            if(thirdHelper.normal_drawable_left_color!=-1){
+            if(thirdHelper.normal_drawable_left_color!=thirdHelper.def_color){
+                thirdHelper.normal_drawable_left.mutate().setColorFilter(thirdHelper.normal_drawable_left_color,thirdHelper.colorFilter);
+            }else{
+                thirdHelper.normal_drawable_left.mutate().clearColorFilter();
+            }
+            StateListDrawable stateListDrawable = new StateListDrawable();
+            stateListDrawable.addState(new int[]{android.R.attr.state_checked}, thirdHelper.checked_drawable_left);
+            stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable_left);
+
+//            Drawable drawable0 = myView.getCompoundDrawables()[0];
+
+
+            int w=stateListDrawable.getIntrinsicWidth();
+            int h=stateListDrawable.getIntrinsicHeight();
+            stateListDrawable.setBounds(thirdHelper.padding_left+0,0,thirdHelper.padding_left+getLeftWH(w,h,thirdHelper)[0],getLeftWH(w,h,thirdHelper)[1]);
+            myView.setCompoundDrawables(stateListDrawable,drawable1,drawable2,drawable3);
+        }else{
+            myView.setCompoundDrawables(null,drawable1,drawable2,drawable3);
+        }
+    }
+    private static <T extends ThirdHelper> void setButtonDrawable(CompoundButton myView, T thirdHelper) {
+        Drawable drawable1 = myView.getCompoundDrawables()[1];
+        setNullColorFilter(drawable1);
+
+        Drawable drawable2 = myView.getCompoundDrawables()[2];
+        setNullColorFilter(drawable2);
+
+        Drawable drawable3 = myView.getCompoundDrawables()[3];
+        setNullColorFilter(drawable3);
+
+        if(thirdHelper.normal_drawable_left !=null&& thirdHelper.checked_drawable_left !=null){
+            if(thirdHelper.checked_drawable_left_color!=thirdHelper.def_color){
+                thirdHelper.checked_drawable_left.mutate().setColorFilter(thirdHelper.checked_drawable_left_color,thirdHelper.colorFilter);
+            }else{
+                thirdHelper.checked_drawable_left.mutate().clearColorFilter();
+            }
+            if(thirdHelper.normal_drawable_left_color!=thirdHelper.def_color){
                 thirdHelper.normal_drawable_left.mutate().setColorFilter(thirdHelper.normal_drawable_left_color,thirdHelper.colorFilter);
             }else{
                 thirdHelper.normal_drawable_left.mutate().clearColorFilter();

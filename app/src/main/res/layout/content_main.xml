@@ -364,10 +364,15 @@
                 >
 
                 <com.github.fastshape.MyCheckBox
+                    android:id="@+id/test"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="Android"
+                    android:text="Android2"
+                    app:normal_drawable_left="@mipmap/ic_launcher"
+                    app:checked_drawable_left="@mipmap/ic_launcher"
+                    app:checked_drawable_left_color="@color/white"
+                    app:normal_drawable_left_color="@color/white"
                     />
 
                 <com.github.fastshape.MyCheckBox

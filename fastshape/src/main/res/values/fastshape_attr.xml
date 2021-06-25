@@ -108,6 +108,13 @@
         <attr name="checked_drawable_bottom"/>
         <attr name="normal_drawable_bottom_color"/>
         <attr name="checked_drawable_bottom_color"/>
+
+
+        <attr name="normal_drawable"  />
+        <attr name="checked_drawable"  />
+        <attr name="normal_drawable_color"  />
+        <attr name="checked_drawable_color"  />
+
         <attr name="normal_textColor"/>
         <attr name="checked_textColor"/>
 
@@ -187,6 +194,13 @@
         <attr name="checked_drawable_bottom"/>
         <attr name="normal_drawable_bottom_color"/>
         <attr name="checked_drawable_bottom_color"/>
+
+
+        <attr name="normal_drawable"  />
+        <attr name="checked_drawable"  />
+        <attr name="normal_drawable_color"  />
+        <attr name="checked_drawable_color"  />
+
         <attr name="normal_textColor"/>
         <attr name="checked_textColor"/>
 
@@ -692,6 +706,12 @@
     <attr name="normal_drawable_bottom_color" format="color"/>
     <attr name="checked_drawable_bottom_color" format="color"/>
 
+
+    <attr name="normal_drawable" format="reference"/>
+    <attr name="checked_drawable" format="reference"/>
+    <attr name="normal_drawable_color" format="color"/>
+    <attr name="checked_drawable_color" format="color"/>
+
     <attr name="normal_textColor" format="color"/>
     <attr name="checked_textColor" format="color"/>
 
@@ -822,6 +842,13 @@
         <attr name="checked_drawable_bottom"/>
         <attr name="normal_drawable_bottom_color"/>
         <attr name="checked_drawable_bottom_color"/>
+
+
+        <attr name="normal_drawable"  />
+        <attr name="checked_drawable"  />
+        <attr name="normal_drawable_color"  />
+        <attr name="checked_drawable_color"  />
+
         <attr name="normal_textColor"/>
         <attr name="checked_textColor"/>
 

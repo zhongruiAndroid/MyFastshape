@@ -1,12 +1,15 @@
 package com.test.fastshape;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.View;
+import android.widget.CheckBox;
 
+import com.github.fastshape.MyCheckBox;
 import com.test.fastshape.test.ShapeTestListActivity;
 
 
@@ -29,5 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        CheckBox box=null;
+        MyCheckBox  test = findViewById(R.id.test);
+        test.setTextColor(0);
+        test.setBackgroundColor(Color.BLACK);
+//        box.setButtonDrawable();
     }
 }
