@@ -37,6 +37,13 @@ public class ThirdHelper extends SecondHelper {
     protected int normal_drawable_bottom_color;
     protected int checked_drawable_bottom_color;
 
+    protected Drawable normal_drawable;
+    protected Drawable checked_drawable;
+    protected int normal_drawable_color;
+    protected int checked_drawable_color;
+
+
+
     /*设置normal和check状态的文字颜色*/
     protected int normal_textColor;
     protected int checked_textColor;
@@ -88,20 +95,26 @@ public class ThirdHelper extends SecondHelper {
        normal_drawable_bottom=  viewNormal.getDrawable(R.styleable.FastShapeAttr_normal_drawable_bottom);
        checked_drawable_bottom =   viewNormal.getDrawable(R.styleable.FastShapeAttr_checked_drawable_bottom);
 
+       normal_drawable=  viewNormal.getDrawable(R.styleable.FastShapeAttr_normal_drawable);
+       checked_drawable =   viewNormal.getDrawable(R.styleable.FastShapeAttr_checked_drawable);
 
 
 
-        normal_drawable_left_color =  viewNormal.getColor(R.styleable.FastShapeAttr_normal_drawable_left_color,-1);
-        checked_drawable_left_color =  viewNormal.getColor(R.styleable.FastShapeAttr_checked_drawable_left_color,-1);
 
-        normal_drawable_top_color =  viewNormal.getColor(R.styleable.FastShapeAttr_normal_drawable_top_color,-1);
-        checked_drawable_top_color =  viewNormal.getColor(R.styleable.FastShapeAttr_checked_drawable_top_color,-1);
+        normal_drawable_left_color =  viewNormal.getColor(R.styleable.FastShapeAttr_normal_drawable_left_color,def_color);
+        checked_drawable_left_color =  viewNormal.getColor(R.styleable.FastShapeAttr_checked_drawable_left_color,def_color);
 
-        normal_drawable_right_color =  viewNormal.getColor(R.styleable.FastShapeAttr_normal_drawable_right_color,-1);
-        checked_drawable_right_color =  viewNormal.getColor(R.styleable.FastShapeAttr_checked_drawable_right_color,-1);
+        normal_drawable_top_color =  viewNormal.getColor(R.styleable.FastShapeAttr_normal_drawable_top_color,def_color);
+        checked_drawable_top_color =  viewNormal.getColor(R.styleable.FastShapeAttr_checked_drawable_top_color,def_color);
 
-        normal_drawable_bottom_color =  viewNormal.getColor(R.styleable.FastShapeAttr_normal_drawable_bottom_color,-1);
-        checked_drawable_bottom_color =  viewNormal.getColor(R.styleable.FastShapeAttr_checked_drawable_bottom_color,-1);
+        normal_drawable_right_color =  viewNormal.getColor(R.styleable.FastShapeAttr_normal_drawable_right_color,def_color);
+        checked_drawable_right_color =  viewNormal.getColor(R.styleable.FastShapeAttr_checked_drawable_right_color,def_color);
+
+        normal_drawable_bottom_color =  viewNormal.getColor(R.styleable.FastShapeAttr_normal_drawable_bottom_color,def_color);
+        checked_drawable_bottom_color =  viewNormal.getColor(R.styleable.FastShapeAttr_checked_drawable_bottom_color,def_color);
+
+        normal_drawable_color =  viewNormal.getColor(R.styleable.FastShapeAttr_normal_drawable_color,def_color);
+        checked_drawable_color =  viewNormal.getColor(R.styleable.FastShapeAttr_checked_drawable_color,def_color);
 
         int filter =  viewNormal.getInt(R.styleable.FastShapeAttr_colorFilter,-1);
         this.colorFilter=setPorterDuff(filter);
@@ -204,6 +217,42 @@ public class ThirdHelper extends SecondHelper {
 
     public ThirdHelper setNormal_drawable_bottom(Drawable normal_drawable_bottom) {
         this.normal_drawable_bottom = normal_drawable_bottom;
+        return this;
+    }
+
+    public Drawable getNormal_drawable() {
+        return normal_drawable;
+    }
+
+    public ThirdHelper setNormal_drawable(Drawable normal_drawable) {
+        this.normal_drawable = normal_drawable;
+        return this;
+    }
+
+    public Drawable getChecked_drawable() {
+        return checked_drawable;
+    }
+
+    public ThirdHelper setChecked_drawable(Drawable checked_drawable) {
+        this.checked_drawable = checked_drawable;
+        return this;
+    }
+
+    public int getNormal_drawable_color() {
+        return normal_drawable_color;
+    }
+
+    public ThirdHelper setNormal_drawable_color(int normal_drawable_color) {
+        this.normal_drawable_color = normal_drawable_color;
+        return this;
+    }
+
+    public int getChecked_drawable_color() {
+        return checked_drawable_color;
+    }
+
+    public ThirdHelper setChecked_drawable_color(int checked_drawable_color) {
+        this.checked_drawable_color = checked_drawable_color;
         return this;
     }
 

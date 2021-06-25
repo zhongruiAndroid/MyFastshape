@@ -21,6 +21,7 @@ import com.github.fastshape.inter.CompleteInter;
  *   created by zhongrui on 2018/12/29
  */
 public class ClipHelper implements ClipInter<ClipHelper> {
+    public final int def_color=0;
     protected CompleteInter completeInter;
     /*是否启用裁剪*/
     protected boolean clipSwitch;
