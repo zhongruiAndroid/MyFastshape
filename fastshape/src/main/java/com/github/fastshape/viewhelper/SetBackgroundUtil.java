@@ -2,6 +2,7 @@ package com.github.fastshape.viewhelper;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 
 import static com.github.fastshape.viewhelper.FirstHelper.gradientType_radial;
@@ -107,29 +109,33 @@ public class SetBackgroundUtil {
         if (drawable0 != null) {
             int width = drawable0.getIntrinsicWidth();
             int height = drawable0.getIntrinsicHeight();
-            drawable0.setBounds(0, 0, getLeftWH(width, height, secondHelper)[0], getLeftWH(width, height, secondHelper)[1]);
+            int[] leftWH = getDrawableResultWH(width, height, secondHelper.left_width, secondHelper.left_height);
+            drawable0.setBounds(0, 0, leftWH[0], leftWH[1]);
         }
         if (drawable1 != null) {
             int width = drawable1.getIntrinsicWidth();
             int height = drawable1.getIntrinsicHeight();
-            drawable1.setBounds(0, 0, getTopWH(width, height, secondHelper)[0], getTopWH(width, height, secondHelper)[1]);
+            int[] topWH = getDrawableResultWH(width, height, secondHelper.top_width, secondHelper.top_height);
+            drawable1.setBounds(0, 0, topWH[0], topWH[1]);
         }
         if (drawable2 != null) {
             int width = drawable2.getIntrinsicWidth();
             int height = drawable2.getIntrinsicHeight();
-            drawable2.setBounds(0, 0, getRightWH(width, height, secondHelper)[0], getRightWH(width, height, secondHelper)[1]);
+            int[] rightWH = getDrawableResultWH(width, height, secondHelper.right_width, secondHelper.right_height);
+            drawable2.setBounds(0, 0, rightWH[0], rightWH[1]);
         }
         if (drawable3 != null) {
             int width = drawable3.getIntrinsicWidth();
             int height = drawable3.getIntrinsicHeight();
-            drawable3.setBounds(0, 0, getBottomWH(width, height, secondHelper)[0], getBottomWH(width, height, secondHelper)[1]);
+            int[] bottomWH = getDrawableResultWH(width, height, secondHelper.bottom_width, secondHelper.bottom_height);
+            drawable3.setBounds(0, 0, bottomWH[0], bottomWH[1]);
         }
 
         myView.setCompoundDrawables(drawable0, drawable1, drawable2, drawable3);
     }
 
     public static <T extends ThirdHelper> void setCompoundDrawables(CompoundButton myView, T thirdHelper) {
-        setButtonDrawable(myView,thirdHelper);
+        setButtonDrawable(myView, thirdHelper);
         setLeftDrawable(myView, thirdHelper);
         setTopDrawable(myView, thirdHelper);
         setRightDrawable(myView, thirdHelper);
@@ -231,7 +237,8 @@ public class SetBackgroundUtil {
 
             int w = stateListDrawable.getIntrinsicWidth();
             int h = stateListDrawable.getIntrinsicHeight();
-            stateListDrawable.setBounds(0, 0 - thirdHelper.padding_bottom, getBottomWH(w, h, thirdHelper)[0], getBottomWH(w, h, thirdHelper)[1] - thirdHelper.padding_bottom);
+            int[] drawableResultWH = getDrawableResultWH(w, h, thirdHelper.bottom_width, thirdHelper.bottom_height);
+            stateListDrawable.setBounds(0, 0 - thirdHelper.padding_bottom, drawableResultWH[0], drawableResultWH[1] - thirdHelper.padding_bottom);
             myView.setCompoundDrawables(drawable0, drawable1, drawable2, stateListDrawable);
         } else {
             myView.setCompoundDrawables(drawable0, drawable1, drawable2, null);
@@ -270,7 +277,8 @@ public class SetBackgroundUtil {
 
             int w = stateListDrawable.getIntrinsicWidth();
             int h = stateListDrawable.getIntrinsicHeight();
-            stateListDrawable.setBounds(0 - thirdHelper.padding_right, 0, getRightWH(w, h, thirdHelper)[0] - thirdHelper.padding_right, getRightWH(w, h, thirdHelper)[1]);
+            int[] drawableResultWH = getDrawableResultWH(w, h, thirdHelper.right_width, thirdHelper.right_height);
+            stateListDrawable.setBounds(0 - thirdHelper.padding_right, 0, drawableResultWH[0] - thirdHelper.padding_right, drawableResultWH[1]);
             myView.setCompoundDrawables(drawable0, drawable1, stateListDrawable, drawable3);
         } else {
             myView.setCompoundDrawables(drawable0, drawable1, null, drawable3);
@@ -308,7 +316,8 @@ public class SetBackgroundUtil {
 
             int w = stateListDrawable.getIntrinsicWidth();
             int h = stateListDrawable.getIntrinsicHeight();
-            stateListDrawable.setBounds(0, thirdHelper.padding_top + 0, getTopWH(w, h, thirdHelper)[0], thirdHelper.padding_top + getTopWH(w, h, thirdHelper)[1]);
+            int[] drawableResultWH = getDrawableResultWH(w, h, thirdHelper.top_width, thirdHelper.top_height);
+            stateListDrawable.setBounds(0, thirdHelper.padding_top, drawableResultWH[0], thirdHelper.padding_top + drawableResultWH[1]);
             myView.setCompoundDrawables(drawable0, stateListDrawable, drawable2, drawable3);
         } else {
             myView.setCompoundDrawables(drawable0, null, drawable2, drawable3);
@@ -345,7 +354,8 @@ public class SetBackgroundUtil {
 
             int w = stateListDrawable.getIntrinsicWidth();
             int h = stateListDrawable.getIntrinsicHeight();
-            stateListDrawable.setBounds(thirdHelper.padding_left + 0, 0, thirdHelper.padding_left + getLeftWH(w, h, thirdHelper)[0], getLeftWH(w, h, thirdHelper)[1]);
+            int[] drawableResultWH = getDrawableResultWH(w, h, thirdHelper.left_width, thirdHelper.left_height);
+            stateListDrawable.setBounds(thirdHelper.padding_left, 0, thirdHelper.padding_left + drawableResultWH[0], drawableResultWH[1]);
             myView.setCompoundDrawables(stateListDrawable, drawable1, drawable2, drawable3);
         } else {
             myView.setCompoundDrawables(null, drawable1, drawable2, drawable3);
@@ -365,16 +375,41 @@ public class SetBackgroundUtil {
             } else {
                 thirdHelper.normal_drawable.mutate().clearColorFilter();
             }
+            if (thirdHelper.button_width > 0 || thirdHelper.bottom_height > 0) {
+                int w = thirdHelper.checked_drawable.getIntrinsicWidth();
+                int h = thirdHelper.checked_drawable.getIntrinsicHeight();
+                int[] drawableResultWH = getDrawableResultWH(w, h, thirdHelper.button_width, thirdHelper.button_height);
+                thirdHelper.checked_drawable.setBounds(0, 0, drawableResultWH[0], drawableResultWH[1]);
+                thirdHelper.normal_drawable.setBounds(0, 0, drawableResultWH[0], drawableResultWH[1]);
+                if (thirdHelper.checked_drawable instanceof BitmapDrawable && thirdHelper.normal_drawable instanceof BitmapDrawable) {
+                    try {
+                        Field mBitmapWidth = thirdHelper.checked_drawable.getClass().getDeclaredField("mBitmapWidth");
+                        mBitmapWidth.setAccessible(true);
+                        mBitmapWidth.set(thirdHelper.checked_drawable, drawableResultWH[0]);
+
+                        Field mBitmapHeight = thirdHelper.checked_drawable.getClass().getDeclaredField("mBitmapHeight");
+                        mBitmapHeight.setAccessible(true);
+                        mBitmapHeight.set(thirdHelper.checked_drawable, drawableResultWH[1]);
+
+                        Field mBitmapWidth2 = thirdHelper.normal_drawable.getClass().getDeclaredField("mBitmapWidth");
+                        mBitmapWidth2.setAccessible(true);
+                        mBitmapWidth2.set(thirdHelper.normal_drawable, drawableResultWH[0]);
+
+                        Field mBitmapHeight2 = thirdHelper.normal_drawable.getClass().getDeclaredField("mBitmapHeight");
+                        mBitmapHeight2.setAccessible(true);
+                        mBitmapHeight2.set(thirdHelper.normal_drawable, drawableResultWH[1]);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
             StateListDrawable stateListDrawable = new StateListDrawable();
             stateListDrawable.addState(new int[]{android.R.attr.state_checked}, thirdHelper.checked_drawable);
             stateListDrawable.addState(new int[]{}, thirdHelper.normal_drawable);
 
-//            Drawable drawable0 = myView.getCompoundDrawables()[0];
 
-
-//            int w = stateListDrawable.getIntrinsicWidth();
-//            int h = stateListDrawable.getIntrinsicHeight();
-//            stateListDrawable.setBounds( 0, 0,   getLeftWH(w, h, thirdHelper)[0], getLeftWH(w, h, thirdHelper)[1]);
             myView.setButtonDrawable(stateListDrawable);
         }
     }
@@ -636,52 +671,15 @@ public class SetBackgroundUtil {
         return orientation;
     }
 
-
-    protected static <T extends SecondHelper> int[] getLeftWH(int width, int height, T secondHelper) {
-        if (secondHelper.left_width > 0 && secondHelper.left_height > 0) {
-            return new int[]{secondHelper.left_width, secondHelper.left_height};
-        } else if (secondHelper.left_width > 0) {
-            return new int[]{secondHelper.left_width, (int) chuFa(chengFa(secondHelper.left_width, height), width)};
-        } else if (secondHelper.left_height > 0) {
-            return new int[]{secondHelper.left_height, (int) chuFa(chengFa(secondHelper.left_height, width), height)};
+    protected static int[] getDrawableResultWH(int drawableWidth, int drawableHeight, int settingWidth, int settingHeight) {
+        if (settingWidth > 0 && settingHeight > 0) {
+            return new int[]{settingWidth, settingHeight};
+        } else if (settingWidth > 0) {
+            return new int[]{settingWidth, (int) chuFa(chengFa(settingWidth, drawableHeight), drawableWidth)};
+        } else if (settingHeight > 0) {
+            return new int[]{settingHeight, (int) chuFa(chengFa(settingHeight, drawableWidth), drawableHeight)};
         } else {
-            return new int[]{width, height};
-        }
-    }
-
-    protected static <T extends SecondHelper> int[] getTopWH(int width, int height, T secondHelper) {
-        if (secondHelper.top_width > 0 && secondHelper.top_height > 0) {
-            return new int[]{secondHelper.top_width, secondHelper.top_height};
-        } else if (secondHelper.top_width > 0) {
-            return new int[]{secondHelper.top_width, (int) chuFa(chengFa(secondHelper.top_width, height), width)};
-        } else if (secondHelper.top_height > 0) {
-            return new int[]{secondHelper.top_height, (int) chuFa(chengFa(secondHelper.top_height, width), height)};
-        } else {
-            return new int[]{width, height};
-        }
-    }
-
-    protected static <T extends SecondHelper> int[] getRightWH(int width, int height, T secondHelper) {
-        if (secondHelper.right_width > 0 && secondHelper.right_height > 0) {
-            return new int[]{secondHelper.right_width, secondHelper.right_height};
-        } else if (secondHelper.right_width > 0) {
-            return new int[]{secondHelper.right_width, (int) chuFa(chengFa(secondHelper.right_width, height), width)};
-        } else if (secondHelper.right_height > 0) {
-            return new int[]{secondHelper.right_height, (int) chuFa(chengFa(secondHelper.right_height, width), height)};
-        } else {
-            return new int[]{width, height};
-        }
-    }
-
-    protected static <T extends SecondHelper> int[] getBottomWH(int width, int height, T secondHelper) {
-        if (secondHelper.bottom_width > 0 && secondHelper.bottom_height > 0) {
-            return new int[]{secondHelper.bottom_width, secondHelper.bottom_height};
-        } else if (secondHelper.bottom_width > 0) {
-            return new int[]{secondHelper.bottom_width, (int) chuFa(chengFa(secondHelper.bottom_width, height), width)};
-        } else if (secondHelper.bottom_height > 0) {
-            return new int[]{secondHelper.bottom_height, (int) chuFa(chengFa(secondHelper.bottom_height, width), height)};
-        } else {
-            return new int[]{width, height};
+            return new int[]{drawableWidth, drawableHeight};
         }
     }
 
