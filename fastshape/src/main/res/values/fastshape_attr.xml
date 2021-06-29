@@ -158,6 +158,8 @@
         <attr name="gradientRadius"/><!--渐变的半径。仅在 android:type="radial" 时适用。-->
         <attr name="gradientType"/>
 
+        <attr name="button_width"/>
+        <attr name="button_height"/>
 
         <attr name="left_width"/>
         <attr name="left_height"/>
@@ -244,6 +246,8 @@
         <attr name="gradientRadius"/><!--渐变的半径。仅在 android:type="radial" 时适用。-->
         <attr name="gradientType"/>
 
+        <attr name="button_width"/>
+        <attr name="button_height"/>
 
         <attr name="left_width"/>
         <attr name="left_height"/>
@@ -721,6 +725,9 @@
     <attr name="padding_right" format="dimension"/>
     <attr name="padding_bottom" format="dimension"/>
 
+    <attr name="button_width" format="dimension"/>
+    <attr name="button_height" format="dimension"/>
+
     <attr name="left_width" format="dimension"/>
     <attr name="left_height" format="dimension"/>
 
@@ -806,6 +813,8 @@
 
 
         <!--start  MyTextView，MyButton，MyCheckBox，MyRadioButton公共属性-->
+        <attr name="button_width"/>
+        <attr name="button_height"/>
         <attr name="left_width"/>
         <attr name="left_height"/>
 
