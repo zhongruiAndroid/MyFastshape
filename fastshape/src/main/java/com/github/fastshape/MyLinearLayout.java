@@ -119,6 +119,7 @@ public class MyLinearLayout extends LinearLayout {
         } else {
             super.draw(canvas);
         }
+//        viewHelper.test(canvas);
     }
 
     @Override
@@ -137,7 +138,7 @@ public class MyLinearLayout extends LinearLayout {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_UP) {
             if (viewHelper != null && viewHelper.getClipIsAreaClick() && viewHelper.getClipSwitch()) {
-                if (viewHelper.onTouchEvent(ev) == false) {//如果这个地方返回true会导致点击事件失效
+                if (!viewHelper.onTouchEvent(ev)) {//如果这个地方返回true会导致点击事件失效
                     return false;
                 }
             }
