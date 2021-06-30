@@ -8,8 +8,10 @@ import android.graphics.Path;
 import android.graphics.PathEffect;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Region;
+import android.graphics.RegionIterator;
 import android.graphics.Shader;
 import android.os.Build;
 import android.view.MotionEvent;
@@ -21,7 +23,7 @@ import com.github.fastshape.inter.CompleteInter;
  *   created by zhongrui on 2018/12/29
  */
 public class ClipHelper implements ClipInter<ClipHelper> {
-    public final int def_color=0;
+    public final int def_color = 0;
     protected CompleteInter completeInter;
     /*是否启用裁剪*/
     protected boolean clipSwitch;
@@ -52,23 +54,23 @@ public class ClipHelper implements ClipInter<ClipHelper> {
     protected int clipBorderPhase;
 
 
-    public Paint clipPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
-    protected Paint clipBorderPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
-    protected Paint clipBorderDashBgPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
-    protected Paint clipClearPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
+    public Paint clipPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    protected Paint clipBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    protected Paint clipBorderDashBgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    protected Paint clipClearPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-    public Path clipPath=new Path();
-    private Path tempPath=new Path();
-    protected Path clipBorderPath=new Path();
-    protected Region viewRegion= new Region();
-    protected Region clickRegion= new Region();
+    public Path clipPath = new Path();
+    private Path tempPath = new Path();
+    protected Path clipBorderPath = new Path();
+    protected Region viewRegion = new Region();
+    protected Region clickRegion = new Region();
 
     protected Shader shader;
     protected PathEffect pathEffect;
 
 
     public void onSizeChanged() {
-        if(clickRegion==null){
+        if (clickRegion == null) {
             clickRegion = new Region();
         }
 
@@ -100,16 +102,17 @@ public class ClipHelper implements ClipInter<ClipHelper> {
             bottom = 0;
         }
 
-        if (viewRegion == null) {
-            viewRegion = new Region(0, 0, w, h);
-        }
+        /*因为初始化时已经实例化了，这里如果判断为空，则不会执行，导致构造函数参数无法传递，影响区域点击事件判断*/
+//        if (viewRegion == null) {
+        viewRegion = new Region(0, 0, w, h);
+//        }
 
         clipPaint.setColor(Color.WHITE);
 //        clipPaint.setFilterBitmap(false);
 //        completeInter!=null;
-        if((completeInter!=null&&completeInter.isEditMode())||Build.VERSION.SDK_INT<=Build.VERSION_CODES.O_MR1){
+        if ((completeInter != null && completeInter.isEditMode()) || Build.VERSION.SDK_INT <= Build.VERSION_CODES.O_MR1) {
             clipPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-        }else{
+        } else {
             clipPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
         }
 
@@ -169,9 +172,9 @@ public class ClipHelper implements ClipInter<ClipHelper> {
         clipPath.moveTo(w, h);
 
 
-        if((completeInter!=null&&completeInter.isEditMode())||Build.VERSION.SDK_INT<=Build.VERSION_CODES.O_MR1) {
+        if ((completeInter != null && completeInter.isEditMode()) || Build.VERSION.SDK_INT <= Build.VERSION_CODES.O_MR1) {
 
-        }else{
+        } else {
             //Build.VERSION.SDK_INT>=28
             if (tempPath == null) {
                 tempPath = new Path();
@@ -186,10 +189,26 @@ public class ClipHelper implements ClipInter<ClipHelper> {
     }
 
     /*裁剪背景*/
-    public void clipBg( Canvas canvas) {
+    public void clipBg(Canvas canvas) {
         //通过setXfermode裁剪出需要显示部分区域
         canvas.drawPath(clipPath, clipPaint);
     }
+
+    /*Paint testPaint = new Paint();
+    public void test(Canvas canvas) {
+        testPaint.setColor(Color.BLUE);
+        testPaint.setStyle(Paint.Style.FILL);
+        drawRegion(canvas, clickRegion, testPaint);
+    }*/
+
+    private void drawRegion(Canvas canvas, Region rgn, Paint paint) {
+        RegionIterator iter = new RegionIterator(rgn);
+        Rect r = new Rect();
+        while (iter.next(r)) {
+            canvas.drawRect(r, paint);
+        }
+    }
+
     /*裁剪内容*/
     public void dispatchDrawEnd(int saveLayerCount, Canvas canvas) {
         if (clipBorderWidth > 0) {
@@ -259,7 +278,7 @@ public class ClipHelper implements ClipInter<ClipHelper> {
         clipBorderDashWidth = 0;
         clipBorderDashGap = 0;
         clipBorderDashBgColor = Color.TRANSPARENT;
-        clipBorderPhase=0;
+        clipBorderPhase = 0;
         return this;
     }
 
