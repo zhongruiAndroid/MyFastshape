@@ -72,6 +72,8 @@ public class ClipHelper implements ClipInter<ClipHelper> {
     public void onSizeChanged() {
         if (clickRegion == null) {
             clickRegion = new Region();
+        }else{
+            clickRegion.setEmpty();
         }
 
         clipPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -103,9 +105,11 @@ public class ClipHelper implements ClipInter<ClipHelper> {
         }
 
         /*因为初始化时已经实例化了，这里如果判断为空，则不会执行，导致构造函数参数无法传递，影响区域点击事件判断*/
-//        if (viewRegion == null) {
-        viewRegion = new Region(0, 0, w, h);
-//        }
+        if (viewRegion == null) {
+            viewRegion = new Region(0, 0, w, h);
+        }else{
+            viewRegion.set(0,0,w,h);
+        }
 
         clipPaint.setColor(Color.WHITE);
 //        clipPaint.setFilterBitmap(false);
