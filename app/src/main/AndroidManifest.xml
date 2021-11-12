@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.test.fastshape"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.test.fastshape">
 
     <application
         android:allowBackup="true"
@@ -9,44 +9,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".TestEditTextActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TestLinearlayoutActivity" />
+        <activity
+            android:name=".test.ShapeTestListActivity"
+            android:label="@string/app_name">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            -->
         </activity>
-        <activity android:name=".TestLinearlayoutActivity"/>
+        <activity android:name=".test.LinearLayoutActivity"></activity>
+        <activity android:name=".test.FrameLayoutActivity"></activity>
+        <activity android:name=".test.RelativeLayoutActivity"></activity>
         <activity
-            android:name=".test.ShapeTestListActivity"
-            android:label="@string/app_name">
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>-->
-        </activity>
-        <activity android:name=".test.LinearLayoutActivity">
-        </activity>
-        <activity android:name=".test.FrameLayoutActivity">
-        </activity>
-        <activity android:name=".test.RelativeLayoutActivity">
-        </activity>
-        <activity android:name=".test.TextViewActivity"
-                  android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".test.ButtonActivity">
-        </activity>
-        <activity android:name=".test.EditTextActivity">
-        </activity>
-        <activity android:name=".test.RadioButtonActivity">
-        </activity>
-        <activity android:name=".test.CheckBoxActivity">
-        </activity>
-        <activity android:name=".test.ImageViewActivity">
-        </activity>
+            android:name=".test.TextViewActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".test.ButtonActivity"></activity>
+        <activity android:name=".test.EditTextActivity"></activity>
+        <activity android:name=".test.RadioButtonActivity"></activity>
+        <activity android:name=".test.CheckBoxActivity"></activity>
+        <activity android:name=".test.ImageViewActivity"></activity>
     </application>
 
 </manifest>

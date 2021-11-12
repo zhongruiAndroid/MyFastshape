@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.test.fastshape.R;
+import com.test.fastshape.TestEditTextActivity;
+import com.test.fastshape.TestLinearlayoutActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ public class ShapeTestListActivity extends AppCompatActivity {
         actList.add(RadioButtonActivity.class);
         actList.add(CheckBoxActivity.class);
         actList.add(ImageViewActivity.class);
+        actList.add(TestEditTextActivity.class);
 //        actList.add(TestLinearlayoutActivity.class);
 //
         List<String > itemList=new ArrayList<>();
@@ -40,6 +43,7 @@ public class ShapeTestListActivity extends AppCompatActivity {
         itemList.add("RadioButton");
         itemList.add("CheckBox");
         itemList.add("ImageView");
+        itemList.add("测试EditText");
 //        itemList.add("测试Theme");
 
         adapter = new ListAdapter(this);
