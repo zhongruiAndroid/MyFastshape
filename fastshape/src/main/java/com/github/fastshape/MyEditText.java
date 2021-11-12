@@ -391,7 +391,6 @@ public class MyEditText extends EditText {
             iconLookCloseDrawable = getCompoundDrawables()[2];
         }
         refreshIconBounds(this.iconLookCloseDrawable, getIcon_width(), getIcon_height());
-
     }
 
     private void setIconLookOpenDrawable(Drawable icon) {
@@ -403,20 +402,20 @@ public class MyEditText extends EditText {
         refreshIconBounds(this.iconLookOpenDrawable, getIcon_width(), getIcon_height());
     }
 
-    private void refreshIconBounds(int clearIcon_width, int clearIcon_height) {
+    private void refreshIconBounds(int icon_width, int icon_height) {
         /*图片宽高*/
-        refreshIconBounds(iconDeleteDrawable, clearIcon_width, clearIcon_height);
+        refreshIconBounds(iconDeleteDrawable, icon_width, icon_height);
     }
 
-    private void refreshIconBounds(Drawable drawable, int clearIcon_width, int clearIcon_height) {
+    private void refreshIconBounds(Drawable drawable, int icon_width, int icon_height) {
         if (drawable == null) {
             return;
         }
         /*图片宽高*/
         int width = drawable.getIntrinsicWidth();
         int height = drawable.getIntrinsicHeight();
-        int w = clearIcon_width;
-        int h = clearIcon_height;
+        int w = icon_width;
+        int h = icon_height;
         if (w > 0 && h > 0) {
 
         } else if (w > 0) {
