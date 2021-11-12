@@ -20,9 +20,9 @@
     </style>
     <style name="EditText">
         <item name="solidColor">@color/white</item>
-        <item name="clearIconDrawable">@drawable/normal</item>
-        <item name="clearIcon_height">10dp</item>
-        <item name="clearIcon_width">5dp</item>
+        <item name="iconDeleteDrawable">@drawable/normal</item>
+        <item name="icon_height">10dp</item>
+        <item name="icon_width">5dp</item>
     </style>
     <style name="LinearLayout">
         <item name="solidColor">@color/c_press</item>
@@ -60,7 +60,7 @@
         <item name="borderWidth">6sp</item>
         <item name="radius">26dp</item>
         <item name="solidColor">@color/red_point1</item>
-        <item name="clearIconDrawable">@drawable/normal</item>
+        <item name="iconDeleteDrawable">@drawable/normal</item>
     </style>
     <style name="testEditStyle3"  >
         <!--

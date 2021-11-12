@@ -427,6 +427,10 @@
                 android:textSize="14sp"
                 app:borderColor="@color/colorPrimary"
                 app:borderWidth="1px"
+                app:iconShowType="delete"
+                android:inputType="text"
+                app:iconLookOpenDrawable="@drawable/look_yes"
+                app:iconLookCloseDrawable="@drawable/look_no"
                 />
 
             <com.github.fastshape.MyEditText
@@ -441,11 +445,11 @@
                 android:textSize="14sp"
                 app:borderColor="@color/colorPrimary"
                 app:borderWidth="1px"
-                app:clearIconDrawable="@drawable/text_clear2"
-                app:hiddenClearIcon="true"
+                app:iconDeleteDrawable="@drawable/text_clear2"
+                app:iconShowType="delete"
                 />
-        </com.github.fastshape.MyLinearLayout>
 
+        </com.github.fastshape.MyLinearLayout>
         <com.github.fastshape.MyTextView
             android:layout_width="match_parent"
             android:layout_height="40dp"

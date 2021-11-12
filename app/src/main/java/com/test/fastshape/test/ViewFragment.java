@@ -471,10 +471,10 @@ public class ViewFragment extends Fragment implements SeekBar.OnSeekBarChangeLis
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(isChecked){
-                        et.setClearIconDrawable(ContextCompat.getDrawable(getActivity(),R.drawable.select));
+                        et.setIconDeleteDrawable(ContextCompat.getDrawable(getActivity(),R.drawable.select));
 //                        fourthHelper.getClearIconDrawable().setBounds(0, 0, 50, 50);
                     }else{
-                        et.setClearIconDrawable(null);
+                        et.setIconDeleteDrawable(null);
                     }
                 }
             });

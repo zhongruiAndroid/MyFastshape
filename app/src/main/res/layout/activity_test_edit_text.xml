@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TestEditTextActivity">
+
+    <com.github.fastshape.MyEditText
+        android:id="@+id/et"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:textSize="13sp"
+        app:iconLookCloseDrawable="@drawable/look_no"
+        app:iconLookOpenDrawable="@drawable/look_yes"
+        app:solidColor="@color/white" />
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbHidden"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="隐藏" />
+
+        <RadioButton
+            android:id="@+id/rbDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="delete" />
+
+        <RadioButton
+            android:id="@+id/rbLook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="look" />
+    </RadioGroup>
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/cbShowEye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="总是显示眼睛" />
+
+    <android.support.v7.widget.AppCompatSeekBar
+        android:id="@+id/sb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btChangeDeleteDrawable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="改变deleteDrawable"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btLookDeleteDrawable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="改变lookDrawable"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:hint="test"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:textSize="13sp" />
+</LinearLayout>

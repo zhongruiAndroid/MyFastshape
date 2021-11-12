@@ -8,10 +8,10 @@ import android.support.annotation.DrawableRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -23,18 +23,27 @@ import com.github.fastshape.viewhelper.SetBackgroundUtil;
  * Created by Administrator on 2016/9/6.
  */
 public class MyEditText extends AppCompatEditText {
-
+    public static final int show_type_hidden = 0;
+    public static final int show_type_delete = 1;
+    public static final int show_type_look = 2;
     /*****************************clearIcon*******************************/
     /***清除文本内容的icon*/
-    public boolean focusFlag;
-    private boolean hiddenClearIcon;
-    /*设置清除按钮drawable(点击清除内容)*/
-    protected Drawable clearIconDrawable;
-    /*设置清除按钮宽度,只设置其中一个属性自动适配另外一个属性*/
-    protected int clearIcon_width;
-    protected int clearIcon_height;
 
-    public MyEditText.OnRightListener onRightListener;
+    protected int iconShowType = show_type_hidden;
+    /*设置清除按钮drawable(点击清除内容)*/
+    protected Drawable iconDeleteDrawable;
+
+    /*设置清除按钮宽度,只设置其中一个属性自动适配另外一个属性*/
+    protected int icon_width;
+    protected int icon_height;
+
+    protected Drawable iconLookCloseDrawable;
+    protected Drawable iconLookOpenDrawable;
+    protected boolean iconLookAlwaysShow = false;
+
+
+    public OnDeleteListener onRightListener;
+    public OnLookListener onLookListener;
 
 
     private FourthHelper viewHelper;
@@ -68,6 +77,7 @@ public class MyEditText extends AppCompatEditText {
             @Override
             public void resetClip() {
             }
+
             @Override
             public boolean isEditMode() {
                 return isInEditMode();
@@ -86,25 +96,41 @@ public class MyEditText extends AppCompatEditText {
     public void init(AttributeSet attrs) {
         TypedArray typedArray = viewHelper.initCompat(getContext(), attrs, R.attr.MyEditTextStyle);
 
-        clearIconDrawable = typedArray.getDrawable(R.styleable.FastShapeAttr_clearIconDrawable);
-        hiddenClearIcon = typedArray.getBoolean(R.styleable.FastShapeAttr_hiddenClearIcon, false);
-        clearIcon_width = (int) typedArray.getDimension(R.styleable.FastShapeAttr_clearIcon_width, 0);
-        clearIcon_height = (int) typedArray.getDimension(R.styleable.FastShapeAttr_clearIcon_height, 0);
+        iconDeleteDrawable = typedArray.getDrawable(R.styleable.FastShapeAttr_iconDeleteDrawable);
+        iconLookCloseDrawable = typedArray.getDrawable(R.styleable.FastShapeAttr_iconLookCloseDrawable);
+        iconLookOpenDrawable = typedArray.getDrawable(R.styleable.FastShapeAttr_iconLookOpenDrawable);
+        if (iconDeleteDrawable != null) {
+            iconShowType = show_type_delete;
+        }
+        iconShowType = typedArray.getInt(R.styleable.FastShapeAttr_iconShowType, iconShowType);
+        icon_width = (int) typedArray.getDimension(R.styleable.FastShapeAttr_icon_width, 0);
+        icon_height = (int) typedArray.getDimension(R.styleable.FastShapeAttr_icon_height, 0);
+        iconLookAlwaysShow = typedArray.getBoolean(R.styleable.FastShapeAttr_iconLookAlwaysShow, false);
 
+        if (iconShowType == show_type_look) {
+            if (iconLookCloseDrawable == null || iconLookOpenDrawable == null) {
+                iconShowType = 0;
+            }
+        }
         typedArray.recycle();
 
-        setClearIconDrawable(clearIconDrawable);
+        /*设置清除icon*/
+        setIconDeleteDrawable(iconDeleteDrawable);
+        /*设置隐藏密码状态icon*/
+        setIconLookCloseDrawable(iconLookCloseDrawable);
+        /*设置显示密码状态icon*/
+        setIconLookOpenDrawable(iconLookOpenDrawable);
+
         // 默认设置隐藏图标
-        setClearIconVisible(false);
+        setIconVisible(false);
         // 设置焦点改变的监听
         setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                focusFlag = hasFocus;
                 if (hasFocus) {
-                    setClearIconVisible(getText().length() > 0);
+                    setIconVisible(getText().length() > 0);
                 } else {
-                    setClearIconVisible(false);
+                    setIconVisible(false);
                 }
             }
         });
@@ -135,12 +161,20 @@ public class MyEditText extends AppCompatEditText {
 
     /*****************************clearIcon*******************************/
 
-    public interface OnRightListener {
-        boolean clickRight();
+    public interface OnDeleteListener {
+        boolean onClick();
     }
 
-    public void setOnRightListener(MyEditText.OnRightListener onRightListener) {
+    public interface OnLookListener {
+        boolean onClick();
+    }
+
+    public void setOnRightListener(OnDeleteListener onRightListener) {
         this.onRightListener = onRightListener;
+    }
+
+    public void setOnLookListener(OnLookListener onLookListener) {
+        this.onLookListener = onLookListener;
     }
 
     @Override
@@ -149,8 +183,20 @@ public class MyEditText extends AppCompatEditText {
             if (getCompoundDrawables()[2] != null) {
                 boolean touchable = event.getX() > (getWidth() - getTotalPaddingRight()) && (event.getX() < ((getWidth() - getPaddingRight())));
                 if (touchable) {
-                    if (this.onRightListener == null || this.onRightListener.clickRight() == false) {
-                        this.setText("");
+                    if (isShowDeleteIcon()) {
+                        if (this.onRightListener == null || !this.onRightListener.onClick()) {
+                            this.setText("");
+                        }
+                    } else if (isShowLookIcon()) {
+                        int inputType = getInputType();
+                        if (onLookListener == null || !onLookListener.onClick()) {
+                            if (!isVisiblePassword()) {
+                                originInputType = inputType;
+                                setInputType(originInputType | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                            } else {
+                                setInputType(originInputType);
+                            }
+                        }
                     }
                 }
             }
@@ -158,14 +204,66 @@ public class MyEditText extends AppCompatEditText {
         return super.onTouchEvent(event);
     }
 
+    private int textWebPassword = 0x000000e1;
+    private int textPassword = 0x00000081;
+    private int textVisiblePassword = 0x00000091;
+    private int numberPassword = 0x00000012;
+    private int originInputType = textPassword;
+
+    public boolean isVisiblePassword() {
+        int inputType = getInputType();
+        if ((inputType & InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+            return true;
+        }
+        if ((inputType & textWebPassword) == textWebPassword) {
+            return false;
+        }
+        if ((inputType & textPassword) == textPassword) {
+            return false;
+        }
+        if ((inputType & textVisiblePassword) == textVisiblePassword) {
+            return false;
+        }
+        if ((inputType & numberPassword) == numberPassword) {
+            return false;
+        }
+        return true;
+    }
+
     /**
      * 设置清除图标的显示与隐藏，调用setCompoundDrawables为EditText绘制上去
      *
      * @param visible
      */
-    private void setClearIconVisible(boolean visible) {
-        Drawable right = (visible && !hiddenClearIcon) ? clearIconDrawable : null;
-        setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], right, getCompoundDrawables()[3]);
+    private void setIconVisible(boolean visible) {
+        Drawable drawable = null;
+        if (visible) {
+            if (isShowDeleteIcon()) {
+                drawable = iconDeleteDrawable;
+            } else if (isShowLookIcon()) {
+//            if (inputType == 129) {       android:inputType="textPassword"
+                if (!isVisiblePassword()) {
+                    drawable = this.iconLookCloseDrawable;
+                } else {
+                    drawable = this.iconLookOpenDrawable;
+                }
+            }
+        } else if (isShowLookIcon() && iconLookAlwaysShow) {
+            if (!isVisiblePassword()) {
+                drawable = this.iconLookCloseDrawable;
+            } else {
+                drawable = this.iconLookOpenDrawable;
+            }
+        }
+        setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], drawable, getCompoundDrawables()[3]);
+    }
+
+    private boolean isShowDeleteIcon() {
+        return iconShowType == show_type_delete;
+    }
+
+    private boolean isShowLookIcon() {
+        return iconShowType == show_type_look;
     }
 
     /**
@@ -178,51 +276,60 @@ public class MyEditText extends AppCompatEditText {
     public void setText(CharSequence text, BufferType type) {
         super.setText(text, type);
         if (!TextUtils.isEmpty(text)) {
-            try {
-                setSelection(text.length());
-            } catch (Exception e) {
-                Log.e("Exception", "输入字符长度超出限制");
-            }
+            setSelection(text.length());
         }
     }
 
-    /**
-     * 设置是否显示(隐藏)清除文本内容的icon(默认false-显示)
-     *
-     * @param isHiddenClear true隐藏   false显示
-     */
-    public MyEditText setHiddenClearIcon(boolean isHiddenClear) {
-        this.hiddenClearIcon = isHiddenClear;
+    public MyEditText setIconShowType(int iconShowType) {
+        if (iconShowType != show_type_hidden && iconShowType != show_type_delete && iconShowType != show_type_look) {
+            iconShowType = show_type_hidden;
+        }
+        this.iconShowType = iconShowType;
+        setIconVisible(isFocused());
         return this;
     }
 
-    public boolean isHiddenClearIcon() {
-        return hiddenClearIcon;
+
+    public Drawable getIconDeleteDrawable() {
+        return iconDeleteDrawable;
     }
 
-    public Drawable getClearIconDrawable() {
-        return clearIconDrawable;
-    }
-    public int getClearIcon_width() {
-        return clearIcon_width;
+    public int getIcon_width() {
+        return icon_width;
     }
 
-    public MyEditText setClearIcon_width(int clearIcon_width) {
-        this.clearIcon_width = clearIcon_width;
-        if(clearIconDrawable!=null){
-            refreshIconBounds(this.clearIcon_width,this.clearIcon_height);
+    public MyEditText setIcon_width(int icon_width) {
+        if (this.icon_width == icon_width) {
+            return this;
+        }
+        this.icon_width = icon_width;
+        if (isShowDeleteIcon()) {
+            refreshIconBounds(iconDeleteDrawable, this.icon_width, this.icon_height);
+            setIconVisible(isFocused());
+        } else if (isShowLookIcon()) {
+            refreshIconBounds(iconLookCloseDrawable, this.icon_width, this.icon_height);
+            refreshIconBounds(iconLookOpenDrawable, this.icon_width, this.icon_height);
+            setIconVisible(isFocused());
         }
         return this;
     }
 
-    public int getClearIcon_height() {
-        return clearIcon_height;
+    public int getIcon_height() {
+        return icon_height;
     }
 
-    public MyEditText setClearIcon_height(int clearIcon_height) {
-        this.clearIcon_height = clearIcon_height;
-        if(clearIconDrawable!=null){
-            refreshIconBounds(this.clearIcon_width,this.clearIcon_height);
+    public MyEditText setIcon_height(int icon_height) {
+        if (this.icon_width == icon_width) {
+            return this;
+        }
+        this.icon_height = icon_height;
+        if (isShowDeleteIcon()) {
+            refreshIconBounds(iconDeleteDrawable, this.icon_width, this.icon_height);
+            setIconVisible(isFocused());
+        } else if (isShowLookIcon()) {
+            refreshIconBounds(iconLookCloseDrawable, this.icon_width, this.icon_height);
+            refreshIconBounds(iconLookOpenDrawable, this.icon_width, this.icon_height);
+            setIconVisible(isFocused());
         }
         return this;
     }
@@ -232,8 +339,8 @@ public class MyEditText extends AppCompatEditText {
      *
      * @param clearDrawable
      */
-    public MyEditText setClearIconDrawable(@DrawableRes int clearDrawable) {
-        return setClearIconDrawable(ContextCompat.getDrawable(getContext(), clearDrawable));
+    public MyEditText setIconDeleteDrawable(@DrawableRes int clearDrawable) {
+        return setIconDeleteDrawable(ContextCompat.getDrawable(getContext(), clearDrawable));
     }
 
     /**
@@ -241,33 +348,74 @@ public class MyEditText extends AppCompatEditText {
      *
      * @param clearIcon
      */
-    public MyEditText setClearIconDrawable(Drawable clearIcon) {
+    public MyEditText setIconDeleteDrawable(Drawable clearIcon) {
         /*if(isInEditMode()){
             return;
         }*/
         if (clearIcon != null) {
-            clearIconDrawable = clearIcon;
+            iconDeleteDrawable = clearIcon;
         } else {
-            clearIconDrawable = getCompoundDrawables()[2];
+            iconDeleteDrawable = getCompoundDrawables()[2];
         }
 
-        if (clearIconDrawable == null) {
-            clearIconDrawable = ContextCompat.getDrawable(getContext(), R.drawable.textclear);
+        if (iconDeleteDrawable == null) {
+            iconDeleteDrawable = ContextCompat.getDrawable(getContext(), R.drawable.textclear);
         }
 
-        refreshIconBounds(getClearIcon_width(), getClearIcon_height());
+        refreshIconBounds(getIcon_width(), getIcon_height());
 //        this.setCompoundDrawablePadding(dip2px(getContext(), 5));
 //        this.setPadding(0,0,15,0);
 
+        setIconVisible(isFocused());
         return this;
     }
 
-    private void refreshIconBounds(int clearIcon_width, int clearIcon_height) {
+    public MyEditText setIconLookDrawable(@DrawableRes int close, @DrawableRes int open) {
+        return setIconLookDrawable(ContextCompat.getDrawable(getContext(), close), ContextCompat.getDrawable(getContext(), open));
+    }
+
+    public MyEditText setIconLookDrawable(Drawable close, Drawable open) {
+        if (close == null || open == null) {
+            return this;
+        }
+        setIconLookCloseDrawable(close);
+        setIconLookOpenDrawable(open);
+        setIconVisible(isFocused());
+        return this;
+    }
+
+    private void setIconLookCloseDrawable(Drawable icon) {
+        if (icon != null) {
+            iconLookCloseDrawable = icon;
+        } else {
+            iconLookCloseDrawable = getCompoundDrawables()[2];
+        }
+        refreshIconBounds(this.iconLookCloseDrawable, getIcon_width(), getIcon_height());
+    }
+
+    private void setIconLookOpenDrawable(Drawable icon) {
+        if (icon != null) {
+            iconLookOpenDrawable = icon;
+        } else {
+            iconLookOpenDrawable = getCompoundDrawables()[2];
+        }
+        refreshIconBounds(this.iconLookOpenDrawable, getIcon_width(), getIcon_height());
+    }
+
+    private void refreshIconBounds(int icon_width, int icon_height) {
         /*图片宽高*/
-        int width = clearIconDrawable.getIntrinsicWidth();
-        int height = clearIconDrawable.getIntrinsicHeight();
-        int w=clearIcon_width;
-        int h=clearIcon_height;
+        refreshIconBounds(iconDeleteDrawable, icon_width, icon_height);
+    }
+
+    private void refreshIconBounds(Drawable drawable, int icon_width, int icon_height) {
+        if (drawable == null) {
+            return;
+        }
+        /*图片宽高*/
+        int width = drawable.getIntrinsicWidth();
+        int height = drawable.getIntrinsicHeight();
+        int w = icon_width;
+        int h = icon_height;
         if (w > 0 && h > 0) {
 
         } else if (w > 0) {
@@ -279,7 +427,15 @@ public class MyEditText extends AppCompatEditText {
             h = height;
         }
 
-        clearIconDrawable.setBounds(0, 0, w, h);
+        drawable.setBounds(0, 0, w, h);
+    }
+
+    public MyEditText setIconLookAlwaysShow(boolean iconLookAlwaysShow) {
+        if (this.iconLookAlwaysShow != iconLookAlwaysShow) {
+            this.iconLookAlwaysShow = iconLookAlwaysShow;
+            setIconVisible(isFocused());
+        }
+        return this;
     }
 
     private TextWatcher getWatcher() {
@@ -287,12 +443,14 @@ public class MyEditText extends AppCompatEditText {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (focusFlag) {
-                    setClearIconVisible(s.length() > 0);
+                if (isFocused()) {
+                    setIconVisible(s.length() > 0);
                 }
             }
+
             @Override
             public void afterTextChanged(Editable s) {
 
