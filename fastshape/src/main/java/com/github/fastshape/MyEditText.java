@@ -14,6 +14,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 
 import com.github.fastshape.inter.CompleteInter;
 import com.github.fastshape.viewhelper.FourthHelper;
@@ -22,7 +23,7 @@ import com.github.fastshape.viewhelper.SetBackgroundUtil;
 /**
  * Created by Administrator on 2016/9/6.
  */
-public class MyEditText extends AppCompatEditText {
+public class MyEditText extends EditText {
 
     /*****************************clearIcon*******************************/
     /***清除文本内容的icon*/

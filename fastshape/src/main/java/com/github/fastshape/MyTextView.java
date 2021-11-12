@@ -8,10 +8,11 @@ import com.github.fastshape.inter.CompleteInter;
 import com.github.fastshape.viewhelper.SecondHelper;
 import com.github.fastshape.viewhelper.SetBackgroundUtil;
 
+
 /**
  * Created by Administrator on 2016/9/6.
  */
-public class MyTextView extends AppCompatTextView  {
+public class MyTextView extends AppCompatTextView {
     private SecondHelper viewHelper;
     public MyTextView(Context context) {
         super(context);
