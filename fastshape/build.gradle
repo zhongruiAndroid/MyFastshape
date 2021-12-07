@@ -21,7 +21,10 @@ android {
     }
 
 }
-
+afterEvaluate {
+    generateReleaseBuildConfig.enabled = false
+    generateDebugBuildConfig.enabled = false
+}
 dependencies {
 //    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
